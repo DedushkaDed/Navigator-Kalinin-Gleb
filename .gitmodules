@@ -1,0 +1,3 @@
+[submodule "public/local/markup"]
+	path = public/local/markup
+	url = ssh://git@gitlab.iqdev.digital:8422/stazher/frontend.git

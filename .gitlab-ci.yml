@@ -1,0 +1,104 @@
+image: egnd/bxenv:7.1-fpm-dev
+
+stages:
+- check
+- build
+- analyze
+- deploy
+- test
+
+variables:
+  GIT_STRATEGY: clone
+  DOCKER_DRIVER: overlay2
+  COMPOSER_PROCESS_TIMEOUT: 1200
+  PHAN_VERSION: '1.2.2'
+  BX_VERSION: '^18.1'
+
+cache:
+  key: "dependenciesCache"
+  paths:
+  - vendor/
+  - public/local/modules/sprint.migration
+  - .env
+  - composer.lock
+
+########################################################################################### check
+
+has_latest_master:
+  image: alpine:latest
+  stage: check
+  cache: {}
+  before_script:
+  - apk add git
+  script:
+  - git remote update
+  - if ! git log --pretty=format:"%H" | grep $(git log --pretty=format:"%H" -n 1 origin/master); then exit 1; fi
+  except:
+  - master
+
+grep:
+  stage: check
+  cache: {}
+  before_script:
+  - apk add grep
+  script:
+  - echo "------------------>Git-конфликты в коде:" && composer check:conflicts
+  - echo "------------------>Отладочные методы в коде:" && composer check:debug
+  - echo "------------------>Todo в коде:" && composer check:todo
+#  allow_failure: true
+
+########################################################################################### build
+
+build_dependencies:
+  stage: build
+  script:
+  - envsubst < .env.dist > .env
+  - if ! [ -s ./vendor/codeception/codeception/codecept ]; then composer dependencies:dev:resolve; fi;
+
+########################################################################################### analyze
+
+.analyze: &analyze
+  stage: analyze
+  before_script:
+  - rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini;
+  artifacts:
+    paths:
+    - report.*
+    expire_in: 1 week
+    when: on_failure
+  except:
+  - stage
+
+composer:
+  <<: *analyze
+  cache:
+    key: "dependenciesCache"
+    policy: pull
+    paths:
+    - vendor/
+    - public/local/modules/sprint.migration
+    - .env
+    - composer.lock
+  script:
+  - composer analyze:codestyle_ci
+
+codestyle:
+  <<: *analyze
+  cache:
+    key: "dependenciesCache"
+    policy: pull
+    paths:
+    - vendor/
+    - public/local/modules/sprint.migration
+    - .env
+    - composer.lock
+  script:
+  - composer analyze:codestyle_ci
+
+code:
+  <<: *analyze
+  script:
+  - if ! [ -s ./vendor/egnd/bxsrc/globals.php ]; then composer require egnd/bxsrc "${BX_VERSION}"; fi;
+  - mkdir -p public/bitrix/modules
+  - composer analyze:code_ci
+  - git checkout .
