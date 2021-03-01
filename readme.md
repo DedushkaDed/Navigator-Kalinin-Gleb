@@ -122,7 +122,7 @@ docker exec -it <container_name> /bin/bash
 
 где container_name - имя контейнера, которое формируется по следующему шаблону %PROJECT_NAME%-php, например navigator-test-php
 
-Получив доступ к докеру, выполнять команды внутри него
+Получив доступ к докеру, выполнять команды внутри него  
 2) использовать скрипт проекта docker-shell.php, который в качестве аргумента принимает строку с командой, например команда для установки пакета rakit/validation
 ```bash
 php docker-shell.php "composer require rakit/validation"
