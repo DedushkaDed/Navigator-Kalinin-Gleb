@@ -78,4 +78,4 @@ networks:
     ipam:
       driver: default
       config:
-      - subnet: 10.100.1.0/24
+      - subnet: ${DOCKER_SUBNET}
