@@ -23,10 +23,10 @@ require_once __DIR__.'/public/bitrix/modules/main/include/prolog_before.php';
 $helpersSet = new HelperSet();
 $helpersSet->set(new QuestionHelper(), 'question');
 $helpersSet->set(new ConnectionHelper(DriverManager::getConnection([
-    'dbname' => getenv('MYSQL_DATABASE'),
-    'user' => getenv('MYSQL_USER'),
-    'password' => getenv('MYSQL_PASSWORD'),
-    'host' => getenv('DB_SERVER'),
+    'dbname' => getenv('BX_MYSQL_DATABASE'),
+    'user' => getenv('BX_MYSQL_USER'),
+    'password' => getenv('BX_MYSQL_PASSWORD'),
+    'host' => getenv('BX_MYSQL_HOST'),
     'driver' => 'mysqli',
 ])), 'db');
 $cli = ConsoleRunner::createApplication($helpersSet);

@@ -2,7 +2,7 @@
     "name": "iqdev/clean",
     "type": "project",
     "require": {
-        "php": "^7.1",
+        "php": "^7.4",
         "doctrine/migrations": "v2.0.0-beta2",
         "symfony/console": "*",
         "monolog/monolog": "*",
@@ -10,12 +10,14 @@
         "pimple/pimple": "*",
         "pug-php/pug": "^3.2",
         "js-phpize/js-phpize-phug": "^2.1",
-        "andreyryabin/sprint.migration": "dev-master",
-        "phpmailer/phpmailer": "6.0"
+        "phpmailer/phpmailer": "6.0",
+        "andreyryabin/sprint.migration": "^3.25"
     },
     "extra": {
         "installer-paths": {
-            "public/local/modules/{$name}/": ["type:bitrix-module"]
+            "public/local/modules/{$name}/": [
+                "type:bitrix-module"
+            ]
         }
     },
     "require-dev": {
@@ -33,18 +35,15 @@
     },
     "scripts": {
         "analyze:dependencies": "/opt/php71/bin/php -d mbstring.func_overload=0 vendor/bin/security-checker security:check",
-        "analyze:codestyle": "/opt/php71/bin/php -d mbstring.func_overload=0 vendor/bin/phpcs --report=csv --report-file=report.phpcs.csv --severity=1 --cache",
-        "analyze:code": "/opt/php71/bin/php -d mbstring.func_overload=0 vendor/bin/phan --allow-polyfill-parser --project-root-directory=. --config-file=.ci/config.phan.php --output-mode=csv --output=report.phan.csv --unused-variable-detection --processes=1 --minimum-severity=0 --ignore-undeclared",
+        "analyze:codestyle": "php docker-shell.php \"composer analyze:codestyle_ci\"",
+        "analyze:code": "php docker-shell.php \"composer analyze:code_ci\"",
         "analyze:dependencies_ci": "@php -d mbstring.func_overload=0 vendor/bin/security-checker security:check",
-        "analyze:codestyle_ci": "@php -d mbstring.func_overload=0 vendor/bin/phpcs --report=csv --report-file=report.phpcs.csv --severity=1 --cache",
-
+        "analyze:codestyle_ci": "@php -d mbstring.func_overload=0 vendor/bin/phpcs --report=csv --report-file=report.phpcs.csv --severity=1 --cache --standard=.ci/config.phpcs.xml",
         "analyze:code_ci": "@php -d mbstring.func_overload=0 vendor/bin/phan --project-root-directory=. --config-file=.ci/config.phan.php --output-mode=csv --output=report.phan.csv --unused-variable-detection --processes=1 --minimum-severity=0 --ignore-undeclared",
         "disable:xdebug": "if [ -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini ]; then mv /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini.disabled; fi",
         "enable:xdebug": "if [ -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini.disabled ]; then mv /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini.disabled /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini; fi",
-        "dependencies:dev:resolve": "@composer install --no-progress --optimize-autoloader --profile --ignore-platform-reqs",
-        "dependencies:prod:resolve": "@composer install --no-progress --optimize-autoloader --no-dev",
-        "dependencies:dev:update": "@composer update --no-progress --optimize-autoloader --profile",
-        "dependencies:prod:update": "@composer update --no-progress --optimize-autoloader --no-dev",
+        "dependencies:dev_ci": "@composer install --no-progress --optimize-autoloader --profile --ignore-platform-reqs",
+        "dependencies:dev": "php docker-shell.php \"composer analyze:dev_ci\"",
         "generate:docs": [
             "if [ ! -f phpdoc.phar ]; then wget -nv -O phpdoc.phar https://github.com/phpDocumentor/phpDocumentor2/releases/download/v2.9.0/phpDocumentor.phar; fi;",
             "rm -rf docs && mkdir -p docs",
@@ -58,10 +57,10 @@
         "check:conflicts": "IQDEV\\Composer\\Check::conflicts",
         "check:todo": "IQDEV\\Composer\\Check::todo",
         "check:debug": "IQDEV\\Composer\\Check::debug",
-        "tests:run:acceptance": "for file in tests/acceptance/*; do php vendor/bin/codecept run $file --steps -vv; done",
-        "tests:run:env": "docker run -p 4444:4444 selenium/standalone-chrome:3.141"
+        "composer:run": "docker-compose up -d",
+        "composer:down": "docker-compose down"
     },
     "config": {
-        "process-timeout":0
+        "process-timeout": 0
     }
 }

@@ -2,11 +2,11 @@ version: '2'
 services:
   php:
     build: ./docker/php
-    container_name: php
+    container_name: ${PROJECT_NAME}-php
     volumes_from:
     - source
     ports:
-    - '9000:9000'
+    - '${DOCKER_PORT_PHP}:9000'
     links:
     - mysql
     - memcached
@@ -15,21 +15,21 @@ services:
     restart: always
   nginx:
     build: ./docker/nginx
-    container_name: nginx
+    container_name: ${PROJECT_NAME}-nginx
     depends_on:
     - source
     volumes_from:
     - source
     volumes:
-    - ./docker/certbot/conf:/etc/letsencrypt
-    - ./docker/certbot/www:/var/www/certbot
+#    - ./docker/certbot/conf:/etc/letsencrypt
+#    - ./docker/certbot/www:/var/www/certbot
     - ./docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
-    - ./docker/nginx/conf/seo.conf:/etc/nginx/seo.conf
+#    - ./docker/nginx/conf/seo.conf:/etc/nginx/seo.conf
     - ./docker/nginx/conf/default.conf:/etc/nginx/conf.d/default.conf
     - ./docker/nginx/conf/upstream.conf:/etc/nginx/conf.d/upstream.conf
     ports:
-    - '80:80'
-    - '443:443'
+    - '${DOCKER_PORT_HTTP}:80'
+#    - '443:443'
     links:
     - php
     networks:
@@ -37,7 +37,7 @@ services:
     restart: always
   source:
     image: alpine:latest
-    container_name: source
+    container_name: ${PROJECT_NAME}-source
     volumes:
     - /var/run/docker.sock:/tmp/docker.sock:ro
     - ./data/mysql:/var/lib/mysql
@@ -47,15 +47,15 @@ services:
     - bitrix
   mysql:
     build: ./docker/db
-    container_name: mysql
+    container_name: ${PROJECT_NAME}-mysql
     volumes_from:
     - source
     ports:
-    - '3306:3306'
+    - '${DOCKER_PORT_MYSQL}:3306'
     environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${BX_MYSQL_DATABASE}
+      MYSQL_USER: ${BX_MYSQL_USER}
+      MYSQL_PASSWORD: ${BX_MYSQL_PASSWORD}
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     command: mysqld --sql-mode=""
     networks:
@@ -63,31 +63,13 @@ services:
     restart: always
   memcached:
     image: memcached:1.5-alpine
-    container_name: memcached
+    container_name: ${PROJECT_NAME}-memcached
     volumes_from:
     - source
     ports:
-    - '11211:11211'
+    - '${DOCKER_PORT_MEMCACHED}:11211'
     networks:
     - bitrix
-    restart: always
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    networks:
-    - bitrix
-    restart: always
-    volumes:
-    - ./docker/certbot/conf:/etc/letsencrypt
-    - ./docker/certbot/www:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-  portainer:
-    image: portainer/portainer
-    container_name: portainer
-    ports:
-    - 777:9000
-    volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
     restart: always
 
 networks:
@@ -96,4 +78,4 @@ networks:
     ipam:
       driver: default
       config:
-      - subnet: 10.100.0.0/24
+      - subnet: 10.100.1.0/24

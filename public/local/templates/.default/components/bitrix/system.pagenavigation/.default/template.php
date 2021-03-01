@@ -2,5 +2,5 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
-
-IQDEV\Base\Load::setProperty('pagination', $templateData);
+var_dump($arParam);
+var_dump($arResult);

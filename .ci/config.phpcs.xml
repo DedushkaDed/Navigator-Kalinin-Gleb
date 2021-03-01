@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PHP_CodeSniffer"
+         xsi:noNamespaceSchemaLocation="phpcs.xsd">
+    <file-pattern>../public/local/modules/iqdev(.)*</file-pattern>
+    <file>../public/local/php_interface</file>
+    <file>../src</file>
+
+    <exclude-pattern>../public/local/php_interface/migrations</exclude-pattern>
+    <exclude-pattern>../public/local/php_interface/migrations.archive</exclude-pattern>
+    <exclude-pattern>../public/local/php_interface/include/functions.php</exclude-pattern>
+    <exclude-pattern>../src/App.php</exclude-pattern>
+    
+    <arg name="basepath" value="./"/>
+    <arg name="parallel" value="30"/>
+    <arg name="extensions" value="php"/>
+
+    <rule ref="PEAR">
+        <exclude name="PEAR.Commenting.FileComment.Missing"/>
+        <exclude name="PEAR.Commenting.ClassComment.Missing"/>
+        <exclude name="PEAR.Commenting.ClassComment.MissingAuthorTag"/>
+        <exclude name="PEAR.Commenting.ClassComment.MissingCategoryTag"/>
+        <exclude name="PEAR.Commenting.ClassComment.MissingLicenseTag"/>
+        <exclude name="PEAR.Commenting.ClassComment.MissingLinkTag"/>
+        <exclude name="PEAR.Commenting.ClassComment.MissingPackageTag"/>
+        <exclude name="PEAR.Commenting.FileComment.MissingVersion"/>
+        <exclude name="PEAR.Commenting.FileComment.MissingCategoryTag"/>
+        <exclude name="PEAR.Commenting.FileComment.MissingPackageTag"/>
+        <exclude name="PEAR.Commenting.FileComment.MissingAuthorTag"/>
+        <exclude name="PEAR.Commenting.FileComment.MissingLicenseTag"/>
+        <exclude name="PEAR.Commenting.FileComment.MissingLinkTag"/>
+        <exclude name="PEAR.Commenting.FileComment.WrongStyle"/>
+        <exclude name="PEAR.Commenting.FunctionComment.MissingParamComment"/>
+        <exclude name="PEAR.Commenting.FunctionComment.SpacingAfterParamType"/>
+        <exclude name="PEAR.Commenting.FunctionCallSignature.CloseBracketLine"/>
+        <exclude name="PEAR.Files.IncludingFile.UseInclude"/>
+        <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
+        <exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
+        <exclude name="PEAR.Functions.FunctionCallSignature.Indent"/>
+        <exclude name="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
+        <exclude name="PEAR.NamingConventions.ValidFunctionName.PrivateNoUnderscore"/>
+        <exclude name="PEAR.Files.IncludingFile.BracketsNotRequired"/>
+        <exclude name="PEAR.WhiteSpace.ObjectOperatorIndent.Incorrect"/>
+        <exclude name="PEAR.WhiteSpace.ScopeIndent.IncorrectExact"/>
+        <exclude name="PEAR.Commenting.FunctionComment.SpacingAfterParamName"/>
+    </rule>
+
+    <rule ref="PSR2">
+        <exclude name="PSR2.Methods.FunctionCallSignature.CloseBracketLine"/>
+        <exclude name="PSR2.Methods.FunctionCallSignature.ContentAfterOpenBracket"/>
+        <exclude name="PSR2.Methods.FunctionCallSignature.Indent"/>
+    </rule>
+    <rule ref="PSR2.Namespaces.NamespaceDeclaration.BlankLineAfter"/>
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="90"/>
+            <property name="absoluteLineLimit" value="130"/>
+        </properties>
+    </rule>
+    <rule ref="Generic.Commenting.DocComment.MissingShort">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Commenting.DocComment.TagValueIndent">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Commenting.DocComment.ContentAfterOpen">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Commenting.DocComment.ContentBeforeClose">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+
+    <rule ref="Generic"/>
+    <rule ref="Generic.Classes.OpeningBraceSameLine.BraceOnNewLine">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Files.EndFileNoNewline.Found">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.PHP.ClosingPHPTag.NotFound">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Files.LowercasedFilename.NotFound">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.PHP.UpperCaseConstant.Found">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Commenting.DocComment.TagValueIndent">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie.BraceOnNewLine">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Arrays.DisallowShortArraySyntax.Found">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Formatting.SpaceAfterNot.Incorrect">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Commenting.Todo.TaskFound">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Formatting.NoSpaceAfterCast.SpaceFound">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Commenting.Todo.TaskFound">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Squiz.Functions.MultiLineFunctionDeclaration.NewlineBeforeOpenBrace">
+        <severity>0</severity>
+    </rule>
+
+    <!-- Ловит шорт тэги -->
+    <rule ref="Generic.Files.InlineHTML.Found">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.PHP.DisallowShortOpenTag">
+        <severity>0</severity>
+    </rule>
+    <!-- Проверяет типизацию StrictTypes -->
+    <rule ref="Generic.PHP.RequireStrictTypes.MissingDeclaration">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.CodeAnalysis.EmptyPHPStatement.SemicolonWithoutCodeDetected">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.PHP.DisallowRequestSuperglobal">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Formatting.MultipleStatementAlignment.NotSameWarning">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.CodeAnalysis.UselessOverridingMethod.Found">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.Commenting.DocComment.TagsNotGrouped">
+        <exclude-pattern>../src/App/actions.php</exclude-pattern>
+    </rule>
+    <rule ref="Generic.Files.ExecutableFile.Executable">
+        <severity>0</severity>
+    </rule>
+    <rule ref="PSR1"/>
+
+    <rule ref="PSR2"/>
+</ruleset>

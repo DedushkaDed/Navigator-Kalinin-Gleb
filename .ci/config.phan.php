@@ -1,16 +1,15 @@
 <?php
 return [
-    'target_php_version' => '7.1',
+    'target_php_version' => '7.4',
     'directory_list' => [
         'src',
+        'public/local/modules/iqdev*',
         'public/local/php_interface',
-        'public/local/templates'
+        'public/local/components',
     ],
     'exclude_analysis_directory_list' => [
-        'src/Migrations',
-        'public/local/templates/.default/components/bitrix/news/pug/',
-        'public/local/templates/.default/components/bitrix/news.list/projects/', // хз в чем ошибка
-        'src/Base/Load.php'
+        'public/local/php_interface/migrations',
+        'public/local/php_interface/migrations.archive',
     ],
     'exclude_file_list' => [
         'src/Base/Load.php',
