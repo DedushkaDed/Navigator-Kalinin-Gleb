@@ -25,7 +25,7 @@ try {
 function execCommand($containerName, $cmd)
 {
     $cmd = "docker exec -it {$containerName} {$cmd}";
-    echo shell_exec($cmd);
+    system($cmd);
     die();
 }
 
