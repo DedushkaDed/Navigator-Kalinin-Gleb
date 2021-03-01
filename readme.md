@@ -117,7 +117,7 @@ BX_CRYPTO_KEY=randstr # ключ шифрования, рандомная стр
 Работать с композером следует через окружение docker, есть два варианта 
 1) подключиться к терминалу докера с помощью команды 
 ```bash 
-docker docker exec -it <container_name> /bin/bash
+docker exec -it <container_name> /bin/bash
 ```
 
 где container_name - имя контейнера, которое формируется по следующему шаблону %PROJECT_NAME%-php, например navigator-test-php
