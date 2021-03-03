@@ -6,7 +6,13 @@ use Pimple\Container;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
-require_once __DIR__.'/vendor/autoload.php';
+$autoloadPath = __DIR__.'/vendor/autoload.php';
+
+if (!file_exists($autoloadPath)) {
+    throw new Exception('Dependencies not installed: composer install');
+}
+
+require_once $autoloadPath;
 Dotenv\Dotenv::create(__DIR__)->load();
 IQDEV\App::services(new Container([
     HandlerInterface::class => function (Container $c) {
