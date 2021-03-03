@@ -2,9 +2,9 @@ image: egnd/bxenv:7.1-fpm-dev
 
 stages:
 - check
-- build
-- analyze_1
-- analyze_2
+#- build
+#- analyze_1
+#- analyze_2
 
 variables:
   GIT_STRATEGY: clone
@@ -48,53 +48,53 @@ grep:
 
 ########################################################################################### build
 
-build_dependencies:
-  stage: build
-  script:
-  - envsubst < .env.dist > .env
-  - if ! [ -s ./phan ]; then composer dependencies:dev_ci; fi;
+#build_dependencies:
+#  stage: build
+#  script:
+#  - envsubst < .env.dist > .env
+#  - if ! [ -s ./phan ]; then composer dependencies:dev_ci; fi;
+#
+############################################################################################ analyze
 
-########################################################################################### analyze
 
-
-codestyle:
-  stage: analyze_1
-  before_script:
-  - rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini;
-  artifacts:
-    paths:
-    - report.*
-    expire_in: 1 week
-    when: on_failure
-  cache:
-    key: "dependenciesCache"
-    policy: pull
-    paths:
-    - vendor/
-    - public/local/modules/sprint.migration
-    - .env
-    - composer.lock
-  script:
-  - composer analyze:codestyle_ci
-
-code:
-  stage: analyze_2
-  before_script:
-  - rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini;
-  artifacts:
-    paths:
-    - report.*
-    expire_in: 1 week
-    when: on_failure
-  cache:
-    key: "dependenciesCache"
-    policy: pull
-    paths:
-    - vendor/
-    - public/local/modules/sprint.migration
-    - .env
-    - composer.lock
-  script:
-  - if ! [ -s ./vendor/egnd/bxsrc/globals.php ]; then composer require egnd/bxsrc "${BX_VERSION}"; fi;
-  - mkdir -p public/bitrix/modules
-  - composer analyze:code_ci
+#codestyle:
+#  stage: analyze_1
+#  before_script:
+#  - rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini;
+#  artifacts:
+#    paths:
+#    - report.*
+#    expire_in: 1 week
+#    when: on_failure
+#  cache:
+#    key: "dependenciesCache"
+#    policy: pull
+#    paths:
+#    - vendor/
+#    - public/local/modules/sprint.migration
+#    - .env
+#    - composer.lock
+#  script:
+#  - composer analyze:codestyle_ci
+#
+#code:
+#  stage: analyze_2
+#  before_script:
+#  - rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini;
+#  artifacts:
+#    paths:
+#    - report.*
+#    expire_in: 1 week
+#    when: on_failure
+#  cache:
+#    key: "dependenciesCache"
+#    policy: pull
+#    paths:
+#    - vendor/
+#    - public/local/modules/sprint.migration
+#    - .env
+#    - composer.lock
+#  script:
+#  - if ! [ -s ./vendor/egnd/bxsrc/globals.php ]; then composer require egnd/bxsrc "${BX_VERSION}"; fi;
+#  - mkdir -p public/bitrix/modules
+#  - composer analyze:code_ci
