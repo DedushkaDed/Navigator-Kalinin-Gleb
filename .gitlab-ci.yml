@@ -1,9 +1,9 @@
-image: egnd/bxenv:7.1-fpm-dev
+image: iqdev/php74-dev
 
 stages:
 - check
-#- build
-#- analyze_1
+- build
+- analyze_1
 #- analyze_2
 
 variables:
@@ -48,35 +48,35 @@ grep:
 
 ########################################################################################### build
 
-#build_dependencies:
-#  stage: build
-#  script:
-#  - envsubst < .env.dist > .env
-#  - if ! [ -s ./phan ]; then composer dependencies:dev_ci; fi;
-#
-############################################################################################ analyze
+build_dependencies:
+  stage: build
+  script:
+  - envsubst < .env.dist > .env
+  - if ! [ -s ./phan ]; then composer dependencies:dev_ci; fi;
+
+########################################################################################### analyze
 
 
-#codestyle:
-#  stage: analyze_1
-#  before_script:
-#  - rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini;
-#  artifacts:
-#    paths:
-#    - report.*
-#    expire_in: 1 week
-#    when: on_failure
-#  cache:
-#    key: "dependenciesCache"
-#    policy: pull
-#    paths:
-#    - vendor/
-#    - public/local/modules/sprint.migration
-#    - .env
-#    - composer.lock
-#  script:
-#  - composer analyze:codestyle_ci
-#
+codestyle:
+  stage: analyze_1
+  before_script:
+  - rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini;
+  artifacts:
+    paths:
+    - report.*
+    expire_in: 1 week
+    when: on_failure
+  cache:
+    key: "dependenciesCache"
+    policy: pull
+    paths:
+    - vendor/
+    - public/local/modules/sprint.migration
+    - .env
+    - composer.lock
+  script:
+  - composer analyze:codestyle_ci
+
 #code:
 #  stage: analyze_2
 #  before_script:
