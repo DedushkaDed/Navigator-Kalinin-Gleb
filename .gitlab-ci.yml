@@ -49,7 +49,7 @@ grep:
 build_dependencies:
   stage: build
   before_script:
-    - apt-get install -y gettext-base
+    - apt-get update && apt-get install -y gettext
   script:
   - envsubst < .env.dist > .env
   - if ! [ -s ./phan ]; then composer dependencies:dev_ci; fi;
