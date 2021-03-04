@@ -28,7 +28,7 @@ has_latest_master:
   stage: check
   cache: {}
   before_script:
-  - apk add git
+  - apt-get install git
   script:
   - git remote update
   - if ! git log --pretty=format:"%H" | grep $(git log --pretty=format:"%H" -n 1 origin/master); then exit 1; fi
@@ -38,8 +38,6 @@ has_latest_master:
 grep:
   stage: check
   cache: {}
-  before_script:
-  - apk add grep
   script:
   - echo "------------------>Git-конфликты в коде:" && composer check:conflicts
   - echo "------------------>Отладочные методы в коде:" && composer check:debug
