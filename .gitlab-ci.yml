@@ -48,6 +48,8 @@ grep:
 
 build_dependencies:
   stage: build
+  before_script:
+    - apt-get install envsubst
   script:
   - envsubst < .env.dist > .env
   - if ! [ -s ./phan ]; then composer dependencies:dev_ci; fi;
