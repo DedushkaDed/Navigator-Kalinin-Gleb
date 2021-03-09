@@ -45,6 +45,11 @@ grep:
 
 build_dependencies:
   stage: build
+  cache:
+    key: "dependenciesCache"
+    policy: push
+    paths:
+      - vendor/
   script:
   - envsubst < .env.dist > .env
   - if ! [ -s ./phan ]; then composer dependencies:dev_ci; fi;
