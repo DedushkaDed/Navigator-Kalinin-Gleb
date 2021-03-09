@@ -64,14 +64,25 @@ https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-o
 
 ### Фокнуть проект
 
-<details>
-  <summary>Стажер</summary>
-    Получить у куратора ссылку на репозиторий и склонировать его
-</details>  
-<details>
-  <summary>Куратор</summary>
-    Форкнуть проект, пригласить стажера в репозиторий как разработчика
-</details>
+#### Стажер
+
+1) Склонировать текущий репозиторий
+2) Получить у куратора репозиторий для выполнения задачи
+3) Выполнить инструкцию для существующего проекта:
+
+```bash
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin <url you repository>
+git push -u origin --all
+git push -u origin --tags
+```
+
+
+#### Куратор
+
+1) Пригласить стажера в текущий репозиторий как Reporter  
+2) Создать в группе [Стажеры](https://gitlab.iqdev.digital/stazher) репозиторий с произвольным именем, в описании указать разработчика. Добавить стажера в проект как разработчика
 
 
 ### Запуск проекта

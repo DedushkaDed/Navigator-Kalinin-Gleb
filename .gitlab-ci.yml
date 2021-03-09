@@ -1,4 +1,4 @@
-image: egnd/bxenv:7.1-fpm-dev
+image: iqdev/php74-dev
 
 stages:
 - check
@@ -27,8 +27,6 @@ has_latest_master:
   image: alpine:latest
   stage: check
   cache: {}
-  before_script:
-  - apk add git
   script:
   - git remote update
   - if ! git log --pretty=format:"%H" | grep $(git log --pretty=format:"%H" -n 1 origin/master); then exit 1; fi
@@ -38,8 +36,6 @@ has_latest_master:
 grep:
   stage: check
   cache: {}
-  before_script:
-  - apk add grep
   script:
   - echo "------------------>Git-конфликты в коде:" && composer check:conflicts
   - echo "------------------>Отладочные методы в коде:" && composer check:debug
@@ -81,22 +77,22 @@ codestyle:
 code:
   stage: analyze_2
   before_script:
-  - rm -f /etc/php/7.4/fpm/conf.d/20-xdebug.ini;
-  - rm -f /etc/php/7.4/cli/conf.d/20-xdebug.ini;
+    - rm -f /etc/php/7.4/fpm/conf.d/20-xdebug.ini;
+    - rm -f /etc/php/7.4/cli/conf.d/20-xdebug.ini;
   artifacts:
     paths:
-    - report.*
+      - report.*
     expire_in: 1 week
     when: on_failure
   cache:
     key: "dependenciesCache"
     policy: pull
     paths:
-    - vendor/
-    - public/local/modules/sprint.migration
-    - .env
-    - composer.lock
+      - vendor/
+      - public/local/modules/sprint.migration
+      - .env
+      - composer.lock
   script:
-  - mkdir -p public/bitrix/modules
-  - mkdir -p public/local/components
-  - composer analyze:code_ci
+    - mkdir -p public/bitrix/modules
+    - mkdir -p public/local/components
+    - composer analyze:code_ci
