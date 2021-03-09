@@ -6,10 +6,12 @@ return [
         'public/local/modules/iqdev*',
         'public/local/php_interface',
         'public/local/components',
+        'vendor/iqdev/bitrix-stubs/stubs'
     ],
     'exclude_analysis_directory_list' => [
         'public/local/php_interface/migrations',
         'public/local/php_interface/migrations.archive',
+        'vendor/iqdev/bitrix-stubs/stubs'
     ],
     'exclude_file_list' => [
         'src/Base/Load.php',
