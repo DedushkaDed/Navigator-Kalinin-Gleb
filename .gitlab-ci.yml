@@ -1,9 +1,10 @@
 image: iqdev/php74-dev
 
 stages:
-- check
-- build
-- analyze_code
+  - check
+  - build
+  - style
+  - analyze
 
 variables:
   GIT_STRATEGY: clone
@@ -15,10 +16,10 @@ variables:
 cache:
   key: "dependenciesCache"
   paths:
-  - vendor/
-  - public/local/modules/sprint.migration
-  - .env
-  - composer.lock
+    - vendor/
+    - public/local/modules/sprint.migration
+    - .env
+    - composer.lock
 
 ########################################################################################### check
 
@@ -27,64 +28,62 @@ has_latest_master:
   stage: check
   cache: {}
   script:
-  - git remote update
-  - if ! git log --pretty=format:"%H" | grep $(git log --pretty=format:"%H" -n 1 origin/master); then exit 1; fi
+    - git remote update
+    - if ! git log --pretty=format:"%H" | grep $(git log --pretty=format:"%H" -n 1 origin/master); then exit 1; fi
   except:
-  - master
+    - master
 
 grep:
   stage: check
   cache: {}
   script:
-  - echo "------------------>Git-конфликты в коде:" && composer check:conflicts
-  - echo "------------------>Отладочные методы в коде:" && composer check:debug
-  - echo "------------------>Todo в коде:" && composer check:todo
+    - echo "------------------>Git-конфликты в коде:" && composer check:conflicts
+    - echo "------------------>Отладочные методы в коде:" && composer check:debug
+    - echo "------------------>Todo в коде:" && composer check:todo
 #  allow_failure: true
 
 ########################################################################################### build
 
 build_dependencies:
   stage: build
-  cache:
-    key: "dependenciesCache"
-    policy: push
-    paths:
-      - vendor/
   script:
-  - envsubst < .env.dist > .env
-  - if ! [ -s ./phan ]; then composer dependencies:dev_ci; fi;
+    - envsubst < .env.dist > .env
+    - if ! [ -s ./phan ]; then composer dependencies:dev_ci; fi;
 
 ########################################################################################### analyze
 
-.analyze: &analyze
-  stage: analyze
+
+phpcs:
+  stage: style
   before_script:
-    - rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini;
+    - rm -f /etc/php/7.4/fpm/conf.d/20-xdebug.ini;
+    - rm -f /etc/php/7.4/cli/conf.d/20-xdebug.ini;
   artifacts:
     paths:
       - report.*
     expire_in: 1 week
     when: on_failure
-  except:
-    - stage
-
-codestyle:
-  <<: *analyze
-  stage: analyze_code
   cache:
     key: "dependenciesCache"
     policy: pull
     paths:
-    - vendor/
-    - public/local/modules/sprint.migration
-    - .env
-    - composer.lock
+      - vendor/
+      - public/local/modules/sprint.migration
+      - .env
+      - composer.lock
   script:
-  - composer analyze:codestyle_ci
+    - composer analyze:codestyle_ci
 
-code:
-  <<: *analyze
-  stage: analyze_code
+phan:
+  stage: analyze
+  before_script:
+    - rm -f /etc/php/7.4/fpm/conf.d/20-xdebug.ini;
+    - rm -f /etc/php/7.4/cli/conf.d/20-xdebug.ini;
+  artifacts:
+    paths:
+      - report.*
+    expire_in: 1 week
+    when: on_failure
   cache:
     key: "dependenciesCache"
     policy: pull
