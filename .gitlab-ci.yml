@@ -60,7 +60,8 @@ build_dependencies:
 codestyle:
   stage: analyze_1
   before_script:
-  - rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini;
+  - rm -f /etc/php/7.4/fpm/conf.d/20-xdebug.ini;
+  - rm -f /etc/php/7.4/cli/conf.d/20-xdebug.ini;
   artifacts:
     paths:
     - report.*
@@ -80,7 +81,8 @@ codestyle:
 code:
   stage: analyze_2
   before_script:
-  - rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini;
+  - rm -f /etc/php/7.4/fpm/conf.d/20-xdebug.ini;
+  - rm -f /etc/php/7.4/cli/conf.d/20-xdebug.ini;
   artifacts:
     paths:
     - report.*
@@ -95,6 +97,6 @@ code:
     - .env
     - composer.lock
   script:
-  - if ! [ -s ./vendor/egnd/bxsrc/globals.php ]; then composer require egnd/bxsrc "${BX_VERSION}"; fi;
   - mkdir -p public/bitrix/modules
+  - mkdir -p public/local/components
   - composer analyze:code_ci

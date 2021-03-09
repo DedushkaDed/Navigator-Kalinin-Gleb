@@ -25,7 +25,8 @@
         "symfony/debug": "*",
         "sensiolabs/security-checker": "*",
         "squizlabs/php_codesniffer": "^3.0",
-        "phan/phan": "2.2.12"
+        "phan/phan": "2.2.12",
+        "iqdev/bitrix-stubs": "^20.200"
     },
     "autoload": {
         "psr-4": {
@@ -40,8 +41,8 @@
         "analyze:dependencies_ci": "@php -d mbstring.func_overload=0 vendor/bin/security-checker security:check",
         "analyze:codestyle_ci": "@php -d mbstring.func_overload=0 vendor/bin/phpcs --report=csv --report-file=report.phpcs.csv --severity=1 --cache --standard=.ci/config.phpcs.xml",
         "analyze:code_ci": "@php -d mbstring.func_overload=0 vendor/bin/phan --project-root-directory=. --config-file=.ci/config.phan.php --output-mode=csv --output=report.phan.csv --unused-variable-detection --processes=1 --minimum-severity=0 --ignore-undeclared",
-        "disable:xdebug": "if [ -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini ]; then mv /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini.disabled; fi",
-        "enable:xdebug": "if [ -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini.disabled ]; then mv /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini.disabled /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini; fi",
+        "disable:xdebug": "if [ -f /etc/php/7.4/fpm/conf.d/20-xdebug.ini ]; then mv /etc/php/7.4/fpm/conf.d/20-xdebug.ini /etc/php/7.4/fpm/conf.d/20-xdebug.ini.disabled; fi",
+        "enable:xdebug": "if [ -f /etc/php/7.4/fpm/conf.d/20-xdebug.ini.disabled ]; then mv /etc/php/7.4/fpm/conf.d/20-xdebug.ini.disabled /etc/php/7.4/fpm/conf.d/20-xdebug.ini; fi",
         "dependencies:dev_ci": "@composer install --no-progress --optimize-autoloader --profile --ignore-platform-reqs -n",
         "dependencies:dev": "php docker-shell.php \"composer install --optimize-autoloader --ignore-platform-reqs -n\"",
         "generate:docs": [

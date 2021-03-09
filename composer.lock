@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1eb9ccb19a4786db46bc0f92976fa731",
+    "content-hash": "8be7cb5abec364fa14b2ee9df76452cf",
     "packages": [
         {
             "name": "andreyryabin/sprint.migration",
@@ -2823,6 +2823,31 @@
             "time": "2021-01-10T17:48:47+00:00"
         },
         {
+            "name": "iqdev/bitrix-stubs",
+            "version": "v20.200.300",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.iqdev.digital/vendor/bitrix-stubs",
+                "reference": "b0a795b168f2e8936eac108627e66730b3918ae1"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Vladislav Timofeev",
+                    "email": "v.timofeev@iqdev.digital"
+                }
+            ],
+            "description": "Bitrix stubs",
+            "homepage": "https://gitlab.iqdev.digital/vendor/bitrix-stubs",
+            "keywords": [
+                "bitrix",
+                "phan",
+                "stubs"
+            ],
+            "time": "2021-03-08T11:36:41+00:00"
+        },
+        {
             "name": "microsoft/tolerant-php-parser",
             "version": "v0.0.18",
             "source": {
@@ -4016,7 +4041,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.1"
+        "php": "^7.4"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
