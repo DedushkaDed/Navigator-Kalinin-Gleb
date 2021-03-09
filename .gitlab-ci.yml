@@ -3,8 +3,7 @@ image: iqdev/php74-dev
 stages:
 - check
 - build
-- analyze_1
-- analyze_2
+- analyze_code
 
 variables:
   GIT_STRATEGY: clone
@@ -52,17 +51,21 @@ build_dependencies:
 
 ########################################################################################### analyze
 
-
-codestyle:
-  stage: analyze_1
+.analyze: &analyze
+  stage: analyze
   before_script:
-  - rm -f /etc/php/7.4/fpm/conf.d/20-xdebug.ini;
-  - rm -f /etc/php/7.4/cli/conf.d/20-xdebug.ini;
+    - rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini;
   artifacts:
     paths:
-    - report.*
+      - report.*
     expire_in: 1 week
     when: on_failure
+  except:
+    - stage
+
+codestyle:
+  <<: *analyze
+  stage: analyze_code
   cache:
     key: "dependenciesCache"
     policy: pull
@@ -75,15 +78,8 @@ codestyle:
   - composer analyze:codestyle_ci
 
 code:
-  stage: analyze_2
-  before_script:
-    - rm -f /etc/php/7.4/fpm/conf.d/20-xdebug.ini;
-    - rm -f /etc/php/7.4/cli/conf.d/20-xdebug.ini;
-  artifacts:
-    paths:
-      - report.*
-    expire_in: 1 week
-    when: on_failure
+  <<: *analyze
+  stage: analyze_code
   cache:
     key: "dependenciesCache"
     policy: pull
