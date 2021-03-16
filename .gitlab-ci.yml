@@ -24,7 +24,6 @@ cache:
 ########################################################################################### check
 
 has_latest_master:
-  image: alpine:latest
   stage: check
   cache: {}
   script:
