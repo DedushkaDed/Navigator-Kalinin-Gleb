@@ -2828,10 +2828,13 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.iqdev.digital/vendor/bitrix-stubs",
-                "reference": "b0a795b168f2e8936eac108627e66730b3918ae1"
+                "reference": "219f4b37d883222e4d872dd545c717e252636ae5"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
                     "name": "Vladislav Timofeev",
