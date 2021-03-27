@@ -24,3 +24,4 @@ bitrix/php_interface/*
 !local/modules/
 local/modules/*
 !local/modules/iqdev.*
+/assets/
