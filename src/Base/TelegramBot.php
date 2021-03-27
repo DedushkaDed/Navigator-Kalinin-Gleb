@@ -2,19 +2,38 @@
 
 namespace IQDEV\Base;
 
+/**
+ * Class TelegramBot
+ *
+ * @package IQDEV\Base
+ */
 class TelegramBot
 {
+    /**
+     * @var string $token
+     */
     private $token;
 
+    /**
+     * TelegramBot constructor.
+     *
+     * @param $token
+     */
     public function __construct($token)
     {
         $this->token = $token;
     }
 
+    /**
+     * @param $action
+     * @param array $data
+     *
+     * @return false|mixed
+     */
     private function sendRequest($action, $data = [])
     {
         $apiendpoint = ucfirst($action);
-        $token       = $this->token;
+        $token = $this->token;
 
         $ch = curl_init("https://api.telegram.org/bot" . $token . "/" . $apiendpoint);
         curl_setopt_array($ch, [
@@ -36,10 +55,16 @@ class TelegramBot
         return !empty($result) ? json_decode($result, true) : false;
     }
 
+    /**
+     * @param $message
+     * @param $chatId
+     *
+     * @return false|mixed
+     */
     public function sendMessage($message, $chatId)
     {
         $action = 'sendMessage';
-        $param  = [
+        $param = [
             'chat_id' => $chatId,
             'text' => $message,
             'parse_mode' => 'HTML',

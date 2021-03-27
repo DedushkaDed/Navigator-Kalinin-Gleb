@@ -11,6 +11,11 @@ class Recaptcha
 
     private static $recaptchaSecretKey = false;
 
+    /**
+     * @param $grToken
+     *
+     * @return bool
+     */
     public static function recaptchaCheck($grToken)
     {
         self::$recaptchaSecretKey = \IQDEV\Base\Load::getCaptchaKeys()['recaptchaPrivateKey'];
