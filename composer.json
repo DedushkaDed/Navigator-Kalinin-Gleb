@@ -8,8 +8,6 @@
         "monolog/monolog": "*",
         "vlucas/phpdotenv": "3.6.3",
         "pimple/pimple": "*",
-        "pug-php/pug": "^3.2",
-        "js-phpize/js-phpize-phug": "^2.1",
         "phpmailer/phpmailer": "6.0",
         "andreyryabin/sprint.migration": "^3.25"
     },
@@ -30,8 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "IQDEV\\": "./src/",
-            "Tests\\Acceptance\\": "./tests/acceptance"
+            "IQDEV\\": "./src/"
         }
     },
     "scripts": {
@@ -63,5 +60,6 @@
     },
     "config": {
         "process-timeout": 0
-    }
+    },
+    "description": "Черновик для тестового практического задания Bitrix"
 }

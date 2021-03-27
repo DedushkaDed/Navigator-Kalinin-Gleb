@@ -3,19 +3,20 @@ return [
     'target_php_version' => '7.4',
     'directory_list' => [
         'src',
-        'public/local/modules/iqdev*',
-        'public/local/php_interface',
-        'public/local/components',
+        'public',
         'vendor/iqdev/bitrix-stubs/stubs'
     ],
     'exclude_analysis_directory_list' => [
         'public/local/php_interface/migrations',
         'public/local/php_interface/migrations.archive',
+        'public/local/modules/sprint.migration',
+        'public/public',
         'vendor/iqdev/bitrix-stubs/stubs'
     ],
     'exclude_file_list' => [
         'src/Base/Load.php',
-        'src/App.php'
+        'src/App.php',
+        'public/i.php',
     ],
     // A list of plugin files to execute.
     // See https://github.com/phan/phan/tree/master/.phan/plugins for even more.
@@ -32,5 +33,8 @@ return [
         'PregRegexCheckerPlugin',
         'PrintfCheckerPlugin',
     ],
-    'suppress_issue_types' => ['PhanTypeArraySuspiciousNullable', 'PhanUnusedProtectedMethodParameter']
+    'suppress_issue_types' => ['PhanTypeArraySuspiciousNullable', 'PhanUnusedProtectedMethodParameter'],
+    'exclude_file_regex' => '@^vendor/.*/(tests|Tests)/@',
+    'simplify_ast' => false,
+    'dead_code_detection' => false,
 ];
