@@ -9,6 +9,7 @@
     <exclude-pattern>../public/local/modules/sprint.migration</exclude-pattern>
     <exclude-pattern>../public/local/modules/iqdev.options</exclude-pattern>
     <exclude-pattern>../public/local/php_interface/migrations</exclude-pattern>
+    <exclude-pattern>../Migrations</exclude-pattern>
     <exclude-pattern>../public/local/php_interface/migrations.archive</exclude-pattern>
     <exclude-pattern>../public/local/php_interface/include/functions.php</exclude-pattern>
     <exclude-pattern>../src/App.php</exclude-pattern>

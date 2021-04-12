@@ -10,7 +10,7 @@ return [
         'public/local/php_interface/migrations',
         'public/local/php_interface/migrations.archive',
         'public/local/modules/sprint.migration',
-        'public/public',
+        'public/bitrix',
         'vendor/iqdev/bitrix-stubs/stubs'
     ],
     'exclude_file_list' => [
@@ -34,7 +34,7 @@ return [
         'PrintfCheckerPlugin',
     ],
     'suppress_issue_types' => ['PhanTypeArraySuspiciousNullable', 'PhanUnusedProtectedMethodParameter'],
-    'exclude_file_regex' => '@^vendor/.*/(tests|Tests)/@',
+    'exclude_file_regex' => '@^((vendor/.*/(tests|Tests))|(public/bitrix))/@',
     'simplify_ast' => false,
     'dead_code_detection' => false,
 ];
