@@ -34,7 +34,7 @@ return [
         'PrintfCheckerPlugin',
     ],
     'suppress_issue_types' => ['PhanTypeArraySuspiciousNullable', 'PhanUnusedProtectedMethodParameter'],
-    'exclude_file_regex' => '@^((vendor/.*/(tests|Tests))|(public/bitrix))/@',
+    'exclude_file_regex' => '@^((vendor/.*/(tests|Tests))|(public/bitrix)|(src/Migrations))/@',
     'simplify_ast' => false,
     'dead_code_detection' => false,
 ];
