@@ -51,6 +51,8 @@ mv composer.phar /usr/local/bin/composer
 
 #### Windows
 
+**Обязательно нужно установить WSL2**
+
 https://docs.docker.com/docker-for-windows/install/
 
 #### Linux
