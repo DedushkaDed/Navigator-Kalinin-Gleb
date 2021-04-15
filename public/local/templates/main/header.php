@@ -1,5 +1,10 @@
-<? if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die(); ?>
-<? use Bitrix\Main\Page\Asset; ?>
+<?php
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
+    die();
+}
+
+use Bitrix\Main\Page\Asset;
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -13,17 +18,18 @@
     <meta name="msapplication-TileColor" content="#ffffff"/>
     <meta name="msapplication-config" content="/assets/icons/browserconfig.xml"/>
     <meta name="theme-color" content="#ffffff"/>
-    <title><?$APPLICATION->ShowTitle();?></title>
+    <title><?php $APPLICATION->ShowTitle();?></title>
     <?
     Asset::getInstance()->addCss('/assets/css/application.css?v=1');
-    Asset::getInstance()->addJs( '/assets/js/application.js?v=1');
+    Asset::getInstance()->addJs('/assets/js/application.js?v=1');
     Asset::getInstance()->addJs('https://www.google.com/recaptcha/api.js?render=6LcoCLIUAAAAAFB2Ud11o2DWXV-vXxph8kMKxKjH');
     Asset::getInstance()->addJs('https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;amp;apikey=b9f13544-de93-45f5-becd-5d9ba7a80326');
+
+    $APPLICATION->ShowHead();
     ?>
-    <? $APPLICATION->ShowHead(); ?>
 </head>
 <body class="body js-body">
-<div id="panel"><?$APPLICATION->ShowPanel();?></div>
+<div id="panel"><?php $APPLICATION->ShowPanel();?></div>
 <header class="header">
     <div class="header__inner"><a class="header__logo" href="/"><img src="/assets/image/header/logo.png"/></a>
         <div class="navigation">

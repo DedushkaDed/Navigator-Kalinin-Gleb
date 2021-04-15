@@ -1,4 +1,7 @@
-<?if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die(); ?>
+<?php
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
+    die();
+} ?>
 <div class="line-unit">
     <div class="container">
         <div class="line-unit__grid">
