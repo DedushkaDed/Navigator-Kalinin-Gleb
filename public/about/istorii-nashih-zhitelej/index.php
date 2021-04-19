@@ -4,17 +4,6 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 ?>
     <section class="section mb-medium">
         <div class="container">
-            <div class="breadcrumbs">
-                <a class="breadcrumbs__item" href="/">Главная</a>
-                <span class="breadcrumbs__divider">&gt;</span>
-                <a class="breadcrumbs__item" href="/about/">Компания</a>
-                <span class="breadcrumbs__divider">&gt;</span>
-                <span class="breadcrumbs__item" href="/about/istorii-nashih-zhitelej/">Истории жителей</span>
-            </div>
-        </div>
-    </section>
-    <section class="section mb-medium">
-        <div class="container">
             <div class="tabs-navigation-wrapper">
                 <div class="tabs-navigation js-tabs-navigation-static">
                     <div class="tabs-navigation__active"></div>

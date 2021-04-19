@@ -60,52 +60,63 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
                         <div class="slider-simple glide js-slider-simple">
                             <div class="slider-simple__body">
                                 <div class="glide__track" data-glide-el="track">
-                                    <div class="glide__slides">
-                                        <div class="glide__slide">
-                                            <div class="slider-simple-text">
-                                                <div class="slider-simple-text__title">Клиентоориентированность</div>
-                                                <div class="slider-simple-text__text">Самые главные люди в компании для нас – Клиенты. Об их
-                                                    комфорте заботится каждый, независимо от статуса и должности.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="glide__slide">
-                                            <div class="slider-simple-text">
-                                                <div class="slider-simple-text__title">Сотрудники</div>
-                                                <div class="slider-simple-text__text">В нашей команде работают люди, которые сочетают в себе
-                                                    лучшие профессиональные и личные качества. Мы ценим и гордимся каждым.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="glide__slide">
-                                            <div class="slider-simple-text">
-                                                <div class="slider-simple-text__title">Лидерство</div>
-                                                <div class="slider-simple-text__text">Мы всегда стремимся к строительству лучших коттеджных
-                                                    поселков. Мы строим как для самих себя. Именно поэтому, в наших поселках комфортно и детям, и
-                                                    взрослым. А наша компания – один из лидеров на рынке загородной недвижимости.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="glide__slide">
-                                            <div class="slider-simple-text">
-                                                <div class="slider-simple-text__title">Открытость</div>
-                                                <div class="slider-simple-text__text">Мы всегда открыты к общению, мы понимаем, как важно уметь
-                                                    слушать и слышать. Обратная связь – важный толчок для нашего роста. Мы открыто предоставляем
-                                                    информацию о компании и поселках, потому что нам нечего скрывать. Мы знаем, что это важно для
-                                                    формирования правильного выбора.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="glide__slide">
-                                            <div class="slider-simple-text">
-                                                <div class="slider-simple-text__title">Добросовестность</div>
-                                                <div class="slider-simple-text__text">Для нас важно быть честными друг с другом, с нашими
-                                                    Клиентами, партнерами и всеми людьми, которые нас окружают. Поэтому мы всегда выполняем то,
-                                                    что обещаем. И не обещаем того, чего выполнить не сможем.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?php $APPLICATION->IncludeComponent(
+                                        "bitrix:news.list",
+                                        "our_values_slider",
+                                        [
+                                            "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                                            "ADD_SECTIONS_CHAIN" => "N",
+                                            "AJAX_MODE" => "N",
+                                            "AJAX_OPTION_ADDITIONAL" => "",
+                                            "AJAX_OPTION_HISTORY" => "N",
+                                            "AJAX_OPTION_JUMP" => "N",
+                                            "AJAX_OPTION_STYLE" => "Y",
+                                            "CACHE_FILTER" => "N",
+                                            "CACHE_GROUPS" => "Y",
+                                            "CACHE_TIME" => "36000000",
+                                            "CACHE_TYPE" => "A",
+                                            "CHECK_DATES" => "Y",
+                                            "DETAIL_URL" => "",
+                                            "DISPLAY_BOTTOM_PAGER" => "N",
+                                            "DISPLAY_DATE" => "N",
+                                            "DISPLAY_NAME" => "N",
+                                            "DISPLAY_PICTURE" => "N",
+                                            "DISPLAY_PREVIEW_TEXT" => "N",
+                                            "DISPLAY_TOP_PAGER" => "N",
+                                            "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "DETAIL_TEXT", ""],
+                                            "FILTER_NAME" => "",
+                                            "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                                            "IBLOCK_ID" => "3",
+                                            "IBLOCK_TYPE" => "content",
+                                            "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                                            "INCLUDE_SUBSECTIONS" => "N",
+                                            "MESSAGE_404" => "",
+                                            "NEWS_COUNT" => "10",
+                                            "PAGER_BASE_LINK_ENABLE" => "N",
+                                            "PAGER_DESC_NUMBERING" => "N",
+                                            "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                                            "PAGER_SHOW_ALL" => "N",
+                                            "PAGER_SHOW_ALWAYS" => "N",
+                                            "PAGER_TEMPLATE" => "",
+                                            "PAGER_TITLE" => "Новости",
+                                            "PARENT_SECTION" => "",
+                                            "PARENT_SECTION_CODE" => "",
+                                            "PREVIEW_TRUNCATE_LEN" => "",
+                                            "PROPERTY_CODE" => ["", ""],
+                                            "SET_BROWSER_TITLE" => "N",
+                                            "SET_LAST_MODIFIED" => "N",
+                                            "SET_META_DESCRIPTION" => "N",
+                                            "SET_META_KEYWORDS" => "N",
+                                            "SET_STATUS_404" => "N",
+                                            "SET_TITLE" => "N",
+                                            "SHOW_404" => "N",
+                                            "SORT_BY1" => "SORT",
+                                            "SORT_BY2" => "SORT",
+                                            "SORT_ORDER1" => "DESC",
+                                            "SORT_ORDER2" => "ASC",
+                                            "STRICT_SECTION_CHECK" => "N"
+                                        ]
+                                    ); ?>
                                 </div>
                             </div>
                             <div class="slider-simple__arrows">

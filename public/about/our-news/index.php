@@ -11,18 +11,6 @@ $APPLICATION->SetPageProperty('title',
 $APPLICATION->SetTitle('О нас');
 
 ?>
-
-    <section class="section mb-medium">
-        <div class="container">
-            <div class="breadcrumbs">
-                <a class="breadcrumbs__item" href="/">Главная</a>
-                <span class="breadcrumbs__divider">&gt;</span>
-                <a class="breadcrumbs__item" href="/about/">Компания</a>
-                <span class="breadcrumbs__divider">&gt;</span>
-                <span class="breadcrumbs__item" href="/about/our-news/">Новости</span>
-            </div>
-        </div>
-    </section>
     <section class="section mb-medium">
         <div class="container">
             <div class="tabs-navigation-wrapper">
