@@ -185,74 +185,22 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     </div>
     <div class="container">
         <div class="footer__grid">
-            <div class="footer__navigation">
-                <div class="footer__navigation-item">
-                    <span>Коттеджные поселки</span>
-                    <div class="footer__navigation-subitems">
-                        <a class="footer__navigation-subitem"
-                           href="/projects/detail">Альпийская долина
-                        </a>
-                        <a
-                                class="footer__navigation-subitem" href="/projects/detail">Есенино
-                        </a>
-                        <a
-                                class="footer__navigation-subitem" href="/projects/detail">Ёлки
-                        </a>
-                        <a
-                                class="footer__navigation-subitem" href="/ceni-na-zemelnie-uchastki/">Выбрать
-                            участок
-                        </a>
-                    </div>
-                </div>
-                <div class="footer__navigation-item">
-                    <span>О компании</span>
-                    <div class="footer__navigation-subitems">
-                        <a class="footer__navigation-subitem" href="/about/">Компания</a>
-                        <a
-                                class="footer__navigation-subitem" href="/about/our-news/">Новости
-                        </a>
-                        <a
-                                class="footer__navigation-subitem" href="/about/istorii-nashih-zhitelej/">Истории
-                            жителей
-                        </a>
-                        <a class="footer__navigation-subitem" href="/blog/">Полезные статьи</a>
-                        <a
-                                class="footer__navigation-subitem" href="/tenderi/">Тендеры
-                        </a>
-                        <a
-                                class="footer__navigation-subitem" href="/about/rabota/">Вакансии
-                        </a>
-                        <a
-                                class="footer__navigation-subitem" href="/about/contact/">Контакты
-                        </a>
-                    </div>
-                </div>
-                <div class="footer__navigation-item">
-                    <span>Покупателям</span>
-                    <div class="footer__navigation-subitems">
-                        <a class="footer__navigation-subitem" href="/buyer/">Как
-                            купить
-                        </a>
-                        <a class="footer__navigation-subitem" href="/buyer/rassrochka/">Рассрочка</a>
-                        <a
-                                class="footer__navigation-subitem" href="/buyer/ipoteka/">Ипотека
-                        </a>
-                        <a
-                                class="footer__navigation-subitem" href="/buyer/prices/">Цены
-                        </a>
-                        <a
-                                class="footer__navigation-subitem" href="#">Лояльный покупатель
-                        </a>
-                    </div>
-                </div>
-                <a class="footer__navigation-item" href="#">
-                    <span>Отзывы</span>
-                </a>
-                <a class="footer__navigation-item"
-                   href="/obsluzhivayuschaya-kompaniya/">
-                    <span>Обслуживающая компания</span>
-                </a>
-            </div>
+            <?php $APPLICATION->IncludeComponent(
+                "bitrix:menu",
+                "bottom_menu",
+                [
+                    "ALLOW_MULTI_SELECT" => "N",
+                    "CHILD_MENU_TYPE" => "left",
+                    "DELAY" => "N",
+                    "MAX_LEVEL" => "1",
+                    "MENU_CACHE_GET_VARS" => [""],
+                    "MENU_CACHE_TIME" => "3600",
+                    "MENU_CACHE_TYPE" => "N",
+                    "MENU_CACHE_USE_GROUPS" => "N",
+                    "ROOT_MENU_TYPE" => "bottom",
+                    "USE_EXT" => "N",
+                ]
+            ); ?>
             <div class="footer__contacts">
                 <div class="footer__contacts-title">Наши контакты</div>
                 <div class="footer__contacts-inner">

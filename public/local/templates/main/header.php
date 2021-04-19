@@ -38,91 +38,24 @@ use Bitrix\Main\Page\Asset;
         <a class="header__logo" href="/">
             <img src="/assets/image/header/logo.png"/>
         </a>
-        <div class="navigation">
-            <div class="navigation__item"><span class="navigation__page">О компании<div class="navigation__arrow"><svg
-                                width="10" height="7" viewBox="0 0 10 7" fill="none"
-                                xmlns="http://www.w3.org/2000/svg"><path
-                                    fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M8.83333 0.166626L10 1.33329L5 6.33329L-5.09966e-08 1.33329L1.16667
-                                     0.166626L5 3.99996L8.83333 0.166626Z"
-                                    fill="#675A54"></path></svg></div></span>
-                <div class="navigation__dropdown">
-                    <a class="navigation__subpage" href="/about/">Компания</a>
-                    <a
-                            class="navigation__subpage" href="/about/our-news/">Новости
-                    </a>
-                    <a
-                            class="navigation__subpage"
-                            href="/about/istorii-nashih-zhitelej/">Истории
-                        жителей
-                    </a>
-                    <a class="navigation__subpage" href="/blog/">Полезные статьи</a>
-                    <a
-                            class="navigation__subpage" href="/tenderi/">Тендеры
-                    </a>
-                    <a class="navigation__subpage"
-                       href="/about/rabota/">Вакансии
-                    </a>
-                    <a
-                            class="navigation__subpage" href="/about/contact/">Контакты
-                    </a>
-                </div>
-            </div>
-            <div class="navigation__item"><span class="navigation__page">Коттеджные поселки<div
-                            class="navigation__arrow"><svg width="10" height="7" viewBox="0 0 10 7" fill="none"
-                                                           xmlns="http://www.w3.org/2000/svg"><path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M8.83333 0.166626L10 1.33329L5 6.33329L-5.09966e-08 1.33329L1.16667
-                                     0.166626L5 3.99996L8.83333 0.166626Z"
-                                    fill="#675A54"></path></svg></div></span>
-                <div class="navigation__dropdown">
-                    <a class="navigation__subpage" href="/projects/detail">Альпийская
-                        долина
-                    </a>
-                    <a class="navigation__subpage" href="/projects/detail">Есенино</a>
-                    <a
-                            class="navigation__subpage" href="/projects/detail">Ёлки
-                    </a>
-                    <a
-                            class="navigation__subpage"
-                            href="/ceni-na-zemelnie-uchastki/">Выбрать
-                        участок
-                    </a>
-                </div>
-            </div>
-            <div class="navigation__item"><span class="navigation__page">Покупателям<div class="navigation__arrow"><svg
-                                width="10" height="7" viewBox="0 0 10 7" fill="none"
-                                xmlns="http://www.w3.org/2000/svg"><path
-                                    fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M8.83333 0.166626L10 1.33329L5 6.33329L-5.09966e-08 1.33329L1.16667
-                                     0.166626L5 3.99996L8.83333 0.166626Z"
-                                    fill="#675A54"></path></svg></div></span>
-                <div class="navigation__dropdown">
-                    <a class="navigation__subpage" href="/buyer/">Как купить</a>
-                    <a
-                            class="navigation__subpage" href="/buyer/rassrochka/">Рассрочка
-                    </a>
-                    <a
-                            class="navigation__subpage" href="/buyer/ipoteka/">Ипотека
-                    </a>
-                    <a
-                            class="navigation__subpage"
-                            href="/buyer/prices/">Цены
-                    </a>
-                    <a
-                            class="navigation__subpage" href="#">Лояльный покупатель
-                    </a>
-                </div>
-            </div>
-            <a class="navigation__item" href="/obsluzhivayuschaya-kompaniya/">
-                <span class="navigation__page">Обслуживающая компания</span>
-            </a>
-            <a
-                    class="navigation__item" href="https://xn--80ajaabhmtdas2o.xn--p1ai/"><span
-                        class="navigation__page">Таунхаусы</span>
-            </a>
-        </div>
+
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:menu",
+            "top_menu",
+            [
+                "ALLOW_MULTI_SELECT" => "N",
+                "CHILD_MENU_TYPE" => "left",
+                "DELAY" => "N",
+                "MAX_LEVEL" => "1",
+                "MENU_CACHE_GET_VARS" => [""],
+                "MENU_CACHE_TIME" => "3600",
+                "MENU_CACHE_TYPE" => "N",
+                "MENU_CACHE_USE_GROUPS" => "Y",
+                "ROOT_MENU_TYPE" => "top",
+                "USE_EXT" => "N",
+            ]
+        ); ?>
+
         <a class="header__number js-stats link-blue roistat_phone_navig" href="tel:+73452564276">+7 3452
             <b>564-276</b>
         </a>
