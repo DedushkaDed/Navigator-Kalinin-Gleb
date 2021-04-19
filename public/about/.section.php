@@ -1,7 +1,7 @@
 <?
-$sSectionName = "our-news";
+$sSectionName = "Компания";
 $arDirProperties = [
-    "TITLE" => "Новости",
-    "DESCRIPTION" => "Описание раздела новости",
+    "TITLE" => "О нас",
+    "DESCRIPTION" => "Описание раздела о нас",
 ];
 ?>

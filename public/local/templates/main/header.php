@@ -266,3 +266,16 @@ use Bitrix\Main\Page\Asset;
         <div class="header__overlay js-header__overlay"></div>
     </div>
 </header>
+<section class="section mb-medium">
+    <div class="container">
+        <?php $APPLICATION->IncludeComponent(
+            "bitrix:breadcrumb",
+            "navigation",
+            Array(
+                "PATH" => "",
+                "SITE_ID" => "s1",
+                "START_FROM" => "0"
+            )
+        );?>
+    </div>
+</section>
