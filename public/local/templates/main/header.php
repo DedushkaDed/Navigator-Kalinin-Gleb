@@ -5,6 +5,8 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 
 use Bitrix\Main\Page\Asset;
 
+\Bitrix\Main\Loader::includeModule('iqdev.options');
+$aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -123,8 +125,8 @@ use Bitrix\Main\Page\Asset;
                         class="navigation__page">Таунхаусы</span>
             </a>
         </div>
-        <a class="header__number js-stats link-blue roistat_phone_navig" href="tel:+73452564276">+7 3452
-            <b>564-276</b>
+        <a class="header__number js-stats link-blue roistat_phone_navig" href="tel:+73452564276">
+            <?= $aOptions['number'] ?>
         </a>
         <div class="header__button">
             <div class="button button--primary js-modal-trigger" data-modal-id="callback">
