@@ -271,10 +271,10 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('footer');
                                   fill="white"></path>
                         </svg>
                     </a>
-                    <div class="footer__contacts-worktime">Офис Пн - Пт: 9:00-18:00</div>
-                    <div class="footer__contacts-calltime">Call-центр работает ежедневно с 9:00-20:00</div>
+                    <div class="footer__contacts-worktime"><?=$aOptions['worktime']?></div>
+                    <div class="footer__contacts-calltime"><?=$aOptions['calltime']?></div>
                     <div class="footer__contacts-address">
-                        <span>г. Тюмень, ул. Семакова, 2/1
+                        <span><?=$aOptions['address']?>
                             <svg
                                     class="footer__contacts-icon" width="14" height="16" viewBox="0 0 14 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">

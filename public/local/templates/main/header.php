@@ -125,7 +125,7 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
                         class="navigation__page">Таунхаусы</span>
             </a>
         </div>
-        <a class="header__number js-stats link-blue roistat_phone_navig" href="tel:+73452564276">
+        <a class="header__number js-stats link-blue roistat_phone_navig" href="tel:<?=$aOptions['link']?>">
             <?= $aOptions['number'] ?>
         </a>
         <div class="header__button">
