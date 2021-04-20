@@ -16,11 +16,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var CBitrixComponent $component */
 ?>
 
+<?php if (empty($arResult['ITEMS'])) {return;} ?>
 
-<?php if (!empty($arResult['ITEMS'])): ?>
-    <div class="about-title-image">
-        <?php foreach($arResult['ITEMS'] as $aItem): ?>
-            <img class="img" src="<?=$aItem['PREVIEW_PICTURE']['SRC']?>"/>
-        <?php endforeach; ?>
-    </div>
-<?php endif; ?>
+<?php //foreach($arResult['ITEMS'] as $aItem): ?>
+<?// var_dump($aItem); ?>
+<?php //endforeach;?>
+

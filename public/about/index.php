@@ -1,6 +1,7 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-
+\Bitrix\Main\Loader::includeModule('iqdev');
+$aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
 ?>
 <section class="section mb-medium">
     <div class="container">
@@ -22,12 +23,11 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
     <div class="container">
         <div class="separate-paragraph">
             <div class="separate-paragraph__title">
-                <h1>Девелоперская компания «Навигатор»</h1>
+                <h1><?=$aAboutOptions['title']['title']?></h1>
             </div>
             <div class="separate-paragraph__divider"></div>
             <div class="separate-paragraph__text-wrapper">
-                <div class="separate-paragraph__text">Занимается реализацией земельных участков под ИЖС. Более 8 лет успешной
-                    работы на рынке загородной недвижимости города Тюмени.
+                <div class="separate-paragraph__text"><?=$aAboutOptions['title']['description']?>
                 </div>
             </div>
         </div>
@@ -37,72 +37,15 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         <div class="container">
             <div class="grid-layout">
                 <div class="grid-layout__item">
-                    <?php $APPLICATION->IncludeComponent(
-                        "bitrix:news.list",
-                        "dev_company_image",
-                        [
-                            "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                            "ADD_SECTIONS_CHAIN" => "N",
-                            "AJAX_MODE" => "N",
-                            "AJAX_OPTION_ADDITIONAL" => "",
-                            "AJAX_OPTION_HISTORY" => "N",
-                            "AJAX_OPTION_JUMP" => "N",
-                            "AJAX_OPTION_STYLE" => "Y",
-                            "CACHE_FILTER" => "N",
-                            "CACHE_GROUPS" => "N",
-                            "CACHE_TIME" => "36000000",
-                            "CACHE_TYPE" => "A",
-                            "CHECK_DATES" => "Y",
-                            "DETAIL_URL" => "",
-                            "DISPLAY_BOTTOM_PAGER" => "N",
-                            "DISPLAY_DATE" => "Y",
-                            "DISPLAY_NAME" => "Y",
-                            "DISPLAY_PICTURE" => "Y",
-                            "DISPLAY_PREVIEW_TEXT" => "Y",
-                            "DISPLAY_TOP_PAGER" => "N",
-                            "FIELD_CODE" => ["", ""],
-                            "FILTER_NAME" => "",
-                            "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                            "IBLOCK_ID" => "4",
-                            "IBLOCK_TYPE" => "content",
-                            "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                            "INCLUDE_SUBSECTIONS" => "N",
-                            "MESSAGE_404" => "",
-                            "NEWS_COUNT" => "1",
-                            "PAGER_BASE_LINK_ENABLE" => "N",
-                            "PAGER_DESC_NUMBERING" => "N",
-                            "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                            "PAGER_SHOW_ALL" => "N",
-                            "PAGER_SHOW_ALWAYS" => "N",
-                            "PAGER_TEMPLATE" => "",
-                            "PAGER_TITLE" => "Новости",
-                            "PARENT_SECTION" => "",
-                            "PARENT_SECTION_CODE" => "",
-                            "PREVIEW_TRUNCATE_LEN" => "",
-                            "PROPERTY_CODE" => ["", ""],
-                            "SET_BROWSER_TITLE" => "N",
-                            "SET_LAST_MODIFIED" => "N",
-                            "SET_META_DESCRIPTION" => "N",
-                            "SET_META_KEYWORDS" => "N",
-                            "SET_STATUS_404" => "N",
-                            "SET_TITLE" => "N",
-                            "SHOW_404" => "N",
-                            "SORT_BY1" => "ACTIVE_FROM",
-                            "SORT_BY2" => "SORT",
-                            "SORT_ORDER1" => "DESC",
-                            "SORT_ORDER2" => "ASC",
-                            "STRICT_SECTION_CHECK" => "N",
-                        ]
-                    ); ?>
+                    <img class="img" src="<?=$aAboutOptions['imageSectionTop']['image']?>"/>
                 </div>
             </div>
             <div class="grid-layout grid-layout--gap-15 grid-layout--col-4">
                 <div class="grid-layout__item grid-layout__item--md-span-column-1">
                     <div class="grid-card grid-card--background-green grid-card--color-white">
                         <div class="grid-card__content">
-                            <div class="grid-card__title">Наша миссия</div>
-                            <div class="grid-card__subtext">Мы улучшаем качество жизни, создаем пространство для комфорта детей и взрослых
-                            </div>
+                            <div class="grid-card__title"><?=$aAboutOptions['contentSectionTop']['title']?></div>
+                            <div class="grid-card__subtext"><?=$aAboutOptions['contentSectionTop']['description']?></div>
                         </div>
                     </div>
                 </div>
@@ -183,78 +126,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 <section class="section mb-large">
     <div class="container">
         <div class="section-header">Факты о компании</div>
-        <div class="grid-layout grid-layout--gap-15 grid-layout--col-4">
-            <div class="grid-layout__item grid-layout__item--md-span-column-2 grid-layout__item--lg-span-column-2">
-                <a class="grid-card" href="#">
-                    <img class="grid-card__image" src="http://placehold.it/1920x800"/>
-                    <div class="grid-card__arrow-link">
-                        <div>Собственная обслуживающая компания</div>
-                        <div class="grid-card__arrow-link-link">
-                            <div class="arrow-link arrow-link--right">
-                                <div class="arrow-link__border">
-                                    <svg viewBox="0 0 26 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1.5 2C13.9264 2 24 12.0736 24 24.5C24 30.524 21.6326 35.9951 17.7775 40.0337C16.8686 40.9858 15.8771 41.8582 14.8145 42.6395C11.0863 45.3806 6.48226 47 1.5 47"
-                                            stroke="#6BBD45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
-                                        ></path>
-                                    </svg>
-                                </div>
-                                <svg class="arrow-link__arrow" width="19" height="15" viewBox="0 0 19 15" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M18.2071 8.20711C18.5976 7.81658 18.5976 7.18342 18.2071 6.79289L11.8431 0.428932C11.4526 0.0384078 10.8195 0.0384078 10.4289 0.428932C10.0384 0.819457 10.0384 1.45262 10.4289 1.84315L16.0858 7.5L10.4289 13.1569C10.0384 13.5474 10.0384 14.1805 10.4289 14.5711C10.8195 14.9616 11.4526 14.9616 11.8431 14.5711L18.2071 8.20711ZM0.5 8.5L17.5 8.5V6.5L0.5 6.5L0.5 8.5Z"
-                                        fill="#6BBD45 "
-                                    ></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="grid-layout__item grid-layout__item--md-span-column-2 grid-layout__item--lg-span-column-1">
-                <div class="grid-card grid-card--background-blue grid-card--color-white">
-                    <div class="grid-card__content">
-                        <div class="grid-card__title">4 коттеджных поселка</div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-layout__item grid-layout__item--md-span-column-2 grid-layout__item--lg-span-column-1">
-                <div class="grid-card grid-card--background-sand">
-                    <div class="grid-card__grow">
-                        <div class="grid-card__content">
-                            <div class="grid-card__title">1 500 участков</div>
-                            <div class="grid-card__subtitle">Продано счастливым владельцам</div>
-                        </div>
-                    </div>
-                    <a class="grid-card__button" href="#">Выбрать участок</a>
-                </div>
-            </div>
-            <div class="grid-layout__item grid-layout__item--md-span-column-2 grid-layout__item--lg-span-column-1">
-                <div class="grid-card grid-card--border">
-                    <div class="grid-card__content">
-                        <div class="grid-card__title">1 500 Га</div>
-                        <div class="grid-card__subtitle">Земли в собственности</div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-layout__item grid-layout__item--md-span-column-2 grid-layout__item--lg-span-column-2">
-                <div class="grid-card grid-card--background-primary grid-card--color-white">
-                    <div class="grid-card__content">
-                        <div class="grid-card__title">Более 1000 жителей</div>
-                        <div class="grid-card__subtitle">Начали строить или уже построили дома</div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-layout__item grid-layout__item--md-span-column-2 grid-layout__item--lg-span-column-1">
-                <div class="grid-card grid-card--background-sand">
-                    <div class="grid-card__content">
-                        <div class="grid-card__title">8 лет</div>
-                        <div class="grid-card__subtitle">На рынке загородной недвижимости</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--        component -->
     </div>
 </section>
 <section class="section section--overflow-hidden mb-large">
