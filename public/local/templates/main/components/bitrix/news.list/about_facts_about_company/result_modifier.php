@@ -29,7 +29,8 @@ $mapCards = [
 //    ],
 ];
 ?>
-<?php foreach ($arResult['ITEMS'] as $key => $aItem):
+<?php
+foreach ($arResult['ITEMS'] as $key => $aItem):
     $mapCards[$key] = [];
     $mapCards[$key]['name'] = $aItem['NAME'];
     $mapCards[$key]['description'] = $aItem['PREVIEW_TEXT'];
