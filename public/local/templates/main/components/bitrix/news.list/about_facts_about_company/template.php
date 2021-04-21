@@ -17,8 +17,3 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 ?>
 
 <?php if (empty($arResult['ITEMS'])) {return;} ?>
-
-<?php //foreach($arResult['ITEMS'] as $aItem): ?>
-<?// var_dump($aItem); ?>
-<?php //endforeach;?>
-

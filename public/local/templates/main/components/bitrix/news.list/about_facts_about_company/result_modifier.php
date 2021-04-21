@@ -15,35 +15,33 @@ if (empty($arResult['ITEMS'])) {
     return;
 }
 
-$mapCards = [
-//    [
-//        'type' => 'a',
-//        'size' => '2',
-//        'image' => '',
-//        'backgroundCss' => '',
-//        'colorCss' => '',
-//        'title' => '',
-//        'description' => '',
-//        'link' => '', // Из свойства инфо-блоков?
-//        'linkLabel' => 'Собственная обслуживающая компания',
-//    ],
-];
-?>
-<?php
-foreach ($arResult['ITEMS'] as $key => $aItem):
-    $mapCards[$key] = [];
-    $mapCards[$key]['name'] = $aItem['NAME'];
-    $mapCards[$key]['description'] = $aItem['PREVIEW_TEXT'];
-    if (!empty($aItem['PREVIEW_PICTURE']['SRC'])):
-        $mapCards[$key]['image'] = $aItem['PREVIEW_PICTURE']['SRC'];
-    endif;
-    if (!empty($aItem['PROPERTIES']['LINK']['VALUE'])):
-        $mapCards[$key]['link'] = $aItem['PROPERTIES']['LINK']['VALUE'];
-    endif;
-    if (!empty($aItem['DETAIL_TEXT'])):
-        $mapCards[$key]['linkLabel'] = $aItem['DETAIL_TEXT'];
-    endif;
-endforeach;
+$mapCards = [];
+
+foreach ($arResult['ITEMS'] as $key => $aItem) {
+    $card = [];
+    $card['title'] = $aItem['NAME'];
+    $card['description'] = $aItem['PREVIEW_TEXT'];
+    $card['image'] = $aItem['PREVIEW_PICTURE']['SRC'];
+    $card['linkLabel'] = $aItem['DETAIL_TEXT'];
+
+    $iElementId = intval($aItem['ID']);
+    $iIblockId = intval($aItem['IBLOCK_ID']);
+
+    $res = CIBlockElement::GetProperty($iIblockId, $iElementId);
+    if ($ob = $res->GetNext()) {
+        $aValues = $ob['VALUE'];
+        $card['link'] = $aValues;
+    }
+    if (!empty($card['image'])) {
+        $card['type'] = 'a';
+        $card['size'] = '2';
+    } else {
+        // type = div
+        // size = 1
+    }
+    $mapCards[] = $card;
+}
+
 ?>
 <pre>
     <?var_dump($mapCards);?>
