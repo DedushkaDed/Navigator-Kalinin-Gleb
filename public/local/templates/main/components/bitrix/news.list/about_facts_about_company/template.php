@@ -19,11 +19,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 <?php if (empty($arResult['ITEMS'])) {
     return;
 } ?>
-
 <div class="grid-layout grid-layout--gap-15 grid-layout--col-4">
     <?php foreach ($arResult['mapCards'] as $aItem): ?>
-        <div class="grid-layout__item grid-layout__item--md-span-column-<?= $aItem['size'] ?>
-        grid-layout__item--lg-span-column-<?= $aItem['size'] ?>">
+        <div class="grid-layout__item grid-layout__item--md-span-column-2 grid-layout__item--lg-span-column-<?= $aItem['size'] ?>">
             <?php if (!empty($aItem['image'])): ?>
                 <a class="grid-card" href="<?= $aItem['link'] ?>">
                     <img class="grid-card__image" src="<?= $aItem['image'] ?>"/>
@@ -58,7 +56,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                                 <?php if (!empty($aItem['title'])): ?>
                                     <div class="grid-card__title"><?= $aItem['title'] ?></div>
                                 <? endif; ?>
-                                <?php if (!empty($sDescription)): ?>
+                                <?php if (!empty($aItem['description'])): ?>
                                     <div class="grid-card__subtitle"><?= $aItem['description'] ?></div>
                                 <? endif; ?>
                             </div>
