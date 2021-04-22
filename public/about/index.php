@@ -188,56 +188,59 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
 <section class="section section--overflow-hidden mb-large">
     <div class="container">
         <div class="section-header">Почему выбирают нас?</div>
-        <div class="slider glide js-slider">
-            <div class="slider__body">
-                <div class="glide__track" data-glide-el="track">
-                    <div class="glide__slides">
-                        <div class="glide__slide">
-                            <div class="card-list">
-                                <div class="card-list__icon">
-                                    <img class="img" src="/assets/image/icons/shield.svg"/>
-                                </div>
-                                <div class="card-list__title">Выгодно и надежно</div>
-                                <div class="card-list__list-container"></div>
-                                <div class="card-list__list-item">Развитая инфраструктура</div>
-                                <div class="card-list__list-item">Безпроцентная рассрочка</div>
-                                <div class="card-list__list-item">Юридическое сопровождение сделки</div>
-                                <div class="card-list__list-item">Ипотека от 9.5 %</div>
-                                <div class="card-list__list-item">Скидка 10% при 100% оплате</div>
-                            </div>
-                        </div>
-                        <div class="glide__slide">
-                            <div class="card-list">
-                                <div class="card-list__icon">
-                                    <img class="img" src="/assets/image/icons/clean.svg"/>
-                                </div>
-                                <div class="card-list__title">Чистота и порядок</div>
-                                <div class="card-list__list-container"></div>
-                                <div class="card-list__list-item">Собственная обслуживающая компания</div>
-                                <div class="card-list__list-item">Каждое лето покос травы</div>
-                                <div class="card-list__list-item">Чистка дорог в зимнее время</div>
-                                <div class="card-list__list-item">Благоустройства территории</div>
-                                <div class="card-list__list-item">Вывоз мусора</div>
-                            </div>
-                        </div>
-                        <div class="glide__slide">
-                            <div class="card-list">
-                                <div class="card-list__icon">
-                                    <img class="img" src="/assets/image/icons/lamp_and_square.svg"/>
-                                </div>
-                                <div class="card-list__title">Готовые коммуникации</div>
-                                <div class="card-list__list-container"></div>
-                                <div class="card-list__list-item">Газ 4м3</div>
-                                <div class="card-list__list-item">Электричество 10-50 КВт</div>
-                                <div class="card-list__list-item">Дороги из щебня, 6 метров в ширину</div>
-                                <div class="card-list__list-item">Уличное освещение на всей территории</div>
-                                <div class="card-list__list-item">Территория с КПП и охраной</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?$APPLICATION->IncludeComponent(
+            "bitrix:news.list",
+            "about_why_choose_us",
+            Array(
+                "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                "ADD_SECTIONS_CHAIN" => "N",
+                "AJAX_MODE" => "N",
+                "AJAX_OPTION_ADDITIONAL" => "",
+                "AJAX_OPTION_HISTORY" => "N",
+                "AJAX_OPTION_JUMP" => "N",
+                "AJAX_OPTION_STYLE" => "N",
+                "CACHE_FILTER" => "N",
+                "CACHE_GROUPS" => "N",
+                "CACHE_TIME" => "36000000",
+                "CACHE_TYPE" => "A",
+                "CHECK_DATES" => "Y",
+                "DETAIL_URL" => "",
+                "DISPLAY_BOTTOM_PAGER" => "Y",
+                "DISPLAY_TOP_PAGER" => "N",
+                "FIELD_CODE" => array("NAME", "PREVIEW_TEXT", "DETAIL_TEXT", ""),
+                "FILTER_NAME" => "",
+                "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                "IBLOCK_ID" => "6",
+                "IBLOCK_TYPE" => "content",
+                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                "INCLUDE_SUBSECTIONS" => "N",
+                "MESSAGE_404" => "",
+                "NEWS_COUNT" => "5",
+                "PAGER_BASE_LINK_ENABLE" => "N",
+                "PAGER_DESC_NUMBERING" => "N",
+                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                "PAGER_SHOW_ALL" => "N",
+                "PAGER_SHOW_ALWAYS" => "N",
+                "PAGER_TEMPLATE" => "",
+                "PAGER_TITLE" => "Новости",
+                "PARENT_SECTION" => "",
+                "PARENT_SECTION_CODE" => "",
+                "PREVIEW_TRUNCATE_LEN" => "",
+                "PROPERTY_CODE" => array("DESCRIPTION_3", "DESCRIPTION_4", "DESCRIPTION_5", ""),
+                "SET_BROWSER_TITLE" => "N",
+                "SET_LAST_MODIFIED" => "N",
+                "SET_META_DESCRIPTION" => "N",
+                "SET_META_KEYWORDS" => "N",
+                "SET_STATUS_404" => "N",
+                "SET_TITLE" => "N",
+                "SHOW_404" => "N",
+                "SORT_BY1" => "SORT",
+                "SORT_BY2" => "SORT",
+                "SORT_ORDER1" => "DESC",
+                "SORT_ORDER2" => "ASC",
+                "STRICT_SECTION_CHECK" => "N"
+            )
+        );?>
     </div>
 </section>
 <section class="section section--overflow-hidden mb-large">
