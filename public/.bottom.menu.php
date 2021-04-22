@@ -2,14 +2,14 @@
 $aMenuLinks = [
     [
         "Коттеджные поселки",
-        "/projects/detail",
+        "/projects/detail/",
         [],
         [],
         "",
     ],
     [
         "О компании",
-        "/about",
+        "/about/",
         [],
         [],
         "",
@@ -17,21 +17,21 @@ $aMenuLinks = [
 
     [
         "Покупателям",
-        "/buyer",
+        "/buyer/",
         [],
         [],
         "",
     ],
     [
         "Обслуживающая компания",
-        "/obsluzhivayuschaya-kompaniya",
+        "/obsluzhivayuschaya-kompaniya/",
         [],
         [],
         "",
     ],
     [
         "Отзывы",
-        "/#",
+        "/#/",
         [],
         [],
         "",

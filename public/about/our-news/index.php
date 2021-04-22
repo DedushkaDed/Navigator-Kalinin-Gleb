@@ -11,22 +11,25 @@ $APPLICATION->SetPageProperty('title',
 $APPLICATION->SetTitle('О нас');
 
 ?>
-    <section class="section mb-medium">
-        <div class="container">
-            <div class="tabs-navigation-wrapper">
-                <div class="tabs-navigation js-tabs-navigation-static">
-                    <div class="tabs-navigation__active"></div>
-                    <a class="tabs-navigation__item" href="/about/">Компания</a>
-                    <a class="tabs-navigation__item tabs-navigation__item--active" href="/about/our-news/">Новости</a>
-                    <a class="tabs-navigation__item" href="/about/istorii-nashih-zhitelej/">Истории жителей</a>
-                    <a class="tabs-navigation__item" href="/blog/">Полезные статьи</a>
-                    <a class="tabs-navigation__item" href="/tenderi/">Тендеры</a>
-                    <a class="tabs-navigation__item" href="/about/rabota/">Вакансии</a>
-                    <a class="tabs-navigation__item" href="/about/contact/">Контакты</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<?php    $APPLICATION->IncludeComponent(
+    "bitrix:menu",
+    "navigation_tabs",
+    [
+        "ALLOW_MULTI_SELECT" => "N",
+        "CHILD_MENU_TYPE" => "",
+        "DELAY" => "N",
+        "MAX_LEVEL" => "1",
+        "MENU_CACHE_GET_VARS" => [
+        ],
+        "MENU_CACHE_TIME" => "3600",
+        "MENU_CACHE_TYPE" => "A",
+        "MENU_CACHE_USE_GROUPS" => "N",
+        "ROOT_MENU_TYPE" => "subtop",
+        "USE_EXT" => "Y",
+        "COMPONENT_TEMPLATE" => "navigation_tabs",
+    ],
+    false
+); ?>
     <section class="section mb-large">
         <div class="container">
             <div class="grid-news grid-news--top">
