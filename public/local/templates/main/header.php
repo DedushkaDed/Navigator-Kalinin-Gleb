@@ -39,7 +39,7 @@ use Bitrix\Main\Page\Asset;
             <img src="/assets/image/header/logo.png"/>
         </a>
 
-        <?php $APPLICATION->IncludeComponent(
+        <?php    $APPLICATION->IncludeComponent(
             "bitrix:menu",
             "top_menu",
             [
@@ -47,13 +47,16 @@ use Bitrix\Main\Page\Asset;
                 "CHILD_MENU_TYPE" => "subtop",
                 "DELAY" => "N",
                 "MAX_LEVEL" => "2",
-                "MENU_CACHE_GET_VARS" => [""],
+                "MENU_CACHE_GET_VARS" => [
+                ],
                 "MENU_CACHE_TIME" => "3600",
-                "MENU_CACHE_TYPE" => "N",
-                "MENU_CACHE_USE_GROUPS" => "Y",
+                "MENU_CACHE_TYPE" => "A",
+                "MENU_CACHE_USE_GROUPS" => "N",
                 "ROOT_MENU_TYPE" => "top",
                 "USE_EXT" => "Y",
-            ]
+                "COMPONENT_TEMPLATE" => "top_menu",
+            ],
+            false
         ); ?>
 
         <a class="header__number js-stats link-blue roistat_phone_navig" href="tel:+73452564276">+7 3452

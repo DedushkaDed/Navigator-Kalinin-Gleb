@@ -1,11 +1,33 @@
-<?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+    die();
+} ?>
 
-<?if (!empty($arResult)):?>
-    <div class="navigation">
-        <?php foreach($arResult as $arItem): ?>
-            <a class="navigation__item" href="<?=$arItem["LINK"]?>">
-                <span class="navigation__page"><?=$arItem["TEXT"]?></span>
-            </a>
-        <?php endforeach?>
-    </div>
-<?endif?>
+<?php
+if (empty($arResult)) {
+    return;
+}
+?>
+
+<div class="navigation">
+    <?php foreach ($arResult as $aItem): ?>
+        <div class="navigation__item" href="<?= $aItem["LINK"] ?>">
+            <span class="navigation__page"><?= $aItem["TEXT"] ?></span>
+            <?php if (!empty($aItem['subitems'])): ?>
+                <div class="navigation__arrow">
+                    <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M8.83333 0.166626L10 1.33329L5 6.33329L-5.09966e-08 1.33329L1.16667 0.166626L5 3.99996L8.83333 0.166626Z"
+                              fill="#675A54">
+                        </path>
+                    </svg>
+                </div>
+                <div class="navigation__dropdown">
+                    <?php foreach ($aItem['subitems'] as $aSubItem): ?>
+                        <a class="navigation__subpage" href="<?= $aSubItem['LINK'] ?>">
+                            <?= $aSubItem['TEXT'] ?? ''; ?></a>
+                    <? endforeach; ?>
+                </div>
+            <? endif; ?>
+        </div>
+    <?php endforeach ?>
+</div>

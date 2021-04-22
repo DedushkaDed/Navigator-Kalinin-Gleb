@@ -25,24 +25,3 @@
         <?endforeach?>
     </div>
 <?endif?>
-
-<!--<div class="footer__navigation">-->
-<!--    <div class="footer__navigation-item">-->
-<!--        <span>Коттеджные поселки</span>-->
-<!--        <div class="footer__navigation-subitems">-->
-<!--            <a class="footer__navigation-subitem"-->
-<!--               href="/projects/detail">Альпийская долина-->
-<!--            </a>-->
-<!--            <a-->
-<!--                    class="footer__navigation-subitem" href="/projects/detail">Есенино-->
-<!--            </a>-->
-<!--            <a-->
-<!--                    class="footer__navigation-subitem" href="/projects/detail">Ёлки-->
-<!--            </a>-->
-<!--            <a-->
-<!--                    class="footer__navigation-subitem" href="/ceni-na-zemelnie-uchastki/">Выбрать-->
-<!--                участок-->
-<!--            </a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
