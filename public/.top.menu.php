@@ -30,7 +30,7 @@ $aMenuLinks = [
     ],
     [
         "Таунхаусы",
-        "/tenderi/",
+        "https://xn--80ajaabhmtdas2o.xn--p1ai/",
         [],
         [],
         "",

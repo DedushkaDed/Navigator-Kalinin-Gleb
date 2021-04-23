@@ -13,13 +13,13 @@ if (empty($arResult)) {
         <div class="tabs-navigation-wrapper">
             <div class="tabs-navigation js-tabs-navigation-static">
                 <div class="tabs-navigation__active"></div>
-                    <?php foreach($arResult as $aItem): ?>
-                        <?php if ($aItem['SELECTED']):?>
-                            <a class="tabs-navigation__item tabs-navigation__item--active" href="<?=$aItem['LINK']?>"><?= $aItem['TEXT'] ?></a>
-                        <?else:?>
-                            <a class="tabs-navigation__item" href="<?=$aItem['LINK']?>"><?= $aItem['TEXT'] ?></a>
-                        <?endif;?>
-                    <?endforeach;?>
+                <?php foreach($arResult as $aItem): ?>
+                    <?php if ($aItem['SELECTED']):?>
+                        <a class="tabs-navigation__item tabs-navigation__item--active" href="<?=$aItem['LINK']?>"><?= $aItem['TEXT'] ?></a>
+                    <?else:?>
+                        <a class="tabs-navigation__item" href="<?=$aItem['LINK']?>"><?= $aItem['TEXT'] ?></a>
+                    <?endif;?>
+                <?endforeach;?>
             </div>
         </div>
     </div>

@@ -30,145 +30,78 @@ $APPLICATION->SetTitle('О нас');
     ],
     false
 ); ?>
-    <section class="section mb-large">
-        <div class="container">
-            <div class="grid-news grid-news--top">
-                <div class="grid-news__item grid-news__item--half">
-                    <a class="news-card" href="/about/our-news/detail">
-                        <div class="news-card__image news-card__image--grid-half">
-                            <img src="http://placehold.it/500x250/ffa" alt="С Днем Рождения!"/>
-                        </div>
-                        <div class="news-card__content">
-                            <div class="news-card__title">С Днем Рождения!</div>
-                            <div class="news-card__text">Мы поздравили постоянных партнеров — агенство недвижимости «СОВА» с днём
-                                рождения!
-                            </div>
-                            <div class="news-card__wrapper">
-                                <div class="news-card__link">Читать далее</div>
-                                <span class="news-card__date">4.03.2019</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="grid-news__item grid-news__item--half">
-                    <a class="news-card" href="/about/our-news/detail">
-                        <div class="news-card__image news-card__image--grid-half">
-                            <img src="http://placehold.it/500x250/ffa" alt="С Днем Рождения!"/>
-                        </div>
-                        <div class="news-card__content">
-                            <div class="news-card__title">С Днем Рождения!</div>
-                            <div class="news-card__text">Мы поздравили постоянных партнеров — агенство недвижимости «СОВА» с днём
-                                рождения!
-                            </div>
-                            <div class="news-card__wrapper">
-                                <div class="news-card__link">Читать далее</div>
-                                <span class="news-card__date">4.03.2019</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="grid-news__item">
-                    <a class="news-card" href="/about/our-news/detail">
-                        <div class="news-card__image">
-                            <img src="http://placehold.it/500x250/ffa" alt="С Днем Рождения!"/>
-                        </div>
-                        <div class="news-card__content">
-                            <div class="news-card__title">С Днем Рождения!</div>
-                            <div class="news-card__text">Мы поздравили постоянных партнеров — агенство недвижимости «СОВА» с днём
-                                рождения!
-                            </div>
-                            <div class="news-card__wrapper">
-                                <div class="news-card__link">Читать далее</div>
-                                <span class="news-card__date">4.03.2019</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="grid-news__item">
-                    <a class="news-card" href="/about/our-news/detail">
-                        <div class="news-card__image">
-                            <img src="http://placehold.it/500x250/ffa" alt="С Днем Рождения!"/>
-                        </div>
-                        <div class="news-card__content">
-                            <div class="news-card__title">С Днем Рождения!</div>
-                            <div class="news-card__text">Мы поздравили постоянных партнеров — агенство недвижимости «СОВА» с днём
-                                рождения!
-                            </div>
-                            <div class="news-card__wrapper">
-                                <div class="news-card__link">Читать далее</div>
-                                <span class="news-card__date">4.03.2019</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="grid-news__item">
-                    <a class="news-card" href="/about/our-news/detail">
-                        <div class="news-card__image">
-                            <img src="http://placehold.it/500x250/ffa" alt="С Днем Рождения!"/>
-                        </div>
-                        <div class="news-card__content">
-                            <div class="news-card__title">С Днем Рождения!</div>
-                            <div class="news-card__text">Мы поздравили постоянных партнеров — агенство недвижимости «СОВА» с днём
-                                рождения!
-                            </div>
-                            <div class="news-card__wrapper">
-                                <div class="news-card__link">Читать далее</div>
-                                <span class="news-card__date">4.03.2019</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="grid-news__item">
-                    <a class="news-card" href="/about/our-news/detail">
-                        <div class="news-card__image">
-                            <img src="http://placehold.it/500x250/ffa" alt="С Днем Рождения!"/>
-                        </div>
-                        <div class="news-card__content">
-                            <div class="news-card__title">С Днем Рождения!</div>
-                            <div class="news-card__text">Мы поздравили постоянных партнеров — агенство недвижимости «СОВА» с днём
-                                рождения!
-                            </div>
-                            <div class="news-card__wrapper">
-                                <div class="news-card__link">Читать далее</div>
-                                <span class="news-card__date">4.03.2019</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="mt-30">
-                <div class="pagination">
-                    <a class="pagination__button pagination__button--prev" href="#">
-                        <svg width="13" height="13" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M0.646446 3.64645C0.451184 3.84171 0.451184 4.15829 0.646446 4.35355L3.82843 7.53553C4.02369 7.7308 4.34027 7.7308 4.53553 7.53553C4.7308 7.34027 4.7308 7.02369 4.53553 6.82843L1.70711 4L4.53553 1.17157C4.7308 0.97631 4.7308 0.659727 4.53553 0.464465C4.34027 0.269203 4.02369 0.269203 3.82843 0.464465L0.646446 3.64645ZM13 3.5L1 3.5L1 4.5L13 4.5L13 3.5Z"
-                                fill="black"
-                            ></path>
-                        </svg>
-                        <span>Назад</span>
-                    </a>
-                    <div class="pagination__label">Страница 3 из 9</div>
-                    <div class="pagination__pages">
-                        <a class="pagination__page" href="#">1</a>
-                        <a class="pagination__page" href="#">2</a>
-                        <div class="pagination__page pagination__page--active">3</div>
-                        <a class="pagination__page" href="#">4</a>
-                        <div class="pagination__page">...</div>
-                        <a class="pagination__page" href="#">9</a>
-                    </div>
-                    <div class="pagination__button pagination__button--next pagination__button--disabled">
-                        <span>Вперед</span>
-                        <svg width="13" height="13" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12.3536 3.64645C12.5488 3.84171 12.5488 4.15829 12.3536 4.35355L9.17157 7.53553C8.97631 7.7308 8.65973 7.7308 8.46447 7.53553C8.2692 7.34027 8.2692 7.02369 8.46447 6.82843L11.2929 4L8.46447 1.17157C8.2692 0.97631 8.2692 0.659727 8.46447 0.464465C8.65973 0.269203 8.97631 0.269203 9.17157 0.464465L12.3536 3.64645ZM-5.82819e-08 3.5L12 3.5L12 4.5L5.82819e-08 4.5L-5.82819e-08 3.5Z"
-                                fill="black"
-                            ></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<?$APPLICATION->IncludeComponent(
+    "bitrix:news",
+    "about_our_news",
+    Array(
+        "ADD_ELEMENT_CHAIN" => "N",
+        "ADD_SECTIONS_CHAIN" => "N",
+        "AJAX_MODE" => "N",
+        "AJAX_OPTION_ADDITIONAL" => "",
+        "AJAX_OPTION_HISTORY" => "N",
+        "AJAX_OPTION_JUMP" => "N",
+        "AJAX_OPTION_STYLE" => "Y",
+        "BROWSER_TITLE" => "-",
+        "CACHE_FILTER" => "N",
+        "CACHE_GROUPS" => "Y",
+        "CACHE_TIME" => "36000000",
+        "CACHE_TYPE" => "A",
+        "CHECK_DATES" => "Y",
+        "DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
+        "DETAIL_DISPLAY_BOTTOM_PAGER" => "N",
+        "DETAIL_DISPLAY_TOP_PAGER" => "N",
+        "DETAIL_FIELD_CODE" => array("NAME","PREVIEW_TEXT","PREVIEW_PICTURE","DETAIL_TEXT",""),
+        "DETAIL_PAGER_SHOW_ALL" => "N",
+        "DETAIL_PAGER_TEMPLATE" => "",
+        "DETAIL_PAGER_TITLE" => "Страница",
+        "DETAIL_PROPERTY_CODE" => array("",""),
+        "DETAIL_SET_CANONICAL_URL" => "N",
+        "DISPLAY_BOTTOM_PAGER" => "N",
+        "DISPLAY_DATE" => "N",
+        "DISPLAY_NAME" => "Y",
+        "DISPLAY_PICTURE" => "N",
+        "DISPLAY_PREVIEW_TEXT" => "N",
+        "DISPLAY_TOP_PAGER" => "N",
+        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+        "IBLOCK_ID" => "9",
+        "IBLOCK_TYPE" => "content",
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+        "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
+        "LIST_FIELD_CODE" => array("CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE","DETAIL_TEXT",""),
+        "LIST_PROPERTY_CODE" => array("DATE","LINK",""),
+        "MESSAGE_404" => "",
+        "META_DESCRIPTION" => "-",
+        "META_KEYWORDS" => "-",
+        "NEWS_COUNT" => "20",
+        "PAGER_BASE_LINK_ENABLE" => "N",
+        "PAGER_DESC_NUMBERING" => "N",
+        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+        "PAGER_SHOW_ALL" => "N",
+        "PAGER_SHOW_ALWAYS" => "N",
+        "PAGER_TEMPLATE" => ".default",
+        "PAGER_TITLE" => "Новости",
+        "PREVIEW_TRUNCATE_LEN" => "",
+        "SEF_FOLDER" => "/test/",
+        "SEF_MODE" => "Y",
+        "SEF_URL_TEMPLATES" => Array("detail"=>"#ELEMENT_CODE#/","news"=>"","section"=>""),
+        "SET_LAST_MODIFIED" => "N",
+        "SET_STATUS_404" => "Y",
+        "SET_TITLE" => "N",
+        "SHOW_404" => "N",
+        "SORT_BY1" => "ACTIVE_FROM",
+        "SORT_BY2" => "SORT",
+        "SORT_ORDER1" => "DESC",
+        "SORT_ORDER2" => "ASC",
+        "STRICT_SECTION_CHECK" => "N",
+        "USE_CATEGORIES" => "N",
+        "USE_FILTER" => "N",
+        "USE_PERMISSIONS" => "N",
+        "USE_RATING" => "N",
+        "USE_RSS" => "N",
+        "USE_SEARCH" => "N",
+        "USE_SHARE" => "N"
+    )
+);?>
 
 <?php
 
