@@ -30,7 +30,7 @@ $APPLICATION->SetTitle('О нас');
     ],
     false
 ); ?>
-<?$APPLICATION->IncludeComponent(
+<? $APPLICATION->IncludeComponent(
     "bitrix:news",
     "about_our_news",
     Array(
@@ -50,11 +50,11 @@ $APPLICATION->SetTitle('О нас');
         "DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
         "DETAIL_DISPLAY_BOTTOM_PAGER" => "N",
         "DETAIL_DISPLAY_TOP_PAGER" => "N",
-        "DETAIL_FIELD_CODE" => array("NAME","PREVIEW_TEXT","PREVIEW_PICTURE","DETAIL_TEXT",""),
+        "DETAIL_FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", ""],
         "DETAIL_PAGER_SHOW_ALL" => "N",
         "DETAIL_PAGER_TEMPLATE" => "",
         "DETAIL_PAGER_TITLE" => "Страница",
-        "DETAIL_PROPERTY_CODE" => array("",""),
+        "DETAIL_PROPERTY_CODE" => ["DATE", ""],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "N",
         "DISPLAY_DATE" => "N",
@@ -67,8 +67,8 @@ $APPLICATION->SetTitle('О нас');
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
-        "LIST_FIELD_CODE" => array("CODE","NAME","PREVIEW_TEXT","PREVIEW_PICTURE","DETAIL_TEXT",""),
-        "LIST_PROPERTY_CODE" => array("DATE","LINK",""),
+        "LIST_FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", ""],
+        "LIST_PROPERTY_CODE" => ["DATE", "LINK", ""],
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",
         "META_KEYWORDS" => "-",
@@ -81,9 +81,9 @@ $APPLICATION->SetTitle('О нас');
         "PAGER_TEMPLATE" => ".default",
         "PAGER_TITLE" => "Новости",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "SEF_FOLDER" => "/test/",
+        "SEF_FOLDER" => "/about/our-news/",
         "SEF_MODE" => "Y",
-        "SEF_URL_TEMPLATES" => Array("detail"=>"#ELEMENT_CODE#/","news"=>"","section"=>""),
+        "SEF_URL_TEMPLATES" => ["detail" => "#ELEMENT_ID#/", "news" => "", "section" => ""],
         "SET_LAST_MODIFIED" => "N",
         "SET_STATUS_404" => "Y",
         "SET_TITLE" => "N",
@@ -99,9 +99,9 @@ $APPLICATION->SetTitle('О нас');
         "USE_RATING" => "N",
         "USE_RSS" => "N",
         "USE_SEARCH" => "N",
-        "USE_SHARE" => "N"
-    )
-);?>
+        "USE_SHARE" => "N",
+    ]
+); ?>
 
 <?php
 

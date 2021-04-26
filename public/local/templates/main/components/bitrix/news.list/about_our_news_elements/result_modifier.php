@@ -22,7 +22,7 @@ foreach($arResult['ITEMS'] as $key => $aItem) {
     $aCard['description'] = $aItem['PREVIEW_TEXT'];
     $aCard['image'] = $aItem['PREVIEW_PICTURE']['SRC'];
     $aCard['linkLabel'] = $aItem['DETAIL_TEXT'];
-    $aCard['link'] = ['PROPERTIES']['LINK']['VALUE'];
+    $aCard['link'] = 'DETAIL_PAGE_URL';
     $aCard['date'] = $aItem['PROPERTIES']['DATE']['VALUE'];
 
     if ($key == 0 || $key == 1) {
