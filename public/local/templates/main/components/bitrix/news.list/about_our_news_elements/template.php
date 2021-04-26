@@ -16,7 +16,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var CBitrixComponent $component */
 ?>
 
-<?php if (empty($arResult['ITEMS'])) {
+<?php if (empty($arResult['mapCards'])) {
     return;
 } ?>
 

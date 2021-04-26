@@ -2,7 +2,6 @@
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 ?>
-<?= "Шаблон детальной новости" ?>
 
 <? $APPLICATION->IncludeComponent(
     "bitrix:news.detail",

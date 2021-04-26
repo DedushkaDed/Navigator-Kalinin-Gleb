@@ -2,7 +2,7 @@
 $arUrlRewrite = [
     [
         'CONDITION' => '#^/about/our-news/#',
-        'RULE' => '',
+        'RULE' => 'ID=$1',
         'ID' => 'bitrix:news',
         'PATH' => '/about/our-news/detail/index.php',
         'SORT' => 100,

@@ -20,10 +20,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     return;
 } ?>
 
-<?php
-//dump($arResult['ITEMS']);
-?>
-
 
 <div class="tabs js-tabs">
     <div class="tabs__inner tabs__inner--offset">
