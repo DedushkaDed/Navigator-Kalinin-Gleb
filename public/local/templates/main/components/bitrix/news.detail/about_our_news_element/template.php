@@ -141,7 +141,7 @@ endif;?>
                                         </svg>
                                     </div>
                                 </a>
-                                <a class="separate-paragraph__icon" href="#">
+                                <a class="separate-paragraph__icon" href="<?=$aSocialMediaOptions['odnoklassniki']?>">
                                     <div class="icon icon--middle-brown icon--hover-primary">
                                         <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
