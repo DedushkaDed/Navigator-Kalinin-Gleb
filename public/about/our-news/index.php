@@ -1,14 +1,5 @@
-<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-
-$APPLICATION->SetPageProperty(
-    'description',
-    'Описание страницы about'
-);
-
-$APPLICATION->SetPageProperty('title',
-    'О нас');
-
-$APPLICATION->SetTitle('О нас');
+<?php
+require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 ?>
 <?php    $APPLICATION->IncludeComponent(
@@ -33,7 +24,7 @@ $APPLICATION->SetTitle('О нас');
 <? $APPLICATION->IncludeComponent(
     "bitrix:news",
     "about_our_news",
-    Array(
+    [
         "ADD_ELEMENT_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "N",
         "AJAX_MODE" => "N",
