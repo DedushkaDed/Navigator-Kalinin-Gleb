@@ -83,39 +83,182 @@ $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
                     <?php foreach ($arResult['PROPERTIES']['TEXT_HISTORY_RESIDENT']['VALUE'] as $aTextNews): ?>
                         <p><?= $aTextNews['TEXT'] ?></p>
                     <? endforeach; ?>
-
-
-                    <h3>Зима</h3>
-                    <div class="detail-content__image">
-                        <img class="img" src="https://source.unsplash.com/900x450"/>
-                    </div>
-                    <p>Традиционно считается, что зима – не самое удачное время для покупки земельного участка. Связано это с тем, что зимой, как правило, очень сложно, в связи с погодными условиями, досконально осмотреть потенциальное место для строительства будущего дома. Однако у зимнего времени года есть и свои очевидные преимущества:</p>
-                    <ul>
-                        <li>К концу года большая часть надежных девелоперов проводит стимулирующие акции, благодаря которым, купить земельный участок в коттеджном поселке можно по максимально выгодной цене</li>
-                        <li>Одной из актуальных тенденций в деятельности серьезных девелоперов является создание собственных обслуживающих компаний, которые следят за порядком в поселке на протяжении всего года. Зима – отличный повод проверить работу обслуживающей компании и понаблюдать, прежде всего, за тем, как расчищаются дороги в поселке во время снегопада.</li>
-                    </ul>
+                    <!--                    Компонент - дополнительный блок -->
+                    <?php $APPLICATION->IncludeComponent(
+                        "bitrix:news.list",
+                        "additional-block",
+                        [
+                            "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                            "ADD_SECTIONS_CHAIN" => "N",
+                            "AJAX_MODE" => "N",
+                            "AJAX_OPTION_ADDITIONAL" => "",
+                            "AJAX_OPTION_HISTORY" => "N",
+                            "AJAX_OPTION_JUMP" => "N",
+                            "AJAX_OPTION_STYLE" => "N",
+                            "CACHE_FILTER" => "N",
+                            "CACHE_GROUPS" => "N",
+                            "CACHE_TIME" => "36000000",
+                            "CACHE_TYPE" => "A",
+                            "CHECK_DATES" => "Y",
+                            "DETAIL_URL" => "",
+                            "DISPLAY_BOTTOM_PAGER" => "N",
+                            "DISPLAY_DATE" => "N",
+                            "DISPLAY_NAME" => "Y",
+                            "DISPLAY_PICTURE" => "Y",
+                            "DISPLAY_PREVIEW_TEXT" => "Y",
+                            "DISPLAY_TOP_PAGER" => "N",
+                            "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", ""],
+                            "FILTER_NAME" => "",
+                            "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                            "IBLOCK_ID" => "14",
+                            "IBLOCK_TYPE" => "content",
+                            "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                            "INCLUDE_SUBSECTIONS" => "N",
+                            "MESSAGE_404" => "",
+                            "NEWS_COUNT" => "5",
+                            "PAGER_BASE_LINK_ENABLE" => "N",
+                            "PAGER_DESC_NUMBERING" => "N",
+                            "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                            "PAGER_SHOW_ALL" => "N",
+                            "PAGER_SHOW_ALWAYS" => "N",
+                            "PAGER_TEMPLATE" => "",
+                            "PAGER_TITLE" => "Новости",
+                            "PARENT_SECTION" => "",
+                            "PARENT_SECTION_CODE" => "",
+                            "PREVIEW_TRUNCATE_LEN" => "",
+                            "PROPERTY_CODE" => ["TEXT_PLUSES", ""],
+                            "SET_BROWSER_TITLE" => "N",
+                            "SET_LAST_MODIFIED" => "N",
+                            "SET_META_DESCRIPTION" => "N",
+                            "SET_META_KEYWORDS" => "N",
+                            "SET_STATUS_404" => "N",
+                            "SET_TITLE" => "N",
+                            "SHOW_404" => "N",
+                            "SORT_BY1" => "SORT",
+                            "SORT_BY2" => "SORT",
+                            "SORT_ORDER1" => "DESC",
+                            "SORT_ORDER2" => "ASC",
+                            "STRICT_SECTION_CHECK" => "N",
+                        ]
+                    ); ?>
                 </div>
             </div>
-            <div class="detail__item">
-                <div class="detail-aside-banners">
-                    <div class="detail-aside-banners__item">
-                        <div class="banner">
-                            <div class="banner__photo-wrapper">
-                                <img class="banner__photo"
-                                     src="/assets/image/projects/alpiyskaya-dolina-tyumen/happy_family.jpg"
-                                />
-                            </div>
-                            <div class="banner__content">
-                                <h2 class="banner__title">Бонусная программа «Лояльный покупатель»</h2>
-                                <span class="banner__text"
-                                >при 100% оплате земельного участка в любом из наших коттеджных поселков.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <!--            банеры-->
+            <?php $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "aside_banners",
+                [
+                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                    "ADD_SECTIONS_CHAIN" => "N",
+                    "AJAX_MODE" => "N",
+                    "AJAX_OPTION_ADDITIONAL" => "",
+                    "AJAX_OPTION_HISTORY" => "N",
+                    "AJAX_OPTION_JUMP" => "N",
+                    "AJAX_OPTION_STYLE" => "N",
+                    "CACHE_FILTER" => "N",
+                    "CACHE_GROUPS" => "N",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "A",
+                    "CHECK_DATES" => "Y",
+                    "DETAIL_URL" => "",
+                    "DISPLAY_BOTTOM_PAGER" => "N",
+                    "DISPLAY_DATE" => "Y",
+                    "DISPLAY_NAME" => "Y",
+                    "DISPLAY_PICTURE" => "Y",
+                    "DISPLAY_PREVIEW_TEXT" => "Y",
+                    "DISPLAY_TOP_PAGER" => "N",
+                    "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", ""],
+                    "FILTER_NAME" => "",
+                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                    "IBLOCK_ID" => "13",
+                    "IBLOCK_TYPE" => "content",
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                    "INCLUDE_SUBSECTIONS" => "N",
+                    "MESSAGE_404" => "",
+                    "NEWS_COUNT" => "5",
+                    "PAGER_BASE_LINK_ENABLE" => "N",
+                    "PAGER_DESC_NUMBERING" => "N",
+                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                    "PAGER_SHOW_ALL" => "N",
+                    "PAGER_SHOW_ALWAYS" => "N",
+                    "PAGER_TEMPLATE" => "",
+                    "PAGER_TITLE" => "Новости",
+                    "PARENT_SECTION" => "",
+                    "PARENT_SECTION_CODE" => "",
+                    "PREVIEW_TRUNCATE_LEN" => "",
+                    "PROPERTY_CODE" => ["LINK", ""],
+                    "SET_BROWSER_TITLE" => "N",
+                    "SET_LAST_MODIFIED" => "N",
+                    "SET_META_DESCRIPTION" => "N",
+                    "SET_META_KEYWORDS" => "N",
+                    "SET_STATUS_404" => "N",
+                    "SET_TITLE" => "N",
+                    "SHOW_404" => "N",
+                    "SORT_BY1" => "SORT",
+                    "SORT_BY2" => "SORT",
+                    "SORT_ORDER1" => "DESC",
+                    "SORT_ORDER2" => "ASC",
+                    "STRICT_SECTION_CHECK" => "N",
+                ]
+            ); ?>
         </div>
+        <?php $APPLICATION->IncludeComponent(
+            "bitrix:news.list",
+            "about_our_news_photo_report_from_the_company",
+            [
+                "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                "ADD_SECTIONS_CHAIN" => "N",
+                "AJAX_MODE" => "N",
+                "AJAX_OPTION_ADDITIONAL" => "",
+                "AJAX_OPTION_HISTORY" => "N",
+                "AJAX_OPTION_JUMP" => "N",
+                "AJAX_OPTION_STYLE" => "N",
+                "CACHE_FILTER" => "N",
+                "CACHE_GROUPS" => "N",
+                "CACHE_TIME" => "36000000",
+                "CACHE_TYPE" => "A",
+                "CHECK_DATES" => "Y",
+                "DETAIL_URL" => "",
+                "DISPLAY_BOTTOM_PAGER" => "N",
+                "DISPLAY_DATE" => "Y",
+                "DISPLAY_NAME" => "Y",
+                "DISPLAY_PICTURE" => "Y",
+                "DISPLAY_PREVIEW_TEXT" => "Y",
+                "DISPLAY_TOP_PAGER" => "N",
+                "FIELD_CODE" => ["PREVIEW_PICTURE", ""],
+                "FILTER_NAME" => "",
+                "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                "IBLOCK_ID" => "12",
+                "IBLOCK_TYPE" => "content",
+                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                "INCLUDE_SUBSECTIONS" => "N",
+                "MESSAGE_404" => "",
+                "NEWS_COUNT" => "20",
+                "PAGER_BASE_LINK_ENABLE" => "N",
+                "PAGER_DESC_NUMBERING" => "N",
+                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                "PAGER_SHOW_ALL" => "N",
+                "PAGER_SHOW_ALWAYS" => "N",
+                "PAGER_TEMPLATE" => "",
+                "PAGER_TITLE" => "Новости",
+                "PARENT_SECTION" => "",
+                "PARENT_SECTION_CODE" => "",
+                "PREVIEW_TRUNCATE_LEN" => "",
+                "PROPERTY_CODE" => ["", ""],
+                "SET_BROWSER_TITLE" => "N",
+                "SET_LAST_MODIFIED" => "N",
+                "SET_META_DESCRIPTION" => "N",
+                "SET_META_KEYWORDS" => "N",
+                "SET_STATUS_404" => "N",
+                "SET_TITLE" => "N",
+                "SHOW_404" => "N",
+                "SORT_BY1" => "SORT",
+                "SORT_BY2" => "SORT",
+                "SORT_ORDER1" => "DESC",
+                "SORT_ORDER2" => "ASC",
+                "STRICT_SECTION_CHECK" => "N",
+            ]
+        ); ?>
     </div>
 </section>
 
