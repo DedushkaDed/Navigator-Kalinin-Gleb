@@ -24,7 +24,7 @@ foreach ($arResult['ITEMS'] as $key => $aItem) {
     $aCard['linkLabel'] = $aItem['DETAIL_TEXT'];
     $aCard['link'] = $aItem['PROPERTIES']['LINK']['VALUE'];
 
-    if ($key % 2 == 0) {
+    if ($key % 2 != 0) {
         $aCard['typeBanner'] = 'banner--reverse';
     }
     $mapCards[] = $aCard;

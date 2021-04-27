@@ -20,7 +20,6 @@ $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
 <?php if (empty($arResult)) {
     return;
 }
-//dump($arResult);
 ?>
 
 
@@ -175,7 +174,7 @@ $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
                     "MESSAGE_404" => "",
-                    "NEWS_COUNT" => "5",
+                    "NEWS_COUNT" => "1",
                     "PAGER_BASE_LINK_ENABLE" => "N",
                     "PAGER_DESC_NUMBERING" => "N",
                     "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
