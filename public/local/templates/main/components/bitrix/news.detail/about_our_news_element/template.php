@@ -17,9 +17,10 @@ $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
 /** @var CBitrixComponent $component */
 ?>
 
-<?php if (empty($arResult)):
+<?php if (empty($arResult)) {
     return;
-endif;?>
+}
+?>
 
 
 <section class="section section--overflow-hidden mb-medium">

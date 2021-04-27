@@ -3,9 +3,10 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 ?>
 
-<? $APPLICATION->IncludeComponent(
+
+<?php $APPLICATION->IncludeComponent(
     "bitrix:news.detail",
-    "about_our_news_element",
+    "about_istorii-nashih-zhitelej_element",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_ELEMENT_CHAIN" => "N",
@@ -30,7 +31,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "ELEMENT_CODE" => "",
         "ELEMENT_ID" => "{$_REQUEST['ID']}",
         "FIELD_CODE" => ["PREVIEW_PICTURE", ""],
-        "IBLOCK_ID" => "9",
+        "IBLOCK_ID" => "10",
         "IBLOCK_TYPE" => "content",
         "IBLOCK_URL" => "",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
@@ -41,7 +42,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "PAGER_SHOW_ALL" => "N",
         "PAGER_TEMPLATE" => ".default",
         "PAGER_TITLE" => "Страница",
-        "PROPERTY_CODE" => ["DATE", "LINK"],
+        "PROPERTY_CODE" => ["DATE", ""],
         "SET_BROWSER_TITLE" => "N",
         "SET_CANONICAL_URL" => "N",
         "SET_LAST_MODIFIED" => "N",

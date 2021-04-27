@@ -12,7 +12,7 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<?$ElementID = $APPLICATION->IncludeComponent(
+<?php $ElementID = $APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
 	"about_our_news_element",
 	Array(
