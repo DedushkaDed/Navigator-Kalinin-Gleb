@@ -16,7 +16,7 @@ if (empty($arResult)) {
 }
 
 $mapCards = [];
-foreach($arResult['ITEMS'] as $key => $aItem) {
+foreach ($arResult['ITEMS'] as $key => $aItem) {
     $aCard = [];
     $aCard['title'] = $aItem['NAME'];
     $aCard['description'] = $aItem['PREVIEW_TEXT'];

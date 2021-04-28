@@ -22,7 +22,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 
 <div class="detail__item">
     <div class="detail-aside-banners">
-        <?php foreach ($arResult['mapCards'] as $aItem): ?>
+        <?php foreach ($arResult['mapCards'] as $aItem) : ?>
             <div class="detail-aside-banners__item">
                 <a class="banner <?= $aItem['typeBanner'] ?>" href="<?= $aItem['link'] ?>">
                     <div class="banner__photo-wrapper">

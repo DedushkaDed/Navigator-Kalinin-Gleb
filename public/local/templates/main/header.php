@@ -39,7 +39,7 @@ use Bitrix\Main\Page\Asset;
             <img src="/assets/image/header/logo.png"/>
         </a>
 
-        <?php    $APPLICATION->IncludeComponent(
+        <?php $APPLICATION->IncludeComponent(
             "bitrix:menu",
             "top_menu",
             [
@@ -86,11 +86,14 @@ use Bitrix\Main\Page\Asset;
             <div class="navigation-mobile__item-wrapper">
                 <div class="navigation-mobile__item js-navigation-trigger">
                     <span class="navigation-mobile__page">О компании<div class="navigation-mobile__arrow"
-                        ><svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.83333 0.166626L10 1.33329L5 6.33329L-5.09966e-08
-                                         1.33329L1.16667 0.166626L5 3.99996L8.83333 0.166626Z" fill="#675A54"
-                                ></path></svg></div></span>
+                        ><svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M8.83333 0.166626L10 1.33329L5 6.33329L-5.09966e-08
+                                         1.33329L1.16667 0.166626L5 3.99996L8.83333 0.166626Z" fill="#675A54">
+                                </path>
+                            </svg>
+                        </div>
+                    </span>
                 </div>
                 <div class="navigation-mobile__dropdown js-navigation-dropdown">
                     <a class="navigation-mobile__subpage" href="/about/"
@@ -116,11 +119,17 @@ use Bitrix\Main\Page\Asset;
                     </a>
                 </div>
                 <div class="navigation-mobile__item js-navigation-trigger">
-                    <span class="navigation-mobile__page">Коттеджные поселки<div class="navigation-mobile__arrow"
-                        ><svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            ><path fill-rule="evenodd" clip-rule="evenodd" d="M8.83333 0.166626L10 1.33329L5 6.33329L-5.09966e-08 1.33329L1.16667
-                                         0.166626L5 3.99996L8.83333 0.166626Z" fill="#675A54"
-                                ></path></svg></div></span>
+                    <span class="navigation-mobile__page">Коттеджные поселки
+                        <div class="navigation-mobile__arrow">
+                            <svg width="10" height="7" viewBox="0 0 10 7" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M8.83333 0.166626L10 1.33329L5 6.33329L-5.09966e-08 1.33329L1.16667
+                                         0.166626L5 3.99996L8.83333 0.166626Z" fill="#675A54">
+                                </path>
+                            </svg>
+                        </div>
+                    </span>
                 </div>
                 <div class="navigation-mobile__dropdown js-navigation-dropdown">
                     <a class="navigation-mobile__subpage" href="/projects/detail"
@@ -135,11 +144,17 @@ use Bitrix\Main\Page\Asset;
                     </a>
                 </div>
                 <div class="navigation-mobile__item js-navigation-trigger">
-                    <span class="navigation-mobile__page">Покупателям<div class="navigation-mobile__arrow"
-                        ><svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            ><path fill-rule="evenodd" clip-rule="evenodd" d="M8.83333 0.166626L10 1.33329L5 6.33329L-5.09966e-08 1.33329L1.16667
-                                         0.166626L5 3.99996L8.83333 0.166626Z" fill="#675A54"
-                                ></path></svg></div></span>
+                    <span class="navigation-mobile__page">Покупателям
+                        <div class="navigation-mobile__arrow">
+                            <svg width="10" height="7" viewBox="0 0 10 7"
+                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M8.83333 0.166626L10 1.33329L5 6.33329L-5.09966e-08 1.33329L1.16667
+                                         0.166626L5 3.99996L8.83333 0.166626Z" fill="#675A54">
+                                </path>
+                            </svg>
+                        </div>
+                    </span>
                 </div>
                 <div class="navigation-mobile__dropdown js-navigation-dropdown">
                     <a class="navigation-mobile__subpage" href="/buyer/">Как купить</a>
@@ -149,26 +164,27 @@ use Bitrix\Main\Page\Asset;
                     <a class="navigation-mobile__subpage" href="#">Лояльный покупатель</a>
                 </div>
                 <a class="navigation-mobile__item" href="/obsluzhivayuschaya-kompaniya/"><span
-                            class="navigation-mobile__page">Обслуживающая компания</span></a>
-                <a class="navigation-mobile__item" href="https://xn--80ajaabhmtdas2o.xn--p1ai/"><span class="navigation-mobile__page">Таунхаусы</span>
+                            class="navigation-mobile__page"
+                    >Обслуживающая компания</span>
+                </a>
+                <a class="navigation-mobile__item" href="https://xn--80ajaabhmtdas2o.xn--p1ai/">
+                    <span class="navigation-mobile__page">Таунхаусы</span>
                 </a>
             </div>
             <div class="navigation-mobile__socials">
                 <a class="navigation-mobile__social" href="#" target="_blank">
                     <div class="icon icon--primary icon--hover-brown">
-                        <svg width="11" height="20" viewBox="0 0 11 20" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
+                        <svg width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.57895 6.875V4.375C6.57895 3.685 7.16842 3.125 7.89474 3.125H9.21053V0H6
                              .57895C4.39868 0 2.63158 1.67875 2.63158 3.75V6.875H0V10H2.63158V20H6.57895V10H9
-                             .21053L10.5263 6.875H6.57895Z"
-                                  fill="primary"></path>
+                             .21053L10.5263 6.875H6.57895Z" fill="primary"
+                            ></path>
                         </svg>
                     </div>
                 </a>
                 <a class="navigation-mobile__social" href="#" target="_blank">
                     <div class="icon icon--primary icon--hover-brown">
-                        <svg width="25" height="14" viewBox="0 0 25 14" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
+                        <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M23.8446 12.1602C23.7799 12.0527 23.3799 11.1894 21.4551 9.41514C19.44 7.55723
                              19.7107 7.85892 22.1378 4.6464C23.616 2.68992 24.207 1.49512 24.0221 0.984342C23.8461
                               0.497462 22.7589 0.625902 22.7589 0.625902L19.1437 0.646811C19.1437 0.646811 18.876
@@ -274,11 +290,11 @@ use Bitrix\Main\Page\Asset;
         <?php $APPLICATION->IncludeComponent(
             "bitrix:breadcrumb",
             "navigation",
-            Array(
+            [
                 "PATH" => "",
                 "SITE_ID" => "s1",
-                "START_FROM" => "0"
-            )
-        );?>
+                "START_FROM" => "0",
+            ]
+        ); ?>
     </div>
 </section>

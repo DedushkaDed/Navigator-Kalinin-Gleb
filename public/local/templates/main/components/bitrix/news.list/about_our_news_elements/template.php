@@ -23,23 +23,23 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 <section class="section mb-large">
     <div class="container">
         <div class="grid-news grid-news--top">
-            <?php foreach($arResult['mapCards'] as $aItem):?>
-                <div class="grid-news__item <?=$aItem['typeBlock']?>">
-                    <a class="news-card" href="<?=$aItem['link']?>">
-                        <div class="news-card__image <?=$aItem['typeImage']?>">
-                            <img src="<?=$aItem['image']?>" alt="<?=$aItem['title']?>"/>
+            <?php foreach ($arResult['mapCards'] as $aItem) : ?>
+                <div class="grid-news__item <?= $aItem['typeBlock'] ?>">
+                    <a class="news-card" href="<?= $aItem['link'] ?>">
+                        <div class="news-card__image <?= $aItem['typeImage'] ?>">
+                            <img src="<?= $aItem['image'] ?>" alt="<?= $aItem['title'] ?>"/>
                         </div>
                         <div class="news-card__content">
-                            <div class="news-card__title"><?=$aItem['title']?></div>
-                            <div class="news-card__text"><?=$aItem['description']?></div>
+                            <div class="news-card__title"><?= $aItem['title'] ?></div>
+                            <div class="news-card__text"><?= $aItem['description'] ?></div>
                             <div class="news-card__wrapper">
-                                <div class="news-card__link"><?=$aItem['linkLabel']?></div>
-                                <span class="news-card__date"><?=$aItem['date']?></span>
+                                <div class="news-card__link"><?= $aItem['linkLabel'] ?></div>
+                                <span class="news-card__date"><?= $aItem['date'] ?></span>
                             </div>
                         </div>
                     </a>
                 </div>
-            <?endforeach;?>
+            <? endforeach; ?>
         </div>
     </div>
 </section>

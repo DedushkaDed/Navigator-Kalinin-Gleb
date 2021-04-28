@@ -1,9 +1,8 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-?>
 
-<? $APPLICATION->IncludeComponent(
+    $APPLICATION->IncludeComponent(
     "bitrix:news.detail",
     "about_our_news_element",
     [
@@ -54,8 +53,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "USE_PERMISSIONS" => "N",
         "USE_SHARE" => "N",
     ]
-); ?>
+     );
 
-<?php
-require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
-?>
+
+    require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');

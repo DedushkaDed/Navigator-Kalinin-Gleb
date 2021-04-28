@@ -1,4 +1,4 @@
-<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
@@ -15,9 +15,9 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-?>
 
-<?php $ElementID = $APPLICATION->IncludeComponent(
+
+    $ElementID = $APPLICATION->IncludeComponent(
     "bitrix:news.detail",
     "about_istorii-nashih-zhitelej_element",
     [
@@ -71,5 +71,5 @@ $this->setFrameMode(true);
         "ADD_ELEMENT_CHAIN" => (isset($arParams["ADD_ELEMENT_CHAIN"]) ? $arParams["ADD_ELEMENT_CHAIN"] : ''),
         'STRICT_SECTION_CHECK' => (isset($arParams['STRICT_SECTION_CHECK']) ? $arParams['STRICT_SECTION_CHECK'] : ''),
     ],
-    $component
-); ?>
+     $component
+     );

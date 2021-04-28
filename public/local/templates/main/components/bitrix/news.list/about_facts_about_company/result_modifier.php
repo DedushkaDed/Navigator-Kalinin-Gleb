@@ -27,15 +27,11 @@ foreach ($arResult['ITEMS'] as $key => $aItem) {
     $card['textColor'] = $aItem['PROPERTIES']['TEXT_COLOR']['VALUE_XML_ID'];
 
     if (!empty($card['image']) || $key == 4) {
-//        $card['type'] = 'a';
         $card['size'] = '2';
-    }
-    else {
-//        $card['type'] = 'div';
+    } else {
         $card['size'] = '1';
     }
+
     $mapCards[] = $card;
 }
 $arResult['mapCards'] = $mapCards;
-?>
-

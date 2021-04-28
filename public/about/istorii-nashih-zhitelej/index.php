@@ -1,7 +1,7 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-?><?php $APPLICATION->IncludeComponent(
+    $APPLICATION->IncludeComponent(
     "bitrix:menu",
     "navigation_tabs",
     [
@@ -19,9 +19,9 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
-); ?>
+     );
 
-<? $APPLICATION->IncludeComponent(
+    $APPLICATION->IncludeComponent(
     "bitrix:news",
     "about_istorii-nashih-zhitelej",
     [
@@ -58,7 +58,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
-        "LIST_FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", "", ""],
+        "LIST_FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", "DETAIL_PICTURE", ""],
         "LIST_PROPERTY_CODE" => ["DATE", "", ""],
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",
@@ -92,10 +92,9 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "USE_SEARCH" => "N",
         "USE_SHARE" => "N",
     ]
-); ?>
+     );
 
 
-<?php
-require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
+    require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
 
 ?>

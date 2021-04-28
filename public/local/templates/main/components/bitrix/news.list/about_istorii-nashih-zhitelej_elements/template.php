@@ -24,7 +24,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 <section class="section mb-large">
     <div class="container">
         <div class="grid-news grid-news--top">
-            <?php foreach ($arResult['mapCards'] as $aItem): ?>
+            <?php foreach ($arResult['mapCards'] as $aItem) : ?>
                 <div class="grid-news__item <?= $aItem['typeBlock'] ?>">
                     <a class="news-card <?= $aItem['typeNewCard'] ?>" href="<?= $aItem['link'] ?>">
                         <div class="news-card__image <?= $aItem['typeNewCardImage'] ?>">

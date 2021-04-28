@@ -48,7 +48,9 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
                     <div class="grid-card grid-card--background-green grid-card--color-white">
                         <div class="grid-card__content">
                             <div class="grid-card__title"><?=$aAboutOptions['contentSectionTop']['title']?></div>
-                            <div class="grid-card__subtext"><?=$aAboutOptions['contentSectionTop']['description']?></div>
+                            <div class="grid-card__subtext">
+                                <?=$aAboutOptions['contentSectionTop']['description']?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -191,10 +193,10 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
 <section class="section section--overflow-hidden mb-large">
     <div class="container">
         <div class="section-header">Почему выбирают нас?</div>
-        <?$APPLICATION->IncludeComponent(
+        <?php $APPLICATION->IncludeComponent(
             "bitrix:news.list",
             "about_why_choose_us",
-            Array(
+            [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
                 "AJAX_MODE" => "N",
@@ -210,7 +212,7 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
                 "DETAIL_URL" => "",
                 "DISPLAY_BOTTOM_PAGER" => "Y",
                 "DISPLAY_TOP_PAGER" => "N",
-                "FIELD_CODE" => array("NAME", "PREVIEW_TEXT", "DETAIL_TEXT", ""),
+                "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "DETAIL_TEXT", ""],
                 "FILTER_NAME" => "",
                 "HIDE_LINK_WHEN_NO_DETAIL" => "N",
                 "IBLOCK_ID" => "6",
@@ -229,7 +231,7 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
                 "PARENT_SECTION" => "",
                 "PARENT_SECTION_CODE" => "",
                 "PREVIEW_TRUNCATE_LEN" => "",
-                "PROPERTY_CODE" => array("DESCRIPTION_3", "DESCRIPTION_4", "DESCRIPTION_5", ""),
+                "PROPERTY_CODE" => ["DESCRIPTION_3", "DESCRIPTION_4", "DESCRIPTION_5", ""],
                 "SET_BROWSER_TITLE" => "N",
                 "SET_LAST_MODIFIED" => "N",
                 "SET_META_DESCRIPTION" => "N",
@@ -241,18 +243,18 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
                 "SORT_BY2" => "SORT",
                 "SORT_ORDER1" => "DESC",
                 "SORT_ORDER2" => "ASC",
-                "STRICT_SECTION_CHECK" => "N"
-            )
-        );?>
+                "STRICT_SECTION_CHECK" => "N",
+            ]
+        ); ?>
     </div>
 </section>
 <section class="section section--overflow-hidden mb-large">
     <div class="container">
         <div class="section-header">Нам доверяют</div>
-        <?$APPLICATION->IncludeComponent(
+        <?php $APPLICATION->IncludeComponent(
             "bitrix:news.list",
             "about_trust_us",
-            Array(
+            [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
                 "AJAX_MODE" => "N",
@@ -272,7 +274,7 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
                 "DISPLAY_PICTURE" => "Y",
                 "DISPLAY_PREVIEW_TEXT" => "Y",
                 "DISPLAY_TOP_PAGER" => "N",
-                "FIELD_CODE" => array("PREVIEW_PICTURE", ""),
+                "FIELD_CODE" => ["PREVIEW_PICTURE", ""],
                 "FILTER_NAME" => "",
                 "HIDE_LINK_WHEN_NO_DETAIL" => "N",
                 "IBLOCK_ID" => "7",
@@ -291,7 +293,7 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
                 "PARENT_SECTION" => "",
                 "PARENT_SECTION_CODE" => "",
                 "PREVIEW_TRUNCATE_LEN" => "",
-                "PROPERTY_CODE" => array("", ""),
+                "PROPERTY_CODE" => ["", ""],
                 "SET_BROWSER_TITLE" => "N",
                 "SET_LAST_MODIFIED" => "N",
                 "SET_META_DESCRIPTION" => "N",
@@ -303,9 +305,9 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
                 "SORT_BY2" => "SORT",
                 "SORT_ORDER1" => "DESC",
                 "SORT_ORDER2" => "ASC",
-                "STRICT_SECTION_CHECK" => "N"
-            )
-        );?>
+                "STRICT_SECTION_CHECK" => "N",
+            ]
+        ); ?>
     </div>
 </section>
 <section class="section mb-large">
@@ -317,14 +319,17 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
                         <div class="form-wide__left-line"></div>
                         <div class="form-wide__text form-wide__text--vertical-md">
                             <div class="form-wide__title">Экскурсия по загородной жизни</div>
-                            <div class="form-wide__description">Приглашаем вас на обзорную экскурсию по загородной жизни в один из
+                            <div class="form-wide__description">
+                                Приглашаем вас на обзорную экскурсию по загородной жизни в один из
                                 наших поселков. Заполните форму ниже, и мы вам перезвоним.
                             </div>
                         </div>
-                        <form class="form-wide__form js-form" action="/?ajaxAction=formExcursion" data-name="wide-excursion">
+                        <form class="form-wide__form js-form" action="/?ajaxAction=formExcursion"
+                              data-name="wide-excursion">
                             <div class="form-wide__form-item form-wide__form-item--field">
                                 <div class="input js-input">
-                                    <input class="input__field" type="text" name="name" placeholder="Имя" data-validate="required,name"/>
+                                    <input class="input__field" type="text" name="name" placeholder="Имя"
+                                           data-validate="required,name"/>
                                     <div class="input__error"></div>
                                 </div>
                             </div>
@@ -342,7 +347,8 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
                                         <input class="checkbox__field" type="checkbox" data-validate="required"/>
                                         <div class="checkbox__custom checkbox__custom--border"></div>
                                         <div class="checkbox__text">Подтверждаю согласие с
-                                            <a class="checkbox__link" href="#" target="_blank"> политикой обработки персональных данных</a>
+                                            <a class="checkbox__link" href="#" target="_blank">
+                                                политикой обработки персональных данных</a>
                                         </div>
                                     </label>
                                     <div class="checkbox__error"></div>
