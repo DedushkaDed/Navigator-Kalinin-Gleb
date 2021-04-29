@@ -37,8 +37,7 @@ if (empty($arResult)) {
             </div>
         <?php else : ?>
             <a class="pagination__button pagination__button--prev"
-               href="<?= $arResult["sUrlPath"] ?>?PAGEN_
-               <?= $arResult["NavNum"] ?>=<?= $arResult["NavPageNomer"] - 1 ?>">
+           href="<?= $arResult["sUrlPath"] ?>?PAGEN_<?= $arResult["NavNum"] ?>=<?= $arResult["NavPageNomer"] - 1 ?>">
                 <svg width="13" height="13" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                             d="M0.646446 3.64645C0.451184 3.84171 0.451184 4.15829 0.646446 4.35355L3.82843
@@ -84,8 +83,7 @@ if (empty($arResult)) {
         </div>
         <?php else : ?>
             <a class="pagination__button pagination__button--next "
-               href="<?= $arResult["sUrlPath"] ?>
-               ?PAGEN_<?= $arResult["NavNum"] ?>=<?= $arResult["NavPageNomer"] + 1 ?>">
+           href="<?= $arResult["sUrlPath"] ?>?PAGEN_<?= $arResult["NavNum"] ?>=<?= $arResult["NavPageNomer"] + 1 ?>">
                 <span>Вперед</span>
                 <svg width="13" height="13" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
