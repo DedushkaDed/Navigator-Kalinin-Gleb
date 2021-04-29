@@ -14,4 +14,11 @@ $arUrlRewrite = [
         'PATH' => '/about/istorii-nashih-zhitelej/detail/index.php',
         'SORT' => 100,
     ],
+    [
+        'CONDITION' => '#^/blog/#',
+        'RULE' => 'ID=$1',
+        'ID' => 'bitrix:news',
+        'PATH' => '/blog/detail/index.php',
+        'SORT' => 100,
+    ],
 ];

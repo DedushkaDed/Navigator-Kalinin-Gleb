@@ -1,4 +1,5 @@
 <?php
+
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
     $APPLICATION->IncludeComponent(
@@ -19,11 +20,11 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
-     );
+    );
 
     $APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "tenderi_accordion",
+    "about_rabota_accordion",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -47,10 +48,10 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "DETAIL_TEXT", ""],
         "FILTER_NAME" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "15",
+        "IBLOCK_ID" => "16",
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-        "INCLUDE_SUBSECTIONS" => "N",
+        "INCLUDE_SUBSECTIONS" => "Y",
         "MESSAGE_404" => "",
         "NEWS_COUNT" => "10",
         "PAGER_BASE_LINK_ENABLE" => "N",
@@ -59,11 +60,11 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "PAGER_SHOW_ALL" => "N",
         "PAGER_SHOW_ALWAYS" => "N",
         "PAGER_TEMPLATE" => "",
-        "PAGER_TITLE" => "Тендеры",
+        "PAGER_TITLE" => "Новости",
         "PARENT_SECTION" => "",
         "PARENT_SECTION_CODE" => "",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "PROPERTY_CODE" => ["DATE_START", "DATE_END", "CONTACT_TEXT", "DOWNLOAD_INFO", ""],
+        "PROPERTY_CODE" => ["TASKS", "REQUIREMENTS", "CONDITIONS"],
         "SET_BROWSER_TITLE" => "N",
         "SET_LAST_MODIFIED" => "N",
         "SET_META_DESCRIPTION" => "N",
@@ -77,6 +78,6 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
     ]
-);
+     );
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
