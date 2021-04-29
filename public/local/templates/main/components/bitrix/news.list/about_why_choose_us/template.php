@@ -33,7 +33,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                             <div class="card-list__icon">
                                 <img class="img" src="<?= $iIcon ?>"/>
                             </div>
-                            <div class="card-list__title"><?= $aItem['name'] ?></div>
+                            <div class="card-list__title"><?= $aItem['NAME'] ?></div>
                             <div class="card-list__list-container"></div>
                             <div class="card-list__list-item"><?= $aItem['PREVIEW_TEXT'] ?></div>
                             <div class="card-list__list-item"><?= $aItem['DETAIL_TEXT'] ?></div>
@@ -48,7 +48,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                             </div>
                         </div>
                     </div>
-                <? endforeach; ?>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
