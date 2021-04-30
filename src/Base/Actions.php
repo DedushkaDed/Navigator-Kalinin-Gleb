@@ -2,6 +2,8 @@
 
 namespace IQDEV\Base;
 
+use IQDEV\Entity\Office;
+
 class Actions
 {
     /**
@@ -133,9 +135,8 @@ class Actions
         $this->setAjaxResponse($this->oRequest);
     }
 
-//    Fixme: Демо-представление. Создать метод(getCordsAll) в классе Office.
     public function getOfficeCoordsAjaxAction() {
         $coords = Office::getCordsAll();
-        $this->setAjaxResponse();
+        $this->setAjaxResponse($coords);
     }
 }
