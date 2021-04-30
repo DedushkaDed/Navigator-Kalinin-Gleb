@@ -15,8 +15,8 @@ if (empty($arResult)) {
     return;
 }
 
-$mapCards = [];
-foreach ($arResult['ITEMS'] as $key => $aItem) {
+$aMapCards = [];
+foreach ($arResult['ITEMS'] as $iKey => $aItem) {
     $aCard = [];
     $aCard['title'] = $aItem['NAME'];
     $aCard['description'] = $aItem['PREVIEW_TEXT'];
@@ -25,10 +25,10 @@ foreach ($arResult['ITEMS'] as $key => $aItem) {
     $aCard['link'] = $aItem['ID'];
     $aCard['date'] = $aItem['PROPERTIES']['DATE']['VALUE'];
 
-    if ($key == 0 || $key == 1) {
+    if ($iKey == 0 || $iKey == 1) {
         $aCard['typeBlock'] = "grid-news__item--half";
         $aCard['typeImage'] = "news-card__image--grid-half";
     }
-    $mapCards[] = $aCard;
+    $aMapCards[] = $aCard;
 }
-$arResult['mapCards'] = $mapCards;
+$arResult['mapCards'] = $aMapCards;
