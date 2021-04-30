@@ -1,7 +1,6 @@
-<?
-$sSectionName = "Полезные статьи";
+<?php
+$sSectionName = "Тендеры";
 $arDirProperties = [
-    "TITLE" => "Полезные статьи",
-    "DESCRIPTION" => "Описание раздела полезные статьи",
+    "TITLE" => "Тендеры",
+    "DESCRIPTION" => "Описание раздела тендеры",
 ];
-?>

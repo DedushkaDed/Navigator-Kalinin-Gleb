@@ -132,4 +132,10 @@ class Actions
     {
         $this->setAjaxResponse($this->oRequest);
     }
+
+//    Fixme: Демо-представление. Создать метод(getCordsAll) в классе Office.
+    public function getOfficeCoordsAjaxAction() {
+        $coords = Office::getCordsAll();
+        $this->setAjaxResponse();
+    }
 }
