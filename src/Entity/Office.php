@@ -2,6 +2,11 @@
 
 namespace IQDEV\Entity;
 
+use IQDEV\Options\Options;
+
+
+
+
 class Office
 {
     /**
@@ -11,9 +16,12 @@ class Office
      */
     public static function getCordsAll()
     {
-        return [
-            'main' => [57.160288, 65.532908],
-            'alpine' => [57.255012, 65.094918],
-        ];
+        $random = Options::getPageOptions('mapOffices');
+        $aResult = [];
+        foreach ($random['offices'] as $iKey => $aItem) {
+//            Проверка $aItem -> regexp ?.
+            $aResult[$iKey] =  explode(",", $aItem);
+        }
+        return $aResult;
     }
 }
