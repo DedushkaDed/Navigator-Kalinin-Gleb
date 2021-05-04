@@ -17,21 +17,21 @@ if (empty($arResult['ITEMS'])) {
 
 $aMapCards = [];
 foreach ($arResult['ITEMS'] as $iKey => $aItem) {
-    $card = [];
-    $card['title'] = $aItem['NAME'];
-    $card['description'] = $aItem['PREVIEW_TEXT'];
-    $card['image'] = $aItem['PREVIEW_PICTURE']['SRC'];
-    $card['linkLabel'] = $aItem['DETAIL_TEXT'];
-    $card['link'] = $aItem['PROPERTIES']['LINK']['VALUE'];
-    $card['backgroundColor'] = $aItem['PROPERTIES']['BACKGROUND_COLOR']['VALUE_XML_ID'];
-    $card['textColor'] = $aItem['PROPERTIES']['TEXT_COLOR']['VALUE_XML_ID'];
+    $aCard = [];
+    $aCard['title'] = $aItem['NAME'];
+    $aCard['description'] = $aItem['PREVIEW_TEXT'];
+    $aCard['image'] = $aItem['PREVIEW_PICTURE']['SRC'];
+    $aCard['linkLabel'] = $aItem['DETAIL_TEXT'];
+    $aCard['link'] = $aItem['PROPERTIES']['LINK']['VALUE'];
+    $aCard['backgroundColor'] = $aItem['PROPERTIES']['BACKGROUND_COLOR']['VALUE_XML_ID'];
+    $aCard['textColor'] = $aItem['PROPERTIES']['TEXT_COLOR']['VALUE_XML_ID'];
 
-    if (!empty($card['image']) || $iKey == 4) {
-        $card['size'] = '2';
+    if (!empty($aCard['image']) || $iKey == 4) {
+        $aCard['size'] = '2';
     } else {
-        $card['size'] = '1';
+        $aCard['size'] = '1';
     }
 
-    $aMapCards[] = $card;
+    $aMapCards[] = $aCard;
 }
 $arResult['mapCards'] = $aMapCards;
