@@ -1,6 +1,6 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-$iIblockNews = IQDEV\Base\Helper::getIblockId('news');
+$iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
 
 
     $APPLICATION->IncludeComponent(
@@ -24,7 +24,7 @@ $iIblockNews = IQDEV\Base\Helper::getIblockId('news');
      );
     $APPLICATION->IncludeComponent(
     "bitrix:news",
-    "about_our_news",
+    "blog",
     [
         "ADD_ELEMENT_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -42,11 +42,11 @@ $iIblockNews = IQDEV\Base\Helper::getIblockId('news');
         "DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
         "DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
         "DETAIL_DISPLAY_TOP_PAGER" => "N",
-        "DETAIL_FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", ""],
+        "DETAIL_FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", "DETAIL_PICTURE", "", ""],
         "DETAIL_PAGER_SHOW_ALL" => "Y",
         "DETAIL_PAGER_TEMPLATE" => "",
         "DETAIL_PAGER_TITLE" => "Страница",
-        "DETAIL_PROPERTY_CODE" => ["DATE", ""],
+        "DETAIL_PROPERTY_CODE" => ["DATE", "TEXT_HISTORY_RESIDENT", "", ""],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "Y",
         "DISPLAY_DATE" => "N",
@@ -55,12 +55,12 @@ $iIblockNews = IQDEV\Base\Helper::getIblockId('news');
         "DISPLAY_PREVIEW_TEXT" => "N",
         "DISPLAY_TOP_PAGER" => "N",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "$iIblockNews",
+        "IBLOCK_ID" => "$iIblockArticles",
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
-        "LIST_FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", "DETAIL_PICTURE"],
-        "LIST_PROPERTY_CODE" => ["DATE", "LINK", ""],
+        "LIST_FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", "DETAIL_PICTURE", ""],
+        "LIST_PROPERTY_CODE" => ["DATE", "", ""],
         "MESSAGE_404" => "",
         "META_DESCRIPTION" => "-",
         "META_KEYWORDS" => "-",
@@ -73,7 +73,7 @@ $iIblockNews = IQDEV\Base\Helper::getIblockId('news');
         "PAGER_TEMPLATE" => "about_page_navigation",
         "PAGER_TITLE" => "Постраничная навигация",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "SEF_FOLDER" => "/about/our-news/",
+        "SEF_FOLDER" => "/blog/",
         "SEF_MODE" => "Y",
         "SEF_URL_TEMPLATES" => ["detail" => "#ELEMENT_ID#/", "news" => "", "section" => ""],
         "SET_LAST_MODIFIED" => "N",
@@ -93,7 +93,6 @@ $iIblockNews = IQDEV\Base\Helper::getIblockId('news');
         "USE_SEARCH" => "N",
         "USE_SHARE" => "N",
     ]
-     );
-
+    );
 
     require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');

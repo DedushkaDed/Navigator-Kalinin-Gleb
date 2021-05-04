@@ -1,6 +1,9 @@
 <?php
+
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-$iIblockTenderi = IQDEV\Base\Helper::getIblockId('tenderi');
+
+$iIblockRabotaAccordion = IQDEV\Base\Helper::getIblockId('rabota_accordion');
+$iIblockRabotaContent = IQDEV\Base\Helper::getIblockId('rabota_content');
 
     $APPLICATION->IncludeComponent(
     "bitrix:menu",
@@ -20,10 +23,10 @@ $iIblockTenderi = IQDEV\Base\Helper::getIblockId('tenderi');
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
-     );
+    );
     $APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "tenderi_accordion",
+    "about_rabota_accordion",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -47,10 +50,10 @@ $iIblockTenderi = IQDEV\Base\Helper::getIblockId('tenderi');
         "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "DETAIL_TEXT", ""],
         "FILTER_NAME" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "$iIblockTenderi",
+        "IBLOCK_ID" => "$iIblockRabotaAccordion",
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-        "INCLUDE_SUBSECTIONS" => "N",
+        "INCLUDE_SUBSECTIONS" => "Y",
         "MESSAGE_404" => "",
         "NEWS_COUNT" => "10",
         "PAGER_BASE_LINK_ENABLE" => "N",
@@ -59,11 +62,11 @@ $iIblockTenderi = IQDEV\Base\Helper::getIblockId('tenderi');
         "PAGER_SHOW_ALL" => "N",
         "PAGER_SHOW_ALWAYS" => "N",
         "PAGER_TEMPLATE" => "",
-        "PAGER_TITLE" => "Тендеры",
+        "PAGER_TITLE" => "Новости",
         "PARENT_SECTION" => "",
         "PARENT_SECTION_CODE" => "",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "PROPERTY_CODE" => ["DATE_START", "DATE_END", "CONTACT_TEXT", "DOWNLOAD_INFO", ""],
+        "PROPERTY_CODE" => ["TASKS", "REQUIREMENTS", "CONDITIONS"],
         "SET_BROWSER_TITLE" => "N",
         "SET_LAST_MODIFIED" => "N",
         "SET_META_DESCRIPTION" => "N",
@@ -77,8 +80,68 @@ $iIblockTenderi = IQDEV\Base\Helper::getIblockId('tenderi');
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
     ]
-    );
-
+     );
+    $APPLICATION->IncludeComponent(
+    "bitrix:news.list",
+    "about_rabota_content",
+    [
+        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+        "ADD_SECTIONS_CHAIN" => "N",
+        "AJAX_MODE" => "N",
+        "AJAX_OPTION_ADDITIONAL" => "",
+        "AJAX_OPTION_HISTORY" => "N",
+        "AJAX_OPTION_JUMP" => "N",
+        "AJAX_OPTION_STYLE" => "N",
+        "CACHE_FILTER" => "N",
+        "CACHE_GROUPS" => "N",
+        "CACHE_TIME" => "36000000",
+        "CACHE_TYPE" => "A",
+        "CHECK_DATES" => "Y",
+        "DETAIL_URL" => "",
+        "DISPLAY_BOTTOM_PAGER" => "N",
+        "DISPLAY_TOP_PAGER" => "N",
+        "FIELD_CODE" => ["NAME", ""],
+        "FILTER_NAME" => "",
+        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+        "IBLOCK_ID" => "$iIblockRabotaContent",
+        "IBLOCK_TYPE" => "content",
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+        "INCLUDE_SUBSECTIONS" => "N",
+        "MESSAGE_404" => "",
+        "NEWS_COUNT" => "10",
+        "PAGER_BASE_LINK_ENABLE" => "N",
+        "PAGER_DESC_NUMBERING" => "N",
+        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+        "PAGER_SHOW_ALL" => "N",
+        "PAGER_SHOW_ALWAYS" => "N",
+        "PAGER_TEMPLATE" => "",
+        "PAGER_TITLE" => "",
+        "PARENT_SECTION" => "",
+        "PARENT_SECTION_CODE" => "",
+        "PREVIEW_TRUNCATE_LEN" => "",
+        "PROPERTY_CODE" => [
+            "VACANCY_TEXT_FIRST",
+            "VACANCY_TEXT_SECOND",
+            "VACANCY_TEXT_THIRD",
+            "VACANCY_TEXT_FOURTH",
+            "VACANCY_TEXT_FIFTH",
+            "IMAGE_CONTENT",
+            "",
+        ],
+        "SET_BROWSER_TITLE" => "N",
+        "SET_LAST_MODIFIED" => "N",
+        "SET_META_DESCRIPTION" => "N",
+        "SET_META_KEYWORDS" => "N",
+        "SET_STATUS_404" => "N",
+        "SET_TITLE" => "N",
+        "SHOW_404" => "N",
+        "SORT_BY1" => "SORT",
+        "SORT_BY2" => "SORT",
+        "SORT_ORDER1" => "DESC",
+        "SORT_ORDER2" => "ASC",
+        "STRICT_SECTION_CHECK" => "N",
+    ]
+     );
     ?>
 
 <section class="section mb-large">
@@ -116,8 +179,9 @@ $iIblockTenderi = IQDEV\Base\Helper::getIblockId('tenderi');
                                         <input class="checkbox__field" type="checkbox" data-validate="required"/>
                                         <div class="checkbox__custom checkbox__custom--border"></div>
                                         <div class="checkbox__text">Подтверждаю согласие с
-                                            <a class="checkbox__link" href="#" target="_blank">
-                                                политикой обработки персональных данных</a>
+                                            <a class="checkbox__link" href="#" target="_blank"
+                                            > политикой обработки персональных данных
+                                            </a>
                                         </div>
                                     </label>
                                     <div class="checkbox__error"></div>
@@ -138,4 +202,6 @@ $iIblockTenderi = IQDEV\Base\Helper::getIblockId('tenderi');
     </div>
 </section>
 
-<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
+<?php
+require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
+?>
