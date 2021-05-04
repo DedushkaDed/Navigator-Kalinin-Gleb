@@ -26,9 +26,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
         <div class="grid-news grid-news--top">
             <?php foreach ($arResult['mapCards'] as $aItem) : ?>
                 <div class="grid-news__item <?= $aItem['typeBlock'] ?>">
-                    <a class="news-card <?= $aItem['typeNewCard'] ?>" href="<?= $aItem['link'] ?>">
+                    <a class="news-card <?= $aItem['typeNewCard'] ?>" href="<?= $aItem['link'] ?>/">
                         <div class="news-card__image <?= $aItem['typeNewCardImage'] ?>">
-                            <img src="<?= $aItem['image'] ?>" alt="<?= $aItem['title'] ?>"/>
+                            <img src="<?= $aItem['image'] ?>" alt="<?= $aItem['title'] ?>/"/>
                         </div>
                         <div class="news-card__content <?= $aItem['typeNewCardContent'] ?>">
                             <div class="news-card__title <?= $aItem['typeNewCardTitle'] ?>"><?= $aItem['title'] ?></div>

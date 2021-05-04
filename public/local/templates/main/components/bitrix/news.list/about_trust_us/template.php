@@ -47,11 +47,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                     </div>
                 </div>
                 <ul class="slider-trust-controls__list glide__bullets" data-glide-el="controls[nav]">
-                    <li class="glide__bullet" data-glide-dir="=0">0</li>
-                    <li class="glide__bullet" data-glide-dir="=1">1</li>
-                    <li class="glide__bullet" data-glide-dir="=2">2</li>
-                    <li class="glide__bullet" data-glide-dir="=3">3</li>
-                    <li class="glide__bullet" data-glide-dir="=4">4</li>
+                    <?php foreach ($arResult['ITEMS'] as $iKey => $aItem) : ?>
+                        <li class="glide__bullet" data-glide-dir="=<?=$iKey?>"><?=$iKey?></li>
+                    <?php endforeach;?>
                 </ul>
                 <div data-glide-el="controls">
                     <div class="slider-trust-controls__arrow glide__arrow glide__arrow--next" data-glide-dir="&gt;">
