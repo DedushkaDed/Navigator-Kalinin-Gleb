@@ -15,8 +15,8 @@ if (empty($arResult['ITEMS'])) {
     return;
 }
 
-$mapCards = [];
-foreach ($arResult['ITEMS'] as $key => $aItem) {
+$aMapCards = [];
+foreach ($arResult['ITEMS'] as $iKey => $aItem) {
     $card = [];
     $card['title'] = $aItem['NAME'];
     $card['description'] = $aItem['PREVIEW_TEXT'];
@@ -26,12 +26,12 @@ foreach ($arResult['ITEMS'] as $key => $aItem) {
     $card['backgroundColor'] = $aItem['PROPERTIES']['BACKGROUND_COLOR']['VALUE_XML_ID'];
     $card['textColor'] = $aItem['PROPERTIES']['TEXT_COLOR']['VALUE_XML_ID'];
 
-    if (!empty($card['image']) || $key == 4) {
+    if (!empty($card['image']) || $iKey == 4) {
         $card['size'] = '2';
     } else {
         $card['size'] = '1';
     }
 
-    $mapCards[] = $card;
+    $aMapCards[] = $card;
 }
-$arResult['mapCards'] = $mapCards;
+$arResult['mapCards'] = $aMapCards;

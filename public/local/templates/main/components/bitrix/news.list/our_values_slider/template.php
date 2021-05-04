@@ -46,8 +46,8 @@ if (empty($arResult['ITEMS'])) {
         </div>
 
         <ul class="slider-simple-controls__list" data-glide-el="controls[nav]">
-            <?php foreach ($arResult['ITEMS'] as $aItem) : ?>
-                <li class="glide__bullet" data-glide-dir="=<?=$aItem['ID']?>"><?=$aItem['ID']?></li>
+            <?php foreach ($arResult['ITEMS'] as $iKey => $aItem) : ?>
+                <li class="glide__bullet" data-glide-dir="=<?=$iKey?>"><?=$iKey?></li>
             <?endforeach;?>
         </ul>
         <div data-glide-el="controls">

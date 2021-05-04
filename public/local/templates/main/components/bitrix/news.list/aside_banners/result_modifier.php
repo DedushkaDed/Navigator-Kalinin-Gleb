@@ -15,8 +15,8 @@ if (empty($arResult)) {
     return;
 }
 
-$mapCards = [];
-foreach ($arResult['ITEMS'] as $key => $aItem) {
+$aMapCards = [];
+foreach ($arResult['ITEMS'] as $iKey => $aItem) {
     $aCard = [];
     $aCard['title'] = $aItem['NAME'];
     $aCard['description'] = $aItem['PREVIEW_TEXT'];
@@ -24,9 +24,9 @@ foreach ($arResult['ITEMS'] as $key => $aItem) {
     $aCard['linkLabel'] = $aItem['DETAIL_TEXT'];
     $aCard['link'] = $aItem['PROPERTIES']['LINK']['VALUE'];
 
-    if ($key % 2 != 0) {
+    if ($iKey % 2 != 0) {
         $aCard['typeBanner'] = 'banner--reverse';
     }
-    $mapCards[] = $aCard;
+    $aMapCards[] = $aCard;
 }
-$arResult['mapCards'] = $mapCards;
+$arResult['mapCards'] = $aMapCards;

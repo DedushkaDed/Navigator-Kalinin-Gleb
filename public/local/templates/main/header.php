@@ -5,6 +5,8 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 
 use Bitrix\Main\Page\Asset;
 
+\Bitrix\Main\Loader::includeModule('iqdev.options');
+$aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -59,8 +61,8 @@ use Bitrix\Main\Page\Asset;
             false
         ); ?>
 
-        <a class="header__number js-stats link-blue roistat_phone_navig" href="tel:+73452564276">+7 3452
-            <b>564-276</b>
+        <a class="header__number js-stats link-blue roistat_phone_navig" href="tel:<?=$aOptions['link']?>">
+            <?= $aOptions['number'] ?>
         </a>
         <div class="header__button">
             <div class="button button--primary js-modal-trigger" data-modal-id="callback">
@@ -79,14 +81,15 @@ use Bitrix\Main\Page\Asset;
             </svg>
         </div>
         <div class="navigation-mobile js-navigation-mobile">
-            <a class="navigation-mobile__number js-stats link-blue roistat_phone_navig" href="tel:+73452564276"
-            >+7 3452
-                <b>564-276</b>
+            <a class="navigation-mobile__number js-stats link-blue roistat_phone_navig"
+               href="tel:<?=$aOptions['link']?>"><?= $aOptions['number'] ?>
             </a>
             <div class="navigation-mobile__item-wrapper">
                 <div class="navigation-mobile__item js-navigation-trigger">
-                    <span class="navigation-mobile__page">О компании<div class="navigation-mobile__arrow"
-                        ><svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <span class="navigation-mobile__page">О компании
+                        <div class="navigation-mobile__arrow">
+                            <svg width="10" height="7"
+                                 viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                       d="M8.83333 0.166626L10 1.33329L5 6.33329L-5.09966e-08
                                          1.33329L1.16667 0.166626L5 3.99996L8.83333 0.166626Z" fill="#675A54">
