@@ -7,7 +7,7 @@ if (empty($arResult)) {
 } ?>
 
 <div class="navigation">
-    <?php foreach ($arResult as $aItem) :?>
+    <?php foreach ($arResult as $aItem) : ?>
         <?php if (!empty($aItem['subitems'])) :?>
             <div class="navigation__item" href="<?= $aItem["LINK"] ?>">
                 <span class="navigation__page"><?= $aItem["TEXT"] ?></span>

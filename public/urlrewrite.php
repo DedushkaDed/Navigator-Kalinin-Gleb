@@ -1,17 +1,17 @@
 <?php
 $arUrlRewrite = [
     [
-        'CONDITION' => '#^/about/our-news/#',
-        'RULE' => 'ID=$1',
+        'CONDITION' => '#^/about/our-news/([a-zA-Z0-9-]+)/.*#',
+        'RULE' => 'ELEMENT_ID=$1',
         'ID' => 'bitrix:news',
-        'PATH' => '/about/our-news/detail/index.php',
+        'PATH' => '/about/our-news/index.php',
         'SORT' => 100,
     ],
     [
-        'CONDITION' => '#^/about/istorii-nashih-zhitelej/#',
-        'RULE' => 'ID=$1',
+        'CONDITION' => '#^/about/istorii-nashih-zhitelej/([a-zA-Z0-9-]+)/.*#',
+        'RULE' => 'ELEMENT_ID=$1',
         'ID' => 'bitrix:news',
-        'PATH' => '/about/istorii-nashih-zhitelej/detail/index.php',
+        'PATH' => '/about/istorii-nashih-zhitelej/index.php',
         'SORT' => 100,
     ],
 ];

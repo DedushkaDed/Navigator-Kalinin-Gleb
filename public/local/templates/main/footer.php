@@ -1,7 +1,10 @@
 <?php
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     die();
-} ?>
+}
+\Bitrix\Main\Loader::includeModule('iqdev.options');
+$aOptions = \IQDEV\Options\Options::getPageOptions('footer');
+?>
 <div class="line-unit">
     <div class="container">
         <div class="line-unit__grid">
@@ -225,7 +228,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 <div class="footer__contacts-title">Наши контакты</div>
                 <div class="footer__contacts-inner">
                     <a class="footer__contacts-number roistat_phone_navig"
-                       href="tel:+73452546276">+ 7 (3452) 546-276
+                       href="<?= $aOptions['href']?>"><?= $aOptions['number']?>
                         <svg class="footer__contacts-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path d="M2.965 6.0925C4.045 8.215 5.785 9.9475 7.9075 11.035L9.5575 9.385C9.76 9.1825
@@ -236,10 +239,10 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                                   fill="white"></path>
                         </svg>
                     </a>
-                    <div class="footer__contacts-worktime">Офис Пн - Пт: 9:00-18:00</div>
-                    <div class="footer__contacts-calltime">Call-центр работает ежедневно с 9:00-20:00</div>
+                    <div class="footer__contacts-worktime"><?=$aOptions['worktime']?></div>
+                    <div class="footer__contacts-calltime"><?=$aOptions['calltime']?></div>
                     <div class="footer__contacts-address">
-                        <span>г. Тюмень, ул. Семакова, 2/1
+                        <span><?=$aOptions['address']?>
                             <svg
                                     class="footer__contacts-icon" width="14" height="16" viewBox="0 0 14 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">

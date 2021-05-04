@@ -77,6 +77,7 @@ $iIblockStories = IQDEV\Base\Helper::getIblockId('stories');
         "SEF_FOLDER" => "/about/istorii-nashih-zhitelej/",
         "SEF_MODE" => "Y",
         "SEF_URL_TEMPLATES" => ["detail" => "#ELEMENT_ID#/", "news" => "", "section" => ""],
+        "VARIABLE_ALIASES" => ["detail" => "#ELEMENT_ID#/", "news" => "", "section" => ""],
         "SET_LAST_MODIFIED" => "N",
         "SET_STATUS_404" => "Y",
         "SET_TITLE" => "N",
