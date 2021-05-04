@@ -16,7 +16,6 @@ class Office
         $random = Options::getPageOptions('mapOffices');
         $aResult = [];
         foreach ($random['offices'] as $iKey => $aItem) {
-//            Проверка $aItem -> regexp ?.
             $aResult[$iKey] =  explode(",", $aItem);
         }
             return $aResult;
