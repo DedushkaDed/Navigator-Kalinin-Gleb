@@ -4,9 +4,6 @@ namespace IQDEV\Entity;
 
 use IQDEV\Options\Options;
 
-
-
-
 class Office
 {
     /**
@@ -22,6 +19,6 @@ class Office
 //            Проверка $aItem -> regexp ?.
             $aResult[$iKey] =  explode(",", $aItem);
         }
-        return $aResult;
+            return $aResult;
     }
 }
