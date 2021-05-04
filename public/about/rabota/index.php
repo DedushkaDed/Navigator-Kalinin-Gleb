@@ -2,6 +2,9 @@
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
+$iIblockRabotaAccordion = IQDEV\Base\Helper::getIblockId('rabota_accordion');
+$iIblockRabotaContent = IQDEV\Base\Helper::getIblockId('rabota_content');
+
     $APPLICATION->IncludeComponent(
     "bitrix:menu",
     "navigation_tabs",
@@ -20,7 +23,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
-);
+    );
     $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "about_rabota_accordion",
@@ -47,7 +50,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "DETAIL_TEXT", ""],
         "FILTER_NAME" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "16",
+        "IBLOCK_ID" => "$iIblockRabotaAccordion",
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "Y",
@@ -100,7 +103,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "FIELD_CODE" => ["NAME", ""],
         "FILTER_NAME" => "",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "17",
+        "IBLOCK_ID" => "$iIblockRabotaContent",
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
@@ -139,7 +142,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "STRICT_SECTION_CHECK" => "N",
     ]
      );
-?>
+    ?>
 
 <section class="section mb-large">
     <div class="container-large">

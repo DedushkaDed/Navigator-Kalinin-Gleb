@@ -21,8 +21,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
     ],
     false
      );
-
-$APPLICATION->IncludeComponent(
+    $APPLICATION->IncludeComponent(
     "bitrix:news",
     "blog",
     [
@@ -55,7 +54,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_PREVIEW_TEXT" => "N",
         "DISPLAY_TOP_PAGER" => "N",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "11",
+        "IBLOCK_ID" => "$iIblockArticles",
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
@@ -73,7 +72,7 @@ $APPLICATION->IncludeComponent(
         "PAGER_TEMPLATE" => "about_page_navigation",
         "PAGER_TITLE" => "Постраничная навигация",
         "PREVIEW_TRUNCATE_LEN" => "",
-        "SEF_FOLDER" => "/about/istorii-nashih-zhitelej/",
+        "SEF_FOLDER" => "/blog/",
         "SEF_MODE" => "Y",
         "SEF_URL_TEMPLATES" => ["detail" => "#ELEMENT_ID#/", "news" => "", "section" => ""],
         "SET_LAST_MODIFIED" => "N",
@@ -93,6 +92,6 @@ $APPLICATION->IncludeComponent(
         "USE_SEARCH" => "N",
         "USE_SHARE" => "N",
     ]
-     );
+    );
 
-require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
+    require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');

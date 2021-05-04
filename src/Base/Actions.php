@@ -134,8 +134,13 @@ class Actions
     {
         $this->setAjaxResponse($this->oRequest);
     }
-
-    public function getOfficeCoordsAjaxAction() {
+    /**
+     * Получение координат офисов yandexMap
+     *
+     * @return void
+     */
+    public function getOfficeCoordsAjaxAction()
+    {
         $coords = Office::getCordsAll();
         $this->setAjaxResponse($coords);
     }

@@ -15,10 +15,10 @@ $arUrlRewrite = [
         'SORT' => 100,
     ],
     [
-        'CONDITION' => '#^/blog/#',
-        'RULE' => 'ID=$1',
+        'CONDITION' => '#^/blog/([a-zA-Z0-9-]+)/.*#',
+        'RULE' => 'ELEMENT_ID=$1',
         'ID' => 'bitrix:news',
-        'PATH' => '/blog/detail/index.php',
+        'PATH' => '/blog/index.php',
         'SORT' => 100,
     ],
 ];

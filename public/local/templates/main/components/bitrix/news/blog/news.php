@@ -16,7 +16,7 @@ $this->setFrameMode(true);
 
     $APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "about_our_news_elements",
+    "blog_elements",
     [
         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
         "IBLOCK_ID" => $arParams["IBLOCK_ID"],

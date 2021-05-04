@@ -13,12 +13,10 @@ if (empty($arResult)) {
     return;
 }
 
-foreach ($arResult['ITEMS'] as $key => $aItem) {
-    if ($key % 2 == 0) {
-//        Справа
-        $arResult['ITEMS'][$key]['PROPERTIES']['contentPosition'] = 'vacancy-description-gallery__slider--right';
+foreach ($arResult['ITEMS'] as $iKey => $aItem) {
+    if ($iKey % 2 == 0) {
+        $arResult['ITEMS'][$iKey]['PROPERTIES']['contentPosition'] = 'vacancy-description-gallery__slider--right';
     } else {
-        //        Слева
-        $arResult['ITEMS'][$key]['PROPERTIES']['contentPosition'] = 'vacancy-description-gallery__slider--left';
+        $arResult['ITEMS'][$iKey]['PROPERTIES']['contentPosition'] = 'vacancy-description-gallery__slider--left';
     }
 }

@@ -1,5 +1,6 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+$iIblockNews = IQDEV\Base\Helper::getIblockId('news');
 
 
     $APPLICATION->IncludeComponent(
@@ -54,7 +55,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "DISPLAY_PREVIEW_TEXT" => "N",
         "DISPLAY_TOP_PAGER" => "N",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "9",
+        "IBLOCK_ID" => "$iIblockNews",
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",

@@ -13,11 +13,11 @@ if (empty($arResult)) {
     return;
 }
 
-foreach ($arResult['ITEMS'] as $key => $aItem) {
-    if ($key == 0 ) {
-        $arResult['ITEMS'][$key]['PROPERTIES']['isActive'] = 'accordion--active';
+foreach ($arResult['ITEMS'] as $iKey => $aItem) {
+    if ($iKey == 0) {
+        $arResult['ITEMS'][$iKey]['PROPERTIES']['isActive'] = 'accordion--active';
     }
-    if ($key % 2 == 1) {
-        $arResult['ITEMS'][$key]['PROPERTIES']['accordionColor'] = 'accordion--sand';
+    if ($iKey % 2 == 1) {
+        $arResult['ITEMS'][$iKey]['PROPERTIES']['accordionColor'] = 'accordion--sand';
     }
 }

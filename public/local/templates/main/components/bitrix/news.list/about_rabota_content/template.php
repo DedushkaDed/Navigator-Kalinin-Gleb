@@ -33,7 +33,8 @@ if (empty($arResult['ITEMS'])) {
                             <div class="glide">
                                 <div class="glide__track" data-glide-el="track">
                                     <ul class="glide__slides">
-                                        <?php foreach ($aItem['DISPLAY_PROPERTIES']['IMAGE_CONTENT']['FILE_VALUE'] as $aImage) : ?>
+                                        <?php foreach ($aItem['DISPLAY_PROPERTIES']
+                                                       ['IMAGE_CONTENT']['FILE_VALUE'] as $aImage) : ?>
                                             <li class="glide__slide">
                                                 <img src="<?= $aImage['SRC'] ?>" data-index="<?= $aImage['ID'] ?>"/>
                                             </li>

@@ -1,6 +1,8 @@
 <?php
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+$iIblockContactPageInfo = IQDEV\Base\Helper::getIblockId('contact_page_info');
+$iIblockContactPhotos = IQDEV\Base\Helper::getIblockId('contact_photos');
 
     $APPLICATION->IncludeComponent(
     "bitrix:menu",
@@ -20,9 +22,9 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
-);
+     );
 
-?>
+    ?>
 
 <section class="section section--overflow-hidden mb-medium">
     <div class="container">
@@ -53,7 +55,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
                     "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", ""],
                     "FILTER_NAME" => "",
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => "18",
+                    "IBLOCK_ID" => "$iIblockContactPageInfo",
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
@@ -69,7 +71,14 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
                     "PARENT_SECTION" => "",
                     "PARENT_SECTION_CODE" => "",
                     "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => ["PHONE_FIRST", "PHONE_FIRST_TEXT","PHONE_SECOND", "PHONE_SECOND_TEXT","PHONE_THIRD", "PHONE_THIRD_TEXT",],
+                    "PROPERTY_CODE" => [
+                        "PHONE_FIRST",
+                        "PHONE_FIRST_TEXT",
+                        "PHONE_SECOND",
+                        "PHONE_SECOND_TEXT",
+                        "PHONE_THIRD",
+                        "PHONE_THIRD_TEXT",
+                    ],
                     "SET_BROWSER_TITLE" => "N",
                     "SET_LAST_MODIFIED" => "N",
                     "SET_META_DESCRIPTION" => "N",
@@ -110,7 +119,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
                     "FIELD_CODE" => ["PREVIEW_PICTURE", ""],
                     "FILTER_NAME" => "",
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => "19",
+                    "IBLOCK_ID" => "$iIblockContactPhotos",
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "Y",
@@ -147,6 +156,62 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         </div>
     </div>
 </section>
+<section class="section mb-large">
+        <div class="container-large">
+            <div class="feedback__container">
+                <div class="container">
+                    <form class="feedback js-form" action="/?ajaxAction=formQuestion" data-name="question">
+                        <div class="feedback__wrapper">
+                            <h2 class="feedback__title">Появились вопросы?</h2>
+                            <p class="feedback__subtitle">Оставьте свой телефон и мы свяжемся с вами</p>
+                        </div>
+                        <div class="feedback__wrapper">
+                            <div class="feedback__form">
+                                <div class="feedback__inputs-wrapper">
+                                    <div class="feedback__input">
+                                        <div class="input js-input">
+                                            <input class="input__field" type="text" name="name" placeholder="Имя"
+                                                   data-validate="required,name"
+                                            />
+                                            <div class="input__error"></div>
+                                        </div>
+                                    </div>
+                                    <div class="feedback__input">
+                                        <div class="input js-input">
+                                            <input class="input__field" type="text" name="phone" placeholder="Телефон"
+                                                   data-validate="required,phone" data-masking="phone"
+                                            />
+                                            <div class="input__error"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feedback_checkbox">
+                                    <div class="checkbox js-checkbox">
+                                        <label class="checkbox__label">
+                                            <input class="checkbox__field" type="checkbox" data-validate="required"/>
+                                            <div class="checkbox__custom checkbox__custom--border"></div>
+                                            <div class="checkbox__text">Подтверждаю согласие с
+                                                <a class="checkbox__link" href="#" target="_blank">
+                                                    политикой обработки персональных данных</a>
+                                            </div>
+                                        </label>
+                                        <div class="checkbox__error"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feedback__button">
+                            <button class="button button--primary" type="submit">
+                                <span>Отправить</span>
+                            </button>
+                        </div>
+                        <div></div>
+                        <div class="feedback__response"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
