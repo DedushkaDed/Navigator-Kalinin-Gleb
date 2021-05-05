@@ -17,7 +17,7 @@ $this->setFrameMode(true);
 
 
 
-    $ElementID = $APPLICATION->IncludeComponent(
+$ElementID = $APPLICATION->IncludeComponent(
     "bitrix:news.detail",
     "about_istorii-nashih-zhitelej_element",
     [
@@ -58,7 +58,7 @@ $this->setFrameMode(true);
         "PAGER_SHOW_ALL" => $arParams["DETAIL_PAGER_SHOW_ALL"],
         "CHECK_DATES" => $arParams["CHECK_DATES"],
         "ELEMENT_ID" => $_REQUEST["ELEMENT_ID"],
-        "ELEMENT_CODE" => $arResult["VARIABLES"]["ELEMENT_CODE"],
+        "ELEMENT_CODE" => $_REQUEST['CODE'],
         "SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
         "SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
         "IBLOCK_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["news"],
