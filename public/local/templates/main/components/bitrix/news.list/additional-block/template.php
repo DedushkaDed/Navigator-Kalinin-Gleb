@@ -21,14 +21,14 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 } ?>
 
 
-<?php foreach ($arResult['ITEMS'] as $aItem) : ?>
+<? foreach ($arResult['ITEMS'] as $aItem) : ?>
     <h3><?= $aItem['NAME'] ?></h3>
     <div class="detail-content__image">
         <img class="img" src="<?= $aItem['PREVIEW_PICTURE']['SRC'] ?>"/>
     </div>
     <p><?= $aItem['PREVIEW_TEXT'] ?></p>
     <ul>
-        <?php foreach ($aItem['PROPERTIES']['TEXT_PLUSES']['VALUE'] as $aText) : ?>
+        <? foreach ($aItem['PROPERTIES']['TEXT_PLUSES']['VALUE'] as $aText) : ?>
             <li><?= $aText ?></li>
         <? endforeach; ?>
     </ul>

@@ -16,8 +16,7 @@
 $this->setFrameMode(true);
 
 
-
-    $ElementID = $APPLICATION->IncludeComponent(
+$ElementID = $APPLICATION->IncludeComponent(
     "bitrix:news.detail",
     "about_istorii-nashih-zhitelej_element",
     [

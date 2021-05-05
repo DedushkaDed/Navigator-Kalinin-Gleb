@@ -24,7 +24,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     <div class="glide js-slider-trust">
         <div class="glide__track" data-glide-el="track">
             <div class="glide__slides">
-                <?php foreach ($arResult['ITEMS'] as $aItem) : ?>
+                <? foreach ($arResult['ITEMS'] as $aItem) : ?>
                     <div class="glide__slide">
                         <img class="img slider-trust__item" src="<?= $aItem['PREVIEW_PICTURE']['SRC'] ?>"/>
                     </div>
@@ -47,7 +47,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                     </div>
                 </div>
                 <ul class="slider-trust-controls__list glide__bullets" data-glide-el="controls[nav]">
-                    <?php foreach ($arResult['ITEMS'] as $iKey => $aItem) : ?>
+                    <? foreach ($arResult['ITEMS'] as $iKey => $aItem) : ?>
                         <li class="glide__bullet" data-glide-dir="=<?=$iKey?>"><?=$iKey?></li>
                     <?php endforeach;?>
                 </ul>

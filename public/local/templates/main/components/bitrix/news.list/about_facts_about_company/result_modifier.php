@@ -27,9 +27,9 @@ foreach ($arResult['ITEMS'] as $iKey => $aItem) {
     $aCard['textColor'] = $aItem['PROPERTIES']['TEXT_COLOR']['VALUE_XML_ID'];
 
     if (!empty($aCard['image']) || $iKey == 4) {
-        $aCard['size'] = '2';
+        $aCard['size'] = 2;
     } else {
-        $aCard['size'] = '1';
+        $aCard['size'] = 1;
     }
 
     $aMapCards[] = $aCard;
