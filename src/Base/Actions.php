@@ -3,6 +3,7 @@
 namespace IQDEV\Base;
 
 use IQDEV\Entity\Office;
+use IQDEV\Forms\FormsHandler;
 
 class Actions
 {
@@ -144,4 +145,20 @@ class Actions
         $coords = Office::getCordsAll();
         $this->setAjaxResponse($coords);
     }
+    public function formQuestionAjaxAction()
+    {
+//        Записиваем данные из формы в БД.
+        $oCallbackForm = FormsHandler::setFeedbackInput($this->oRequest);
+        if ($oCallbackForm) {
+            $this->setAjaxResponse(['status' => true]);
+        }
+    }
+    public function formExcursionAjaxAction()
+    {
+        $oCallbackForm = FormsHandler::setFeedbackInput($this->oRequest);
+        if ($oCallbackForm) {
+            $this->setAjaxResponse(['status' => true]);
+        }
+    }
+
 }

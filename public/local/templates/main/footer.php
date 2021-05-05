@@ -351,6 +351,7 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('footer');
             публичной офертой. Девелоперская компания &quot;Навигатор&quot; имеет право изменять стоимость объектов.
         </div>
     </div>
+    <div id="recaptcha" data-key="6LfD5MYaAAAAAHqjw6hL0jEDF8sGe_wZKMsXXmZx"></div>
 </footer>
 </body>
 </html>

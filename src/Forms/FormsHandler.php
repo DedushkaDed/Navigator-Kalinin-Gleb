@@ -2,6 +2,9 @@
 
 namespace IQDEV\Forms;
 
+use IQDEV\Base\Recaptcha;
+
+
 class FormsHandler
 {
     /**
@@ -133,5 +136,26 @@ class FormsHandler
         }
 
         return $arResult;
+    }
+
+
+    /**
+     * Class FormsHandler
+     * @package IQDEV\Forms
+     * @method static setFeedbackInput(array $aInputData)
+     */
+    public static function setFeedbackInputCaptcha($aInputData)
+    {
+        if (!isset($aInputData)){
+            return null;
+        }
+
+        $aFields = [
+            'NAME' => $aInputData['name'],
+            'PHONE' => $aInputData['phone'],
+        ];
+        self::addIblockElement('data_from_feedback_form', $aInputData, $aFields);
+
+        return true;
     }
 }

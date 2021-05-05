@@ -243,6 +243,14 @@ class Options
             ['list/4', '4', ['text', 50], 'Уличное освещение на всей территории'],
             ['list/5', '5', ['text', 50], 'Территория с КПП и охраной'],
         ],
+        'feedback_form_other' => [
+            ['title', 'Заголовок', ['text', 50], 'Появились вопросы?'],
+            ['description', 'Описание', ['text', 50], 'Оставьте свой телефон и мы свяжемся с вами'],
+        ],
+        'feedback_form_main' => [
+            ['title', 'Заголовок', ['text', 50], 'Экскурсия по загородной жизни'],
+            ['description', 'Описание', ['text', 50], 'Приглашаем вас на обзорную экскурсию по загородной жизни в один из наших поселков. Заполните форму ниже, и мы вам перезвоним.'],
+        ],
         '404_page' => [
             ['error', 'Код ошибки', ['text', 50], '404'],
             [
@@ -364,6 +372,19 @@ class Options
             "ICON" => "perfmon_settings",
             "TITLE" => 'Настройки карты'
         ],
+        [
+            "DIV" => "feedback_form_other",
+            "TAB" => 'Дополнительная формы обратной связи',
+            "ICON" => "perfmon_settings",
+            "TITLE" => 'Дополнительная форма обратной связи',
+        ],
+        [
+            "DIV" => "feedback_form_main",
+            "TAB" => 'Форма обратной связи на главной странице',
+            "ICON" => "perfmon_settings",
+            "TITLE" => 'Форма обратной связи на главной странице',
+        ],
+
         ["DIV" => "captcha", "TAB" => 'reCAPTCHA', "ICON" => "perfmon_settings", "TITLE" => 'reCAPTCHA'],
         ["DIV" => "mailer", "TAB" => 'Почта', "ICON" => "perfmon_settings", "TITLE" => 'Почта'],
         ["DIV" => "scripts", "TAB" => 'Скрипты', "ICON" => "perfmon_settings", "TITLE" => 'Скрипты'],
