@@ -16,7 +16,7 @@ if (empty($arResult['ITEMS'])) {
 }
 
 $aMapCards = [];
-dump($arResult['ITEMS']);
+
 foreach ($arResult['ITEMS'] as $iKey => $aItem) {
     $aCard = [];
     $aCard['title'] = $aItem['NAME'];
