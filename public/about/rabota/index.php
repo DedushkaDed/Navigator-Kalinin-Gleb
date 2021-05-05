@@ -144,7 +144,7 @@ $iIblockRabotaContent = IQDEV\Base\Helper::getIblockId('rabota_content');
      );
     $APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "email_form",
+    "feedback_form_other",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",

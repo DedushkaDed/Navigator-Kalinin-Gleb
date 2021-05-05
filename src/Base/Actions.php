@@ -147,15 +147,21 @@ class Actions
     }
     public function formQuestionAjaxAction()
     {
-//        Записиваем данные из формы в БД.
-        $oCallbackForm = FormsHandler::setFeedbackInput($this->oRequest);
+        $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($this->oRequest);
         if ($oCallbackForm) {
             $this->setAjaxResponse(['status' => true]);
         }
     }
     public function formExcursionAjaxAction()
     {
-        $oCallbackForm = FormsHandler::setFeedbackInput($this->oRequest);
+        $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($this->oRequest);
+        if ($oCallbackForm) {
+            $this->setAjaxResponse(['status' => true]);
+        }
+    }
+    public function formSubscribeAjaxAction()
+    {
+        $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($this->oRequest);
         if ($oCallbackForm) {
             $this->setAjaxResponse(['status' => true]);
         }

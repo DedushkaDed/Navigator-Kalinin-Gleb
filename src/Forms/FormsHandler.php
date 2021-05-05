@@ -142,7 +142,7 @@ class FormsHandler
     /**
      * Class FormsHandler
      * @package IQDEV\Forms
-     * @method static setFeedbackInput(array $aInputData)
+     * @method static setFeedbackInputCaptcha(array $aInputData)
      */
     public static function setFeedbackInputCaptcha($aInputData)
     {
@@ -150,12 +150,18 @@ class FormsHandler
             return null;
         }
 
-        $aFields = [
-            'NAME' => $aInputData['name'],
-            'PHONE' => $aInputData['phone'],
-        ];
-        self::addIblockElement('data_from_feedback_form', $aInputData, $aFields);
+        if ($aInputData['email']) {
+            $aFields = [
+                'EMAIL' => $aInputData['email'],
+            ];
+            $aInputData['name'] = $aInputData['email'];
+        } else {
+            $aFields = [
+                'NAME' => $aInputData['name'],
+                'PHONE' => $aInputData['phone'],
+            ];
+        }
 
-        return true;
+        return self::addIblockElement('data_from_feedback_form', $aInputData, $aFields);
     }
 }
