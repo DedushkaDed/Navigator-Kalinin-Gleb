@@ -150,18 +150,31 @@ class FormsHandler
             return null;
         }
 
-        if ($aInputData['email']) {
-            $aFields = [
-                'EMAIL' => $aInputData['email'],
-            ];
-            $aInputData['name'] = $aInputData['email'];
-        } else {
-            $aFields = [
-                'NAME' => $aInputData['name'],
-                'PHONE' => $aInputData['phone'],
-            ];
-        }
+        $aFields = [
+            'NAME' => $aInputData['name'],
+            'PHONE' => $aInputData['phone'],
+        ];
 
         return self::addIblockElement('data_from_feedback_form', $aInputData, $aFields);
+    }
+
+
+    /**
+     * Class FormsHandler
+     * @package IQDEV\Forms
+     * @method static setEmailFeedbackInputCaptcha(array $aInputData)
+     */
+    public static function setEmailFeedbackInputCaptcha($aInputData)
+    {
+        if (!isset($aInputData['email'])) {
+            return null;
+        }
+
+        $aFields = [
+            'EMAIL' => $aInputData['email'],
+        ];
+        $aInputData['name'] = $aInputData['email'];
+
+        return self::addIblockElement('email_mailing', $aInputData, $aFields);
     }
 }

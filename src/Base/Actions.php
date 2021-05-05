@@ -161,7 +161,7 @@ class Actions
     }
     public function formSubscribeAjaxAction()
     {
-        $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($this->oRequest);
+        $oCallbackForm = FormsHandler::setEmailFeedbackInputCaptcha($this->oRequest);
         if ($oCallbackForm) {
             $this->setAjaxResponse(['status' => true]);
         }
