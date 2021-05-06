@@ -11,11 +11,12 @@
 /** @global CDatabase $DB */
 /** @var CBitrixComponentTemplate $this */
 
-if (empty($arResult)) {
+if (empty($arResult['ITEMS'])) {
     return;
 }
 
 $aMapCards = [];
+
 foreach ($arResult['ITEMS'] as $iKey => $aItem) {
     $aCard = [];
     $aCard['title'] = $aItem['NAME'];

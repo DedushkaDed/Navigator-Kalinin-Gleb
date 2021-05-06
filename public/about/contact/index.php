@@ -4,7 +4,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 $iIblockContactPageInfo = IQDEV\Base\Helper::getIblockId('contact_page_info');
 $iIblockContactPhotos = IQDEV\Base\Helper::getIblockId('contact_photos');
 
-    $APPLICATION->IncludeComponent(
+$APPLICATION->IncludeComponent(
     "bitrix:menu",
     "navigation_tabs",
     [
@@ -22,9 +22,9 @@ $iIblockContactPhotos = IQDEV\Base\Helper::getIblockId('contact_photos');
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
-     );
+);
 
-    ?>
+?>
 
 <section class="section section--overflow-hidden mb-medium">
     <div class="container">

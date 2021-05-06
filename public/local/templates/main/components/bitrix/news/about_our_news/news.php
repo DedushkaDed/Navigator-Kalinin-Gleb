@@ -14,7 +14,6 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "about_our_news_elements",

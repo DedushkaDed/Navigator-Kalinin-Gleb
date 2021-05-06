@@ -16,7 +16,7 @@ $arUrlRewrite = [
     ],
     [
         'CONDITION' => '#^/blog/([a-zA-Z0-9-]+)/.*#',
-        'RULE' => 'ELEMENT_ID=$1',
+        'RULE' => 'CODE=$1',
         'ID' => 'bitrix:news',
         'PATH' => '/blog/index.php',
         'SORT' => 100,
