@@ -23,7 +23,7 @@ foreach ($arResult['ITEMS'] as $iKey => $aItem) {
     $aCard['description'] = $aItem['PREVIEW_TEXT'];
     $aCard['image'] = $aItem['PREVIEW_PICTURE']['SRC'];
     $aCard['linkLabel'] = $aItem['DETAIL_TEXT'];
-    $aCard['link'] = $aItem['ID'];
+    $aCard['link'] = $aItem['CODE'];
 
     if ($iKey == 0) {
         $aCard['typeBlock'] = "grid-news__item--full";
