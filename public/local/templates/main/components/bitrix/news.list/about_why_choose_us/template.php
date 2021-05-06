@@ -23,14 +23,12 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     <div class="slider__body">
         <div class="glide__track" data-glide-el="track">
             <div class="glide__slides">
-                <?foreach ($arResult['ITEMS'] as $aItem) :
-                    $sIcon = CFile::GetPath($aItem['PROPERTIES']['ICON_SVG']['VALUE']);
-                    ?>
+                <?foreach ($arResult['ITEMS'] as $aItem) :?>
                     <div class="glide__slide">
                         <div class="card-list">
                             <div class="card-list__icon">
-                                <?if (!empty($sIcon)) :?>
-                                    <img class="img" src="<?=$sIcon?>"/>
+                                <?if (!empty($aItem['PROPERTIES']['ICON_SVG']['PATH'])) :?>
+                                    <img class="img" src="<?=$aItem['PROPERTIES']['ICON_SVG']['PATH']?>"/>
                                 <?endif;?>
                             </div>
                             <?if (!empty($aItem['NAME'])) :?>
