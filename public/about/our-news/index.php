@@ -68,7 +68,7 @@ $iIblockNews = IQDEV\Base\Helper::getIblockId('news');
         "PAGER_TITLE" => "Постраничная навигация",
         "SEF_FOLDER" => "/about/our-news/",
         "SEF_MODE" => "Y",
-        "SEF_URL_TEMPLATES" => ["detail" => "#ELEMENT_ID#/"],
+        "SEF_URL_TEMPLATES" => ["detail" => "#CODE#/"],
         "SET_LAST_MODIFIED" => "N",
         "SET_STATUS_404" => "Y",
         "SET_TITLE" => "N",
