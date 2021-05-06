@@ -288,7 +288,6 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
         ); ?>
     </div>
 </section>
-<!--Компонент эксукрсия по загорожной жизни-->
 <?php $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "feedback_form_main_page",
