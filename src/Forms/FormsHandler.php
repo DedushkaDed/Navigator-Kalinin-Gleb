@@ -2,7 +2,6 @@
 
 namespace IQDEV\Forms;
 
-
 class FormsHandler
 {
     /**
