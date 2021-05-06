@@ -2,7 +2,6 @@
 
 namespace IQDEV\Forms;
 
-use IQDEV\Base\Recaptcha;
 
 class FormsHandler
 {
