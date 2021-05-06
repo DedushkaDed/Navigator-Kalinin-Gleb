@@ -25,14 +25,19 @@ if (empty($arResult)) {
         <div class="detail">
             <div class="detail__item">
                 <div class="detail-header">
-                    <h1 class="detail-header__title"><?= $arResult['NAME'] ?></h1>
+                    <? if (!empty($arResult['NAME'])) :?>
+                        <h1 class="detail-header__title"><?= $arResult['NAME'] ?></h1>
+                    <?php endif;?>
                     <div class="detail-header__footer">
-                        <div class="detail-header__date"><?= $arResult['PROPERTIES']['DATE']['VALUE'] ?></div>
+                        <? if (!empty($arResult['PROPERTIES']['DATE']['VALUE'])) :?>
+                            <div class="detail-header__date"><?= $arResult['PROPERTIES']['DATE']['VALUE'] ?></div>
+                        <?php endif;?>
                         <div class="detail-header__share">
                             <div class="detail-header__share-title">Поделиться:</div>
-                            <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['facebook'] ?>"
-                               target="_blank"
-                            >
+                            <?if (!empty($aSocialMediaOptions['facebook'])) :?>
+                                <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['facebook'] ?>"
+                                   target="_blank">
+                            <?endif;?>
                                 <div class="icon">
                                     <svg width="11" height="20" viewBox="0 0 11 20" fill="none"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -44,9 +49,10 @@ if (empty($arResult)) {
                                     </svg>
                                 </div>
                             </a>
-                            <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['vkontakte'] ?>"
-                               target="_blank"
-                            >
+                            <? if (!empty($aSocialMediaOptions['vkontakte'])) :?>
+                                <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['vkontakte'] ?>"
+                                   target="_blank">
+                            <?endif;?>
                                 <div class="icon">
                                     <svg width="25" height="14" viewBox="0 0 25 14" fill="none"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -81,9 +87,10 @@ if (empty($arResult)) {
                                     </svg>
                                 </div>
                             </a>
+                            <? if (!empty($aSocialMediaOptions['odnoklassniki'])) :?>
                             <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['odnoklassniki'] ?>"
-                               target="_blank"
-                            >
+                               target="_blank">
+                            <?php endif;?>
                                 <div class="icon">
                                     <svg width="12" height="20" viewBox="0 0 12 20" fill="none"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -116,14 +123,17 @@ if (empty($arResult)) {
             <div class="detail__item">
                 <div class="detail-content">
                     <div class="detail-content__image">
-                        <img class="img" src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?>"/>
+                        <? if (!empty($arResult['DETAIL_PICTURE']['SRC'])) :?>
+                            <img class="img" src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?>"/>
+                        <?php endif;?>
                     </div>
                     <?php foreach ($arResult['PROPERTIES']['TEXT_NEWS']['VALUE'] as $aTextNews) : ?>
-                        <p><?= $aTextNews['TEXT'] ?></p>
+                        <? if (!empty($aTextNews['TEXT'])) :?>
+                            <p><?= $aTextNews['TEXT'] ?></p>
+                        <?endif;?>
                     <? endforeach; ?>
                 </div>
             </div>
-            <!--            банеры-->
             <?php $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "aside_banners",
@@ -131,7 +141,6 @@ if (empty($arResult)) {
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
                     "AJAX_MODE" => "N",
-                    "AJAX_OPTION_ADDITIONAL" => "",
                     "AJAX_OPTION_HISTORY" => "N",
                     "AJAX_OPTION_JUMP" => "N",
                     "AJAX_OPTION_STYLE" => "N",
@@ -140,33 +149,25 @@ if (empty($arResult)) {
                     "CACHE_TIME" => "36000000",
                     "CACHE_TYPE" => "A",
                     "CHECK_DATES" => "Y",
-                    "DETAIL_URL" => "",
                     "DISPLAY_BOTTOM_PAGER" => "N",
                     "DISPLAY_DATE" => "Y",
                     "DISPLAY_NAME" => "Y",
                     "DISPLAY_PICTURE" => "Y",
                     "DISPLAY_PREVIEW_TEXT" => "Y",
                     "DISPLAY_TOP_PAGER" => "N",
-                    "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", ""],
-                    "FILTER_NAME" => "",
+                    "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
                     "IBLOCK_ID" => "13",
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
-                    "MESSAGE_404" => "",
                     "NEWS_COUNT" => "5",
                     "PAGER_BASE_LINK_ENABLE" => "N",
                     "PAGER_DESC_NUMBERING" => "N",
                     "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
                     "PAGER_SHOW_ALL" => "N",
                     "PAGER_SHOW_ALWAYS" => "N",
-                    "PAGER_TEMPLATE" => "",
-                    "PAGER_TITLE" => "Новости",
-                    "PARENT_SECTION" => "",
-                    "PARENT_SECTION_CODE" => "",
-                    "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => ["LINK", ""],
+                    "PROPERTY_CODE" => ["LINK"],
                     "SET_BROWSER_TITLE" => "N",
                     "SET_LAST_MODIFIED" => "N",
                     "SET_META_DESCRIPTION" => "N",
@@ -192,25 +193,27 @@ if (empty($arResult)) {
                         <div class="separate-paragraph__text separate-paragraph__text--large">
                             Полный фотоотчет смотрите в наших официальных группах в социальных сетях
                             <div class="separate-paragraph__icons">
-                                <a class="separate-paragraph__icon" href="<?= $aSocialMediaOptions['facebook'] ?>">
-                                    <div class="icon icon--middle-brown icon--hover-primary">
-                                        <svg width="11" height="20" viewBox="0 0 11 20" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path d="M6.57895 6.875V4.375C6.57895 3.685 7.16842 3.125 7.89474
+                                <? if (!empty($aSocialMediaOptions['facebook'])) :?>
+                                    <a class="separate-paragraph__icon" href="<?= $aSocialMediaOptions['facebook'] ?>">
+                                        <div class="icon icon--middle-brown icon--hover-primary">
+                                            <svg width="11" height="20" viewBox="0 0 11 20" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.57895 6.875V4.375C6.57895 3.685 7.16842 3.125 7.89474
                                              3.125H9.21053V0H6.57895C4.39868 0 2.63158 1.67875 2.63158
                                               3.75V6.875H0V10H2.63158V20H6.57895V10H9.21053L10.5263 6.875H6.57895Z"
-                                                  fill="middle-brown"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                </a>
-                                <a class="separate-paragraph__icon" href="<?= $aSocialMediaOptions['vkontakte'] ?>">
-                                    <div class="icon icon--middle-brown icon--hover-primary">
-                                        <svg width="25" height="14" viewBox="0 0 25 14" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path d="M23.8446 12.1602C23.7799 12.0527 23.3799 11.1894
+                                                      fill="middle-brown">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                <?php endif;?>
+                                <? if (!empty($aSocialMediaOptions['vkontakte'])) :?>
+                                    <a class="separate-paragraph__icon" href="<?= $aSocialMediaOptions['vkontakte'] ?>">
+                                        <div class="icon icon--middle-brown icon--hover-primary">
+                                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path d="M23.8446 12.1602C23.7799 12.0527 23.3799 11.1894
                                              21.4551 9.41514C19.44 7.55723 19.7107 7.85892 22.1378
                                               4.6464C23.616 2.68992 24.207 1.49512 24.0221 0.984342C23.8461
                                                0.497462 22.7589 0.625902 22.7589 0.625902L19.1437
@@ -240,16 +243,19 @@ if (empty($arResult)) {
                                                                        13.7567 19.7467 13.6208 19.7467 13.6208L22.9604
                                                                         13.576C22.9604 13.576 24.6416 13.473 23.8446
                                                                          12.1602Z" fill="middle-brown"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                </a>
-                                <a class="separate-paragraph__icon" href="<?= $aSocialMediaOptions['odnoklassniki'] ?>">
-                                    <div class="icon icon--middle-brown icon--hover-primary">
-                                        <svg width="12" height="20" viewBox="0 0 12 20" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path d="M5.7925 3.02543C6.97143 3.02543 7.93019 3.9842 7.93019
+                                                ></path>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                <?php endif;?>
+                                <? if (!empty($aSocialMediaOptions['odnoklassniki'])) :?>
+                                    <a class="separate-paragraph__icon"
+                                       href="<?= $aSocialMediaOptions['odnoklassniki'] ?>">
+                                        <div class="icon icon--middle-brown icon--hover-primary">
+                                            <svg width="12" height="20" viewBox="0 0 12 20" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path d="M5.7925 3.02543C6.97143 3.02543 7.93019 3.9842 7.93019
                                              5.16312C7.93019 6.3385 6.97143 7.29726 5.7925 7.29726C4.61357 7.29726
                                               3.65481 6.3385 3.65481 5.16312C3.65481 3.9842 4.61357 3.02543 5.7925
                                                3.02543ZM5.7925 10.3227C8.64039 10.3227 10.9556 8.00746 10.9556
@@ -269,10 +275,11 @@ if (empty($arResult)) {
                                                              19.5552C9.21919 20.1483 10.1744 20.1483 10.7674
                                                               19.5552C11.3569 18.9658 11.3569 18.007 10.7674
                                                                17.4176L7.88048 14.5342Z" fill="middle-brown"
-                                            ></path>
-                                        </svg>
-                                    </div>
-                                </a>
+                                                ></path>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                <?php endif;?>
                             </div>
                         </div>
                     </div>
@@ -285,7 +292,6 @@ if (empty($arResult)) {
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
                     "AJAX_MODE" => "N",
-                    "AJAX_OPTION_ADDITIONAL" => "",
                     "AJAX_OPTION_HISTORY" => "N",
                     "AJAX_OPTION_JUMP" => "N",
                     "AJAX_OPTION_STYLE" => "N",
@@ -294,33 +300,24 @@ if (empty($arResult)) {
                     "CACHE_TIME" => "36000000",
                     "CACHE_TYPE" => "A",
                     "CHECK_DATES" => "Y",
-                    "DETAIL_URL" => "",
                     "DISPLAY_BOTTOM_PAGER" => "N",
                     "DISPLAY_DATE" => "Y",
                     "DISPLAY_NAME" => "Y",
                     "DISPLAY_PICTURE" => "Y",
                     "DISPLAY_PREVIEW_TEXT" => "Y",
                     "DISPLAY_TOP_PAGER" => "N",
-                    "FIELD_CODE" => ["PREVIEW_PICTURE", ""],
-                    "FILTER_NAME" => "",
+                    "FIELD_CODE" => ["PREVIEW_PICTURE"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
                     "IBLOCK_ID" => "12",
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
-                    "MESSAGE_404" => "",
                     "NEWS_COUNT" => "20",
                     "PAGER_BASE_LINK_ENABLE" => "N",
                     "PAGER_DESC_NUMBERING" => "N",
                     "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
                     "PAGER_SHOW_ALL" => "N",
                     "PAGER_SHOW_ALWAYS" => "N",
-                    "PAGER_TEMPLATE" => "",
-                    "PAGER_TITLE" => "Новости",
-                    "PARENT_SECTION" => "",
-                    "PARENT_SECTION_CODE" => "",
-                    "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => ["", ""],
                     "SET_BROWSER_TITLE" => "N",
                     "SET_LAST_MODIFIED" => "N",
                     "SET_META_DESCRIPTION" => "N",
@@ -335,7 +332,6 @@ if (empty($arResult)) {
                     "STRICT_SECTION_CHECK" => "N",
                 ]
             ); ?>
-            <!--            Банер для мобильной версии-->
             <div class="detail__item detail__item--slider-mobile">
                 <div class="slider glide js-slider">
                     <div class="slider__body">
@@ -423,8 +419,6 @@ if (empty($arResult)) {
         </div>
     </div>
 </section>
-
-<!-- Появились вопросы?-->
 <section class="section mb-large">
     <div class="container-large">
         <div class="feedback__container">

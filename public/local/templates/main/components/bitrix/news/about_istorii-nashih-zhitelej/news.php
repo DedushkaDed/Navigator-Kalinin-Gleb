@@ -15,7 +15,7 @@
 $this->setFrameMode(true);
 
 
-    $APPLICATION->IncludeComponent(
+$APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "about_istorii-nashih-zhitelej_elements",
     [

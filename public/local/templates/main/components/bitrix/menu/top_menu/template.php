@@ -7,8 +7,8 @@ if (empty($arResult)) {
 } ?>
 
 <div class="navigation">
-    <?php foreach ($arResult as $aItem) : ?>
-        <?php if (!empty($aItem['subitems'])) :?>
+    <? foreach ($arResult as $aItem) : ?>
+        <? if (!empty($aItem['subitems'])) :?>
             <div class="navigation__item" href="<?= $aItem["LINK"] ?>">
                 <span class="navigation__page"><?= $aItem["TEXT"] ?></span>
                 <div class="navigation__arrow">
@@ -21,13 +21,13 @@ if (empty($arResult)) {
                     </svg>
                 </div>
                 <div class="navigation__dropdown">
-                    <?php foreach ($aItem['subitems'] as $aSubItem) :?>
+                    <? foreach ($aItem['subitems'] as $aSubItem) :?>
                         <a class="navigation__subpage" href="<?= $aSubItem['LINK'] ?>">
                         <?= $aSubItem['TEXT'] ?></a>
                     <? endforeach; ?>
                 </div>
             </div>
-        <?php else :
+        <? else :
             ?>
         <a class="navigation__item" href="<?= $aItem["LINK"] ?>">
             <span class="navigation__page"><?= $aItem["TEXT"] ?></span>
