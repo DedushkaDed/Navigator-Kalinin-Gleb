@@ -2,16 +2,13 @@
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 $iIblockTenderi = IQDEV\Base\Helper::getIblockId('tenderi');
 
-    $APPLICATION->IncludeComponent(
+$APPLICATION->IncludeComponent(
     "bitrix:menu",
     "navigation_tabs",
     [
         "ALLOW_MULTI_SELECT" => "N",
-        "CHILD_MENU_TYPE" => "",
         "DELAY" => "N",
         "MAX_LEVEL" => "1",
-        "MENU_CACHE_GET_VARS" => [
-        ],
         "MENU_CACHE_TIME" => "3600",
         "MENU_CACHE_TYPE" => "A",
         "MENU_CACHE_USE_GROUPS" => "N",
@@ -20,15 +17,14 @@ $iIblockTenderi = IQDEV\Base\Helper::getIblockId('tenderi');
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
-     );
-    $APPLICATION->IncludeComponent(
+ );
+$APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "tenderi_accordion",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
         "AJAX_MODE" => "N",
-        "AJAX_OPTION_ADDITIONAL" => "",
         "AJAX_OPTION_HISTORY" => "N",
         "AJAX_OPTION_JUMP" => "N",
         "AJAX_OPTION_STYLE" => "N",
@@ -37,33 +33,26 @@ $iIblockTenderi = IQDEV\Base\Helper::getIblockId('tenderi');
         "CACHE_TIME" => "36000000",
         "CACHE_TYPE" => "A",
         "CHECK_DATES" => "Y",
-        "DETAIL_URL" => "",
         "DISPLAY_BOTTOM_PAGER" => "N",
         "DISPLAY_DATE" => "Y",
         "DISPLAY_NAME" => "Y",
         "DISPLAY_PICTURE" => "Y",
         "DISPLAY_PREVIEW_TEXT" => "Y",
         "DISPLAY_TOP_PAGER" => "N",
-        "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "DETAIL_TEXT", ""],
-        "FILTER_NAME" => "",
+        "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "DETAIL_TEXT"],
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
         "IBLOCK_ID" => "$iIblockTenderi",
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
-        "MESSAGE_404" => "",
         "NEWS_COUNT" => "10",
         "PAGER_BASE_LINK_ENABLE" => "N",
         "PAGER_DESC_NUMBERING" => "N",
         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
         "PAGER_SHOW_ALL" => "N",
         "PAGER_SHOW_ALWAYS" => "N",
-        "PAGER_TEMPLATE" => "",
         "PAGER_TITLE" => "Тендеры",
-        "PARENT_SECTION" => "",
-        "PARENT_SECTION_CODE" => "",
-        "PREVIEW_TRUNCATE_LEN" => "",
-        "PROPERTY_CODE" => ["DATE_START", "DATE_END", "CONTACT_TEXT", "DOWNLOAD_INFO", ""],
+        "PROPERTY_CODE" => ["DATE_START", "DATE_END", "CONTACT_TEXT", "DOWNLOAD_INFO"],
         "SET_BROWSER_TITLE" => "N",
         "SET_LAST_MODIFIED" => "N",
         "SET_META_DESCRIPTION" => "N",
@@ -77,9 +66,9 @@ $iIblockTenderi = IQDEV\Base\Helper::getIblockId('tenderi');
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
     ]
-    );
+);
 
-    ?>
+?>
 
 <section class="section mb-large">
     <div class="container-large">
