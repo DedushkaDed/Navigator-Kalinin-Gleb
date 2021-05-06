@@ -23,11 +23,15 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
     <div class="container">
         <div class="separate-paragraph">
             <div class="separate-paragraph__title">
-                <h1><?=$aAboutOptions['title']['title']?></h1>
+                <? if (!empty($aAboutOptions['title']['title'])) :?>
+                    <h1><?=$aAboutOptions['title']['title']?></h1>
+                <?php endif?>
             </div>
             <div class="separate-paragraph__divider"></div>
             <div class="separate-paragraph__text-wrapper">
-                <div class="separate-paragraph__text"><?=$aAboutOptions['title']['description']?>
+                <? if (!empty($aAboutOptions['title']['description'])) :?>
+                    <div class="separate-paragraph__text"><?=$aAboutOptions['title']['description']?>
+                <?php endif;?>
                 </div>
             </div>
         </div>
@@ -37,17 +41,22 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
         <div class="container">
             <div class="grid-layout">
                 <div class="grid-layout__item">
-                    <img class="img" src="<?=$aAboutOptions['imageSectionTop']['image']?>"/>
+                    <?if (!empty($aAboutOptions['imageSectionTop']['image'])) :?>
+                        <img class="img" src="<?=$aAboutOptions['imageSectionTop']['image']?>"/>
+                    <?php endif;?>
                 </div>
             </div>
             <div class="grid-layout grid-layout--gap-15 grid-layout--col-4">
                 <div class="grid-layout__item grid-layout__item--md-span-column-1">
                     <div class="grid-card grid-card--background-green grid-card--color-white">
                         <div class="grid-card__content">
-                            <div class="grid-card__title"><?=$aAboutOptions['contentSectionTop']['title']?></div>
-                            <div class="grid-card__subtext">
-                                <?=$aAboutOptions['contentSectionTop']['description']?>
-                            </div>
+                            <?if (!empty($aAboutOptions['contentSectionTop']['title'])) :?>
+                                <div class="grid-card__title"><?=$aAboutOptions['contentSectionTop']['title']?></div>
+                            <?php endif;?>
+                            <?if (!empty($aAboutOptions['contentSectionTop']['description'])) :?>
+                                <div class="grid-card__subtext"><?=$aAboutOptions['contentSectionTop']['description']?>
+                                </div>
+                            <?php endif;?>
                         </div>
                     </div>
                 </div>
