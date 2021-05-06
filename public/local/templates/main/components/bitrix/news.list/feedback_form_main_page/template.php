@@ -28,7 +28,7 @@ $aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_form_main');
                     <div class="form-wide">
                         <div class="form-wide__left-line"></div>
                         <div class="form-wide__text form-wide__text--vertical-md">
-                            <? if(!empty($aFeedbackForm['title'])) :?>
+                            <? if (!empty($aFeedbackForm['title'])) :?>
                                 <div class="form-wide__title"><?=$aFeedbackForm['title']?></div>
                             <?php endif;?>
                             <? if (!empty($aFeedbackForm['description'])) :?>

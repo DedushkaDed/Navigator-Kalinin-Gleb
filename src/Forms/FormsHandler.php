@@ -4,7 +4,6 @@ namespace IQDEV\Forms;
 
 use IQDEV\Base\Recaptcha;
 
-
 class FormsHandler
 {
     /**
@@ -140,13 +139,15 @@ class FormsHandler
 
 
     /**
-     * Class FormsHandler
-     * @package IQDEV\Forms
-     * @method static setFeedbackInputCaptcha(array $aInputData)
+     * Описание один
+     *
+     * @param $aInputData
+     *
+     * @return mixed
      */
     public static function setFeedbackInputCaptcha($aInputData)
     {
-        if (!isset($aInputData)){
+        if (!isset($aInputData)) {
             return null;
         }
 
@@ -160,9 +161,11 @@ class FormsHandler
 
 
     /**
-     * Class FormsHandler
-     * @package IQDEV\Forms
-     * @method static setEmailFeedbackInputCaptcha(array $aInputData)
+     * Описание два
+     *
+     * @param $aInputData
+     *
+     * @return mixed
      */
     public static function setEmailFeedbackInputCaptcha($aInputData)
     {
