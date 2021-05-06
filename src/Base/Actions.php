@@ -185,5 +185,4 @@ class Actions
             $this->setAjaxResponse(['status' => true]);
         }
     }
-
 }
