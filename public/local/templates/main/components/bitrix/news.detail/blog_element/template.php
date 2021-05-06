@@ -151,19 +151,13 @@ if (empty($arResult)) {
                             "IBLOCK_TYPE" => "content",
                             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                             "INCLUDE_SUBSECTIONS" => "N",
-                            "MESSAGE_404" => "",
                             "NEWS_COUNT" => "5",
                             "PAGER_BASE_LINK_ENABLE" => "N",
                             "PAGER_DESC_NUMBERING" => "N",
                             "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
                             "PAGER_SHOW_ALL" => "N",
                             "PAGER_SHOW_ALWAYS" => "N",
-                            "PAGER_TEMPLATE" => "",
-                            "PAGER_TITLE" => "Новости",
-                            "PARENT_SECTION" => "",
-                            "PARENT_SECTION_CODE" => "",
-                            "PREVIEW_TRUNCATE_LEN" => "",
-                            "PROPERTY_CODE" => ["TEXT_PLUSES", ""],
+                            "PROPERTY_CODE" => ["TEXT_PLUSES"],
                             "SET_BROWSER_TITLE" => "N",
                             "SET_LAST_MODIFIED" => "N",
                             "SET_META_DESCRIPTION" => "N",
@@ -180,7 +174,6 @@ if (empty($arResult)) {
                     ); ?>
                 </div>
             </div>
-            <!--            банеры-->
             <?php $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "aside_banners",
@@ -188,7 +181,6 @@ if (empty($arResult)) {
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
                     "AJAX_MODE" => "N",
-                    "AJAX_OPTION_ADDITIONAL" => "",
                     "AJAX_OPTION_HISTORY" => "N",
                     "AJAX_OPTION_JUMP" => "N",
                     "AJAX_OPTION_STYLE" => "N",
@@ -197,33 +189,26 @@ if (empty($arResult)) {
                     "CACHE_TIME" => "36000000",
                     "CACHE_TYPE" => "A",
                     "CHECK_DATES" => "Y",
-                    "DETAIL_URL" => "",
                     "DISPLAY_BOTTOM_PAGER" => "N",
                     "DISPLAY_DATE" => "Y",
                     "DISPLAY_NAME" => "Y",
                     "DISPLAY_PICTURE" => "Y",
                     "DISPLAY_PREVIEW_TEXT" => "Y",
                     "DISPLAY_TOP_PAGER" => "N",
-                    "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", ""],
+                    "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                     "FILTER_NAME" => "",
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
                     "IBLOCK_ID" => "13",
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
-                    "MESSAGE_404" => "",
                     "NEWS_COUNT" => "1",
                     "PAGER_BASE_LINK_ENABLE" => "N",
                     "PAGER_DESC_NUMBERING" => "N",
                     "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
                     "PAGER_SHOW_ALL" => "N",
                     "PAGER_SHOW_ALWAYS" => "N",
-                    "PAGER_TEMPLATE" => "",
-                    "PAGER_TITLE" => "Новости",
-                    "PARENT_SECTION" => "",
-                    "PARENT_SECTION_CODE" => "",
-                    "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => ["LINK", ""],
+                    "PROPERTY_CODE" => ["LINK"],
                     "SET_BROWSER_TITLE" => "N",
                     "SET_LAST_MODIFIED" => "N",
                     "SET_META_DESCRIPTION" => "N",
@@ -245,7 +230,6 @@ if (empty($arResult)) {
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
                     "AJAX_MODE" => "N",
-                    "AJAX_OPTION_ADDITIONAL" => "",
                     "AJAX_OPTION_HISTORY" => "N",
                     "AJAX_OPTION_JUMP" => "N",
                     "AJAX_OPTION_STYLE" => "N",
@@ -254,33 +238,24 @@ if (empty($arResult)) {
                     "CACHE_TIME" => "36000000",
                     "CACHE_TYPE" => "A",
                     "CHECK_DATES" => "Y",
-                    "DETAIL_URL" => "",
                     "DISPLAY_BOTTOM_PAGER" => "N",
                     "DISPLAY_DATE" => "Y",
                     "DISPLAY_NAME" => "Y",
                     "DISPLAY_PICTURE" => "Y",
                     "DISPLAY_PREVIEW_TEXT" => "Y",
                     "DISPLAY_TOP_PAGER" => "N",
-                    "FIELD_CODE" => ["PREVIEW_PICTURE", ""],
-                    "FILTER_NAME" => "",
+                    "FIELD_CODE" => ["PREVIEW_PICTURE"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
                     "IBLOCK_ID" => "12",
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
-                    "MESSAGE_404" => "",
                     "NEWS_COUNT" => "20",
                     "PAGER_BASE_LINK_ENABLE" => "N",
                     "PAGER_DESC_NUMBERING" => "N",
                     "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
                     "PAGER_SHOW_ALL" => "N",
                     "PAGER_SHOW_ALWAYS" => "N",
-                    "PAGER_TEMPLATE" => "",
-                    "PAGER_TITLE" => "Новости",
-                    "PARENT_SECTION" => "",
-                    "PARENT_SECTION_CODE" => "",
-                    "PREVIEW_TRUNCATE_LEN" => "",
-                    "PROPERTY_CODE" => ["", ""],
                     "SET_BROWSER_TITLE" => "N",
                     "SET_LAST_MODIFIED" => "N",
                     "SET_META_DESCRIPTION" => "N",
@@ -295,7 +270,6 @@ if (empty($arResult)) {
                     "STRICT_SECTION_CHECK" => "N",
                 ]
             ); ?>
-            <!--            Банер для мобильной версии-->
             <div class="detail__item detail__item--slider-mobile">
                 <div class="slider glide js-slider">
                     <div class="slider__body">
@@ -383,62 +357,50 @@ if (empty($arResult)) {
         </div>
     </div>
 </section>
-
-<!-- Появились вопросы?-->
-<section class="section mb-large">
-    <div class="container-large">
-        <div class="feedback__container">
-            <div class="container">
-                <form class="feedback js-form" action="/?ajaxAction=formQuestion" data-name="question">
-                    <div class="feedback__wrapper">
-                        <h2 class="feedback__title">Появились вопросы?</h2>
-                        <p class="feedback__subtitle">Оставьте свой телефон и мы свяжемся с вами</p>
-                    </div>
-                    <div class="feedback__wrapper">
-                        <div class="feedback__form">
-                            <div class="feedback__inputs-wrapper">
-                                <div class="feedback__input">
-                                    <div class="input js-input">
-                                        <input class="input__field" type="text" name="name" placeholder="Имя"
-                                               data-validate="required,name"
-                                        />
-                                        <div class="input__error"></div>
-                                    </div>
-                                </div>
-                                <div class="feedback__input">
-                                    <div class="input js-input">
-                                        <input class="input__field" type="text" name="phone" placeholder="Телефон"
-                                               data-validate="required,phone" data-masking="phone"
-                                        />
-                                        <div class="input__error"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="feedback_checkbox">
-                                <div class="checkbox js-checkbox">
-                                    <label class="checkbox__label">
-                                        <input class="checkbox__field" type="checkbox" data-validate="required"/>
-                                        <div class="checkbox__custom checkbox__custom--border"></div>
-                                        <div class="checkbox__text">Подтверждаю согласие с
-                                            <a class="checkbox__link" href="#" target="_blank"
-                                            > политикой обработки персональных данных
-                                            </a>
-                                        </div>
-                                    </label>
-                                    <div class="checkbox__error"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feedback__button">
-                        <button class="button button--primary" type="submit">
-                            <span>Отправить</span>
-                        </button>
-                    </div>
-                    <div></div>
-                    <div class="feedback__response"></div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
+<?php
+$APPLICATION->IncludeComponent(
+    "bitrix:news.list",
+    "feedback_form_other",
+    [
+        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+        "ADD_SECTIONS_CHAIN" => "N",
+        "AJAX_MODE" => "N",
+        "AJAX_OPTION_HISTORY" => "N",
+        "AJAX_OPTION_JUMP" => "N",
+        "AJAX_OPTION_STYLE" => "N",
+        "CACHE_FILTER" => "N",
+        "CACHE_GROUPS" => "N",
+        "CACHE_TIME" => "36000000",
+        "CACHE_TYPE" => "A",
+        "CHECK_DATES" => "Y",
+        "DISPLAY_BOTTOM_PAGER" => "N",
+        "DISPLAY_DATE" => "Y",
+        "DISPLAY_NAME" => "Y",
+        "DISPLAY_PICTURE" => "Y",
+        "DISPLAY_PREVIEW_TEXT" => "Y",
+        "DISPLAY_TOP_PAGER" => "N",
+        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+        "IBLOCK_TYPE" => "-",
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+        "INCLUDE_SUBSECTIONS" => "N",
+        "NEWS_COUNT" => "20",
+        "PAGER_BASE_LINK_ENABLE" => "N",
+        "PAGER_DESC_NUMBERING" => "N",
+        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+        "PAGER_SHOW_ALL" => "N",
+        "PAGER_SHOW_ALWAYS" => "N",
+        "SET_BROWSER_TITLE" => "N",
+        "SET_LAST_MODIFIED" => "N",
+        "SET_META_DESCRIPTION" => "N",
+        "SET_META_KEYWORDS" => "N",
+        "SET_STATUS_404" => "N",
+        "SET_TITLE" => "N",
+        "SHOW_404" => "N",
+        "SORT_BY1" => "ACTIVE_FROM",
+        "SORT_BY2" => "SORT",
+        "SORT_ORDER1" => "DESC",
+        "SORT_ORDER2" => "ASC",
+        "STRICT_SECTION_CHECK" => "N",
+    ]
+);
+?>

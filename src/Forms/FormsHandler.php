@@ -134,4 +134,48 @@ class FormsHandler
 
         return $arResult;
     }
+
+
+    /**
+     * Описание один
+     *
+     * @param $aInputData
+     *
+     * @return mixed
+     */
+    public static function setFeedbackInputCaptcha($aInputData)
+    {
+        if (!isset($aInputData)) {
+            return null;
+        }
+
+        $aFields = [
+            'NAME' => $aInputData['name'],
+            'PHONE' => $aInputData['phone'],
+        ];
+
+        return self::addIblockElement('data_from_feedback_form', $aInputData, $aFields);
+    }
+
+
+    /**
+     * Описание два
+     *
+     * @param $aInputData
+     *
+     * @return mixed
+     */
+    public static function setEmailFeedbackInputCaptcha($aInputData)
+    {
+        if (!isset($aInputData['email'])) {
+            return null;
+        }
+
+        $aFields = [
+            'EMAIL' => $aInputData['email'],
+        ];
+        $aInputData['name'] = $aInputData['email'];
+
+        return self::addIblockElement('email_mailing', $aInputData, $aFields);
+    }
 }

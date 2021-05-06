@@ -3,6 +3,7 @@
 namespace IQDEV\Base;
 
 use IQDEV\Entity\Office;
+use IQDEV\Forms\FormsHandler;
 
 class Actions
 {
@@ -134,6 +135,7 @@ class Actions
     {
         $this->setAjaxResponse($this->oRequest);
     }
+
     /**
      * Получение координат офисов yandexMap
      *
@@ -143,5 +145,44 @@ class Actions
     {
         $coords = Office::getCordsAll();
         $this->setAjaxResponse($coords);
+    }
+
+    /**
+     * Запись данных из формы 'Появились вопросы?' в ИБ.
+     *
+     * @return void
+     */
+    public function formQuestionAjaxAction()
+    {
+        $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($this->oRequest);
+        if ($oCallbackForm) {
+            $this->setAjaxResponse(['status' => true]);
+        }
+    }
+
+    /**
+     * Запись данных из формы на главной странице в ИБ.
+     *
+     * @return void
+     */
+    public function formExcursionAjaxAction()
+    {
+        $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($this->oRequest);
+        if ($oCallbackForm) {
+            $this->setAjaxResponse(['status' => true]);
+        }
+    }
+
+    /**
+     * Запись данных из формы 'Подписывайтесь на новости и акции' в ИБ.
+     *
+     * @return void
+     */
+    public function formSubscribeAjaxAction()
+    {
+        $oCallbackForm = FormsHandler::setEmailFeedbackInputCaptcha($this->oRequest);
+        if ($oCallbackForm) {
+            $this->setAjaxResponse(['status' => true]);
+        }
     }
 }
