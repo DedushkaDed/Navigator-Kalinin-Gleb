@@ -289,7 +289,7 @@ if (empty($arResult)) {
     </div>
 </section>
 <?php
-    $APPLICATION->IncludeComponent(
+$APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "feedback_form_other",
     [

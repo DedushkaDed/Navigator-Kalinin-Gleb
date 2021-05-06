@@ -316,7 +316,6 @@ if (empty($arResult)) {
                     "STRICT_SECTION_CHECK" => "N",
                 ]
             ); ?>
-            <!--            Банер для мобильной версии-->
             <div class="detail__item detail__item--slider-mobile">
                 <div class="slider glide js-slider">
                     <div class="slider__body">
@@ -404,10 +403,8 @@ if (empty($arResult)) {
         </div>
     </div>
 </section>
-
-<!-- Появились вопросы?-->
 <?php
-    $APPLICATION->IncludeComponent(
+$APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "feedback_form_other",
     [
