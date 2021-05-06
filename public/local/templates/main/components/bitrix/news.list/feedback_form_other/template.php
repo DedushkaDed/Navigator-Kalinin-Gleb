@@ -15,7 +15,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 
-$aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_form_other');
+$aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_questions');
 
 
 ?>
@@ -26,8 +26,12 @@ $aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_form_other');
             <div class="container">
                 <form class="feedback js-form" action="/?ajaxAction=formQuestion" data-name="question">
                     <div class="feedback__wrapper">
-                        <h2 class="feedback__title"><?=$aFeedbackForm['title']?></h2>
-                        <p class="feedback__subtitle"><?=$aFeedbackForm['description']?></p>
+                        <?if (!empty($aFeedbackForm['title'])) :?>
+                            <h2 class="feedback__title"><?=$aFeedbackForm['title']?></h2>
+                        <?php endif;?>
+                        <?if (!empty($aFeedbackForm['description'])) :?>
+                            <p class="feedback__subtitle"><?=$aFeedbackForm['description']?></p>
+                        <?php endif;?>
                     </div>
                     <div class="feedback__wrapper">
                         <div class="feedback__form">

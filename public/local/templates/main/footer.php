@@ -214,7 +214,6 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('footer');
                     "CHILD_MENU_TYPE" => "subbottom",
                     "DELAY" => "N",
                     "MAX_LEVEL" => "2",
-                    "MENU_CACHE_GET_VARS" => [""],
                     "MENU_CACHE_TIME" => "3600",
                     "MENU_CACHE_TYPE" => "A",
                     "MENU_CACHE_USE_GROUPS" => "N",
