@@ -21,7 +21,7 @@ if (empty($arResult['ITEMS'])) {
 } ?>
 
 <div class="glide__slides">
-    <?php foreach ($arResult['ITEMS'] as $aItem) : ?>
+    <? foreach ($arResult['ITEMS'] as $aItem) : ?>
         <div class="glide__slide">
             <div class="slider-simple-text">
                 <div class="slider-simple-text__title"><?= $aItem['NAME'] ?></div>
@@ -46,7 +46,7 @@ if (empty($arResult['ITEMS'])) {
         </div>
 
         <ul class="slider-simple-controls__list" data-glide-el="controls[nav]">
-            <?php foreach ($arResult['ITEMS'] as $iKey => $aItem) : ?>
+            <? foreach ($arResult['ITEMS'] as $iKey => $aItem) : ?>
                 <li class="glide__bullet" data-glide-dir="=<?=$iKey?>"><?=$iKey?></li>
             <?endforeach;?>
         </ul>

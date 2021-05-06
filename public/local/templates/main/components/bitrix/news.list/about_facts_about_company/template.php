@@ -20,10 +20,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     return;
 } ?>
 <div class="grid-layout grid-layout--gap-15 grid-layout--col-4">
-    <?php foreach ($arResult['mapCards'] as $aItem) : ?>
+    <? foreach ($arResult['mapCards'] as $aItem) : ?>
         <div class="grid-layout__item grid-layout__item--md-span-column-2
          grid-layout__item--lg-span-column-<?= $aItem['size'] ?>">
-            <?php if (!empty($aItem['image'])) : ?>
+            <? if (!empty($aItem['image'])) : ?>
                 <a class="grid-card" href="<?= $aItem['link'] ?>">
                     <img class="grid-card__image" src="<?= $aItem['image'] ?>"/>
                     <div class="grid-card__arrow-link">
@@ -59,21 +59,21 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
             <?php else :
                 ?>
                 <div class="grid-card <?= $aItem['backgroundColor'] ?> <?= $aItem['textColor'] ?>">
-                    <?php if (!empty($aItem['linkLabel'])) : ?>
+                    <? if (!empty($aItem['linkLabel'])) : ?>
                         <div class="grid-card__grow">
                     <? endif; ?>
                         <div class="grid-card__content">
-                            <?php if (!empty($aItem['title'])) : ?>
+                            <? if (!empty($aItem['title'])) : ?>
                                 <div class="grid-card__title"><?= $aItem['title'] ?></div>
                             <? endif; ?>
-                            <?php if (!empty($aItem['description'])) : ?>
+                            <? if (!empty($aItem['description'])) : ?>
                                 <div class="grid-card__subtitle"><?= $aItem['description'] ?></div>
                             <? endif; ?>
                         </div>
-                    <?php if (!empty($aItem['linkLabel'])) : ?>
+                    <? if (!empty($aItem['linkLabel'])) : ?>
                         </div>
                     <? endif; ?>
-                    <?php if (!empty($aItem['link'])) : ?>
+                    <? if (!empty($aItem['link'])) : ?>
                         <a class="grid-card__button" href="<?= $aItem['link'] ?>"><?= $aItem['linkLabel'] ?></a>
                     <? endif; ?>
                 </div>

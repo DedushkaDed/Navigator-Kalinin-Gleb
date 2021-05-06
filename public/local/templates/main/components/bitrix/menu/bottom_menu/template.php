@@ -9,16 +9,16 @@
 <?php
 if (empty($arResult)) {
     return;
-}
-?>
+} ?>
 <div class="footer__navigation">
-    <?php foreach ($arResult as $aItem) : ?>
+    <? foreach ($arResult as $aItem) : ?>
         <div class="footer__navigation-item" href="<?= $aItem["LINK"] ?>">
             <span><?= $aItem["TEXT"] ?></span>
-            <?php if (!empty($aItem['subitems'])) : ?>
+            <? if (!empty($aItem['subitems'])) : ?>
                 <div class="footer__navigation-subitems">
-                    <?php foreach ($aItem['subitems'] as $aSubItem) : ?>
-                        <a class="footer__navigation-subitem" href="/projects/detail"><?= $aSubItem['TEXT'] ?></a>
+                    <? foreach ($aItem['subitems'] as $aSubItem) : ?>
+                        <a class="footer__navigation-subitem"
+                           href="<?= $aSubItem['LINK'] ?>"><?= $aSubItem['TEXT'] ?></a>
                     <? endforeach; ?>
                 </div>
             <? endif; ?>
