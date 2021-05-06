@@ -24,8 +24,12 @@ if (empty($arResult['ITEMS'])) {
     <? foreach ($arResult['ITEMS'] as $aItem) : ?>
         <div class="glide__slide">
             <div class="slider-simple-text">
-                <div class="slider-simple-text__title"><?= $aItem['NAME'] ?></div>
-                <div class="slider-simple-text__text"><?= $aItem['PREVIEW_TEXT'] ?>
+                <? if (!empty($aItem['NAME'])) :?>
+                    <div class="slider-simple-text__title"><?= $aItem['NAME'] ?></div>
+                <?endif;?>
+                <? if (!empty($aItem['PREVIEW_TEXT'])) :?>
+                    <div class="slider-simple-text__text"><?= $aItem['PREVIEW_TEXT'] ?>
+                <?endif;?>
                 </div>
             </div>
         </div>

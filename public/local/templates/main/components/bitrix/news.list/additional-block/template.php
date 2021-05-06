@@ -21,15 +21,23 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 } ?>
 
 
-<? foreach ($arResult['ITEMS'] as $aItem) : ?>
-    <h3><?= $aItem['NAME'] ?></h3>
+<?foreach ($arResult['ITEMS'] as $aItem) :?>
+    <?if (!empty($aItem['NAME'])) :?>
+        <h3><?= $aItem['NAME'] ?></h3>
+    <?php endif;?>
     <div class="detail-content__image">
-        <img class="img" src="<?= $aItem['PREVIEW_PICTURE']['SRC'] ?>"/>
+        <?if (!empty($aItem['PREVIEW_PICTURE']['SRC'])) :?>
+            <img class="img" src="<?= $aItem['PREVIEW_PICTURE']['SRC'] ?>"/>
+        <?php endif;?>
     </div>
-    <p><?= $aItem['PREVIEW_TEXT'] ?></p>
+    <?if (!empty($aItem['PREVIEW_TEXT'])) :?>
+        <p><?= $aItem['PREVIEW_TEXT'] ?></p>
+    <?php endif;?>
     <ul>
-        <? foreach ($aItem['PROPERTIES']['TEXT_PLUSES']['VALUE'] as $aText) : ?>
-            <li><?= $aText ?></li>
-        <? endforeach; ?>
+        <?foreach ($aItem['PROPERTIES']['TEXT_PLUSES']['VALUE'] as $aText) :?>
+            <?if (!empty($aText)) :?>
+                <li><?= $aText ?></li>
+            <?endif;?>
+        <?php endforeach; ?>
     </ul>
-<? endforeach; ?>
+<?php endforeach; ?>
