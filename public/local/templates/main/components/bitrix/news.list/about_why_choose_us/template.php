@@ -23,7 +23,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     <div class="slider__body">
         <div class="glide__track" data-glide-el="track">
             <div class="glide__slides">
-                <?php foreach ($arResult['ITEMS'] as $aItem) :
+                <? foreach ($arResult['ITEMS'] as $aItem) :
                     $iIconBlockId = ($aItem['PROPERTIES']['ICON_SVG']['IBLOCK_ID']);
                     $iIconId = ($aItem['PROPERTIES']['ICON_SVG']['ID']);
                     $iIcon = CFile::GetPath($aItem['PROPERTIES']['ICON_SVG']['VALUE']);

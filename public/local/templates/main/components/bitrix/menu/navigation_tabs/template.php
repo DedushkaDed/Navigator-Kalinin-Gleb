@@ -11,8 +11,8 @@ if (empty($arResult)) {
         <div class="tabs-navigation-wrapper">
             <div class="tabs-navigation js-tabs-navigation-static">
                 <div class="tabs-navigation__active"></div>
-                    <?php foreach ($arResult as $aItem) : ?>
-                        <?php if ($aItem['SELECTED']) : ?>
+                    <? foreach ($arResult as $aItem) : ?>
+                        <? if ($aItem['SELECTED']) : ?>
                             <a class="tabs-navigation__item tabs-navigation__item--active" href="<?= $aItem['LINK'] ?>">
                                 <?= $aItem['TEXT'] ?></a>
                         <? else :

@@ -23,7 +23,7 @@ if (empty($arResult['ITEMS'])) {
 <div class="detail__item detail__item--full-main detail__item--gallery">
     <div class="gallery js-gallery">
         <div class="gallery__container">
-            <?php foreach ($arResult['ITEMS'] as $aItem) : ?>
+            <? foreach ($arResult['ITEMS'] as $aItem) : ?>
                 <div class="gallery__item">
                     <a class="gallery-item" href="<?= $aItem['PREVIEW_PICTURE']['SRC'] ?>" data-fancybox="photo_large"
                        data-options="{&quot;backFocus&quot; : false}"
