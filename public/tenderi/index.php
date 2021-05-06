@@ -67,7 +67,7 @@ $APPLICATION->IncludeComponent(
         "STRICT_SECTION_CHECK" => "N",
     ]
 );
-    $APPLICATION->IncludeComponent(
+$APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "feedback_form_other",
     [
@@ -113,7 +113,6 @@ $APPLICATION->IncludeComponent(
     ]
 );
 
-?>
 
 
-<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
+require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');

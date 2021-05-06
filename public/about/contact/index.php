@@ -157,7 +157,7 @@ $APPLICATION->IncludeComponent(
     </div>
 </section>
 <?php
-    $APPLICATION->IncludeComponent(
+$APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "feedback_form_other",
     [
@@ -213,6 +213,6 @@ $APPLICATION->IncludeComponent(
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
     ]
-    );
+);
 
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
