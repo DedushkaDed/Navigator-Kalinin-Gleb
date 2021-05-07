@@ -11,9 +11,9 @@
 /** @var CBitrixComponentTemplate $this */
 
 \Bitrix\Main\Loader::includeModule('iqdev');
-$iIblockPayment = IQDEV\Base\Helper::getIblockId('payment_workstage');
-$aByuerRassrochkaOptions = IQDEV\Options\Options::getPageOptions('buyer_rassrochka');
+$iIblockMortgageWorkStage = IQDEV\Base\Helper::getIblockId('mortgage_work_stage');
+$aByuerIpotekaOptions = IQDEV\Options\Options::getPageOptions('buyer_ipoteka');
 
 
-$arResult['paymentCards'] = $aByuerRassrochkaOptions;
-$arResult['paymentCards']['iBlockID'] = $iIblockPayment;
+$arResult['mortgageCards'] = $aByuerIpotekaOptions;
+$arResult['mortgageCards']['iBlockID'] = $iIblockMortgageWorkStage;

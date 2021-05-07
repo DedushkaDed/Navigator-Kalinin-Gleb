@@ -16,12 +16,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 
-\Bitrix\Main\Loader::includeModule('iqdev');
-$iIblockPayment = IQDEV\Base\Helper::getIblockId('payment_workstage');
 
 ?>
 
-<?php if (empty($arResult['rassrochkaModule'])) {
+<?php if (empty($arResult['paymentCards'])) {
     return;
 } ?>
 
@@ -29,13 +27,17 @@ $iIblockPayment = IQDEV\Base\Helper::getIblockId('payment_workstage');
     <div class="container">
         <div class="separate-paragraph">
             <div class="separate-paragraph__title">
-                <h1><?=$arResult['rassrochkaModule']['separateParagraphTitle']?></h1>
+                <?if (!empty($arResult['paymentCards']['separateParagraphTitle'])) :?>
+                    <h1><?=$arResult['paymentCards']['separateParagraphTitle']?></h1>
+                <?endif;?>
             </div>
             <div class="separate-paragraph__divider"></div>
             <div class="separate-paragraph__text-wrapper">
-                <div class="separate-paragraph__text">
-                    <?=$arResult['rassrochkaModule']['separateParagraphText']?>
-                </div>
+                <?if (!empty($arResult['paymentCards']['separateParagraphText'])) :?>
+                    <div class="separate-paragraph__text">
+                        <?=$arResult['paymentCards']['separateParagraphText']?>
+                    </div>
+                <?endif;?>
             </div>
         </div>
     </div>
@@ -63,7 +65,7 @@ $iIblockPayment = IQDEV\Base\Helper::getIblockId('payment_workstage');
         "DISPLAY_TOP_PAGER" => "N",
         "FIELD_CODE" => ["NAME", "PREVIEW_TEXT"],
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => $iIblockPayment,
+        "IBLOCK_ID" => $arResult['paymentCards']['iBlockID'],
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
@@ -91,56 +93,76 @@ $iIblockPayment = IQDEV\Base\Helper::getIblockId('payment_workstage');
 ); ?>
 <section class="section section--overflow-hidden mt-medium mb-large">
     <div class="container">
-        <div class="section-header"><?=$arResult['rassrochkaModule']['sectionHeader']?></div>
+        <?if (!empty($arResult['paymentCards']['sectionHeader'])) :?>
+            <div class="section-header"><?=$arResult['paymentCards']['sectionHeader']?></div>
+        <?php endif;?>
         <div class="grid-unit">
             <div class="grid-unit__inner">
                 <div class="grid-unit__item grid-unit__item--banner grid-unit__item--col2">
                     <div class="grid-card grid-card--xs-border-radius">
-                        <div class="grid-card__text"><?=$arResult['rassrochkaModule']['cardLargeText']?></div>
+                        <?if (!empty($arResult['paymentCards']['cardLargeText'])) :?>
+                            <div class="grid-card__text"><?=$arResult['paymentCards']['cardLargeText']?></div>
+                        <?php endif;?>
                         <div class="grid-card__image-wrapper">
-                            <img src="<?=$arResult['rassrochkaModule']['cardLargeImage']?>"/>
+                            <?if (!empty($arResult['paymentCards']['cardLargeImage'])) :?>
+                                <img src="<?=$arResult['paymentCards']['cardLargeImage']?>"/>
+                            <?php endif;?>
                         </div>
                     </div>
                 </div>
                 <div class="grid-unit__item">
                     <div class="card-color card-color--blue">
-                        <div class="card-color__text card-color__text--grow">
-                            <?=$arResult['rassrochkaModule']['firstItemText']?>
-                        </div>
+                        <?if (!empty($arResult['paymentCards']['firstItemText'])) :?>
+                            <div class="card-color__text card-color__text--grow">
+                                <?=$arResult['paymentCards']['firstItemText']?>
+                            </div>
+                        <?php endif;?>
                         <div class="card-color__subcontent">
-                            <div class="circle-percent circle-percent--background-dark-blue">
-                                <?=$arResult['rassrochkaModule']['firstItemPercent']?></div>
-                        </div>
+                            <?if (!empty($arResult['paymentCards']['firstItemPercent'])) :?>
+                                <div class="circle-percent circle-percent--background-dark-blue">
+                                    <?=$arResult['paymentCards']['firstItemPercent']?></div>
+                                </div>
+                            <?php endif;?>
                     </div>
                 </div>
                 <div class="grid-unit__item">
                     <div class="card-color card-color--gray">
-                        <div class="card-color__text card-color__text--grow">
-                            <?=$arResult['rassrochkaModule']['secondItemText']?>
-                        </div>
+                        <?if (!empty($arResult['paymentCards']['secondItemText'])) :?>
+                            <div class="card-color__text card-color__text--grow">
+                                <?=$arResult['paymentCards']['secondItemText']?>
+                            </div>
+                        <?php endif;?>
                     </div>
                 </div>
                 <div class="grid-unit__item">
                     <div class="card-color card-color--green">
-                        <div class="card-color__text card-color__text--grow">
-                            <?=$arResult['rassrochkaModule']['thirdItemText']?>
-                        </div>
+                        <?if (!empty($arResult['paymentCards']['thirdItemText'])) :?>
+                            <div class="card-color__text card-color__text--grow">
+                                <?=$arResult['paymentCards']['thirdItemText']?>
+                            </div>
+                        <?php endif;?>
                     </div>
                 </div>
                 <div class="grid-unit__item">
                     <div class="card-color card-color--gray">
-                        <div class="card-color__text card-color__text--grow">
-                            <?=$arResult['rassrochkaModule']['fourthItemText']?>
-                        </div>
+                        <?if (!empty($arResult['paymentCards']['fourthItemText'])) :?>
+                            <div class="card-color__text card-color__text--grow">
+                                <?=$arResult['paymentCards']['fourthItemText']?>
+                            </div>
+                        <?php endif;?>
                     </div>
                 </div>
                 <div class="grid-unit__item grid-unit__item--col2">
                     <div class="card-color card-color--border card-color--center">
                         <div class="card-color__grid">
-                            <div><?=$arResult['rassrochkaModule']['fifthItemText']?></div>
+                            <?if (!empty($arResult['paymentCards']['fifthItemText'])) :?>
+                                <div><?=$arResult['paymentCards']['fifthItemText']?></div>
+                            <?php endif;?>
                             <div class="card-color__button js-modal-trigger" data-modal-id="consultation">
                                 <div class="button button--primary">
-                                    <span><?=$arResult['rassrochkaModule']['fifthItemButtonLabel']?></span>
+                                    <?if (!empty($arResult['paymentCards']['fifthItemButtonLabel'])) :?>
+                                        <span><?=$arResult['paymentCards']['fifthItemButtonLabel']?></span>
+                                    <?php endif;?>
                                 </div>
                             </div>
                         </div>
@@ -151,43 +173,57 @@ $iIblockPayment = IQDEV\Base\Helper::getIblockId('payment_workstage');
                         <div class="grid-unit-mobile-slider__carousel">
                             <div class="grid-unit__mobile-item">
                                 <div class="card-color card-color--blue">
-                                    <div class="card-color__text card-color__text--grow">
-                                        <?=$arResult['rassrochkaModule']['firstItemText']?>
-                                    </div>
+                                    <?if (!empty($arResult['paymentCards']['firstItemText'])) :?>
+                                        <div class="card-color__text card-color__text--grow">
+                                            <?=$arResult['paymentCards']['firstItemText']?>
+                                        </div>
+                                    <?php endif;?>
                                     <div class="card-color__subcontent">
-                                        <div class="circle-percent circle-percent--background-dark-blue">
-                                            <?=$arResult['rassrochkaModule']['firstItemPercent']?></div>
-                                    </div>
+                                        <?if (!empty($arResult['paymentCards']['firstItemPercent'])) :?>
+                                            <div class="circle-percent circle-percent--background-dark-blue">
+                                                <?=$arResult['paymentCards']['firstItemPercent']?></div>
+                                            </div>
+                                        <?php endif;?>
                                 </div>
                             </div>
                             <div class="grid-unit__mobile-item">
                                 <div class="card-color card-color--gray">
-                                    <div class="card-color__text card-color__text--grow"
-                                    ><?=$arResult['rassrochkaModule']['secondItemText']?>
-                                    </div>
+                                    <?if (!empty($arResult['paymentCards']['secondItemText'])) :?>
+                                        <div class="card-color__text card-color__text--grow">
+                                            <?=$arResult['paymentCards']['secondItemText']?>
+                                        </div>
+                                    <?php endif;?>
                                 </div>
                             </div>
                             <div class="grid-unit__mobile-item">
                                 <div class="card-color card-color--green">
-                                    <div class="card-color__text card-color__text--grow"
-                                    ><?=$arResult['rassrochkaModule']['thirdItemText']?>
-                                    </div>
+                                    <?if (!empty($arResult['paymentCards']['thirdItemText'])) :?>
+                                        <div class="card-color__text card-color__text--grow">
+                                            <?=$arResult['paymentCards']['thirdItemText']?>
+                                        </div>
+                                    <?php endif;?>
                                 </div>
                             </div>
                             <div class="grid-unit__mobile-item">
                                 <div class="card-color card-color--gray">
-                                    <div class="card-color__text card-color__text--grow"
-                                    ><?=$arResult['rassrochkaModule']['fourthItemText']?>
-                                    </div>
+                                    <?if (!empty($arResult['paymentCards']['fourthItemText'])) :?>
+                                        <div class="card-color__text card-color__text--grow">
+                                            <?=$arResult['paymentCards']['fourthItemText']?>
+                                        </div>
+                                    <?php endif;?>
                                 </div>
                             </div>
                             <div class="grid-unit__mobile-item">
                                 <div class="card-color card-color--border card-color--center">
                                     <div class="card-color__grid">
-                                        <div><div><?=$arResult['rassrochkaModule']['fifthItemText']?></div></div>
+                                        <?if (!empty($arResult['paymentCards']['fifthItemText'])) :?>
+                                            <div><?=$arResult['paymentCards']['fifthItemText']?></div>
+                                        <?php endif;?>
                                         <div class="card-color__button js-modal-trigger" data-modal-id="consultation">
                                             <div class="button button--primary">
-                                                <span><?=$arResult['rassrochkaModule']['fifthItemButtonLabel']?></span>
+                                                <?if (!empty($arResult['paymentCards']['fifthItemButtonLabel'])) :?>
+                                                    <span><?=$arResult['paymentCards']['fifthItemButtonLabel']?></span>
+                                                <?php endif;?>
                                             </div>
                                         </div>
                                     </div>

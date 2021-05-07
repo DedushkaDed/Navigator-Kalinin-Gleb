@@ -21,7 +21,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 <?php if (empty($arResult['mapCards'])) {
     return;
 } ?>
-
 <section class="section mb-medium">
     <div class="container">
         <div class="work-stage-container">
@@ -43,7 +42,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         <?php endif;?>
                     </div>
                 </div>
-            <?endforeach;?>
+            <?php endforeach;?>
         </div>
     </div>
 </section>
