@@ -12,8 +12,10 @@
 
 \Bitrix\Main\Loader::includeModule('iqdev');
 $iIblockMortgageWorkStage = IQDEV\Base\Helper::getIblockId('mortgage_work_stage');
+$iIblockMortgageSlider = IQDEV\Base\Helper::getIblockId('mortgage_slider');
 $aByuerIpotekaOptions = IQDEV\Options\Options::getPageOptions('buyer_ipoteka');
 
 
 $arResult['mortgageCards'] = $aByuerIpotekaOptions;
-$arResult['mortgageCards']['iBlockID'] = $iIblockMortgageWorkStage;
+$arResult['mortgageCards']['iBlockMortgageWorkStageID'] = $iIblockMortgageWorkStage;
+$arResult['mortgageCards']['iBlockMortgageSliderID'] = $iIblockMortgageSlider;
