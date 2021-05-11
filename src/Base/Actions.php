@@ -154,10 +154,15 @@ class Actions
      */
     public function formQuestionAjaxAction()
     {
-        $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($this->oRequest);
+        $sName = $this->oRequest['name'];
+        $sPhone = $this->oRequest['phone'];
+
+        $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($sName, $sPhone);
+
         if ($oCallbackForm) {
             $this->setAjaxResponse(['status' => true]);
         }
+        $this->setAjaxResponse(['status' => false]);
     }
 
     /**
@@ -167,10 +172,10 @@ class Actions
      */
     public function formExcursionAjaxAction()
     {
-        $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($this->oRequest);
-        if ($oCallbackForm) {
-            $this->setAjaxResponse(['status' => true]);
-        }
+//        $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($this->oRequest);
+//        if ($oCallbackForm) {
+//            $this->setAjaxResponse(['status' => true]);
+//        }
     }
 
     /**

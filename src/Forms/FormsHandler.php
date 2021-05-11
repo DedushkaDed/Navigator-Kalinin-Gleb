@@ -50,12 +50,11 @@ class FormsHandler
         $aFields = [
             'IBLOCK_ID' => $iblockId,
             'NAME' => $aIblockFields['name'],
+            'CODE' => $aIblockFields['name'],
             'PROPERTY_VALUES' => $aIblockProperties,
         ];
 
-        $iItemId = $oEl->Add($aFields);
-
-        return $iItemId;
+        return $oEl->Add($aFields);
     }
 
     /**
@@ -143,18 +142,20 @@ class FormsHandler
      *
      * @return mixed
      */
-    public static function setFeedbackInputCaptcha($aInputData)
+    public static function setFeedbackInputCaptcha($sName, $sPhone)
     {
-        if (!isset($aInputData)) {
-            return null;
+        if (isset($sName) && isset($sPhone))
+        {
+            $aFields = [
+                'name' => $sName,
+            ];
+            $aProperties = [
+                'PHONE' => $sPhone,
+            ];
+
+            return self::addIblockElement('questions', $aFields, $aProperties);
         }
-
-        $aFields = [
-            'NAME' => $aInputData['name'],
-            'PHONE' => $aInputData['phone'],
-        ];
-
-        return self::addIblockElement('data_from_feedback_form', $aInputData, $aFields);
+        return false;
     }
 
 
@@ -176,6 +177,6 @@ class FormsHandler
         ];
         $aInputData['name'] = $aInputData['email'];
 
-        return self::addIblockElement('email_mailing', $aInputData, $aFields);
+        return self::addIblockElement('email_mailing', $aFields, $aInputData);
     }
 }
