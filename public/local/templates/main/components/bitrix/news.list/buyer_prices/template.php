@@ -19,7 +19,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 <?php if (empty($arResult['mapCards'])) {
     return;
 } ?>
-<?php dump($arResult['mapCards']);?>
 <section class="section mt-medium mb-medium">
     <div class="container">
         <h1 class="section-header"><?=$arResult['mapCards']['options']['sectionHeaderA']?></h1>
