@@ -3,6 +3,9 @@
 }
 \Bitrix\Main\Loader::includeModule('iqdev');
 $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
+$iIblockAdditionalContent = IQDEV\Base\Helper::getIblockId('additional_content');
+$iIblockAsideBanners = IQDEV\Base\Helper::getIblockId('aside_banners');
+$iIblockPhotoReport = IQDEV\Base\Helper::getIblockId('photo_report');
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -122,13 +125,12 @@ if (empty($arResult)) {
                         <p><?= $aTextNews['TEXT'] ?></p>
                     <? endforeach; ?>
                     <?php $APPLICATION->IncludeComponent(
-                        "bitrix:news.list",
-                        "additional-block",
+                    "bitrix:news.list",
+                    "additional-block",
                         [
                             "ACTIVE_DATE_FORMAT" => "d.m.Y",
                             "ADD_SECTIONS_CHAIN" => "N",
                             "AJAX_MODE" => "N",
-                            "AJAX_OPTION_ADDITIONAL" => "",
                             "AJAX_OPTION_HISTORY" => "N",
                             "AJAX_OPTION_JUMP" => "N",
                             "AJAX_OPTION_STYLE" => "N",
@@ -137,17 +139,15 @@ if (empty($arResult)) {
                             "CACHE_TIME" => "36000000",
                             "CACHE_TYPE" => "A",
                             "CHECK_DATES" => "Y",
-                            "DETAIL_URL" => "",
                             "DISPLAY_BOTTOM_PAGER" => "N",
                             "DISPLAY_DATE" => "N",
                             "DISPLAY_NAME" => "Y",
                             "DISPLAY_PICTURE" => "Y",
                             "DISPLAY_PREVIEW_TEXT" => "Y",
                             "DISPLAY_TOP_PAGER" => "N",
-                            "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", ""],
-                            "FILTER_NAME" => "",
+                            "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                            "IBLOCK_ID" => "14",
+                            "IBLOCK_ID" => $iIblockAdditionalContent,
                             "IBLOCK_TYPE" => "content",
                             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                             "INCLUDE_SUBSECTIONS" => "N",
@@ -175,8 +175,8 @@ if (empty($arResult)) {
                 </div>
             </div>
             <?php $APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "aside_banners",
+            "bitrix:news.list",
+            "aside_banners",
                 [
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
@@ -196,12 +196,10 @@ if (empty($arResult)) {
                     "DISPLAY_PREVIEW_TEXT" => "Y",
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
-                    "FILTER_NAME" => "",
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => "13",
+                    "IBLOCK_ID" => $iIblockAsideBanners,
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                    "INCLUDE_SUBSECTIONS" => "N",
                     "NEWS_COUNT" => "1",
                     "PAGER_BASE_LINK_ENABLE" => "N",
                     "PAGER_DESC_NUMBERING" => "N",
@@ -224,8 +222,8 @@ if (empty($arResult)) {
                 ]
             ); ?>
             <?php $APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "about_our_news_photo_report_from_the_company",
+            "bitrix:news.list",
+            "about_our_news_photo_report_from_the_company",
                 [
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
@@ -246,7 +244,7 @@ if (empty($arResult)) {
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["PREVIEW_PICTURE"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => "12",
+                    "IBLOCK_ID" => $iIblockPhotoReport,
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
@@ -357,50 +355,60 @@ if (empty($arResult)) {
         </div>
     </div>
 </section>
-<?php
-$APPLICATION->IncludeComponent(
-    "bitrix:news.list",
-    "feedback_form_other",
-    [
-        "ACTIVE_DATE_FORMAT" => "d.m.Y",
-        "ADD_SECTIONS_CHAIN" => "N",
-        "AJAX_MODE" => "N",
-        "AJAX_OPTION_HISTORY" => "N",
-        "AJAX_OPTION_JUMP" => "N",
-        "AJAX_OPTION_STYLE" => "N",
-        "CACHE_FILTER" => "N",
-        "CACHE_GROUPS" => "N",
-        "CACHE_TIME" => "36000000",
-        "CACHE_TYPE" => "A",
-        "CHECK_DATES" => "Y",
-        "DISPLAY_BOTTOM_PAGER" => "N",
-        "DISPLAY_DATE" => "Y",
-        "DISPLAY_NAME" => "Y",
-        "DISPLAY_PICTURE" => "Y",
-        "DISPLAY_PREVIEW_TEXT" => "Y",
-        "DISPLAY_TOP_PAGER" => "N",
-        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_TYPE" => "-",
-        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-        "INCLUDE_SUBSECTIONS" => "N",
-        "NEWS_COUNT" => "20",
-        "PAGER_BASE_LINK_ENABLE" => "N",
-        "PAGER_DESC_NUMBERING" => "N",
-        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-        "PAGER_SHOW_ALL" => "N",
-        "PAGER_SHOW_ALWAYS" => "N",
-        "SET_BROWSER_TITLE" => "N",
-        "SET_LAST_MODIFIED" => "N",
-        "SET_META_DESCRIPTION" => "N",
-        "SET_META_KEYWORDS" => "N",
-        "SET_STATUS_404" => "N",
-        "SET_TITLE" => "N",
-        "SHOW_404" => "N",
-        "SORT_BY1" => "ACTIVE_FROM",
-        "SORT_BY2" => "SORT",
-        "SORT_ORDER1" => "DESC",
-        "SORT_ORDER2" => "ASC",
-        "STRICT_SECTION_CHECK" => "N",
-    ]
-);
-?>
+<section class="section mb-large">
+    <div class="container-large">
+        <div class="feedback__container">
+            <div class="container">
+                <form class="feedback js-form" action="/?ajaxAction=formQuestion" data-name="question">
+                    <div class="feedback__wrapper">
+                        <h2 class="feedback__title">Появились вопросы?</h2>
+                        <p class="feedback__subtitle">Оставьте свой телефон и мы свяжемся с вами</p>
+                    </div>
+                    <div class="feedback__wrapper">
+                        <div class="feedback__form">
+                            <div class="feedback__inputs-wrapper">
+                                <div class="feedback__input">
+                                    <div class="input js-input">
+                                        <input class="input__field" type="text" name="name" placeholder="Имя"
+                                               data-validate="required,name"
+                                        />
+                                        <div class="input__error"></div>
+                                    </div>
+                                </div>
+                                <div class="feedback__input">
+                                    <div class="input js-input">
+                                        <input class="input__field" type="text" name="phone" placeholder="Телефон"
+                                               data-validate="required,phone" data-masking="phone"
+                                        />
+                                        <div class="input__error"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feedback_checkbox">
+                                <div class="checkbox js-checkbox">
+                                    <label class="checkbox__label">
+                                        <input class="checkbox__field" type="checkbox" data-validate="required"/>
+                                        <div class="checkbox__custom checkbox__custom--border"></div>
+                                        <div class="checkbox__text">Подтверждаю согласие с
+                                            <a class="checkbox__link" href="#" target="_blank"
+                                            > политикой обработки персональных данных
+                                            </a>
+                                        </div>
+                                    </label>
+                                    <div class="checkbox__error"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feedback__button">
+                        <button class="button button--primary" type="submit">
+                            <span>Отправить</span>
+                        </button>
+                    </div>
+                    <div></div>
+                    <div class="feedback__response"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -14,9 +14,9 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-    $APPLICATION->IncludeComponent(
-    "bitrix:news.list",
-    "blog_elements",
+$APPLICATION->IncludeComponent(
+"bitrix:news.list",
+"blog_elements",
     [
         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
         "IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -65,5 +65,5 @@ $this->setFrameMode(true);
         "HIDE_LINK_WHEN_NO_DETAIL" => $arParams["HIDE_LINK_WHEN_NO_DETAIL"],
         "CHECK_DATES" => $arParams["CHECK_DATES"],
     ],
-    $component
-     );
+$component
+);

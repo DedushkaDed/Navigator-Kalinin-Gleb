@@ -1,7 +1,6 @@
-<?php
-require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-\Bitrix\Main\Loader::includeModule('iqdev');
+$iIblockStories = IQDEV\Base\Helper::getIblockId('stories');
 
 $APPLICATION->IncludeComponent(
 "bitrix:menu",
@@ -18,7 +17,7 @@ $APPLICATION->IncludeComponent(
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
 false
- );
+);
 $APPLICATION->IncludeComponent(
 "bitrix:news",
 "about_istorii-nashih-zhitelej",
@@ -50,7 +49,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_PREVIEW_TEXT" => "N",
         "DISPLAY_TOP_PAGER" => "N",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('stories'),
+        "IBLOCK_ID" => $iIblockStories,
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",

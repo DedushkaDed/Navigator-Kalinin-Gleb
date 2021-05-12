@@ -15,7 +15,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 
-
 if (empty($arResult['ITEMS'])) {
     return;
 } ?>
