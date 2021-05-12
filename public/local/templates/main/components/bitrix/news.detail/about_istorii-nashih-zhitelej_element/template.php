@@ -23,7 +23,6 @@ if (empty($arResult)) {
     return;
 } ?>
 
-
 <section class="section section--overflow-hidden mb-medium">
     <div class="container">
         <div class="detail">
@@ -140,8 +139,8 @@ if (empty($arResult)) {
                     <? endforeach; ?>
 
                     <?php $APPLICATION->IncludeComponent(
-                        "bitrix:news.list",
-                        "additional-block",
+                    "bitrix:news.list",
+                    "additional-block",
                         [
                             "ACTIVE_DATE_FORMAT" => "d.m.Y",
                             "ADD_SECTIONS_CHAIN" => "N",
@@ -190,8 +189,8 @@ if (empty($arResult)) {
                 </div>
             </div>
             <?php $APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "aside_banners",
+            "bitrix:news.list",
+            "aside_banners",
                 [
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
@@ -239,8 +238,8 @@ if (empty($arResult)) {
             ); ?>
         </div>
         <?php $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "about_our_news_photo_report_from_the_company",
+        "bitrix:news.list",
+        "about_our_news_photo_report_from_the_company",
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
@@ -271,7 +270,6 @@ if (empty($arResult)) {
                 "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
                 "PAGER_SHOW_ALL" => "N",
                 "PAGER_SHOW_ALWAYS" => "N",
-                "PAGER_TITLE" => "Новости",
                 "SET_BROWSER_TITLE" => "N",
                 "SET_LAST_MODIFIED" => "N",
                 "SET_META_DESCRIPTION" => "N",

@@ -2,11 +2,6 @@
     die();
 }
 
-
-
-?>
-
-<?php
 if (empty($arResult)) {
     return;
 } ?>

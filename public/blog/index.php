@@ -1,18 +1,15 @@
-<?php
-require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+
+\Bitrix\Main\Loader::includeModule('iqdev');
 $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
 
-
-    $APPLICATION->IncludeComponent(
-    "bitrix:menu",
-    "navigation_tabs",
+$APPLICATION->IncludeComponent(
+"bitrix:menu",
+"navigation_tabs",
     [
         "ALLOW_MULTI_SELECT" => "N",
-        "CHILD_MENU_TYPE" => "",
         "DELAY" => "N",
         "MAX_LEVEL" => "1",
-        "MENU_CACHE_GET_VARS" => [
-        ],
         "MENU_CACHE_TIME" => "3600",
         "MENU_CACHE_TYPE" => "A",
         "MENU_CACHE_USE_GROUPS" => "N",
@@ -20,16 +17,15 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
         "USE_EXT" => "Y",
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
-    false
-     );
-    $APPLICATION->IncludeComponent(
-    "bitrix:news",
-    "blog",
+false
+ );
+$APPLICATION->IncludeComponent(
+"bitrix:news",
+"blog",
     [
         "ADD_ELEMENT_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "N",
         "AJAX_MODE" => "N",
-        "AJAX_OPTION_ADDITIONAL" => "",
         "AJAX_OPTION_HISTORY" => "N",
         "AJAX_OPTION_JUMP" => "N",
         "AJAX_OPTION_STYLE" => "Y",
@@ -42,11 +38,9 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
         "DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
         "DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
         "DETAIL_DISPLAY_TOP_PAGER" => "N",
-        "DETAIL_FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", "DETAIL_PICTURE", "", ""],
+        "DETAIL_FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", "DETAIL_PICTURE"],
         "DETAIL_PAGER_SHOW_ALL" => "Y",
-        "DETAIL_PAGER_TEMPLATE" => "",
-        "DETAIL_PAGER_TITLE" => "Страница",
-        "DETAIL_PROPERTY_CODE" => ["DATE", "TEXT_HISTORY_RESIDENT", "", ""],
+        "DETAIL_PROPERTY_CODE" => ["DATE", "TEXT_HISTORY_RESIDENT"],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "Y",
         "DISPLAY_DATE" => "N",
@@ -55,15 +49,12 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
         "DISPLAY_PREVIEW_TEXT" => "N",
         "DISPLAY_TOP_PAGER" => "N",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "$iIblockArticles",
+        "IBLOCK_ID" => $iIblockArticles,
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
-        "LIST_FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", "DETAIL_PICTURE", ""],
-        "LIST_PROPERTY_CODE" => ["DATE", "", ""],
-        "MESSAGE_404" => "",
-        "META_DESCRIPTION" => "-",
-        "META_KEYWORDS" => "-",
+        "LIST_FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", "DETAIL_PICTURE"],
+        "LIST_PROPERTY_CODE" => ["DATE"],
         "NEWS_COUNT" => "8",
         "PAGER_BASE_LINK_ENABLE" => "N",
         "PAGER_DESC_NUMBERING" => "N",
@@ -72,10 +63,9 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
         "PAGER_SHOW_ALWAYS" => "Y",
         "PAGER_TEMPLATE" => "about_page_navigation",
         "PAGER_TITLE" => "Постраничная навигация",
-        "PREVIEW_TRUNCATE_LEN" => "",
         "SEF_FOLDER" => "/blog/",
         "SEF_MODE" => "Y",
-        "SEF_URL_TEMPLATES" => ["detail" => "#ELEMENT_ID#/", "news" => "", "section" => ""],
+        "SEF_URL_TEMPLATES" => ["detail" => "#ELEMENT_ID#/"],
         "SET_LAST_MODIFIED" => "N",
         "SET_STATUS_404" => "Y",
         "SET_TITLE" => "N",
@@ -93,6 +83,6 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
         "USE_SEARCH" => "N",
         "USE_SHARE" => "N",
     ]
-    );
+);
 
-    require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
