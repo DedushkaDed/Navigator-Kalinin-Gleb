@@ -15,8 +15,7 @@ if (empty($arResult)) {
                         <? if ($aItem['SELECTED']) : ?>
                             <a class="tabs-navigation__item tabs-navigation__item--active" href="<?= $aItem['LINK'] ?>">
                                 <?= $aItem['TEXT'] ?></a>
-                        <? else :
-                            ?>
+                        <? else :?>
                             <a class="tabs-navigation__item" href="<?= $aItem['LINK'] ?>"><?= $aItem['TEXT'] ?></a>
                         <? endif; ?>
                     <? endforeach; ?>
