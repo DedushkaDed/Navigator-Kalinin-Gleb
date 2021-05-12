@@ -2,6 +2,8 @@
 
 namespace IQDEV\Forms;
 
+use Bitrix\Main\PhoneNumber\Parser;
+
 class FormsHandler
 {
     /**
@@ -50,12 +52,11 @@ class FormsHandler
         $aFields = [
             'IBLOCK_ID' => $iblockId,
             'NAME' => $aIblockFields['name'],
+            'CODE' => $aIblockFields['name'],
             'PROPERTY_VALUES' => $aIblockProperties,
         ];
 
-        $iItemId = $oEl->Add($aFields);
-
-        return $iItemId;
+        return $oEl->Add($aFields);
     }
 
     /**
@@ -135,47 +136,77 @@ class FormsHandler
         return $arResult;
     }
 
-
     /**
-     * Описание один
+     * Сохраняет имя и номер телефона пользователя в форме 'Появились вопросы'.
      *
-     * @param $aInputData
+     * @param $sName
+     * @param $sPhone
      *
      * @return mixed
      */
-    public static function setFeedbackInputCaptcha($aInputData)
+    public static function setFeedbackInputCaptcha($sName, $sPhone)
     {
-        if (!isset($aInputData)) {
+        $oParsedPhone = Parser::getInstance()->parse($sPhone);
+
+        if (!isset($sName) || $oParsedPhone->isValid() === false) {
             return null;
         }
 
         $aFields = [
-            'NAME' => $aInputData['name'],
-            'PHONE' => $aInputData['phone'],
+            'name' => $sName,
+        ];
+        $aProperties = [
+            'PHONE' => $oParsedPhone->format('RU'),
         ];
 
-        return self::addIblockElement('data_from_feedback_form', $aInputData, $aFields);
+        return self::addIblockElement('questions', $aFields, $aProperties);
     }
 
-
     /**
-     * Описание два
+     * Сохраняет имя и номер телефона пользователя в форме 'Экскурсия по загородной жизни'.
      *
-     * @param $aInputData
+     * @param $sName
+     * @param $sPhone
      *
      * @return mixed
      */
-    public static function setEmailFeedbackInputCaptcha($aInputData)
+    public static function setExcursionInputCaptcha($sName, $sPhone)
     {
-        if (!isset($aInputData['email'])) {
+        $oParsedPhone = Parser::getInstance()->parse($sPhone);
+
+        if (!isset($sName) || $oParsedPhone->isValid() === false) {
             return null;
         }
 
         $aFields = [
-            'EMAIL' => $aInputData['email'],
+            'name' => $sName,
         ];
-        $aInputData['name'] = $aInputData['email'];
+        $aProperties = [
+            'PHONE' => $oParsedPhone->format('RU'),
+        ];
 
-        return self::addIblockElement('email_mailing', $aInputData, $aFields);
+        return self::addIblockElement('excursion_mailing', $aFields, $aProperties);
+    }
+
+    /**
+     * Сохраняет E-mail пользователя, который подписался на рассылку.
+     *
+     * @param $sEmail
+     *
+     * @return mixed
+     */
+    public static function setEmailSubscribeInputCaptcha($sEmail)
+    {
+        if (!isset($sEmail)) {
+            return null;
+        }
+
+        $aFields = [
+            'name' => $sEmail,
+        ];
+
+        $aProperties = [];
+
+        return self::addIblockElement('email_mailing', $aFields, $aProperties);
     }
 }

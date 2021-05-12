@@ -1,6 +1,7 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 $iIblockTenderi = IQDEV\Base\Helper::getIblockId('tenderi');
+$iIblockQuestions = IQDEV\Base\Helper::getIblockId('questions');
 
 $APPLICATION->IncludeComponent(
     "bitrix:menu",
@@ -81,6 +82,7 @@ $APPLICATION->IncludeComponent(
         "CACHE_GROUPS" => "N",
         "CACHE_TIME" => "36000000",
         "CACHE_TYPE" => "A",
+        "IBLOCK_ID" => "$iIblockQuestions",
         "CHECK_DATES" => "Y",
         "DETAIL_URL" => "",
         "DISPLAY_BOTTOM_PAGER" => "N",

@@ -154,23 +154,33 @@ class Actions
      */
     public function formQuestionAjaxAction()
     {
-        $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($this->oRequest);
+        $sName = $this->oRequest['name'];
+        $sPhone = $this->oRequest['phone'];
+
+        $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($sName, $sPhone);
+
         if ($oCallbackForm) {
             $this->setAjaxResponse(['status' => true]);
         }
+        $this->setAjaxResponse(['status' => false]);
     }
 
     /**
-     * Запись данных из формы на главной странице в ИБ.
+     * Запись данных из формы 'Экскурсия по загородной жизни' в ИБ.
      *
      * @return void
      */
     public function formExcursionAjaxAction()
     {
-        $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($this->oRequest);
+        $sName = $this->oRequest['name'];
+        $sPhone = $this->oRequest['phone'];
+
+        $oCallbackForm = FormsHandler::setExcursionInputCaptcha($sName, $sPhone);
+
         if ($oCallbackForm) {
             $this->setAjaxResponse(['status' => true]);
         }
+        $this->setAjaxResponse(['status' => false]);
     }
 
     /**
@@ -180,9 +190,12 @@ class Actions
      */
     public function formSubscribeAjaxAction()
     {
-        $oCallbackForm = FormsHandler::setEmailFeedbackInputCaptcha($this->oRequest);
+        $sEmail = $this->oRequest['email'];
+        $oCallbackForm = FormsHandler::setEmailSubscribeInputCaptcha($sEmail);
+
         if ($oCallbackForm) {
             $this->setAjaxResponse(['status' => true]);
         }
+        $this->setAjaxResponse(['status' => false]);
     }
 }
