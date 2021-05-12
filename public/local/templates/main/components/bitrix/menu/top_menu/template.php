@@ -32,6 +32,6 @@ if (empty($arResult)) {
         <a class="navigation__item" href="<?= $aItem["LINK"] ?>">
             <span class="navigation__page"><?= $aItem["TEXT"] ?></span>
         </a>
-        <?php endif; ?>
-    <?php endforeach ?>
+        <? endif; ?>
+    <? endforeach ?>
 </div>
