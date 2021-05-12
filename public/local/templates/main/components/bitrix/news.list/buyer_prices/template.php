@@ -164,9 +164,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
         </div>
     </div>
 </section>
-<!--    Вызов нижних инфоблоков - осуществлять через result.modifier.
-        Там выкачивать ID инфоблока. Передавать сюда в компонент
--->
 <?php $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "buyer_prices_content",
