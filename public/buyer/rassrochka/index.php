@@ -1,8 +1,6 @@
-<?php
-require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-\Bitrix\Main\Loader::includeModule('iqdev');
-$iIblockPayment = IQDEV\Base\Helper::getIblockId('payment_workstage');
+<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
+\Bitrix\Main\Loader::includeModule('iqdev');
 ?>
 
 <?php $APPLICATION->IncludeComponent(
@@ -45,7 +43,7 @@ $iIblockPayment = IQDEV\Base\Helper::getIblockId('payment_workstage');
         "DISPLAY_TOP_PAGER" => "N",
         "FIELD_CODE" => ["NAME", "PREVIEW_TEXT"],
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => $iIblockPayment,
+        "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('payment_workstage'),
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
