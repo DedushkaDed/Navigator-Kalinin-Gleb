@@ -1,5 +1,4 @@
-<?php
-require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 \Bitrix\Main\Loader::includeModule('iqdev');
 $iIblockMortgageWorkStage = IQDEV\Base\Helper::getIblockId('mortgage_work_stage');

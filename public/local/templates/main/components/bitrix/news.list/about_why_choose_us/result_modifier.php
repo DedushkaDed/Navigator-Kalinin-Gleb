@@ -2,7 +2,6 @@
     die();
 }
 
-
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */

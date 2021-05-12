@@ -1,5 +1,4 @@
-<?php
-require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 \Bitrix\Main\Loader::includeModule('iqdev');
 $iIblockPriceListBuyer = IQDEV\Base\Helper::getIblockId('price_list_buyer');

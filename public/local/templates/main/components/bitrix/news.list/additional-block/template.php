@@ -1,5 +1,4 @@
-<?php
-if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
@@ -14,9 +13,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-?>
 
-<?php if (empty($arResult['ITEMS'])) {
+if (empty($arResult['ITEMS'])) {
     return;
 } ?>
 

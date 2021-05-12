@@ -42,15 +42,13 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
         </a>
 
         <?php $APPLICATION->IncludeComponent(
-            "bitrix:menu",
-            "top_menu",
+        "bitrix:menu",
+        "top_menu",
             [
                 "ALLOW_MULTI_SELECT" => "N",
                 "CHILD_MENU_TYPE" => "subtop",
                 "DELAY" => "N",
                 "MAX_LEVEL" => "2",
-                "MENU_CACHE_GET_VARS" => [
-                ],
                 "MENU_CACHE_TIME" => "3600",
                 "MENU_CACHE_TYPE" => "A",
                 "MENU_CACHE_USE_GROUPS" => "N",
@@ -58,7 +56,7 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
                 "USE_EXT" => "Y",
                 "COMPONENT_TEMPLATE" => "top_menu",
             ],
-            false
+        false
         ); ?>
 
         <a class="header__number js-stats link-blue roistat_phone_navig" href="tel:<?=$aOptions['link']?>">
@@ -291,10 +289,9 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
 <section class="section mb-medium">
     <div class="container">
         <?php $APPLICATION->IncludeComponent(
-            "bitrix:breadcrumb",
-            "navigation",
+        "bitrix:breadcrumb",
+        "navigation",
             [
-                "PATH" => "",
                 "SITE_ID" => "s1",
                 "START_FROM" => "0",
             ]

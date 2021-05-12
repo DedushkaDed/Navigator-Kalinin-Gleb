@@ -20,7 +20,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     return;
 } ?>
 
-
 <div class="contact-page__gallery">
     <div class="gallery js-gallery">
         <div class="gallery__container">

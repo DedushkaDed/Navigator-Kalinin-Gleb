@@ -20,7 +20,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     return;
 } ?>
 
-
 <section class="section mb-large">
     <div class="container">
         <div class="grid-news grid-news--top">

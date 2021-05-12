@@ -3,6 +3,9 @@
 }
 \Bitrix\Main\Loader::includeModule('iqdev');
 $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
+$iIblockAdditionalContent = IQDEV\Base\Helper::getIblockId('additional_content');
+$iIblockAsideBanners = IQDEV\Base\Helper::getIblockId('aside_banners');
+$iIblockPhotoReport = IQDEV\Base\Helper::getIblockId('photo_report');
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -122,13 +125,12 @@ if (empty($arResult)) {
                         <p><?= $aTextNews['TEXT'] ?></p>
                     <? endforeach; ?>
                     <?php $APPLICATION->IncludeComponent(
-                        "bitrix:news.list",
-                        "additional-block",
+                    "bitrix:news.list",
+                    "additional-block",
                         [
                             "ACTIVE_DATE_FORMAT" => "d.m.Y",
                             "ADD_SECTIONS_CHAIN" => "N",
                             "AJAX_MODE" => "N",
-                            "AJAX_OPTION_ADDITIONAL" => "",
                             "AJAX_OPTION_HISTORY" => "N",
                             "AJAX_OPTION_JUMP" => "N",
                             "AJAX_OPTION_STYLE" => "N",
@@ -137,17 +139,15 @@ if (empty($arResult)) {
                             "CACHE_TIME" => "36000000",
                             "CACHE_TYPE" => "A",
                             "CHECK_DATES" => "Y",
-                            "DETAIL_URL" => "",
                             "DISPLAY_BOTTOM_PAGER" => "N",
                             "DISPLAY_DATE" => "N",
                             "DISPLAY_NAME" => "Y",
                             "DISPLAY_PICTURE" => "Y",
                             "DISPLAY_PREVIEW_TEXT" => "Y",
                             "DISPLAY_TOP_PAGER" => "N",
-                            "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", ""],
-                            "FILTER_NAME" => "",
+                            "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                            "IBLOCK_ID" => "14",
+                            "IBLOCK_ID" => $iIblockAdditionalContent,
                             "IBLOCK_TYPE" => "content",
                             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                             "INCLUDE_SUBSECTIONS" => "N",
@@ -175,8 +175,8 @@ if (empty($arResult)) {
                 </div>
             </div>
             <?php $APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "aside_banners",
+            "bitrix:news.list",
+            "aside_banners",
                 [
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
@@ -196,12 +196,10 @@ if (empty($arResult)) {
                     "DISPLAY_PREVIEW_TEXT" => "Y",
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
-                    "FILTER_NAME" => "",
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => "13",
+                    "IBLOCK_ID" => $iIblockAsideBanners,
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                    "INCLUDE_SUBSECTIONS" => "N",
                     "NEWS_COUNT" => "1",
                     "PAGER_BASE_LINK_ENABLE" => "N",
                     "PAGER_DESC_NUMBERING" => "N",
@@ -224,8 +222,8 @@ if (empty($arResult)) {
                 ]
             ); ?>
             <?php $APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "about_our_news_photo_report_from_the_company",
+            "bitrix:news.list",
+            "about_our_news_photo_report_from_the_company",
                 [
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
@@ -246,7 +244,7 @@ if (empty($arResult)) {
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["PREVIEW_PICTURE"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => "12",
+                    "IBLOCK_ID" => $iIblockPhotoReport,
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",

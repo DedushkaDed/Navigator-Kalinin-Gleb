@@ -3,6 +3,8 @@
 }
 \Bitrix\Main\Loader::includeModule('iqdev');
 $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
+$iIblockAsideBanners = IQDEV\Base\Helper::getIblockId('aside_banners');
+$iIblockPhotoReport = IQDEV\Base\Helper::getIblockId('photo_report');
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -135,8 +137,8 @@ if (empty($arResult)) {
                 </div>
             </div>
             <?php $APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "aside_banners",
+            "bitrix:news.list",
+            "aside_banners",
                 [
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
@@ -157,7 +159,7 @@ if (empty($arResult)) {
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => "13",
+                    "IBLOCK_ID" => $iIblockAsideBanners,
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
@@ -286,8 +288,8 @@ if (empty($arResult)) {
                 </div>
             </div>
             <?php $APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "about_our_news_photo_report_from_the_company",
+            "bitrix:news.list",
+            "about_our_news_photo_report_from_the_company",
                 [
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
@@ -308,7 +310,7 @@ if (empty($arResult)) {
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["PREVIEW_PICTURE"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => "12",
+                    "IBLOCK_ID" => $iIblockPhotoReport,
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",

@@ -13,9 +13,9 @@ class Office
      */
     public static function getCordsAll()
     {
-        $random = Options::getPageOptions('mapOffices');
+        $aOfficeCoordinate = Options::getPageOptions('mapOffices');
         $aResult = [];
-        foreach ($random['offices'] as $iKey => $aItem) {
+        foreach ($aOfficeCoordinate['offices'] as $iKey => $aItem) {
             $aResult[$iKey] =  explode(",", $aItem);
         }
             return $aResult;

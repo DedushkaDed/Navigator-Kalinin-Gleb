@@ -10,9 +10,9 @@ $iIblockTrustUs = IQDEV\Base\Helper::getIblockId('trust-us');
 $iIblockNews = IQDEV\Base\Helper::getIblockId('news');
 $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
 ?>
-<?php    $APPLICATION->IncludeComponent(
-    "bitrix:menu",
-    "navigation_tabs",
+<?php $APPLICATION->IncludeComponent(
+"bitrix:menu",
+"navigation_tabs",
     [
         "ALLOW_MULTI_SELECT" => "N",
         "DELAY" => "N",
@@ -24,7 +24,7 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
         "USE_EXT" => "Y",
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
-    false
+false
 ); ?>
 <section class="section mb-medium">
     <div class="container">
@@ -75,8 +75,8 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                                 <div class="slider-simple__body">
                                     <div class="glide__track" data-glide-el="track">
                                         <?php $APPLICATION->IncludeComponent(
-                                            "bitrix:news.list",
-                                            "our_values_slider",
+                                        "bitrix:news.list",
+                                        "our_values_slider",
                                             [
                                                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                                                 "ADD_SECTIONS_CHAIN" => "N",
@@ -135,8 +135,8 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
     <div class="container">
         <div class="section-header">Факты о компании</div>
         <?php $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "about_facts_about_company",
+        "bitrix:news.list",
+        "about_facts_about_company",
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
@@ -190,8 +190,8 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
     <div class="container">
         <div class="section-header">Почему выбирают нас?</div>
         <?php $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "about_why_choose_us",
+        "bitrix:news.list",
+        "about_why_choose_us",
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
@@ -239,8 +239,8 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
     <div class="container">
         <div class="section-header">Нам доверяют</div>
         <?php $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "about_trust_us",
+        "bitrix:news.list",
+        "about_trust_us",
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
@@ -347,8 +347,8 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
             <div class="tabs__contents">
                 <div class="tabs__content js-tabs__content active" data-tab-content="news">
                     <?php $APPLICATION->IncludeComponent(
-                        "bitrix:news.list",
-                        "about_whats_new_slides",
+                    "bitrix:news.list",
+                    "about_whats_new_slides",
                         [
                             "ACTIVE_DATE_FORMAT" => "d.m.Y",
                             "ADD_SECTIONS_CHAIN" => "N",
@@ -397,8 +397,8 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                 </div>
                 <div class="tabs__content js-tabs__content" data-tab-content="stories">
                     <?php $APPLICATION->IncludeComponent(
-                        "bitrix:news.list",
-                        "about_whats_new_slides",
+                    "bitrix:news.list",
+                    "about_whats_new_slides",
                         [
                             "ACTIVE_DATE_FORMAT" => "d.m.Y",
                             "ADD_SECTIONS_CHAIN" => "N",
@@ -447,8 +447,8 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                 </div>
                 <div class="tabs__content js-tabs__content" data-tab-content="articles">
                     <?php $APPLICATION->IncludeComponent(
-                        "bitrix:news.list",
-                        "about_whats_new_slides",
+                    "bitrix:news.list",
+                    "about_whats_new_slides",
                         [
                             "ACTIVE_DATE_FORMAT" => "d.m.Y",
                             "ADD_SECTIONS_CHAIN" => "N",

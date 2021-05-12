@@ -4,8 +4,8 @@ $iIblockTenderi = IQDEV\Base\Helper::getIblockId('tenderi');
 $iIblockQuestions = IQDEV\Base\Helper::getIblockId('questions');
 
 $APPLICATION->IncludeComponent(
-    "bitrix:menu",
-    "navigation_tabs",
+"bitrix:menu",
+"navigation_tabs",
     [
         "ALLOW_MULTI_SELECT" => "N",
         "DELAY" => "N",
@@ -17,11 +17,11 @@ $APPLICATION->IncludeComponent(
         "USE_EXT" => "Y",
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
-    false
- );
+false
+);
 $APPLICATION->IncludeComponent(
-    "bitrix:news.list",
-    "tenderi_accordion",
+"bitrix:news.list",
+"tenderi_accordion",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -42,7 +42,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_TOP_PAGER" => "N",
         "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "DETAIL_TEXT"],
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "$iIblockTenderi",
+        "IBLOCK_ID" => $iIblockTenderi,
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
