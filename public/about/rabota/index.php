@@ -1,9 +1,4 @@
-<?php
-
-require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-
-$iIblockRabotaAccordion = IQDEV\Base\Helper::getIblockId('rabota_accordion');
-$iIblockRabotaContent = IQDEV\Base\Helper::getIblockId('rabota_content');
+<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 $APPLICATION->IncludeComponent(
 "bitrix:menu",
@@ -44,7 +39,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_TOP_PAGER" => "N",
         "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "DETAIL_TEXT"],
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => $iIblockRabotaAccordion,
+        "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('rabota_accordion'),
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "Y",
@@ -88,7 +83,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_TOP_PAGER" => "N",
         "FIELD_CODE" => ["NAME"],
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => $iIblockRabotaContent,
+        "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('rabota_content'),
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
