@@ -209,4 +209,36 @@ class FormsHandler
 
         return self::addIblockElement('email_mailing', $aFields, $aProperties);
     }
+
+    /**
+     * Сохраняет данные пользователя в 'Отправить резюме'.
+     *
+     * @param $sName
+     * @param $sPhone
+     * @param $oInputFile
+     *
+     * @return mixed
+     */
+    public static function setResumeInputCaptcha($sName, $sPhone, $oInputFile)
+    {
+        $oParsedPhone = Parser::getInstance()->parse($sPhone);
+//        Когда появится 'file' -> использовать эту проверку
+//        if (!isset($sName) || !isset($oInputFile) || $oParsedPhone->isValid() === false) {
+//            return null;
+//        }
+        if (!isset($sName) || $oParsedPhone->isValid() === false) {
+            return null;
+        }
+
+        $aFields = [
+            'name' => $sName,
+        ];
+
+        $aProperties = [
+            'PHONE' => $oParsedPhone->format('RU'),
+            'INPUT_FILE' => $oInputFile,
+        ];
+
+        return self::addIblockElement('resume_from_users', $aFields, $aProperties);
+    }
 }

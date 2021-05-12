@@ -389,6 +389,112 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('footer');
             </div>
         </div>
     </div>
+    <div class="modal js-modal" data-modal-open="portfolio">
+        <div class="modal__content">
+            <div class="modal__title">Отправить портфолио</div>
+            <div class="modal__description">Оставьте контактные данные, прикрепите портфолио, и мы вам перезвоним!</div>
+            <form class="modal__form js-form" action="/?ajaxAction=formPortfolio" data-name="portfolio">
+                <div class="modal__input">
+                    <div class="input js-input">
+                        <input class="input__field" type="text" name="name" placeholder="Имя"
+                               data-validate="required,name"
+                        />
+                        <div class="input__error"></div>
+                    </div>
+                </div>
+                <div class="modal__input">
+                    <div class="input js-input">
+                        <input class="input__field" type="text" name="phone" placeholder="Телефон"
+                               data-validate="required,phone" data-masking="phone"
+                        />
+                        <div class="input__error"></div>
+                    </div>
+                </div>
+                <div class="modal__input">
+                    <label class="modal__file js-file">
+                        <input class="modal__file-input" type="file" name="file"
+                               data-validate="required,type=text.image.archive.document"
+                        />
+                        <div class="modal__file-label">Прикрепить файл</div>
+                        <div class="modal__file-error"></div>
+                    </label>
+                </div>
+                <div class="modal__input">
+                    <input type="hidden" name="id" data-modal-import="id"/>
+                </div>
+                <div class="modal__checkbox">
+                    <div class="checkbox js-checkbox">
+                        <label class="checkbox__label">
+                            <input class="checkbox__field" type="checkbox" data-validate="required"/>
+                            <div class="checkbox__custom checkbox__custom--border"></div>
+                            <div class="checkbox__text">Подтверждаю согласие с
+                                <a class="checkbox__link" href="#" target="_blank"
+                                > политикой обработки персональных данных
+                                </a>
+                            </div>
+                        </label>
+                        <div class="checkbox__error"></div>
+                    </div>
+                </div>
+                <div class="modal__response"></div>
+                <div class="modal__button">
+                    <button class="button button--primary" type="submit">
+                        <span>Отправить</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal js-modal" data-modal-open="resume">
+        <div class="modal__content">
+            <div class="modal__title">Отправить резюме</div>
+            <div class="modal__description">Оставьте контактные данные, прикрепите резюме, и мы вам перезвоним!</div>
+            <form class="modal__form js-form" action="/?ajaxAction=formResume" data-name="resume">
+                <div class="modal__input">
+                    <div class="input js-input">
+                        <input class="input__field" type="text" name="name" placeholder="Имя" data-validate="required,name"/>
+                        <div class="input__error"></div>
+                    </div>
+                </div>
+                <div class="modal__input">
+                    <div class="input js-input">
+                        <input class="input__field" type="text" name="phone" placeholder="Телефон" data-validate="required,phone"
+                               data-masking="phone"
+                        />
+                        <div class="input__error"></div>
+                    </div>
+                </div>
+                <div class="modal__input">
+                    <label class="modal__file js-file">
+                        <input class="modal__file-input" type="file" name="file" data-validate="required,type=text.image.document"/>
+                        <div class="modal__file-label">Прикрепить файл</div>
+                        <div class="modal__file-error"></div>
+                    </label>
+                </div>
+                <div class="modal__input">
+                    <input type="hidden" name="id" data-modal-import="id"/>
+                </div>
+                <div class="modal__checkbox">
+                    <div class="checkbox js-checkbox">
+                        <label class="checkbox__label">
+                            <input class="checkbox__field" type="checkbox" data-validate="required"/>
+                            <div class="checkbox__custom checkbox__custom--border"></div>
+                            <div class="checkbox__text">Подтверждаю согласие с
+                                <a class="checkbox__link" href="#" target="_blank"> политикой обработки персональных данных</a>
+                            </div>
+                        </label>
+                        <div class="checkbox__error"></div>
+                    </div>
+                </div>
+                <div class="modal__response"></div>
+                <div class="modal__button">
+                    <button class="button button--primary" type="submit">
+                        <span>Отправить</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </footer>
 </body>
 </html>

@@ -198,4 +198,23 @@ class Actions
         }
         $this->setAjaxResponse(['status' => false]);
     }
+
+    /**
+     * Запись данных из формы 'Отправить резюме' в ИБ.
+     *
+     * @return void
+     */
+    public function formResumeAjaxAction()
+    {
+        $sName = $this->oRequest['name'];
+        $sPhone = $this->oRequest['phone'];
+//        Пустой обьект - не приходит 'file'
+        $oInputFile = $this->oRequest['file'];
+        $iCallbackForm = FormsHandler::setResumeInputCaptcha($sName, $sPhone, $oInputFile);
+
+        if ($iCallbackForm) {
+            $this->setAjaxResponse(['status' => true]);
+        }
+        $this->setAjaxResponse(['status' => false]);
+    }
 }
