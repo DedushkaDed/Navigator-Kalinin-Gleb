@@ -84,7 +84,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_TOP_PAGER" => "N",
         "FIELD_CODE" => ["NAME"],
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('rabota_content'),
+        "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('job_content'),
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
