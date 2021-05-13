@@ -13,8 +13,6 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 
-
-
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "about_our_news_elements",

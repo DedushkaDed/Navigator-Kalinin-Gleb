@@ -124,7 +124,6 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
             </div>
         </div>
     </section>
-
 <section class="section mb-large">
     <div class="container">
         <div class="section-header">Факты о компании</div>
@@ -162,7 +161,6 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
                 "PAGER_SHOW_ALL" => "N",
                 "PAGER_SHOW_ALWAYS" => "N",
                 "PAGER_TEMPLATE" => ".default",
-                "PAGER_TITLE" => "Новости",
                 "PROPERTY_CODE" => ["LINK", "BACKGROUND_COLOR", "TEXT_COLOR"],
                 "SET_BROWSER_TITLE" => "N",
                 "SET_LAST_MODIFIED" => "N",
