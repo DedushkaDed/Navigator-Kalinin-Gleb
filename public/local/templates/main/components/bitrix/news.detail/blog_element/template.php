@@ -1,11 +1,9 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
+
 \Bitrix\Main\Loader::includeModule('iqdev');
 $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
-$iIblockAdditionalContent = IQDEV\Base\Helper::getIblockId('additional_content');
-$iIblockAsideBanners = IQDEV\Base\Helper::getIblockId('aside_banners');
-$iIblockPhotoReport = IQDEV\Base\Helper::getIblockId('photo_report');
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -121,12 +119,12 @@ if (empty($arResult)) {
                     <div class="detail-content__image">
                         <img class="img" src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?>"/>
                     </div>
-                    <?php foreach ($arResult['PROPERTIES']['TEXT_NEWS']['VALUE'] as $aTextNews) : ?>
+                    <? foreach ($arResult['PROPERTIES']['TEXT_NEWS']['VALUE'] as $aTextNews) : ?>
                         <p><?= $aTextNews['TEXT'] ?></p>
                     <? endforeach; ?>
-                    <?php $APPLICATION->IncludeComponent(
-                    "bitrix:news.list",
-                    "additional-block",
+                    <? $APPLICATION->IncludeComponent(
+                        "bitrix:news.list",
+                        "additional-block",
                         [
                             "ACTIVE_DATE_FORMAT" => "d.m.Y",
                             "ADD_SECTIONS_CHAIN" => "N",
@@ -147,7 +145,7 @@ if (empty($arResult)) {
                             "DISPLAY_TOP_PAGER" => "N",
                             "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                            "IBLOCK_ID" => $iIblockAdditionalContent,
+                            "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('additional_content'),
                             "IBLOCK_TYPE" => "content",
                             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                             "INCLUDE_SUBSECTIONS" => "N",
@@ -174,9 +172,9 @@ if (empty($arResult)) {
                     ); ?>
                 </div>
             </div>
-            <?php $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "aside_banners",
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "aside_banners",
                 [
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
@@ -197,7 +195,7 @@ if (empty($arResult)) {
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => $iIblockAsideBanners,
+                    "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('aside_banners'),
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "NEWS_COUNT" => "1",
@@ -221,9 +219,9 @@ if (empty($arResult)) {
                     "STRICT_SECTION_CHECK" => "N",
                 ]
             ); ?>
-            <?php $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "about_our_news_photo_report_from_the_company",
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "about_our_news_photo_report_from_the_company",
                 [
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
@@ -244,7 +242,7 @@ if (empty($arResult)) {
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["PREVIEW_PICTURE"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => $iIblockPhotoReport,
+                    "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('photo_report'),
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",

@@ -1,8 +1,8 @@
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 $APPLICATION->IncludeComponent(
-"bitrix:menu",
-"navigation_tabs",
+    "bitrix:menu",
+    "navigation_tabs",
     [
         "ALLOW_MULTI_SELECT" => "N",
         "DELAY" => "N",
@@ -14,11 +14,11 @@ $APPLICATION->IncludeComponent(
         "USE_EXT" => "Y",
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
-false
+    false
 );
 $APPLICATION->IncludeComponent(
-"bitrix:news.list",
-"about_rabota_accordion",
+    "bitrix:news.list",
+    "about_rabota_accordion",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -65,8 +65,8 @@ $APPLICATION->IncludeComponent(
     ]
 );
 $APPLICATION->IncludeComponent(
-"bitrix:news.list",
-"about_rabota_content",
+    "bitrix:news.list",
+    "about_rabota_content",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -114,7 +114,8 @@ $APPLICATION->IncludeComponent(
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
     ]
-); ?>
+);
+?>
 <section class="section mb-large">
     <div class="container-large">
         <div class="feedback__container">
@@ -173,4 +174,4 @@ $APPLICATION->IncludeComponent(
     </div>
 </section>
 
-<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
+<? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
