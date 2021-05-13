@@ -25,19 +25,13 @@ if (empty($arResult)) {
         <div class="detail">
             <div class="detail__item">
                 <div class="detail-header">
-                    <?if (!empty($arResult['NAME'])) :?>
-                        <h1 class="detail-header__title"><?= $arResult['NAME'] ?></h1>
-                    <?endif;?>
+                        <h1 class="detail-header__title"><?= $arResult['NAME'] ?? '' ?></h1>
                     <div class="detail-header__footer">
-                        <?if (!empty($arResult['PROPERTIES']['DATE']['VALUE'])) :?>
-                            <div class="detail-header__date"><?= $arResult['PROPERTIES']['DATE']['VALUE'] ?></div>
-                        <?endif?>
+                            <div class="detail-header__date"><?= $arResult['PROPERTIES']['DATE']['VALUE'] ?? '' ?></div>
                         <div class="detail-header__share">
                             <div class="detail-header__share-title">Поделиться:</div>
-                            <?if (!empty($aSocialMediaOptions['facebook'])) :?>
-                                <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['facebook'] ?>"
+                                <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['facebook'] ?? '' ?>"
                                    target="_blank">
-                            <?endif;?>
                                 <div class="icon">
                                     <svg width="11" height="20" viewBox="0 0 11 20" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -48,10 +42,8 @@ if (empty($arResult)) {
                                     </svg>
                                 </div>
                             </a>
-                            <?if (!empty($aSocialMediaOptions['vkontakte'])) :?>
-                                <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['vkontakte'] ?>"
+                                <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['vkontakte'] ?? '' ?>"
                                    target="_blank">
-                            <?endif;?>
                                 <div class="icon">
                                     <svg width="25" height="14" viewBox="0 0 25 14" fill="none"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -88,10 +80,8 @@ if (empty($arResult)) {
                                     </svg>
                                 </div>
                             </a>
-                            <?if (!empty($aSocialMediaOptions['odnoklassniki'])) :?>
-                                <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['odnoklassniki'] ?>"
+                                <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['odnoklassniki'] ?? '' ?>"
                                    target="_blank">
-                            <?endif;?>
                                 <div class="icon">
                                     <svg width="12" height="20" viewBox="0 0 12 20" fill="none"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -125,14 +115,11 @@ if (empty($arResult)) {
             <div class="detail__item">
                 <div class="detail-content">
                     <div class="detail-content__image">
-                        <?if (!empty($arResult['DETAIL_PICTURE']['SRC'])) :?>
-                            <img class="img" src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?>"/>
-                        <?endif;?>
+                            <img class="img" src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?? '' ?>"/>
+
                     </div>
                     <? foreach ($arResult['PROPERTIES']['TEXT_HISTORY_RESIDENT']['VALUE'] as $aTextNews) : ?>
-                        <?if (!empty($aTextNews['TEXT'])) :?>
-                            <p><?= $aTextNews['TEXT'] ?></p>
-                        <?endif;?>
+                            <p><?= $aTextNews['TEXT'] ?? '' ?></p>
                     <? endforeach; ?>
 
                     <? $APPLICATION->IncludeComponent(
