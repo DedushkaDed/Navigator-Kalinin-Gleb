@@ -1,6 +1,8 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
+
 \Bitrix\Main\Loader::includeModule('iqdev');
 $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
 
@@ -18,7 +20,8 @@ $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
 
 if (empty($arResult)) {
     return;
-} ?>
+}
+?>
 
 <section class="section section--overflow-hidden mb-medium">
     <div class="container">
@@ -118,17 +121,16 @@ if (empty($arResult)) {
                     <div class="detail-content__image">
                         <img class="img" src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?>"/>
                     </div>
-                    <?php foreach ($arResult['PROPERTIES']['TEXT_NEWS']['VALUE'] as $aTextNews) : ?>
+                    <? foreach ($arResult['PROPERTIES']['TEXT_NEWS']['VALUE'] as $aTextNews) : ?>
                         <p><?= $aTextNews['TEXT'] ?></p>
                     <? endforeach; ?>
-                    <?php $APPLICATION->IncludeComponent(
+                    <? $APPLICATION->IncludeComponent(
                         "bitrix:news.list",
                         "additional-block",
                         [
                             "ACTIVE_DATE_FORMAT" => "d.m.Y",
                             "ADD_SECTIONS_CHAIN" => "N",
                             "AJAX_MODE" => "N",
-                            "AJAX_OPTION_ADDITIONAL" => "",
                             "AJAX_OPTION_HISTORY" => "N",
                             "AJAX_OPTION_JUMP" => "N",
                             "AJAX_OPTION_STYLE" => "N",
@@ -137,17 +139,15 @@ if (empty($arResult)) {
                             "CACHE_TIME" => "36000000",
                             "CACHE_TYPE" => "A",
                             "CHECK_DATES" => "Y",
-                            "DETAIL_URL" => "",
                             "DISPLAY_BOTTOM_PAGER" => "N",
                             "DISPLAY_DATE" => "N",
                             "DISPLAY_NAME" => "Y",
                             "DISPLAY_PICTURE" => "Y",
                             "DISPLAY_PREVIEW_TEXT" => "Y",
                             "DISPLAY_TOP_PAGER" => "N",
-                            "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", ""],
-                            "FILTER_NAME" => "",
+                            "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                            "IBLOCK_ID" => "14",
+                            "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('additional_content'),
                             "IBLOCK_TYPE" => "content",
                             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                             "INCLUDE_SUBSECTIONS" => "N",
@@ -174,7 +174,7 @@ if (empty($arResult)) {
                     ); ?>
                 </div>
             </div>
-            <?php $APPLICATION->IncludeComponent(
+            <? $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "aside_banners",
                 [
@@ -196,12 +196,10 @@ if (empty($arResult)) {
                     "DISPLAY_PREVIEW_TEXT" => "Y",
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
-                    "FILTER_NAME" => "",
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => "13",
+                    "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('aside_banners'),
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                    "INCLUDE_SUBSECTIONS" => "N",
                     "NEWS_COUNT" => "1",
                     "PAGER_BASE_LINK_ENABLE" => "N",
                     "PAGER_DESC_NUMBERING" => "N",
@@ -223,7 +221,7 @@ if (empty($arResult)) {
                     "STRICT_SECTION_CHECK" => "N",
                 ]
             ); ?>
-            <?php $APPLICATION->IncludeComponent(
+            <? $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "about_our_news_photo_report_from_the_company",
                 [
@@ -246,7 +244,7 @@ if (empty($arResult)) {
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["PREVIEW_PICTURE"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => "12",
+                    "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('photo_report'),
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
@@ -380,7 +378,6 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_PREVIEW_TEXT" => "Y",
         "DISPLAY_TOP_PAGER" => "N",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_TYPE" => "-",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
         "NEWS_COUNT" => "20",

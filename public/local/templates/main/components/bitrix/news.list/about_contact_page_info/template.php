@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -16,12 +16,12 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var CBitrixComponent $component */
 ?>
 
-<?php if (empty($arResult['ITEMS'])) {
+<? if (empty($arResult['ITEMS'])) {
     return;
 } ?>
 
 <div class="contact-page__info">
-    <?php foreach ($arResult['ITEMS'] as $aItem) :?>
+    <? foreach ($arResult['ITEMS'] as $aItem) :?>
     <div class="contact-page-info">
         <div class="contact-page-info__image">
             <img src="<?=$aItem['PREVIEW_PICTURE']['SRC']?>"/>

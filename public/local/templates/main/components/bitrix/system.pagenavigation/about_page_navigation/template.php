@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -21,7 +21,7 @@ if (empty($arResult)) {
 
 <div class="mt-30">
     <div class="pagination">
-        <?php if ($arResult['nStartPage'] == $arResult['NavPageNomer']) : ?>
+        <? if ($arResult['nStartPage'] == $arResult['NavPageNomer']) : ?>
             <div class="pagination__button pagination__button--prev pagination__button--disabled">
                 <svg width="13" height="13" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -35,7 +35,7 @@ if (empty($arResult)) {
                 </svg>
                 <span>Назад</span>
             </div>
-        <?php else : ?>
+        <? else : ?>
             <a class="pagination__button pagination__button--prev"
            href="<?= $arResult["sUrlPath"] ?>?PAGEN_<?= $arResult["NavNum"] ?>=<?= $arResult["NavPageNomer"] - 1 ?>">
                 <svg width="13" height="13" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,24 +50,24 @@ if (empty($arResult)) {
                 </svg>
                 <span>Назад</span>
             </a>
-        <?php endif;?>
+        <? endif;?>
         <div class="pagination__label">
-            Страница <?=$arResult['NavFirstRecordShow']?> из <?php echo $arResult["NavRecordCount"]?></div>
+            Страница <?=$arResult['NavFirstRecordShow']?> из <? echo $arResult["NavRecordCount"]?></div>
         <div class="pagination__pages">
-            <?php while ($arResult['nStartPage'] <= $arResult['nEndPage']) :?>
-                <?php if ($arResult['nStartPage'] == $arResult['NavPageNomer']) :?>
+            <? while ($arResult['nStartPage'] <= $arResult['nEndPage']) :?>
+                <? if ($arResult['nStartPage'] == $arResult['NavPageNomer']) :?>
                     <div class="pagination__page pagination__page--active"><?=$arResult['nStartPage']?></div>
-                <?php elseif (($arResult['nStartPage']) == 1) :?>
+                <? elseif (($arResult['nStartPage']) == 1) :?>
                     <a class="pagination__page" href="<?=$arResult['sUrlPath']?>"><?=$arResult['nStartPage']?></a>
-                <?php else :?>
+                <? else :?>
                     <a class="pagination__page"
                        href="<?= $arResult["sUrlPath"] ?>?PAGEN_
                        <?= $arResult["NavNum"] ?>=<?= $arResult["nStartPage"] ?>"><?= $arResult["nStartPage"] ?></a>
-                <?php endif; ?>
-                <?php $arResult["nStartPage"]++ ?>
-            <?php endwhile;?>
+                <? endif; ?>
+                <? $arResult["nStartPage"]++ ?>
+            <? endwhile;?>
         </div>
-        <?php if ($arResult['nEndPage'] == $arResult['NavPageNomer']) :?>
+        <? if ($arResult['nEndPage'] == $arResult['NavPageNomer']) :?>
         <div class="pagination__button pagination__button--next pagination__button--disabled">
             <span>Вперед</span>
             <svg width="13" height="13" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,7 +81,7 @@ if (empty($arResult)) {
                 </path>
             </svg>
         </div>
-        <?php else : ?>
+        <? else : ?>
             <a class="pagination__button pagination__button--next "
            href="<?= $arResult["sUrlPath"] ?>?PAGEN_<?= $arResult["NavNum"] ?>=<?= $arResult["NavPageNomer"] + 1 ?>">
                 <span>Вперед</span>
@@ -96,6 +96,6 @@ if (empty($arResult)) {
                     </path>
                 </svg>
             </a>
-        <?php endif;?>
+        <? endif;?>
     </div>
 </div>

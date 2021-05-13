@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -14,16 +14,16 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-?>
 
-<?php if (empty($arResult['mapCards'])) {
+if (empty($arResult['mapCards'])) {
     return;
-} ?>
+}
+?>
 
 <section class="section mb-large">
     <div class="container">
         <div class="grid-news grid-news--top">
-            <?php foreach ($arResult['mapCards'] as $aItem) : ?>
+            <? foreach ($arResult['mapCards'] as $aItem) : ?>
                 <div class="grid-news__item <?= $aItem['typeBlock'] ?>">
                     <a class="news-card" href="<?= $aItem['link'] ?>/">
                         <div class="news-card__image <?= $aItem['typeImage'] ?>">

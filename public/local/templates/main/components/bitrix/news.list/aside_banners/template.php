@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -14,9 +14,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-?>
 
-<?php if (empty($arResult['mapCards'])) {
+if (empty($arResult['mapCards'])) {
     return;
 } ?>
 
@@ -29,7 +28,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         <div class="banner__photo-wrapper">
                             <? if (!empty($aItem['image'])) :?>
                                 <img class="banner__photo" src="<?= $aItem['image'] ?>"/>
-                            <?php endif;?>
+                            <? endif;?>
                         </div>
                         <div class="banner__content">
                             <?if (!empty($aItem['title'])) :?>
@@ -45,7 +44,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                             </div>
                         </div>
                     </a>
-                <?php endif;?>
+                <? endif;?>
             </div>
         <? endforeach; ?>
     </div>

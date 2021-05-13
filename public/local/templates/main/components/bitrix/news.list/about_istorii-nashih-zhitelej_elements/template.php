@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -16,10 +16,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var CBitrixComponent $component */
 ?>
 
-<?php if (empty($arResult['mapCards'])) {
+<? if (empty($arResult['mapCards'])) {
     return;
 } ?>
-
 
 <section class="section mb-large">
     <div class="container">

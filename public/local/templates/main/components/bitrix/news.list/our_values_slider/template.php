@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -14,7 +14,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-
 
 if (empty($arResult['ITEMS'])) {
     return;
@@ -33,7 +32,7 @@ if (empty($arResult['ITEMS'])) {
                 </div>
             </div>
         </div>
-    <?php endforeach; ?>
+    <? endforeach; ?>
 </div>
 <div class="slider-simple__arrows">
     <div class="slider-simple-controls">

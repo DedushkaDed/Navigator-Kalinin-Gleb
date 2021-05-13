@@ -1,6 +1,8 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
+
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -12,9 +14,8 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-$this->setFrameMode(true);
 
-    $APPLICATION->IncludeComponent(
+$APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "blog_elements",
     [
@@ -66,4 +67,4 @@ $this->setFrameMode(true);
         "CHECK_DATES" => $arParams["CHECK_DATES"],
     ],
     $component
-     );
+);

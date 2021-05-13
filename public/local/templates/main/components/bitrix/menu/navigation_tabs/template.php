@@ -1,10 +1,12 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
 if (empty($arResult)) {
     return;
-} ?>
+}
+?>
 
 <section class="section mb-medium">
     <div class="container">
@@ -15,8 +17,7 @@ if (empty($arResult)) {
                         <? if ($aItem['SELECTED']) : ?>
                             <a class="tabs-navigation__item tabs-navigation__item--active" href="<?= $aItem['LINK'] ?>">
                                 <?= $aItem['TEXT'] ?></a>
-                        <? else :
-                            ?>
+                        <? else :?>
                             <a class="tabs-navigation__item" href="<?= $aItem['LINK'] ?>"><?= $aItem['TEXT'] ?></a>
                         <? endif; ?>
                     <? endforeach; ?>

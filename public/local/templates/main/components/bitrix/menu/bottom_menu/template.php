@@ -1,15 +1,13 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
-
-
-?>
-
-<?php
 if (empty($arResult)) {
     return;
-} ?>
+}
+?>
+
 <div class="footer__navigation">
     <? foreach ($arResult as $aItem) : ?>
         <div class="footer__navigation-item" href="<?= $aItem["LINK"] ?>">

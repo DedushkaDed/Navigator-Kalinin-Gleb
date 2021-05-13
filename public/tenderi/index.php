@@ -1,7 +1,5 @@
-<?php
+<?
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-$iIblockTenderi = IQDEV\Base\Helper::getIblockId('tenderi');
-$iIblockQuestions = IQDEV\Base\Helper::getIblockId('questions');
 
 $APPLICATION->IncludeComponent(
     "bitrix:menu",
@@ -18,7 +16,7 @@ $APPLICATION->IncludeComponent(
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
- );
+);
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "tenderi_accordion",
@@ -42,7 +40,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_TOP_PAGER" => "N",
         "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "DETAIL_TEXT"],
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "$iIblockTenderi",
+        "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('tenderi'),
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
@@ -52,7 +50,6 @@ $APPLICATION->IncludeComponent(
         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
         "PAGER_SHOW_ALL" => "N",
         "PAGER_SHOW_ALWAYS" => "N",
-        "PAGER_TITLE" => "Тендеры",
         "PROPERTY_CODE" => ["DATE_START", "DATE_END", "CONTACT_TEXT", "DOWNLOAD_INFO"],
         "SET_BROWSER_TITLE" => "N",
         "SET_LAST_MODIFIED" => "N",
@@ -82,7 +79,7 @@ $APPLICATION->IncludeComponent(
         "CACHE_GROUPS" => "N",
         "CACHE_TIME" => "36000000",
         "CACHE_TYPE" => "A",
-        "IBLOCK_ID" => "$iIblockQuestions",
+        "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('questions'),
         "CHECK_DATES" => "Y",
         "DETAIL_URL" => "",
         "DISPLAY_BOTTOM_PAGER" => "N",

@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -16,7 +16,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var CBitrixComponent $component */
 ?>
 
-<?php if (empty($arResult['ITEMS'])) {
+<? if (empty($arResult['ITEMS'])) {
     return;
 } ?>
 <div class="grid-layout grid-layout--gap-15 grid-layout--col-4">
@@ -56,7 +56,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         </div>
                     </div>
                 </a>
-            <?php else :
+            <? else :
                 ?>
                 <div class="grid-card <?= $aItem['backgroundColor'] ?> <?= $aItem['textColor'] ?>">
                     <? if (!empty($aItem['linkLabel'])) : ?>

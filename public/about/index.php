@@ -1,16 +1,10 @@
-<?php
+<?
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+
 \Bitrix\Main\Loader::includeModule('iqdev');
 $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
-$iIblockStories = IQDEV\Base\Helper::getIblockId('stories');
-$iIblockSliderOurValues = IQDEV\Base\Helper::getIblockId('slider_our_values');
-$iIblockFactsAboutCompany = IQDEV\Base\Helper::getIblockId('facts-about-company');
-$iIblockWhyChooseUs = IQDEV\Base\Helper::getIblockId('why-choose-us');
-$iIblockTrustUs = IQDEV\Base\Helper::getIblockId('trust-us');
-$iIblockNews = IQDEV\Base\Helper::getIblockId('news');
-$iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
-?>
-<?php    $APPLICATION->IncludeComponent(
+
+$APPLICATION->IncludeComponent(
     "bitrix:menu",
     "navigation_tabs",
     [
@@ -25,32 +19,33 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
-); ?>
+);
+?>
 <section class="section mb-medium">
     <div class="container">
         <div class="separate-paragraph">
             <div class="separate-paragraph__title">
                 <? if (!empty($aAboutOptions['title']['title'])) :?>
                     <h1><?=$aAboutOptions['title']['title']?></h1>
-                <?php endif?>
+                <? endif?>
             </div>
             <div class="separate-paragraph__divider"></div>
             <div class="separate-paragraph__text-wrapper">
                 <? if (!empty($aAboutOptions['title']['description'])) :?>
                     <div class="separate-paragraph__text"><?=$aAboutOptions['title']['description']?>
-                <?php endif;?>
+                <? endif;?>
                 </div>
             </div>
         </div>
     </div>
 </section>
-    <section class="section mb-large">
+<section class="section mb-large">
         <div class="container">
             <div class="grid-layout">
                 <div class="grid-layout__item">
                     <?if (!empty($aAboutOptions['imageSectionTop']['image'])) :?>
                         <img class="img" src="<?=$aAboutOptions['imageSectionTop']['image']?>"/>
-                    <?php endif;?>
+                    <? endif;?>
                 </div>
             </div>
             <div class="grid-layout grid-layout--gap-15 grid-layout--col-4">
@@ -59,11 +54,11 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                         <div class="grid-card__content">
                             <?if (!empty($aAboutOptions['contentSectionTop']['title'])) :?>
                                 <div class="grid-card__title"><?=$aAboutOptions['contentSectionTop']['title']?></div>
-                            <?php endif;?>
+                            <? endif;?>
                             <?if (!empty($aAboutOptions['contentSectionTop']['description'])) :?>
                                 <div class="grid-card__subtext"><?=$aAboutOptions['contentSectionTop']['description']?>
                                 </div>
-                            <?php endif;?>
+                            <? endif;?>
                         </div>
                     </div>
                 </div>
@@ -74,7 +69,7 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                             <div class="slider-simple glide js-slider-simple">
                                 <div class="slider-simple__body">
                                     <div class="glide__track" data-glide-el="track">
-                                        <?php $APPLICATION->IncludeComponent(
+                                        <? $APPLICATION->IncludeComponent(
                                             "bitrix:news.list",
                                             "our_values_slider",
                                             [
@@ -97,7 +92,7 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                                                 "DISPLAY_TOP_PAGER" => "N",
                                                 "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "DETAIL_TEXT"],
                                                 "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                                                "IBLOCK_ID" => $iIblockSliderOurValues,
+                                                "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('slider_our_values'),
                                                 "IBLOCK_TYPE" => "content",
                                                 "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                                                 "INCLUDE_SUBSECTIONS" => "N",
@@ -130,11 +125,10 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
             </div>
         </div>
     </section>
-
 <section class="section mb-large">
     <div class="container">
         <div class="section-header">Факты о компании</div>
-        <?php $APPLICATION->IncludeComponent(
+        <? $APPLICATION->IncludeComponent(
             "bitrix:news.list",
             "about_facts_about_company",
             [
@@ -157,7 +151,7 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                 "DISPLAY_TOP_PAGER" => "N",
                 "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                 "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                "IBLOCK_ID" => $iIblockFactsAboutCompany,
+                "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('facts-about-company'),
                 "IBLOCK_TYPE" => "content",
                 "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                 "INCLUDE_SUBSECTIONS" => "N",
@@ -168,7 +162,6 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                 "PAGER_SHOW_ALL" => "N",
                 "PAGER_SHOW_ALWAYS" => "N",
                 "PAGER_TEMPLATE" => ".default",
-                "PAGER_TITLE" => "Новости",
                 "PROPERTY_CODE" => ["LINK", "BACKGROUND_COLOR", "TEXT_COLOR"],
                 "SET_BROWSER_TITLE" => "N",
                 "SET_LAST_MODIFIED" => "N",
@@ -189,7 +182,7 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
 <section class="section section--overflow-hidden mb-large">
     <div class="container">
         <div class="section-header">Почему выбирают нас?</div>
-        <?php $APPLICATION->IncludeComponent(
+        <? $APPLICATION->IncludeComponent(
             "bitrix:news.list",
             "about_why_choose_us",
             [
@@ -208,7 +201,7 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                 "DISPLAY_TOP_PAGER" => "N",
                 "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "DETAIL_TEXT"],
                 "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                "IBLOCK_ID" => $iIblockWhyChooseUs,
+                "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('why-choose-us'),
                 "IBLOCK_TYPE" => "content",
                 "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                 "INCLUDE_SUBSECTIONS" => "N",
@@ -238,7 +231,7 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
 <section class="section section--overflow-hidden mb-large">
     <div class="container">
         <div class="section-header">Нам доверяют</div>
-        <?php $APPLICATION->IncludeComponent(
+        <? $APPLICATION->IncludeComponent(
             "bitrix:news.list",
             "about_trust_us",
             [
@@ -261,7 +254,7 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                 "DISPLAY_TOP_PAGER" => "N",
                 "FIELD_CODE" => ["PREVIEW_PICTURE"],
                 "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                "IBLOCK_ID" => $iIblockTrustUs,
+                "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('trust-us'),
                 "IBLOCK_TYPE" => "-",
                 "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                 "INCLUDE_SUBSECTIONS" => "N",
@@ -346,7 +339,7 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
             </div>
             <div class="tabs__contents">
                 <div class="tabs__content js-tabs__content active" data-tab-content="news">
-                    <?php $APPLICATION->IncludeComponent(
+                    <? $APPLICATION->IncludeComponent(
                         "bitrix:news.list",
                         "about_whats_new_slides",
                         [
@@ -369,7 +362,7 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                             "DISPLAY_TOP_PAGER" => "N",
                             "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                            "IBLOCK_ID" => $iIblockNews,
+                            "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('news'),
                             "IBLOCK_TYPE" => "content",
                             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                             "INCLUDE_SUBSECTIONS" => "N",
@@ -396,7 +389,7 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                     ); ?>
                 </div>
                 <div class="tabs__content js-tabs__content" data-tab-content="stories">
-                    <?php $APPLICATION->IncludeComponent(
+                    <? $APPLICATION->IncludeComponent(
                         "bitrix:news.list",
                         "about_whats_new_slides",
                         [
@@ -419,7 +412,7 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                             "DISPLAY_TOP_PAGER" => "N",
                             "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                            "IBLOCK_ID" => $iIblockStories,
+                            "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('stories'),
                             "IBLOCK_TYPE" => "content",
                             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                             "INCLUDE_SUBSECTIONS" => "N",
@@ -446,7 +439,7 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                     ); ?>
                 </div>
                 <div class="tabs__content js-tabs__content" data-tab-content="articles">
-                    <?php $APPLICATION->IncludeComponent(
+                    <? $APPLICATION->IncludeComponent(
                         "bitrix:news.list",
                         "about_whats_new_slides",
                         [
@@ -469,7 +462,7 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
                             "DISPLAY_TOP_PAGER" => "N",
                             "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                            "IBLOCK_ID" => $iIblockArticles,
+                            "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('articles'),
                             "IBLOCK_TYPE" => "content",
                             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                             "INCLUDE_SUBSECTIONS" => "N",
@@ -500,7 +493,4 @@ $iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
     </div>
 </section>
 
-<?php
-require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
-
-?>
+<? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');

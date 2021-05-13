@@ -8,6 +8,7 @@ use Bitrix\Main\Page\Asset;
 \Bitrix\Main\Loader::includeModule('iqdev.options');
 $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
 ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -21,7 +22,7 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
     <meta name="msapplication-TileColor" content="#ffffff"/>
     <meta name="msapplication-config" content="/assets/icons/browserconfig.xml"/>
     <meta name="theme-color" content="#ffffff"/>
-    <title><?php $APPLICATION->ShowTitle(); ?></title>
+    <title><? $APPLICATION->ShowTitle(); ?></title>
     <?
     Asset::getInstance()->addCss('/assets/css/application.css?v=1');
     Asset::getInstance()->addJs('/assets/js/application.js?v=1');
@@ -34,14 +35,14 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
     ?>
 </head>
 <body class="body js-body">
-<div id="panel"><?php $APPLICATION->ShowPanel(); ?></div>
+<div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
 <header class="header">
     <div class="header__inner">
         <a class="header__logo" href="/">
             <img src="/assets/image/header/logo.png"/>
         </a>
 
-        <?php $APPLICATION->IncludeComponent(
+        <? $APPLICATION->IncludeComponent(
             "bitrix:menu",
             "top_menu",
             [
@@ -49,8 +50,6 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
                 "CHILD_MENU_TYPE" => "subtop",
                 "DELAY" => "N",
                 "MAX_LEVEL" => "2",
-                "MENU_CACHE_GET_VARS" => [
-                ],
                 "MENU_CACHE_TIME" => "3600",
                 "MENU_CACHE_TYPE" => "A",
                 "MENU_CACHE_USE_GROUPS" => "N",
@@ -290,11 +289,10 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
 </header>
 <section class="section mb-medium">
     <div class="container">
-        <?php $APPLICATION->IncludeComponent(
+        <? $APPLICATION->IncludeComponent(
             "bitrix:breadcrumb",
             "navigation",
             [
-                "PATH" => "",
                 "SITE_ID" => "s1",
                 "START_FROM" => "0",
             ]

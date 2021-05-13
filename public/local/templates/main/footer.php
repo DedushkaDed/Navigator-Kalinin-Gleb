@@ -5,6 +5,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 \Bitrix\Main\Loader::includeModule('iqdev.options');
 $aOptions = \IQDEV\Options\Options::getPageOptions('footer');
 ?>
+
 <div class="line-unit">
     <div class="container">
         <div class="line-unit__grid">
@@ -206,7 +207,7 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('footer');
     </div>
     <div class="container">
         <div class="footer__grid">
-            <?php $APPLICATION->IncludeComponent(
+            <? $APPLICATION->IncludeComponent(
                 "bitrix:menu",
                 "bottom_menu",
                 [
