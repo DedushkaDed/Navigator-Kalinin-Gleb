@@ -4,8 +4,8 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 \Bitrix\Main\Loader::includeModule('iqdev');
 
 $APPLICATION->IncludeComponent(
-"bitrix:menu",
-"navigation_tabs",
+    "bitrix:menu",
+    "navigation_tabs",
     [
         "ALLOW_MULTI_SELECT" => "N",
         "DELAY" => "N",
@@ -17,11 +17,11 @@ $APPLICATION->IncludeComponent(
         "USE_EXT" => "Y",
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
-false
+    false
  );
 $APPLICATION->IncludeComponent(
-"bitrix:news",
-"about_istorii-nashih-zhitelej",
+    "bitrix:news",
+    "about_istorii-nashih-zhitelej",
     [
         "ADD_ELEMENT_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "N",

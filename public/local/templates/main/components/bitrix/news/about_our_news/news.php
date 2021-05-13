@@ -67,4 +67,4 @@ $APPLICATION->IncludeComponent(
         "CHECK_DATES" => $arParams["CHECK_DATES"],
     ],
     $component
-    );
+);

@@ -70,4 +70,4 @@ $ElementID = $APPLICATION->IncludeComponent(
         'STRICT_SECTION_CHECK' => (isset($arParams['STRICT_SECTION_CHECK']) ? $arParams['STRICT_SECTION_CHECK'] : ''),
     ],
     $component
-    );
+);

@@ -3,9 +3,6 @@
 }
 \Bitrix\Main\Loader::includeModule('iqdev');
 $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
-$iAdditionalContent = IQDEV\Base\Helper::getIblockId('additional_content');
-$iAsideBanners = IQDEV\Base\Helper::getIblockId('aside_banners');
-$iPhotoReport = IQDEV\Base\Helper::getIblockId('photo_report');
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -22,7 +19,6 @@ $iPhotoReport = IQDEV\Base\Helper::getIblockId('photo_report');
 if (empty($arResult)) {
     return;
 } ?>
-
 
 <section class="section section--overflow-hidden mb-medium">
     <div class="container">
@@ -139,7 +135,7 @@ if (empty($arResult)) {
                         <?endif;?>
                     <? endforeach; ?>
 
-                    <?php $APPLICATION->IncludeComponent(
+                    <? $APPLICATION->IncludeComponent(
                         "bitrix:news.list",
                         "additional-block",
                         [
@@ -162,7 +158,7 @@ if (empty($arResult)) {
                             "DISPLAY_TOP_PAGER" => "N",
                             "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                            "IBLOCK_ID" => $iAdditionalContent,
+                            "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('additional_content'),
                             "IBLOCK_TYPE" => "content",
                             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                             "INCLUDE_SUBSECTIONS" => "N",
@@ -189,7 +185,7 @@ if (empty($arResult)) {
                     ); ?>
                 </div>
             </div>
-            <?php $APPLICATION->IncludeComponent(
+            <? $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "aside_banners",
                 [
@@ -212,7 +208,7 @@ if (empty($arResult)) {
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => $iAsideBanners,
+                    "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('aside_banners'),
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
@@ -238,7 +234,7 @@ if (empty($arResult)) {
                 ]
             ); ?>
         </div>
-        <?php $APPLICATION->IncludeComponent(
+        <? $APPLICATION->IncludeComponent(
             "bitrix:news.list",
             "about_our_news_photo_report_from_the_company",
             [
@@ -261,7 +257,7 @@ if (empty($arResult)) {
                 "DISPLAY_TOP_PAGER" => "N",
                 "FIELD_CODE" => ["PREVIEW_PICTURE"],
                 "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                "IBLOCK_ID" => $iPhotoReport,
+                "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('photo_report'),
                 "IBLOCK_TYPE" => "content",
                 "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                 "INCLUDE_SUBSECTIONS" => "N",

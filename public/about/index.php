@@ -4,9 +4,9 @@
 $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
 ?>
 
-<?php $APPLICATION->IncludeComponent(
-"bitrix:menu",
-"navigation_tabs",
+<? $APPLICATION->IncludeComponent(
+    "bitrix:menu",
+    "navigation_tabs",
     [
         "ALLOW_MULTI_SELECT" => "N",
         "DELAY" => "N",
@@ -18,7 +18,7 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
         "USE_EXT" => "Y",
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
-false
+    false
 ); ?>
 <section class="section mb-medium">
     <div class="container">
@@ -26,13 +26,13 @@ false
             <div class="separate-paragraph__title">
                 <? if (!empty($aAboutOptions['title']['title'])) :?>
                     <h1><?=$aAboutOptions['title']['title']?></h1>
-                <?php endif?>
+                <? endif?>
             </div>
             <div class="separate-paragraph__divider"></div>
             <div class="separate-paragraph__text-wrapper">
                 <? if (!empty($aAboutOptions['title']['description'])) :?>
                     <div class="separate-paragraph__text"><?=$aAboutOptions['title']['description']?>
-                <?php endif;?>
+                <? endif;?>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@ false
                 <div class="grid-layout__item">
                     <?if (!empty($aAboutOptions['imageSectionTop']['image'])) :?>
                         <img class="img" src="<?=$aAboutOptions['imageSectionTop']['image']?>"/>
-                    <?php endif;?>
+                    <? endif;?>
                 </div>
             </div>
             <div class="grid-layout grid-layout--gap-15 grid-layout--col-4">
@@ -53,11 +53,11 @@ false
                         <div class="grid-card__content">
                             <?if (!empty($aAboutOptions['contentSectionTop']['title'])) :?>
                                 <div class="grid-card__title"><?=$aAboutOptions['contentSectionTop']['title']?></div>
-                            <?php endif;?>
+                            <? endif;?>
                             <?if (!empty($aAboutOptions['contentSectionTop']['description'])) :?>
                                 <div class="grid-card__subtext"><?=$aAboutOptions['contentSectionTop']['description']?>
                                 </div>
-                            <?php endif;?>
+                            <? endif;?>
                         </div>
                     </div>
                 </div>
@@ -68,9 +68,9 @@ false
                             <div class="slider-simple glide js-slider-simple">
                                 <div class="slider-simple__body">
                                     <div class="glide__track" data-glide-el="track">
-                                        <?php $APPLICATION->IncludeComponent(
-                                        "bitrix:news.list",
-                                        "our_values_slider",
+                                        <? $APPLICATION->IncludeComponent(
+                                            "bitrix:news.list",
+                                            "our_values_slider",
                                             [
                                                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                                                 "ADD_SECTIONS_CHAIN" => "N",
@@ -128,9 +128,9 @@ false
 <section class="section mb-large">
     <div class="container">
         <div class="section-header">Факты о компании</div>
-        <?php $APPLICATION->IncludeComponent(
-        "bitrix:news.list",
-        "about_facts_about_company",
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:news.list",
+            "about_facts_about_company",
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
@@ -183,9 +183,9 @@ false
 <section class="section section--overflow-hidden mb-large">
     <div class="container">
         <div class="section-header">Почему выбирают нас?</div>
-        <?php $APPLICATION->IncludeComponent(
-        "bitrix:news.list",
-        "about_why_choose_us",
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:news.list",
+            "about_why_choose_us",
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
@@ -232,9 +232,9 @@ false
 <section class="section section--overflow-hidden mb-large">
     <div class="container">
         <div class="section-header">Нам доверяют</div>
-        <?php $APPLICATION->IncludeComponent(
-        "bitrix:news.list",
-        "about_trust_us",
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:news.list",
+            "about_trust_us",
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
@@ -355,9 +355,9 @@ false
             </div>
             <div class="tabs__contents">
                 <div class="tabs__content js-tabs__content active" data-tab-content="news">
-                    <?php $APPLICATION->IncludeComponent(
-                    "bitrix:news.list",
-                    "about_whats_new_slides",
+                    <? $APPLICATION->IncludeComponent(
+                        "bitrix:news.list",
+                        "about_whats_new_slides",
                         [
                             "ACTIVE_DATE_FORMAT" => "d.m.Y",
                             "ADD_SECTIONS_CHAIN" => "N",
@@ -405,9 +405,9 @@ false
                     ); ?>
                 </div>
                 <div class="tabs__content js-tabs__content" data-tab-content="stories">
-                    <?php $APPLICATION->IncludeComponent(
-                    "bitrix:news.list",
-                    "about_whats_new_slides",
+                    <? $APPLICATION->IncludeComponent(
+                        "bitrix:news.list",
+                        "about_whats_new_slides",
                         [
                             "ACTIVE_DATE_FORMAT" => "d.m.Y",
                             "ADD_SECTIONS_CHAIN" => "N",
@@ -455,9 +455,9 @@ false
                     ); ?>
                 </div>
                 <div class="tabs__content js-tabs__content" data-tab-content="articles">
-                    <?php $APPLICATION->IncludeComponent(
-                    "bitrix:news.list",
-                    "about_whats_new_slides",
+                    <? $APPLICATION->IncludeComponent(
+                        "bitrix:news.list",
+                        "about_whats_new_slides",
                         [
                             "ACTIVE_DATE_FORMAT" => "d.m.Y",
                             "ADD_SECTIONS_CHAIN" => "N",
@@ -509,4 +509,4 @@ false
     </div>
 </section>
 
-<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
+<? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
