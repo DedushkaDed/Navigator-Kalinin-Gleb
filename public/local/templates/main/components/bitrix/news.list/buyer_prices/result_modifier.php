@@ -1,8 +1,6 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
-} ?>
-
-<?php
+}
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -22,7 +20,7 @@ $aMapCards = [];
 foreach ($arResult['ITEMS'] as $iKey => $aItem) {
     $aCard = [];
 
-    if($iKey == 0) {
+    if ($iKey == 0) {
         $aCard['activeItem'] = 'accordion--active';
     }
     if ($iKey % 2 == 0) {
