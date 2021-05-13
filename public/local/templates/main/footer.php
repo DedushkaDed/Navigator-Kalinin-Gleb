@@ -452,21 +452,25 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('footer');
             <form class="modal__form js-form" action="/?ajaxAction=formResume" data-name="resume">
                 <div class="modal__input">
                     <div class="input js-input">
-                        <input class="input__field" type="text" name="name" placeholder="Имя" data-validate="required,name"/>
+                        <input class="input__field" type="text" name="name" placeholder="Имя"
+                               data-validate="required,name"
+                        />
                         <div class="input__error"></div>
                     </div>
                 </div>
                 <div class="modal__input">
                     <div class="input js-input">
-                        <input class="input__field" type="text" name="phone" placeholder="Телефон" data-validate="required,phone"
-                               data-masking="phone"
+                        <input class="input__field" type="text" name="phone" placeholder="Телефон"
+                               data-validate="required,phone" data-masking="phone"
                         />
                         <div class="input__error"></div>
                     </div>
                 </div>
                 <div class="modal__input">
                     <label class="modal__file js-file">
-                        <input class="modal__file-input" type="file" name="file" data-validate="required,type=text.image.document"/>
+                        <input class="modal__file-input" type="file" name="file"
+                               data-validate="required,type=text.image.document"
+                        />
                         <div class="modal__file-label">Прикрепить файл</div>
                         <div class="modal__file-error"></div>
                     </label>
@@ -480,7 +484,9 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('footer');
                             <input class="checkbox__field" type="checkbox" data-validate="required"/>
                             <div class="checkbox__custom checkbox__custom--border"></div>
                             <div class="checkbox__text">Подтверждаю согласие с
-                                <a class="checkbox__link" href="#" target="_blank"> политикой обработки персональных данных</a>
+                                <a class="checkbox__link" href="#" target="_blank"
+                                > политикой обработки персональных данных
+                                </a>
                             </div>
                         </label>
                         <div class="checkbox__error"></div>
