@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -27,8 +27,8 @@ if (empty($arResult['ITEMS'])) {
             Мы ищем лучших профессионалов в дружную компанию. И, поверьте, Вам у нас точно понравится!
         </div>
         <div class="accordion-container js-accordion">
-            <?php foreach ($arResult['ITEMS'] as $aItem) :?>
-                <?php if ($aItem['PROPERTIES']['isActive']) :?>
+            <? foreach ($arResult['ITEMS'] as $aItem) :?>
+                <? if ($aItem['PROPERTIES']['isActive']) :?>
                     <div class="accordion <?=$aItem['PROPERTIES']['isActive']?>">
                         <div class="accordion__header">
                             <div class="accordion__header-icon">
@@ -52,16 +52,16 @@ if (empty($arResult['ITEMS'])) {
                         <div class="accordion__body">
                             <div class="job js-job" data-id="<?=$aItem['ID']?>">
                                 <div class="job__sections">
-                                    <?php foreach ($aItem['PROPERTIES'] as $aProperty) :?>
+                                    <? foreach ($aItem['PROPERTIES'] as $aProperty) :?>
                                         <div class="job-section">
                                             <div class="job-section__title"><?=$aProperty['NAME']?></div>
                                             <ul class="job-section__list">
-                                                <?php foreach ($aProperty['VALUE'] as $aValue) :?>
+                                                <? foreach ($aProperty['VALUE'] as $aValue) :?>
                                                     <li><?=$aValue['TEXT']?></li>
-                                                <?php endforeach;?>
+                                                <? endforeach;?>
                                             </ul>
                                         </div>
-                                    <?php endforeach;?>
+                                    <? endforeach;?>
                                     <div class="job__footer">
                                         <div class="button button--primary button--auto-width">
                                             <span><?=$aItem['DETAIL_TEXT']?></span>
@@ -71,7 +71,7 @@ if (empty($arResult['ITEMS'])) {
                         </div>
                     </div>
                 </div>
-                <?php else :?>
+                <? else :?>
                     <div class="accordion <?=$aItem['PROPERTIES']['accordionColor']?>">
                         <div class="accordion__header">
                             <div class="accordion__header-icon">
@@ -95,16 +95,16 @@ if (empty($arResult['ITEMS'])) {
                         <div class="accordion__body" style="display: none">
                             <div class="job js-job" data-id="<?=$aItem['ID']?>">
                                 <div class="job__sections">
-                                    <?php foreach ($aItem['PROPERTIES'] as $aProperty) :?>
+                                    <? foreach ($aItem['PROPERTIES'] as $aProperty) :?>
                                         <div class="job-section">
                                             <div class="job-section__title"><?=$aProperty['NAME']?></div>
                                             <ul class="job-section__list">
-                                                <?php foreach ($aProperty['VALUE'] as $aValue) :?>
+                                                <? foreach ($aProperty['VALUE'] as $aValue) :?>
                                                     <li><?=$aValue['TEXT']?></li>
-                                                <?php endforeach;?>
+                                                <? endforeach;?>
                                             </ul>
                                         </div>
-                                    <?php endforeach;?>
+                                    <? endforeach;?>
                                     <div class="job__footer">
                                         <div class="button button--primary button--auto-width">
                                             <span><?=$aItem['DETAIL_TEXT']?></span>
@@ -114,8 +114,8 @@ if (empty($arResult['ITEMS'])) {
                             </div>
                         </div>
                     </div>
-                <?php endif;?>
-            <?php endforeach;?>
+                <? endif;?>
+            <? endforeach;?>
         </div>
     </div>
 </section>

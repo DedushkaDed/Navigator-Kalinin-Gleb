@@ -1,4 +1,4 @@
-<?php
+<?
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 $APPLICATION->IncludeComponent(
@@ -50,7 +50,6 @@ $APPLICATION->IncludeComponent(
         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
         "PAGER_SHOW_ALL" => "N",
         "PAGER_SHOW_ALWAYS" => "N",
-        "PAGER_TITLE" => "Тендеры",
         "PROPERTY_CODE" => ["DATE_START", "DATE_END", "CONTACT_TEXT", "DOWNLOAD_INFO"],
         "SET_BROWSER_TITLE" => "N",
         "SET_LAST_MODIFIED" => "N",

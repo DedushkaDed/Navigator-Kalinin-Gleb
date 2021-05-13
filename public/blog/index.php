@@ -1,4 +1,5 @@
-<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+<?
+require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 \Bitrix\Main\Loader::includeModule('iqdev');
 
@@ -28,7 +29,6 @@ $APPLICATION->IncludeComponent(
         "AJAX_OPTION_HISTORY" => "N",
         "AJAX_OPTION_JUMP" => "N",
         "AJAX_OPTION_STYLE" => "Y",
-        "BROWSER_TITLE" => "-",
         "CACHE_FILTER" => "N",
         "CACHE_GROUPS" => "Y",
         "CACHE_TIME" => "36000000",
@@ -61,7 +61,6 @@ $APPLICATION->IncludeComponent(
         "PAGER_SHOW_ALL" => "N",
         "PAGER_SHOW_ALWAYS" => "Y",
         "PAGER_TEMPLATE" => "about_page_navigation",
-        "PAGER_TITLE" => "Постраничная навигация",
         "SEF_FOLDER" => "/blog/",
         "SEF_MODE" => "Y",
         "SEF_URL_TEMPLATES" => ["detail" => "#ELEMENT_ID#/"],

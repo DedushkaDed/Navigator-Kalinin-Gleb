@@ -1,4 +1,5 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
@@ -27,7 +28,7 @@ if (empty($arResult['mapCards'])) {
                         <div class="banner__photo-wrapper">
                             <? if (!empty($aItem['image'])) :?>
                                 <img class="banner__photo" src="<?= $aItem['image'] ?>"/>
-                            <?php endif;?>
+                            <? endif;?>
                         </div>
                         <div class="banner__content">
                             <?if (!empty($aItem['title'])) :?>
@@ -43,7 +44,7 @@ if (empty($arResult['mapCards'])) {
                             </div>
                         </div>
                     </a>
-                <?php endif;?>
+                <? endif;?>
             </div>
         <? endforeach; ?>
     </div>

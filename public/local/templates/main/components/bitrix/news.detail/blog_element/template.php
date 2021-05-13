@@ -1,4 +1,5 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
@@ -19,7 +20,8 @@ $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
 
 if (empty($arResult)) {
     return;
-} ?>
+}
+?>
 
 <section class="section section--overflow-hidden mb-medium">
     <div class="container">

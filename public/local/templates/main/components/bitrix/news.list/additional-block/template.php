@@ -1,4 +1,5 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
@@ -16,7 +17,8 @@
 
 if (empty($arResult['ITEMS'])) {
     return;
-} ?>
+}
+?>
 
 <?foreach ($arResult['ITEMS'] as $aItem) :?>
     <?if (!empty($aItem['NAME'])) :?>
