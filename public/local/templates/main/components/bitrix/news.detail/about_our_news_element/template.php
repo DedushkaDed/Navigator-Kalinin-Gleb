@@ -3,8 +3,6 @@
 }
 \Bitrix\Main\Loader::includeModule('iqdev');
 $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
-$iIblockAsideBanners = IQDEV\Base\Helper::getIblockId('aside_banners');
-$iIblockPhotoReport = IQDEV\Base\Helper::getIblockId('photo_report');
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -29,11 +27,11 @@ if (empty($arResult)) {
                 <div class="detail-header">
                     <? if (!empty($arResult['NAME'])) :?>
                         <h1 class="detail-header__title"><?= $arResult['NAME'] ?></h1>
-                    <?php endif;?>
+                    <? endif;?>
                     <div class="detail-header__footer">
                         <? if (!empty($arResult['PROPERTIES']['DATE']['VALUE'])) :?>
                             <div class="detail-header__date"><?= $arResult['PROPERTIES']['DATE']['VALUE'] ?></div>
-                        <?php endif;?>
+                        <? endif;?>
                         <div class="detail-header__share">
                             <div class="detail-header__share-title">Поделиться:</div>
                             <?if (!empty($aSocialMediaOptions['facebook'])) :?>
@@ -92,7 +90,7 @@ if (empty($arResult)) {
                             <? if (!empty($aSocialMediaOptions['odnoklassniki'])) :?>
                             <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['odnoklassniki'] ?>"
                                target="_blank">
-                            <?php endif;?>
+                            <? endif;?>
                                 <div class="icon">
                                     <svg width="12" height="20" viewBox="0 0 12 20" fill="none"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -127,18 +125,18 @@ if (empty($arResult)) {
                     <div class="detail-content__image">
                         <? if (!empty($arResult['DETAIL_PICTURE']['SRC'])) :?>
                             <img class="img" src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?>"/>
-                        <?php endif;?>
+                        <? endif;?>
                     </div>
-                    <?php foreach ($arResult['PROPERTIES']['TEXT_NEWS']['VALUE'] as $aTextNews) : ?>
+                    <? foreach ($arResult['PROPERTIES']['TEXT_NEWS']['VALUE'] as $aTextNews) : ?>
                         <? if (!empty($aTextNews['TEXT'])) :?>
                             <p><?= $aTextNews['TEXT'] ?></p>
                         <?endif;?>
                     <? endforeach; ?>
                 </div>
             </div>
-            <?php $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "aside_banners",
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "aside_banners",
                 [
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
@@ -159,7 +157,7 @@ if (empty($arResult)) {
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => $iIblockAsideBanners,
+                    "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('aside_banners'),
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
@@ -208,7 +206,7 @@ if (empty($arResult)) {
                                             </svg>
                                         </div>
                                     </a>
-                                <?php endif;?>
+                                <? endif;?>
                                 <? if (!empty($aSocialMediaOptions['vkontakte'])) :?>
                                     <a class="separate-paragraph__icon" href="<?= $aSocialMediaOptions['vkontakte'] ?>">
                                         <div class="icon icon--middle-brown icon--hover-primary">
@@ -249,7 +247,7 @@ if (empty($arResult)) {
                                             </svg>
                                         </div>
                                     </a>
-                                <?php endif;?>
+                                <? endif;?>
                                 <? if (!empty($aSocialMediaOptions['odnoklassniki'])) :?>
                                     <a class="separate-paragraph__icon"
                                        href="<?= $aSocialMediaOptions['odnoklassniki'] ?>">
@@ -281,15 +279,15 @@ if (empty($arResult)) {
                                             </svg>
                                         </div>
                                     </a>
-                                <?php endif;?>
+                                <? endif;?>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <?php $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "about_our_news_photo_report_from_the_company",
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "about_our_news_photo_report_from_the_company",
                 [
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
@@ -310,7 +308,7 @@ if (empty($arResult)) {
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["PREVIEW_PICTURE"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => $iIblockPhotoReport,
+                    "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('photo_report'),
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",

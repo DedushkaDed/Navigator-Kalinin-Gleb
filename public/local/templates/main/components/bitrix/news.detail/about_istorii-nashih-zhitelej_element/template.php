@@ -3,9 +3,6 @@
 }
 \Bitrix\Main\Loader::includeModule('iqdev');
 $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
-$iAdditionalContent = IQDEV\Base\Helper::getIblockId('additional_content');
-$iAsideBanners = IQDEV\Base\Helper::getIblockId('aside_banners');
-$iPhotoReport = IQDEV\Base\Helper::getIblockId('photo_report');
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -28,37 +25,29 @@ if (empty($arResult)) {
         <div class="detail">
             <div class="detail__item">
                 <div class="detail-header">
-                    <?if (!empty($arResult['NAME'])) :?>
-                        <h1 class="detail-header__title"><?= $arResult['NAME'] ?></h1>
-                    <?endif;?>
+                    <h1 class="detail-header__title"><?= $arResult['NAME'] ?? '' ?></h1>
                     <div class="detail-header__footer">
-                        <?if (!empty($arResult['PROPERTIES']['DATE']['VALUE'])) :?>
-                            <div class="detail-header__date"><?= $arResult['PROPERTIES']['DATE']['VALUE'] ?></div>
-                        <?endif?>
+                        <div class="detail-header__date"><?= $arResult['PROPERTIES']['DATE']['VALUE'] ?? '' ?></div>
+                        <?if (!empty($aSocialMediaOptions)) :?>
                         <div class="detail-header__share">
                             <div class="detail-header__share-title">Поделиться:</div>
-                            <?if (!empty($aSocialMediaOptions['facebook'])) :?>
-                                <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['facebook'] ?>"
-                                   target="_blank">
-                            <?endif;?>
+                            <a class="detail-header__share-icon" href="<?=$aSocialMediaOptions['facebook']?>"
+                               target="_blank">
                                 <div class="icon">
                                     <svg width="11" height="20" viewBox="0 0 11 20" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path d="M6.57895 6.875V4.375C6.57895 3.685 7.16842 3.125 7.89474
                                         3.125H9.21053V0H6.57895C4.39868 0 2.63158 1.67875
-                                        2.63158 3.75V6.875H0V10H2.63158V20H6.57895V10H9.21053L10.5263 6.875H6.57895Z">
-                                        </path>
+                                        2.63158 3.75V6.875H0V10H2.63158V20H6.57895V10H9.21053L10.5263 6.875H6.57895Z"
+                                        ></path>
                                     </svg>
                                 </div>
                             </a>
-                            <?if (!empty($aSocialMediaOptions['vkontakte'])) :?>
-                                <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['vkontakte'] ?>"
-                                   target="_blank">
-                            <?endif;?>
+                            <a class="detail-header__share-icon" href="<?=$aSocialMediaOptions['vkontakte']?>"
+                               target="_blank">
                                 <div class="icon">
                                     <svg width="25" height="14" viewBox="0 0 25 14" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg"
-                                    >
+                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M23.8446 12.1602C23.7799 12.0527 23.3799 11.1894 21.4551
                                          9.41514C19.44 7.55723 19.7107 7.85892 22.1378 4.6464C23.616
                                           2.68992 24.207 1.49512 24.0221 0.984342C23.8461 0.497462
@@ -86,15 +75,13 @@ if (empty($arResult)) {
                                                                 10.4651C15.8128 10.1873 16.9467 12.317 18.1482
                                                                  13.1369C19.0565 13.7567 19.7467 13.6208 19.7467
                                                                   13.6208L22.9604 13.576C22.9604 13.576 24.6416
-                                                                   13.473 23.8446 12.1602Z"
-                                        ></path>
+                                                                   13.473 23.8446 12.1602Z">
+                                        </path>
                                     </svg>
                                 </div>
                             </a>
-                            <?if (!empty($aSocialMediaOptions['odnoklassniki'])) :?>
-                                <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['odnoklassniki'] ?>"
-                                   target="_blank">
-                            <?endif;?>
+                            <a class="detail-header__share-icon"
+                               href="<?=$aSocialMediaOptions['odnoklassniki']?>" target="_blank">
                                 <div class="icon">
                                     <svg width="12" height="20" viewBox="0 0 12 20" fill="none"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -121,6 +108,7 @@ if (empty($arResult)) {
                                 </div>
                             </a>
                         </div>
+                        <?endif;?>
                     </div>
                 </div>
             </div>
@@ -128,19 +116,15 @@ if (empty($arResult)) {
             <div class="detail__item">
                 <div class="detail-content">
                     <div class="detail-content__image">
-                        <?if (!empty($arResult['DETAIL_PICTURE']['SRC'])) :?>
-                            <img class="img" src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?>"/>
-                        <?endif;?>
+                        <img class="img" src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?? '' ?>"/>
                     </div>
                     <? foreach ($arResult['PROPERTIES']['TEXT_HISTORY_RESIDENT']['VALUE'] as $aTextNews) : ?>
-                        <?if (!empty($aTextNews['TEXT'])) :?>
-                            <p><?= $aTextNews['TEXT'] ?></p>
-                        <?endif;?>
+                        <p><?= $aTextNews['TEXT'] ?? '' ?></p>
                     <? endforeach; ?>
 
-                    <?php $APPLICATION->IncludeComponent(
-                    "bitrix:news.list",
-                    "additional-block",
+                    <? $APPLICATION->IncludeComponent(
+                        "bitrix:news.list",
+                        "additional-block",
                         [
                             "ACTIVE_DATE_FORMAT" => "d.m.Y",
                             "ADD_SECTIONS_CHAIN" => "N",
@@ -161,7 +145,7 @@ if (empty($arResult)) {
                             "DISPLAY_TOP_PAGER" => "N",
                             "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                            "IBLOCK_ID" => $iAdditionalContent,
+                            "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('additional_content'),
                             "IBLOCK_TYPE" => "content",
                             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                             "INCLUDE_SUBSECTIONS" => "N",
@@ -188,9 +172,9 @@ if (empty($arResult)) {
                     ); ?>
                 </div>
             </div>
-            <?php $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "aside_banners",
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "aside_banners",
                 [
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
@@ -211,7 +195,7 @@ if (empty($arResult)) {
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => $iAsideBanners,
+                    "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('aside_banners'),
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
@@ -237,9 +221,9 @@ if (empty($arResult)) {
                 ]
             ); ?>
         </div>
-        <?php $APPLICATION->IncludeComponent(
-        "bitrix:news.list",
-        "about_our_news_photo_report_from_the_company",
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:news.list",
+            "about_our_news_photo_report_from_the_company",
             [
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "ADD_SECTIONS_CHAIN" => "N",
@@ -260,7 +244,7 @@ if (empty($arResult)) {
                 "DISPLAY_TOP_PAGER" => "N",
                 "FIELD_CODE" => ["PREVIEW_PICTURE"],
                 "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                "IBLOCK_ID" => $iPhotoReport,
+                "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('photo_report'),
                 "IBLOCK_TYPE" => "content",
                 "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                 "INCLUDE_SUBSECTIONS" => "N",
