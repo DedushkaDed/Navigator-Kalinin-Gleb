@@ -25,25 +25,28 @@ if (empty($arResult)) {
         <div class="detail">
             <div class="detail__item">
                 <div class="detail-header">
-                        <h1 class="detail-header__title"><?= $arResult['NAME'] ?? '' ?></h1>
+                    <h1 class="detail-header__title"><?= $arResult['NAME'] ?? '' ?></h1>
                     <div class="detail-header__footer">
-                            <div class="detail-header__date"><?= $arResult['PROPERTIES']['DATE']['VALUE'] ?? '' ?></div>
+                        <div class="detail-header__date"><?= $arResult['PROPERTIES']['DATE']['VALUE'] ?? '' ?></div>
                         <div class="detail-header__share">
                             <div class="detail-header__share-title">Поделиться:</div>
-                                <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['facebook'] ?? '' ?>"
-                                   target="_blank">
+                            <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['facebook'] ?? '' ?>"
+                               target="_blank"
+                            >
                                 <div class="icon">
                                     <svg width="11" height="20" viewBox="0 0 11 20" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
+                                         xmlns="http://www.w3.org/2000/svg"
+                                    >
                                         <path d="M6.57895 6.875V4.375C6.57895 3.685 7.16842 3.125 7.89474
                                         3.125H9.21053V0H6.57895C4.39868 0 2.63158 1.67875
-                                        2.63158 3.75V6.875H0V10H2.63158V20H6.57895V10H9.21053L10.5263 6.875H6.57895Z">
-                                        </path>
+                                        2.63158 3.75V6.875H0V10H2.63158V20H6.57895V10H9.21053L10.5263 6.875H6.57895Z"
+                                        ></path>
                                     </svg>
                                 </div>
                             </a>
-                                <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['vkontakte'] ?? '' ?>"
-                                   target="_blank">
+                            <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['vkontakte'] ?? '' ?>"
+                               target="_blank"
+                            >
                                 <div class="icon">
                                     <svg width="25" height="14" viewBox="0 0 25 14" fill="none"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -80,8 +83,9 @@ if (empty($arResult)) {
                                     </svg>
                                 </div>
                             </a>
-                                <a class="detail-header__share-icon" href="<?= $aSocialMediaOptions['odnoklassniki'] ?? '' ?>"
-                                   target="_blank">
+                            <a class="detail-header__share-icon"
+                               href="<?= $aSocialMediaOptions['odnoklassniki'] ?? '' ?>" target="_blank"
+                            >
                                 <div class="icon">
                                     <svg width="12" height="20" viewBox="0 0 12 20" fill="none"
                                          xmlns="http://www.w3.org/2000/svg"
@@ -115,11 +119,11 @@ if (empty($arResult)) {
             <div class="detail__item">
                 <div class="detail-content">
                     <div class="detail-content__image">
-                            <img class="img" src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?? '' ?>"/>
+                        <img class="img" src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?? '' ?>"/>
 
                     </div>
                     <? foreach ($arResult['PROPERTIES']['TEXT_HISTORY_RESIDENT']['VALUE'] as $aTextNews) : ?>
-                            <p><?= $aTextNews['TEXT'] ?? '' ?></p>
+                        <p><?= $aTextNews['TEXT'] ?? '' ?></p>
                     <? endforeach; ?>
 
                     <? $APPLICATION->IncludeComponent(
