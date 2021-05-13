@@ -4,7 +4,8 @@
 
 if (empty($arResult)) {
     return;
-} ?>
+}
+?>
 
 <div class="footer__navigation">
     <? foreach ($arResult as $aItem) : ?>

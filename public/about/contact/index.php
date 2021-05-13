@@ -16,7 +16,8 @@ $APPLICATION->IncludeComponent(
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
-); ?>
+);
+?>
 <section class="section section--overflow-hidden mb-medium">
     <div class="container">
         <div class="contact-page">

@@ -18,7 +18,7 @@ $APPLICATION->IncludeComponent(
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
- );
+);
 $APPLICATION->IncludeComponent(
     "bitrix:news",
     "about_istorii-nashih-zhitelej",

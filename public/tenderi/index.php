@@ -65,7 +65,8 @@ $APPLICATION->IncludeComponent(
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
     ]
-); ?>
+);
+?>
 <section class="section mb-large">
     <div class="container-large">
         <div class="feedback__container">

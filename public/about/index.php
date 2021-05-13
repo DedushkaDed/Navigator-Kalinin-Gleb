@@ -2,9 +2,8 @@
 
 \Bitrix\Main\Loader::includeModule('iqdev');
 $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
-?>
 
-<? $APPLICATION->IncludeComponent(
+$APPLICATION->IncludeComponent(
     "bitrix:menu",
     "navigation_tabs",
     [
@@ -19,7 +18,8 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
-); ?>
+);
+?>
 <section class="section mb-medium">
     <div class="container">
         <div class="separate-paragraph">
@@ -38,7 +38,7 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
         </div>
     </div>
 </section>
-    <section class="section mb-large">
+<section class="section mb-large">
         <div class="container">
             <div class="grid-layout">
                 <div class="grid-layout__item">
@@ -507,4 +507,4 @@ $aAboutOptions = \IQDEV\Options\Options::getPageOptions('about_page');
     </div>
 </section>
 
-<? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
+<? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');

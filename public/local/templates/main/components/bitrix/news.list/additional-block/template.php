@@ -18,24 +18,23 @@ if (empty($arResult['ITEMS'])) {
     return;
 } ?>
 
-
 <?foreach ($arResult['ITEMS'] as $aItem) :?>
     <?if (!empty($aItem['NAME'])) :?>
         <h3><?= $aItem['NAME'] ?></h3>
-    <?php endif;?>
+    <? endif;?>
     <div class="detail-content__image">
         <?if (!empty($aItem['PREVIEW_PICTURE']['SRC'])) :?>
             <img class="img" src="<?= $aItem['PREVIEW_PICTURE']['SRC'] ?>"/>
-        <?php endif;?>
+        <? endif;?>
     </div>
     <?if (!empty($aItem['PREVIEW_TEXT'])) :?>
         <p><?= $aItem['PREVIEW_TEXT'] ?></p>
-    <?php endif;?>
+    <?endif;?>
     <ul>
         <?foreach ($aItem['PROPERTIES']['TEXT_PLUSES']['VALUE'] as $aText) :?>
             <?if (!empty($aText)) :?>
                 <li><?= $aText ?></li>
             <?endif;?>
-        <?php endforeach; ?>
+        <?endforeach;?>
     </ul>
-<?php endforeach; ?>
+<?endforeach;?>
