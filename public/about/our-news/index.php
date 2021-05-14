@@ -1,11 +1,9 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
-$iIblockNews = IQDEV\Base\Helper::getIblockId('news');
-
 $APPLICATION->IncludeComponent(
-"bitrix:menu",
-"navigation_tabs",
+    "bitrix:menu",
+    "navigation_tabs",
     [
         "ALLOW_MULTI_SELECT" => "N",
         "DELAY" => "N",
@@ -17,11 +15,11 @@ $APPLICATION->IncludeComponent(
         "USE_EXT" => "Y",
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
-false
- );
+    false
+);
 $APPLICATION->IncludeComponent(
-"bitrix:news",
-"about_our_news",
+    "bitrix:news",
+    "about_our_news",
     [
         "ADD_ELEMENT_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -49,7 +47,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_PREVIEW_TEXT" => "N",
         "DISPLAY_TOP_PAGER" => "N",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => $iIblockNews,
+        "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('news'),
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",

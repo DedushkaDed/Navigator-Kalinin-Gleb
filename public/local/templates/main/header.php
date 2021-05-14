@@ -8,6 +8,7 @@ use Bitrix\Main\Page\Asset;
 \Bitrix\Main\Loader::includeModule('iqdev.options');
 $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
 ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -21,12 +22,12 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
     <meta name="msapplication-TileColor" content="#ffffff"/>
     <meta name="msapplication-config" content="/assets/icons/browserconfig.xml"/>
     <meta name="theme-color" content="#ffffff"/>
-    <title><?php $APPLICATION->ShowTitle(); ?></title>
+    <title><? $APPLICATION->ShowTitle(); ?></title>
     <?
     Asset::getInstance()->addCss('/assets/css/application.css?v=1');
     Asset::getInstance()->addJs('/assets/js/application.js?v=1');
     Asset::getInstance()
-        ->addJs('https://www.google.com/recaptcha/api.js?render=6LfD5MYaAAAAAHqjw6hL0jEDF8sGe_wZKMsXXmZx');
+        ->addJs('https://www.google.com/recaptcha/api.js?render=6LcoCLIUAAAAAFB2Ud11o2DWXV-vXxph8kMKxKjH');
     Asset::getInstance()
         ->addJs('https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;amp;apikey=b9f13544-de93-45f5-becd-5d9ba7a80326');
 
@@ -34,21 +35,23 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
     ?>
 </head>
 <body class="body js-body">
-<div id="panel"><?php $APPLICATION->ShowPanel(); ?></div>
+<div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
 <header class="header">
     <div class="header__inner">
         <a class="header__logo" href="/">
             <img src="/assets/image/header/logo.png"/>
         </a>
 
-        <?php $APPLICATION->IncludeComponent(
-        "bitrix:menu",
-        "top_menu",
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:menu",
+            "top_menu",
             [
                 "ALLOW_MULTI_SELECT" => "N",
                 "CHILD_MENU_TYPE" => "subtop",
                 "DELAY" => "N",
                 "MAX_LEVEL" => "2",
+                "MENU_CACHE_GET_VARS" => [
+                ],
                 "MENU_CACHE_TIME" => "3600",
                 "MENU_CACHE_TYPE" => "A",
                 "MENU_CACHE_USE_GROUPS" => "N",
@@ -56,7 +59,7 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
                 "USE_EXT" => "Y",
                 "COMPONENT_TEMPLATE" => "top_menu",
             ],
-        false
+            false
         ); ?>
 
         <a class="header__number js-stats link-blue roistat_phone_navig" href="tel:<?=$aOptions['link']?>">
@@ -288,10 +291,11 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
 </header>
 <section class="section mb-medium">
     <div class="container">
-        <?php $APPLICATION->IncludeComponent(
-        "bitrix:breadcrumb",
-        "navigation",
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:breadcrumb",
+            "navigation",
             [
+                "PATH" => "",
                 "SITE_ID" => "s1",
                 "START_FROM" => "0",
             ]
