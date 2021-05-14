@@ -19,7 +19,7 @@ $APPLICATION->IncludeComponent(
 );
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "about_rabota_accordion",
+    "about_job_accordion",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -67,7 +67,7 @@ $APPLICATION->IncludeComponent(
 );
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "about_rabota_content",
+    "about_job_content",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",

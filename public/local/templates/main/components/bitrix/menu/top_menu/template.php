@@ -11,7 +11,7 @@ if (empty($arResult)) {
 <div class="navigation">
     <? foreach ($arResult as $aItem) : ?>
         <? if (!empty($aItem['subitems'])) :?>
-            <div class="navigation__item" href="<?= $aItem["LINK"] ?>">
+            <div class="navigation__item">
                 <span class="navigation__page"><?= $aItem["TEXT"] ?></span>
                 <div class="navigation__arrow">
                     <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,11 +29,10 @@ if (empty($arResult)) {
                     <? endforeach; ?>
                 </div>
             </div>
-        <? else :
-            ?>
-        <a class="navigation__item" href="<?= $aItem["LINK"] ?>">
-            <span class="navigation__page"><?= $aItem["TEXT"] ?></span>
-        </a>
-        <? endif; ?>
+        <? else :?>
+            <a class="navigation__item">
+                <span class="navigation__page"><?= $aItem["TEXT"] ?></span>
+            </a>
+        <? endif ?>
     <? endforeach ?>
 </div>
