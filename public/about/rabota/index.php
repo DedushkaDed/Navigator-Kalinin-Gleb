@@ -118,7 +118,7 @@ $APPLICATION->IncludeComponent(
 );
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "feedback_form_other",
+    "feedback_form_additional",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -140,7 +140,7 @@ $APPLICATION->IncludeComponent(
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
-        "NEWS_COUNT" => "20",
+        "NEWS_COUNT" => "5",
         "PAGER_BASE_LINK_ENABLE" => "N",
         "PAGER_DESC_NUMBERING" => "N",
         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",

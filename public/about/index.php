@@ -283,7 +283,7 @@ $APPLICATION->IncludeComponent(
 </section>
 <?php $APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "feedback_form_main_page",
+    "feedback_form_main",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
