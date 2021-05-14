@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -16,13 +16,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 
-
+if (empty($arResult['paymentCards'])) {
+    return null;
+}
 ?>
-
-<?php if (empty($arResult['paymentCards'])) {
-    return;
-} ?>
-
 <section class="section mt-medium mb-medium">
     <div class="container">
         <div class="separate-paragraph">
@@ -42,9 +39,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
         </div>
     </div>
 </section>
-<?php $APPLICATION->IncludeComponent(
+<?
+$APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "buyer_rassrochka_work_stage",
+    "buyer_payment_work_stage",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -90,23 +88,24 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
     ]
-); ?>
+);
+?>
 <section class="section section--overflow-hidden mt-medium mb-large">
     <div class="container">
         <?if (!empty($arResult['paymentCards']['sectionHeader'])) :?>
             <div class="section-header"><?=$arResult['paymentCards']['sectionHeader']?></div>
-        <?php endif;?>
+        <?endif;?>
         <div class="grid-unit">
             <div class="grid-unit__inner">
                 <div class="grid-unit__item grid-unit__item--banner grid-unit__item--col2">
                     <div class="grid-card grid-card--xs-border-radius">
                         <?if (!empty($arResult['paymentCards']['cardLargeText'])) :?>
                             <div class="grid-card__text"><?=$arResult['paymentCards']['cardLargeText']?></div>
-                        <?php endif;?>
+                        <?endif;?>
                         <div class="grid-card__image-wrapper">
                             <?if (!empty($arResult['paymentCards']['cardLargeImage'])) :?>
                                 <img src="<?=$arResult['paymentCards']['cardLargeImage']?>"/>
-                            <?php endif;?>
+                            <?endif;?>
                         </div>
                     </div>
                 </div>
@@ -116,13 +115,13 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                             <div class="card-color__text card-color__text--grow">
                                 <?=$arResult['paymentCards']['firstItemText']?>
                             </div>
-                        <?php endif;?>
+                        <?endif;?>
                         <div class="card-color__subcontent">
                             <?if (!empty($arResult['paymentCards']['firstItemPercent'])) :?>
                                 <div class="circle-percent circle-percent--background-dark-blue">
                                     <?=$arResult['paymentCards']['firstItemPercent']?></div>
                                 </div>
-                            <?php endif;?>
+                            <?endif;?>
                     </div>
                 </div>
                 <div class="grid-unit__item">
@@ -131,7 +130,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                             <div class="card-color__text card-color__text--grow">
                                 <?=$arResult['paymentCards']['secondItemText']?>
                             </div>
-                        <?php endif;?>
+                        <?endif;?>
                     </div>
                 </div>
                 <div class="grid-unit__item">
@@ -140,7 +139,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                             <div class="card-color__text card-color__text--grow">
                                 <?=$arResult['paymentCards']['thirdItemText']?>
                             </div>
-                        <?php endif;?>
+                        <?endif;?>
                     </div>
                 </div>
                 <div class="grid-unit__item">
@@ -149,7 +148,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                             <div class="card-color__text card-color__text--grow">
                                 <?=$arResult['paymentCards']['fourthItemText']?>
                             </div>
-                        <?php endif;?>
+                        <?endif;?>
                     </div>
                 </div>
                 <div class="grid-unit__item grid-unit__item--col2">
@@ -157,12 +156,12 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         <div class="card-color__grid">
                             <?if (!empty($arResult['paymentCards']['fifthItemText'])) :?>
                                 <div><?=$arResult['paymentCards']['fifthItemText']?></div>
-                            <?php endif;?>
+                            <?endif;?>
                             <div class="card-color__button js-modal-trigger" data-modal-id="consultation">
                                 <div class="button button--primary">
                                     <?if (!empty($arResult['paymentCards']['fifthItemButtonLabel'])) :?>
                                         <span><?=$arResult['paymentCards']['fifthItemButtonLabel']?></span>
-                                    <?php endif;?>
+                                    <?endif;?>
                                 </div>
                             </div>
                         </div>
@@ -177,13 +176,13 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                                         <div class="card-color__text card-color__text--grow">
                                             <?=$arResult['paymentCards']['firstItemText']?>
                                         </div>
-                                    <?php endif;?>
+                                    <?endif;?>
                                     <div class="card-color__subcontent">
                                         <?if (!empty($arResult['paymentCards']['firstItemPercent'])) :?>
                                             <div class="circle-percent circle-percent--background-dark-blue">
                                                 <?=$arResult['paymentCards']['firstItemPercent']?></div>
                                             </div>
-                                        <?php endif;?>
+                                        <?endif;?>
                                 </div>
                             </div>
                             <div class="grid-unit__mobile-item">
@@ -192,7 +191,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                                         <div class="card-color__text card-color__text--grow">
                                             <?=$arResult['paymentCards']['secondItemText']?>
                                         </div>
-                                    <?php endif;?>
+                                    <?endif;?>
                                 </div>
                             </div>
                             <div class="grid-unit__mobile-item">
@@ -201,7 +200,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                                         <div class="card-color__text card-color__text--grow">
                                             <?=$arResult['paymentCards']['thirdItemText']?>
                                         </div>
-                                    <?php endif;?>
+                                    <?endif;?>
                                 </div>
                             </div>
                             <div class="grid-unit__mobile-item">
@@ -210,7 +209,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                                         <div class="card-color__text card-color__text--grow">
                                             <?=$arResult['paymentCards']['fourthItemText']?>
                                         </div>
-                                    <?php endif;?>
+                                    <?endif;?>
                                 </div>
                             </div>
                             <div class="grid-unit__mobile-item">
@@ -218,12 +217,12 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                                     <div class="card-color__grid">
                                         <?if (!empty($arResult['paymentCards']['fifthItemText'])) :?>
                                             <div><?=$arResult['paymentCards']['fifthItemText']?></div>
-                                        <?php endif;?>
+                                        <?endif;?>
                                         <div class="card-color__button js-modal-trigger" data-modal-id="consultation">
                                             <div class="button button--primary">
                                                 <?if (!empty($arResult['paymentCards']['fifthItemButtonLabel'])) :?>
                                                     <span><?=$arResult['paymentCards']['fifthItemButtonLabel']?></span>
-                                                <?php endif;?>
+                                                <?endif;?>
                                             </div>
                                         </div>
                                     </div>

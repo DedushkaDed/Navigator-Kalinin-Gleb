@@ -1,11 +1,11 @@
-<?php
+<?
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-\Bitrix\Main\Loader::includeModule('iqdev');
-?>
 
-<?php $APPLICATION->IncludeComponent(
-"bitrix:menu",
-"navigation_tabs",
+\Bitrix\Main\Loader::includeModule('iqdev');
+
+$APPLICATION->IncludeComponent(
+    "bitrix:menu",
+    "navigation_tabs",
     [
         "ALLOW_MULTI_SELECT" => "N",
         "DELAY" => "N",
@@ -17,12 +17,11 @@ require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
         "USE_EXT" => "Y",
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
-false
-); ?>
-
-<?php $APPLICATION->IncludeComponent(
-"bitrix:news.list",
-"byuer_work_stage",
+    false
+);
+$APPLICATION->IncludeComponent(
+    "bitrix:news.list",
+    "byuer_work_stage",
     [
     "ACTIVE_DATE_FORMAT" => "d.m.Y",
     "ADD_SECTIONS_CHAIN" => "N",
@@ -68,7 +67,6 @@ false
     "SORT_ORDER2" => "ASC",
     "STRICT_SECTION_CHECK" => "N",
     ]
-); ?>
+);
 
-
-<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
+require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');

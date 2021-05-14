@@ -1,8 +1,7 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
-
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -16,12 +15,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 
-?>
-
-<?php if (empty($arResult['mapCards'])) {
+if (empty($arResult['mapCards'])) {
     return;
-} ?>
-
+}
+?>
 <section class="section mb-medium">
     <div class="container">
         <div class="work-stage-container">
@@ -31,16 +28,16 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         <div class="work-stage__icon">
                             <?if (!empty($aItem['icon'])) :?>
                                 <img src="<?=$aItem['icon']?>"/>
-                            <?php endif;?>
+                            <?endif;?>
                         </div>
                     </div>
                     <div class="work-stage__text">
                         <?if (!empty($aItem['title'])) :?>
                             <div class="work-stage__title"><?=$aItem['title']?></div>
-                        <?php endif;?>
+                        <?endif;?>
                         <?if (!empty($aItem['description'])) :?>
                             <div class="work-stage__description"><?=$aItem['description']?></div>
-                        <?php endif;?>
+                        <?endif;?>
                     </div>
                 </div>
             <?endforeach;?>

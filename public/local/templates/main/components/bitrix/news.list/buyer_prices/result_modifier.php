@@ -1,4 +1,5 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
@@ -11,11 +12,11 @@
 
 \Bitrix\Main\Loader::includeModule('iqdev');
 $aBuyerPricesOptions = \IQDEV\Options\Options::getPageOptions('buyer_prices');
-$iIblockIdPricesContent = \IQDEV\Base\Helper::getIblockId('prices_content');
 
 if (empty($arResult)) {
     return;
 }
+
 $aMapCards = [];
 foreach ($arResult['ITEMS'] as $iKey => $aItem) {
     $aCard = [];
@@ -43,9 +44,6 @@ foreach ($arResult['ITEMS'] as $iKey => $aItem) {
 
     $aMapCards[] = $aCard;
 }
+
 $arResult['mapCards']['items'] = $aMapCards;
 $arResult['mapCards']['options'] = $aBuyerPricesOptions;
-$arResult['mapCards']['IblockIdPricesContent'] = $iIblockIdPricesContent;
-
-
-

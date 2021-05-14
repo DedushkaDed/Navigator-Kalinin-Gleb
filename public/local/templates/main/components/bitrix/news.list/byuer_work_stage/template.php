@@ -1,10 +1,9 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
 $aBuyerOptions = \IQDEV\Options\Options::getPageOptions('buyer_main_page');
-
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -17,12 +16,11 @@ $aBuyerOptions = \IQDEV\Options\Options::getPageOptions('buyer_main_page');
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-?>
 
-<?php if (empty($arResult['mapCards'])) {
+if (empty($arResult['mapCards'])) {
     return;
-} ?>
-
+}
+?>
 <section class="section mt-medium mb-large">
     <div class="container">
         <?if (!empty($aBuyerOptions['sectionHeader'])) :?>
@@ -36,7 +34,7 @@ $aBuyerOptions = \IQDEV\Options\Options::getPageOptions('buyer_main_page');
                     <?endif;?>
                     <div class="work-stage__header">
                         <div class="work-stage__icon">
-                            <? if (!empty($aItem['icon'])) :?>
+                            <?if (!empty($aItem['icon'])) :?>
                                 <img src="<?=$aItem['icon']?>"/>
                             <?endif;?>
                         </div>

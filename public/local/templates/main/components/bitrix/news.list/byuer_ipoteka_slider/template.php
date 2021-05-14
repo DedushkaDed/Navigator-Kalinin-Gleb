@@ -1,8 +1,7 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
-
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -16,12 +15,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 
-
-?>
-
-<?php if (empty($arResult['mapCards'])) {
+if (empty($arResult['mapCards'])) {
     return;
-} ?>
+}
+?>
 <div class="tabs js-tabs">
     <div class="tabs__inner tabs__inner--offset">
         <div class="tabs-navigation js-tabs-navigation">
