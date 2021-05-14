@@ -1,11 +1,11 @@
-<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+<?
+require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 \Bitrix\Main\Loader::includeModule('iqdev');
-$iIblockArticles = IQDEV\Base\Helper::getIblockId('articles');
 
 $APPLICATION->IncludeComponent(
-"bitrix:menu",
-"navigation_tabs",
+    "bitrix:menu",
+    "navigation_tabs",
     [
         "ALLOW_MULTI_SELECT" => "N",
         "DELAY" => "N",
@@ -17,11 +17,11 @@ $APPLICATION->IncludeComponent(
         "USE_EXT" => "Y",
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
-false
- );
+    false
+);
 $APPLICATION->IncludeComponent(
-"bitrix:news",
-"blog",
+    "bitrix:news",
+    "blog",
     [
         "ADD_ELEMENT_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -29,7 +29,6 @@ $APPLICATION->IncludeComponent(
         "AJAX_OPTION_HISTORY" => "N",
         "AJAX_OPTION_JUMP" => "N",
         "AJAX_OPTION_STYLE" => "Y",
-        "BROWSER_TITLE" => "-",
         "CACHE_FILTER" => "N",
         "CACHE_GROUPS" => "Y",
         "CACHE_TIME" => "36000000",
@@ -49,7 +48,7 @@ $APPLICATION->IncludeComponent(
         "DISPLAY_PREVIEW_TEXT" => "N",
         "DISPLAY_TOP_PAGER" => "N",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => $iIblockArticles,
+        "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('articles'),
         "IBLOCK_TYPE" => "content",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
@@ -62,7 +61,6 @@ $APPLICATION->IncludeComponent(
         "PAGER_SHOW_ALL" => "N",
         "PAGER_SHOW_ALWAYS" => "Y",
         "PAGER_TEMPLATE" => "about_page_navigation",
-        "PAGER_TITLE" => "Постраничная навигация",
         "SEF_FOLDER" => "/blog/",
         "SEF_MODE" => "Y",
         "SEF_URL_TEMPLATES" => ["detail" => "#ELEMENT_ID#/"],

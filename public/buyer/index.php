@@ -1,9 +1,10 @@
-<?php
+<?
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+
 \Bitrix\Main\Loader::includeModule('iqdev');
 $iIblockBuyer = IQDEV\Base\Helper::getIblockId('buyer');
-?>
-<?php $APPLICATION->IncludeComponent(
+
+$APPLICATION->IncludeComponent(
     "bitrix:menu",
     "navigation_tabs",
     [
@@ -18,9 +19,9 @@ $iIblockBuyer = IQDEV\Base\Helper::getIblockId('buyer');
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
-); ?>
+);
 
-<?php $APPLICATION->IncludeComponent(
+$APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "byuer_work_stage",
     [
@@ -68,7 +69,6 @@ $iIblockBuyer = IQDEV\Base\Helper::getIblockId('buyer');
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
     ]
-); ?>
+);
 
-
-<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php'); ?>
+require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');

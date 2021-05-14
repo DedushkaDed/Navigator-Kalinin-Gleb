@@ -1,10 +1,12 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
 if (empty($arResult)) {
     return;
-} ?>
+}
+?>
 
 <section class="section mb-medium">
     <div class="container">

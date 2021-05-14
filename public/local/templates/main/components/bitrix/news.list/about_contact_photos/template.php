@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -16,21 +16,21 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var CBitrixComponent $component */
 ?>
 
-<?php if (empty($arResult['ITEMS'])) {
+<? if (empty($arResult['ITEMS'])) {
     return;
 } ?>
 
 <div class="contact-page__gallery">
     <div class="gallery js-gallery">
         <div class="gallery__container">
-            <?php foreach ($arResult['ITEMS'] as $aItem) :?>
+            <? foreach ($arResult['ITEMS'] as $aItem) :?>
                 <div class="gallery__item">
                 <a class="gallery-item" href="<?=$aItem['PREVIEW_PICTURE']['SRC']?>" data-fancybox="photo_large"
                    data-options="{&quot;backFocus&quot; : false}">
                     <img class="gallery-item__image" src="<?=$aItem['PREVIEW_PICTURE']['SRC']?>" width="100%"/>
                 </a>
             </div>
-            <?php endforeach;?>
+            <? endforeach;?>
         </div>
         <div class="gallery__open">
             <div class="arrow-link arrow-link--bottom">
@@ -61,7 +61,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
             <div class="gallery__slider__container js-gallery__slider__container">
                 <div class="gallery__slider__container__track" data-glide-el="track">
                     <div class="glide__slides">
-                        <?php foreach ($arResult['ITEMS'] as $aItem) :?>
+                        <? foreach ($arResult['ITEMS'] as $aItem) :?>
                             <div class="glide__slide">
                                 <a class="gallery-item" href="<?=$aItem['PREVIEW_PICTURE']['SRC']?>"
                                    data-fancybox="photo_mobile"
@@ -70,7 +70,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                                          width="100%"/>
                                 </a>
                             </div>
-                        <?php endforeach;?>
+                        <? endforeach;?>
                     </div>
                 </div>
             </div>

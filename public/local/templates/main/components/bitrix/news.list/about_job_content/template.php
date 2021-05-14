@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -22,7 +22,7 @@ if (empty($arResult['ITEMS'])) {
 <section class="section mb-large">
     <div class="container">
         <div class="section-header">Почему стоит работать у нас?</div>
-        <?php foreach ($arResult['ITEMS'] as $aItem) :?>
+        <? foreach ($arResult['ITEMS'] as $aItem) :?>
             <div class="vacancy-description">
                 <div class="vacancy-description__item vacancy-description__item--gallery">
                     <div class="vacancy-description-gallery js-vacancy-description-gallery">
@@ -33,7 +33,7 @@ if (empty($arResult['ITEMS'])) {
                             <div class="glide">
                                 <div class="glide__track" data-glide-el="track">
                                     <ul class="glide__slides">
-                                        <?php foreach ($aItem['DISPLAY_PROPERTIES']
+                                        <? foreach ($aItem['DISPLAY_PROPERTIES']
                                                        ['IMAGE_CONTENT']['FILE_VALUE'] as $aImage) : ?>
                                             <li class="glide__slide">
                                                 <img src="<?= $aImage['SRC'] ?>" data-index="<?= $aImage['ID'] ?>"/>
@@ -92,6 +92,6 @@ if (empty($arResult['ITEMS'])) {
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
+        <? endforeach; ?>
     </div>
 </section>
