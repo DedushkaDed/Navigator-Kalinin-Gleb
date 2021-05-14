@@ -14,11 +14,14 @@ if (empty($arResult)) {
 }
 
 $aPrepItems = [];
+$lastKey = -1;
 foreach ($arResult as $aItem) {
     if ($aItem['DEPTH_LEVEL'] <= 1) {
         $aPrepItems[] = $aItem;
+        $lastKey++;
     } else {
-        $aPrepItems[array_key_last($aPrepItems)]['subitems'][] = $aItem;
+        $aPrepItems[$lastKey]['subitems'][] = $aItem;
     }
 }
+
 $arResult = $aPrepItems;
