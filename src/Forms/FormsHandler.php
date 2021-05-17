@@ -211,6 +211,42 @@ class FormsHandler
     }
 
     /**
+     * Запись данных из формы 'Задайте вопрос обслуживающей компании!' в ИБ.
+     *
+     * @param $sName
+     * @param $sPhone
+     * @param $sEmail
+     * @param $iAreaNumber
+     * @param $sQuestion
+     * @param $sVillageName
+     *
+     * @return mixed
+     *
+     */
+    public static function setFormQuestionInputCaptcha($sName, $sPhone, $sEmail, $iAreaNumber, $sQuestion, $sVillageName)
+    {
+        $oParsedPhone = Parser::getInstance()->parse($sPhone);
+
+        if(empty($sName) || (!$oParsedPhone->isValid()) || empty($sEmail) || empty($iAreaNumber) || empty($sQuestion) || empty($sVillageName)) {
+            return null;
+        }
+
+        $aFields = [
+            'name' => $sName,
+        ];
+
+        $aProperties = [
+            'PHONE' => $oParsedPhone->format('RU'),
+            'EMAIL' => $sEmail,
+            'AREA_NUMBER' => $iAreaNumber,
+            'QUESTION' => $sQuestion,
+            'VILLAGE_NAME' => $sVillageName,
+        ];
+
+        return self::addIblockElement('ask_question_form', $aFields, $aProperties);
+    }
+
+    /**
      * Сохраняет данные пользователя в 'Отправить резюме'.
      *
      * @param $sName
@@ -222,10 +258,7 @@ class FormsHandler
     public static function setResumeInputCaptcha($sName, $sPhone, $oInputFile)
     {
         $oParsedPhone = Parser::getInstance()->parse($sPhone);
-//        Когда появится 'file' -> использовать эту проверку
-//        if (!isset($sName) || !isset($oInputFile) || $oParsedPhone->isValid() === false) {
-//            return null;
-//        }
+
         if (!isset($sName) || $oParsedPhone->isValid() === false) {
             return null;
         }

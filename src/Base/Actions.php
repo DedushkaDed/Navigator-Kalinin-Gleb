@@ -2,6 +2,7 @@
 
 namespace IQDEV\Base;
 
+use IQDEV\Entity\AdditionalServices;
 use IQDEV\Entity\Office;
 use IQDEV\Forms\FormsHandler;
 
@@ -208,11 +209,47 @@ class Actions
     {
         $sName = $this->oRequest['name'];
         $sPhone = $this->oRequest['phone'];
-//        Пустой обьект - не приходит 'file'
         $oInputFile = $this->oRequest['file'];
         $iCallbackForm = FormsHandler::setResumeInputCaptcha($sName, $sPhone, $oInputFile);
 
         if ($iCallbackForm) {
+            $this->setAjaxResponse(['status' => true]);
+        }
+        $this->setAjaxResponse(['status' => false]);
+    }
+
+    /**
+     * Отображение формы 'Дополнительные услуги'.
+     *
+     * @return void
+     */
+    public function getAdditionalServicesAjaxAction()
+    {
+        $aServices = AdditionalServices::getAdditionalServicesAll();
+
+        if (!empty($aServices)) {
+            $this->setAjaxResponse($aServices);
+        }
+        $this->setAjaxResponse(['status' => false]);
+    }
+
+    /**
+     * Запись данных из формы 'Задайте вопрос обслуживающей компании!'.
+     *
+     * @return void
+     */
+    public function formQuestionServiceAjaxAction()
+    {
+        $sName = $this->oRequest['name'];
+        $sPhone = $this->oRequest['phone'];
+        $sEmail = $this->oRequest['email'];
+        $iAreaNumber = $this->oRequest['areaNumber'];
+        $sQuestion = $this->oRequest['question'];
+        $sVillageName = $this->oRequest['villageName'];
+
+        $iCallBackForm = FormsHandler::setFormQuestionInputCaptcha($sName,$sPhone,$sEmail,$iAreaNumber,$sQuestion,$sVillageName);
+
+        if (!empty($iCallBackForm)) {
             $this->setAjaxResponse(['status' => true]);
         }
         $this->setAjaxResponse(['status' => false]);
