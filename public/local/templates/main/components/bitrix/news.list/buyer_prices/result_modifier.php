@@ -1,8 +1,7 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
-} ?>
-
-<?php
+}
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -13,16 +12,16 @@
 
 \Bitrix\Main\Loader::includeModule('iqdev');
 $aBuyerPricesOptions = \IQDEV\Options\Options::getPageOptions('buyer_prices');
-$iIblockIdPricesContent = \IQDEV\Base\Helper::getIblockId('prices_content');
 
 if (empty($arResult)) {
     return;
 }
+
 $aMapCards = [];
 foreach ($arResult['ITEMS'] as $iKey => $aItem) {
     $aCard = [];
 
-    if($iKey == 0) {
+    if ($iKey == 0) {
         $aCard['activeItem'] = 'accordion--active';
     }
     if ($iKey % 2 == 0) {
@@ -45,9 +44,6 @@ foreach ($arResult['ITEMS'] as $iKey => $aItem) {
 
     $aMapCards[] = $aCard;
 }
+
 $arResult['mapCards']['items'] = $aMapCards;
 $arResult['mapCards']['options'] = $aBuyerPricesOptions;
-$arResult['mapCards']['IblockIdPricesContent'] = $iIblockIdPricesContent;
-
-
-

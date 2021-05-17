@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -14,11 +14,11 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-?>
 
-<?php if (empty($arResult['mapCards'])) {
+if (empty($arResult['mapCards'])) {
     return;
-} ?>
+}
+?>
 <section class="section section--overflow-hidden mb-medium">
     <div class="container">
         <div class="grid-layout grid-layout--gap-15 grid-layout--col-4">
@@ -38,19 +38,18 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         <?else :?>
                             <div class="grid-card__content">
                                 <div class="grid-card__title grid-card__title--small"><?=$aItem['itemTitle']?></div>
-                                    <?if ($aItem['itemButtonLabel']) :?>
-                                        <div class="mt-medium">
-                                            <a class="button button--primary button--auto-width" href="#">
-                                                <span><?=$aItem['itemButtonLabel']?></span>
-                                            </a>
-                                        </div>
-                                    <?php endif;?>
+                                <?if ($aItem['itemButtonLabel']) :?>
+                                    <div class="mt-medium">
+                                        <a class="button button--primary button--auto-width" href="#">
+                                            <span><?=$aItem['itemButtonLabel']?></span>
+                                        </a>
+                                    </div>
+                                <?endif;?>
                             </div>
-                        <?php endif;?>
+                        <?endif;?>
                     </div>
                 </div>
-            <?php endforeach;?>
+            <?endforeach;?>
         </div>
     </div>
 </section>
-

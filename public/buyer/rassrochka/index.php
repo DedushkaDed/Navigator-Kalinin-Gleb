@@ -1,9 +1,9 @@
-<? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
+<?
+require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 \Bitrix\Main\Loader::includeModule('iqdev');
-?>
 
-<?php $APPLICATION->IncludeComponent(
+$APPLICATION->IncludeComponent(
     "bitrix:menu",
     "navigation_tabs",
     [
@@ -18,11 +18,10 @@
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
-); ?>
-
-<?php $APPLICATION->IncludeComponent(
+);
+$APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "buyer_rassrochka",
+    "buyer_payment",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -68,7 +67,6 @@
         "SORT_ORDER2" => "ASC",
         "STRICT_SECTION_CHECK" => "N",
     ]
-); ?>
+);
 
-
-<?php require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');

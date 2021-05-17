@@ -1,7 +1,7 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
-
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -13,7 +13,6 @@
 \Bitrix\Main\Loader::includeModule('iqdev');
 $iIblockPayment = IQDEV\Base\Helper::getIblockId('payment_workstage');
 $aByuerRassrochkaOptions = IQDEV\Options\Options::getPageOptions('buyer_rassrochka');
-
 
 $arResult['paymentCards'] = $aByuerRassrochkaOptions;
 $arResult['paymentCards']['iBlockID'] = $iIblockPayment;
