@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -17,7 +17,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 
 $aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_questions');
 
-
 ?>
 
 <section class="section mb-large">
@@ -28,10 +27,10 @@ $aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_questions');
                     <div class="feedback__wrapper">
                         <?if (!empty($aFeedbackForm['title'])) :?>
                             <h2 class="feedback__title"><?=$aFeedbackForm['title']?></h2>
-                        <?php endif;?>
+                        <? endif;?>
                         <?if (!empty($aFeedbackForm['description'])) :?>
                             <p class="feedback__subtitle"><?=$aFeedbackForm['description']?></p>
-                        <?php endif;?>
+                        <? endif;?>
                     </div>
                     <div class="feedback__wrapper">
                         <div class="feedback__form">

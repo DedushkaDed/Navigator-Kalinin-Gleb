@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -17,7 +17,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 
 $aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_form_main');
 
-
 ?>
 
 <section class="section mb-large">
@@ -33,7 +32,7 @@ $aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_form_main');
                             <?php endif;?>
                             <? if (!empty($aFeedbackForm['description'])) :?>
                                 <div class="form-wide__description"><?=$aFeedbackForm['description']?></div>
-                            <?php endif;?>
+                            <? endif;?>
                         </div>
                         <form class="form-wide__form js-form" action="/?ajaxAction=formExcursion"
                               data-name="wide-excursion">
@@ -47,8 +46,7 @@ $aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_form_main');
                             <div class="form-wide__form-item form-wide__form-item--field">
                                 <div class="input js-input">
                                     <input class="input__field" type="text" name="phone" placeholder="Телефон"
-                                           data-validate="required,phone" data-masking="phone"
-                                    />
+                                           data-validate="required,phone" data-masking="phone"/>
                                     <div class="input__error"></div>
                                 </div>
                             </div>

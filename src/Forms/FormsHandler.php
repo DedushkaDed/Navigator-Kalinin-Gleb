@@ -215,18 +215,15 @@ class FormsHandler
      *
      * @param $sName
      * @param $sPhone
-     * @param $oInputFile
+     * @param $aInputFile
      *
      * @return mixed
      */
-    public static function setResumeInputCaptcha($sName, $sPhone, $oInputFile)
+    public static function setResumeInputCaptcha($sName, $sPhone, $aInputFile)
     {
         $oParsedPhone = Parser::getInstance()->parse($sPhone);
-//        Когда появится 'file' -> использовать эту проверку
-//        if (!isset($sName) || !isset($oInputFile) || $oParsedPhone->isValid() === false) {
-//            return null;
-//        }
-        if (!isset($sName) || $oParsedPhone->isValid() === false) {
+
+        if (!isset($sName) || !isset($aInputFile) || $oParsedPhone->isValid() === false) {
             return null;
         }
 
@@ -236,9 +233,38 @@ class FormsHandler
 
         $aProperties = [
             'PHONE' => $oParsedPhone->format('RU'),
-            'INPUT_FILE' => $oInputFile,
+            'INPUT_FILE' => $aInputFile,
         ];
 
         return self::addIblockElement('resume_from_users', $aFields, $aProperties);
+    }
+
+    /**
+     * Сохраняет данные пользователя в 'Отправить портфолио'.
+     *
+     * @param $sName
+     * @param $sPhone
+     * @param $aInputFile
+     *
+     * @return mixed
+     */
+    public static function setPortfolioInputCaptcha($sName, $sPhone, $aInputFile)
+    {
+        $oParsedPhone = Parser::getInstance()->parse($sPhone);
+
+        if (!isset($sName) || !isset($aInputFile) || $oParsedPhone->isValid() === false) {
+            return null;
+        }
+
+        $aFields = [
+            'name' => $sName,
+        ];
+
+        $aProperties = [
+            'PHONE' => $oParsedPhone->format('RU'),
+            'INPUT_FILE' => $aInputFile,
+        ];
+
+        return self::addIblockElement('portfolio_users', $aFields, $aProperties);
     }
 }
