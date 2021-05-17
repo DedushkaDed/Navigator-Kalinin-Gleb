@@ -2,6 +2,7 @@
 
 namespace IQDEV\Base;
 
+use IQDEV\Entity\AdditionalServices;
 use IQDEV\Entity\Office;
 use IQDEV\Forms\FormsHandler;
 
@@ -208,9 +209,8 @@ class Actions
     {
         $sName = $this->oRequest['name'];
         $sPhone = $this->oRequest['phone'];
-        $aInputFile = $_FILES['file'];
-
-        $iCallbackForm = FormsHandler::setResumeInputCaptcha($sName, $sPhone, $aInputFile);
+        $oInputFile = $this->oRequest['file'];
+        $iCallbackForm = FormsHandler::setResumeInputCaptcha($sName, $sPhone, $oInputFile);
 
         if ($iCallbackForm) {
             $this->setAjaxResponse(['status' => true]);
@@ -219,19 +219,37 @@ class Actions
     }
 
     /**
-     * Запись данных из формы 'Отправить портфолио' в ИБ.
+     * Отображение формы 'Дополнительные услуги'.
      *
      * @return void
      */
-    public function formPortfolioAjaxAction()
+    public function getAdditionalServicesAjaxAction()
+    {
+        $aServices = AdditionalServices::getAdditionalServicesAll();
+
+        if (!empty($aServices)) {
+            $this->setAjaxResponse($aServices);
+        }
+        $this->setAjaxResponse(['status' => false]);
+    }
+
+    /**
+     * Запись данных из формы 'Задайте вопрос обслуживающей компании!'.
+     *
+     * @return void
+     */
+    public function formQuestionServiceAjaxAction()
     {
         $sName = $this->oRequest['name'];
         $sPhone = $this->oRequest['phone'];
-        $aInputFile = $_FILES['file'];
+        $sEmail = $this->oRequest['email'];
+        $iAreaNumber = $this->oRequest['areaNumber'];
+        $sQuestion = $this->oRequest['question'];
+        $sVillageName = $this->oRequest['villageName'];
 
-        $iCallbackForm = FormsHandler::setPortfolioInputCaptcha($sName, $sPhone, $aInputFile);
+        $iCallBackForm = FormsHandler::setFormQuestionInputCaptcha($sName,$sPhone,$sEmail,$iAreaNumber,$sQuestion,$sVillageName);
 
-        if ($iCallbackForm) {
+        if (!empty($iCallBackForm)) {
             $this->setAjaxResponse(['status' => true]);
         }
         $this->setAjaxResponse(['status' => false]);

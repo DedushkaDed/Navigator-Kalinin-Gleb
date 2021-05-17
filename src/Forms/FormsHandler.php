@@ -211,19 +211,23 @@ class FormsHandler
     }
 
     /**
-     * Сохраняет данные пользователя в 'Отправить резюме'.
+     * Запись данных из формы 'Задайте вопрос обслуживающей компании!' в ИБ.
      *
      * @param $sName
      * @param $sPhone
-     * @param $aInputFile
+     * @param $sEmail
+     * @param $iAreaNumber
+     * @param $sQuestion
+     * @param $sVillageName
      *
      * @return mixed
+     *
      */
-    public static function setResumeInputCaptcha($sName, $sPhone, $aInputFile)
+    public static function setFormQuestionInputCaptcha($sName, $sPhone, $sEmail, $iAreaNumber, $sQuestion, $sVillageName)
     {
         $oParsedPhone = Parser::getInstance()->parse($sPhone);
 
-        if (!isset($sName) || !isset($aInputFile) || $oParsedPhone->isValid() === false) {
+        if(empty($sName) || (!$oParsedPhone->isValid()) || empty($sEmail) || empty($iAreaNumber) || empty($sQuestion) || empty($sVillageName)) {
             return null;
         }
 
@@ -233,7 +237,39 @@ class FormsHandler
 
         $aProperties = [
             'PHONE' => $oParsedPhone->format('RU'),
-            'INPUT_FILE' => $aInputFile,
+            'EMAIL' => $sEmail,
+            'AREA_NUMBER' => $iAreaNumber,
+            'QUESTION' => $sQuestion,
+            'VILLAGE_NAME' => $sVillageName,
+        ];
+
+        return self::addIblockElement('ask_question_form', $aFields, $aProperties);
+    }
+
+    /**
+     * Сохраняет данные пользователя в 'Отправить резюме'.
+     *
+     * @param $sName
+     * @param $sPhone
+     * @param $oInputFile
+     *
+     * @return mixed
+     */
+    public static function setResumeInputCaptcha($sName, $sPhone, $oInputFile)
+    {
+        $oParsedPhone = Parser::getInstance()->parse($sPhone);
+
+        if (!isset($sName) || $oParsedPhone->isValid() === false) {
+            return null;
+        }
+
+        $aFields = [
+            'name' => $sName,
+        ];
+
+        $aProperties = [
+            'PHONE' => $oParsedPhone->format('RU'),
+            'INPUT_FILE' => $oInputFile,
         ];
 
         return self::addIblockElement('resume_from_users', $aFields, $aProperties);

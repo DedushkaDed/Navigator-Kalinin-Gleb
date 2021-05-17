@@ -1,7 +1,7 @@
 <?
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
-class OkNewsList extends \CBitrixComponent {
+class OkAnswerToQuestions extends \CBitrixComponent {
     public function getData()
     {
         $aFilter = [
@@ -9,7 +9,7 @@ class OkNewsList extends \CBitrixComponent {
             'ACTIVE' => 'Y',
             'ACTIVE_DATE' => 'Y',
         ];
-        $aSelect = ['ID', 'NAME', 'PREVIEW_TEXT'];
+        $aSelect = ['ID', 'NAME', 'PREVIEW_TEXT', 'DETAIL_TEXT'];
         $aItems = CIBlockElement::GetList([], $aFilter, $aSelect);
 
         if (empty($aItems)) {
@@ -23,18 +23,21 @@ class OkNewsList extends \CBitrixComponent {
             $aCard['id'] = $aElement['ID'];
             $aCard['title'] = $aElement['NAME'];
             $aCard['description'] = $aElement['PREVIEW_TEXT'];
+            $aCard['detail_text'] = $aElement['DETAIL_TEXT'];
+            $aCard['backgorundColor'] = '';
 
-            $aItemProperty = CIBlockElement::GetProperty($this->arParams['IBLOCK_ID'],$aCard['id']);
-            if ($aPropertyElement = $aItemProperty->GetNext())
-            {
-                $iIconId = $aPropertyElement['id'];
-                $aCard['icon'] = CFile::GetPath($iIconId);
-            }
             $arResult[] = $aCard;
         }
-
-
-        return $arResult;
+        return $this->setBackgroundItem($arResult);
+    }
+    public function setBackgroundItem($aItems) {
+        foreach ($aItems as $iKey => $aItem) {
+            if ($iKey % 2 == 0) {
+                $aItem['backgorundColor'] = 'accordion--sand';
+            }
+            $aItems[$iKey] = $aItem;
+        }
+        return $aItems;
     }
     public function executeComponent()
     {
