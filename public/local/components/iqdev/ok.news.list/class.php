@@ -25,15 +25,13 @@ class OkNewsList extends \CBitrixComponent {
             $aCard['description'] = $aElement['PREVIEW_TEXT'];
 
             $aItemProperty = CIBlockElement::GetProperty($this->arParams['IBLOCK_ID'],$aCard['id']);
-            if ($aPropertyElement = $aItemProperty->GetNext())
-            {
-                $iIconId = $aPropertyElement['id'];
-                $aCard['icon'] = CFile::GetPath($iIconId);
+            if ($aPropertyElement = $aItemProperty->GetNext()) {
+                $iIconValue = $aPropertyElement['VALUE'];
+                $aCard['icon'] = CFile::GetPath($iIconValue);
             }
+
             $arResult[] = $aCard;
         }
-
-
         return $arResult;
     }
     public function executeComponent()
