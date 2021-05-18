@@ -1,38 +1,44 @@
 <?
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
+\Bitrix\Main\Loader::includeModule('iblock');
+
 class OkContacts extends CBitrixComponent {
+    /**
+     * Получение свойств из ИБ 'ok_contact_slider'
+     *
+     * @return array
+     */
     public function getData()
     {
-        $aFilter = [
-            'IBLOCK_ID' => $this->arParams['IBLOCK_ID'],
-            'ACTIVE' => 'Y',
-            'ACTIVE_DATE' => 'Y',
-        ];
-        $aSelect = ['ID','NAME'];
-        $aItems = CIBlockElement::GetList([], $aFilter, $aSelect);
+        $iBlockID = $this->arParams['IBLOCK_ID'];
 
-        if (empty($aItems)) {
-            return null;
-        }
+        $iBlock = \Bitrix\Iblock\Iblock::wakeUp($iBlockID);
 
-        $arResult = [];
-        while ($aElement = $aItems->GetNext())
-        {
+        $aElements = $iBlock->getEntityDataClass()::getList([
+            'select' => [
+                'ID', 'NAME', 'PHONE_FIRST', 'PHONE_SECOND', 'PHONE_THIRD', 'MAIL_FIRST', 'MAIL_SECOND', 'PERSON_POSITION', 'IMAGE']
+        ])->fetchCollection();
+
+        foreach ($aElements as $aElement) {
+//            Исправить: Если какое-либо свойство, будет пустым -> Сайт упадёт.
             $aCard = [];
-            $aCard['id'] = $aElement['ID'];
-            $aCard['title'] = $aElement['NAME'];
-
-// FIXME: Не могу вытянуть мои созданные свойства.
-//            $aItemProperty = CIBlockElement::GetProperty($this->arParams['IBLOCK_ID'], $aCard['id']);
-//            if ($aPropertyElement = $aItemProperty->GetNext()) {
-//                $aCard['phoneFirst'] = $aPropertyElement['VALUE'];
-//            }
+            $aCard['id'] = $aElement->getId();
+            $aCard['name'] = $aElement->getName();
+            $aCard['phones'][] = $aElement->getPhoneFirst()->getValue();
+            $aCard['phones'][] = $aElement->getPhoneSecond()->getValue();
+            $aCard['phones'][] = $aElement->getPhoneThird()->getValue();
+            $aCard['emails'][] = $aElement->getMailFirst()->getValue();
+            $aCard['emails'][] = $aElement->getMailSecond()->getValue();
+            $aCard['personPosition'] = $aElement->getPersonPosition()->getValue();
+            $iImageID = $aElement->getImage()->getValue();
+            $aCard['image'] = CFile::GetPath($iImageID);
 
             $arResult[] = $aCard;
         }
         return $arResult;
     }
+
     public function executeComponent()
     {
         $this->arResult = $this->getData();

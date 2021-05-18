@@ -30,7 +30,7 @@ if (empty($arResult)) {
                 </div>
             </div>
         <? else :?>
-            <a class="navigation__item">
+            <a class="navigation__item" href="<?= $aItem['LINK'] ?>">
                 <span class="navigation__page"><?= $aItem["TEXT"] ?></span>
             </a>
         <? endif ?>

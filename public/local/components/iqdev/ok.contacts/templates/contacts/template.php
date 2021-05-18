@@ -16,17 +16,26 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
                         <?foreach ($arResult as $aItem) :?>
                             <li class="glide__slide">
                                 <div class="contacts-person contacts-person--slider">
-                                    <div class="contacts-person__photo" style="background-image:url(http://placehold.it/400x300);"></div>
+                                    <?if (!empty($aItem['image'])) :?>
+                                        <div class="contacts-person__photo" style="background-image:url(<?=$aItem['image']?>);"></div>
+                                    <?endif;?>
                                     <div class="contacts-person__content">
-                                        <div class="contacts-person__name">Высоцкий Сергей Дмитриевич</div>
-                                        <div class="contacts-person__position">Управляющий коттеджными поселками</div>
-                                        <ul class="contacts-person__contact-group">
-                                            <li>+7-929-269-23-82</li>
-                                            <li>+7 (3452) 602-382</li>
-                                        </ul>
-                                        <ul class="contacts-person__contact-group">
-                                            <li>service@navigator-tmn.ru</li>
-                                        </ul>
+                                        <div class="contacts-person__name"><?=$aItem['name'] ?? ''?></div>
+                                        <div class="contacts-person__position"><?=$aItem['personPosition'] ?? ''?></div>
+                                        <?if (!empty($aItem['phones'])) :?>
+                                            <ul class="contacts-person__contact-group">
+                                                <?foreach ($aItem['phones'] as $sPhone) :?>
+                                                        <li><?=$sPhone?></li>
+                                                <?endforeach;?>
+                                            </ul>
+                                        <?endif;?>
+                                        <?if (!empty($aItem['emails'])) :?>
+                                            <?foreach ($aItem['emails'] as $sEmail) :?>
+                                                <ul class="contacts-person__contact-group">
+                                                    <li><?=$sEmail?></li>
+                                                </ul>
+                                            <?endforeach;?>
+                                        <?endif;?>
                                     </div>
                                 </div>
                             </li>
