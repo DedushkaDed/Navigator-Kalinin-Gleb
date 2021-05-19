@@ -1,36 +1,18 @@
 <?
-if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
+    die();
+}
 
-class OkAnswerToQuestions extends \CBitrixComponent {
-    public function getData()
+class OkAnswerToQuestions extends \CBitrixComponent
+{
+    /**
+     * Установка цвета у блока.
+     * @param $aItems array
+     *
+     * @return array
+     */
+    public function setBackgroundItem($aItems)
     {
-        $aFilter = [
-            'IBLOCK_ID' => $this->arParams['IBLOCK_ID'],
-            'ACTIVE' => 'Y',
-            'ACTIVE_DATE' => 'Y',
-        ];
-        $aSelect = ['ID', 'NAME', 'PREVIEW_TEXT', 'DETAIL_TEXT'];
-        $aItems = CIBlockElement::GetList([], $aFilter, $aSelect);
-
-        if (empty($aItems)) {
-            return null;
-        }
-
-        $arResult = [];
-        while ($aElement = $aItems->GetNext())
-        {
-            $aCard = [];
-            $aCard['id'] = $aElement['ID'];
-            $aCard['title'] = $aElement['NAME'];
-            $aCard['description'] = $aElement['PREVIEW_TEXT'];
-            $aCard['detail_text'] = $aElement['DETAIL_TEXT'];
-            $aCard['backgorundColor'] = '';
-
-            $arResult[] = $aCard;
-        }
-        return $this->setBackgroundItem($arResult);
-    }
-    public function setBackgroundItem($aItems) {
         foreach ($aItems as $iKey => $aItem) {
             if ($iKey % 2 == 0) {
                 $aItem['backgorundColor'] = 'accordion--sand';
@@ -39,9 +21,76 @@ class OkAnswerToQuestions extends \CBitrixComponent {
         }
         return $aItems;
     }
+
+    /**
+     * Получение свойств из ИБ 'answer_to_questions'
+     *
+     * @return array
+     */
+    public function getData()
+    {
+        \Bitrix\Main\Loader::includeModule('iblock');
+        $iBlockID = $this->arParams['IBLOCK_ID'];
+
+        $iBlock = \Bitrix\Iblock\Iblock::wakeUp($iBlockID);
+
+        $aElements = $iBlock->getEntityDataClass()::getList([
+            'select' => [
+                'ID',
+                'NAME',
+                'PREVIEW_TEXT',
+                'DETAIL_TEXT',
+            ],
+        ])->fetchCollection();
+
+        foreach ($aElements as $aElement) {
+            if
+            (
+                empty($aElement->getId())
+                || empty($aElement->getName())
+                || empty($aElement->getPreviewText())
+                || empty($aElement->getDetailText())
+            ) {
+                return null;
+            }
+
+            $aCard = [];
+            $aCard['id'] = $aElement->getId();
+            $aCard['title'] = $aElement->getName();
+            $aCard['description'] = $aElement->getPreviewText();
+            $aCard['detailText'] = $aElement->getDetailText();
+            $aCard['backgorundColor'] = '';
+
+            $arResult[] = $aCard;
+        }
+
+        return $this->setBackgroundItem($arResult);
+    }
+
+    public function checkCache($aInputData)
+    {
+        $oTaggedInstance = \Bitrix\Main\Application::getInstance()->getTaggedCache();
+        $oCache = \Bitrix\Main\Data\Cache::createInstance();
+
+        if ($oCache->initCache(8600, 'tagged_cache_key_1', 'taggedCache')) {
+            return $oCache->getVars();
+        } elseif ($oCache->startDataCache(8600)) {
+//            Начало тегированного кеша
+            $oTaggedInstance->registerTag('iblock_id_' . $this->arParams['IBLOCK_ID']);
+//            Финализируем тегирование кеша
+            $oTaggedInstance->endTagCache();
+//             Сохраняет буферизированный PHP переменные файле кеша
+            $oCache->endDataCache($aInputData);
+            return $aInputData;
+        } else {
+            return $aInputData;
+        }
+    }
+
     public function executeComponent()
     {
-        $this->arResult = $this->getData();
+        $aInputData = $this->getData();
+        $this->arResult = $this->checkCache($aInputData);
         $this->includeComponentTemplate();
     }
 }

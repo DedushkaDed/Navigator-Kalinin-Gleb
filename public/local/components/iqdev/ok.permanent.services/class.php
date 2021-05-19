@@ -1,42 +1,85 @@
 <?
-if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+    die();
+}
 
-class OkNewsList extends \CBitrixComponent {
+class OkNewsList extends \CBitrixComponent
+{
+    /**
+     * Получение полей и свойств из ИБ 'permanent_services_content'.
+     *
+     * @return array
+     */
     public function getData()
     {
-        $aFilter = [
-            'IBLOCK_ID' => $this->arParams['IBLOCK_ID'],
-            'ACTIVE' => 'Y',
-            'ACTIVE_DATE' => 'Y',
-        ];
-        $aSelect = ['ID', 'NAME', 'PREVIEW_TEXT'];
-        $aItems = CIBlockElement::GetList([], $aFilter, $aSelect);
+        \Bitrix\Main\Loader::includeModule('iblock');
+        $iBlockID = $this->arParams['IBLOCK_ID'];
 
-        if (empty($aItems)) {
+        $iBlock = \Bitrix\Iblock\Iblock::wakeUp($iBlockID);
+
+        $aElements = $iBlock->getEntityDataClass()::getList([
+            'select' => [
+                'ID',
+                'NAME',
+                'PREVIEW_TEXT',
+                'ICON_SVG',
+            ],
+        ])->fetchCollection();
+
+        if (empty($aElements)) {
             return null;
         }
 
-        $arResult = [];
-        while ($aElement = $aItems->GetNext())
-        {
-            $aCard = [];
-            $aCard['id'] = $aElement['ID'];
-            $aCard['title'] = $aElement['NAME'];
-            $aCard['description'] = $aElement['PREVIEW_TEXT'];
-
-            $aItemProperty = CIBlockElement::GetProperty($this->arParams['IBLOCK_ID'],$aCard['id']);
-            if ($aPropertyElement = $aItemProperty->GetNext()) {
-                $iIconValue = $aPropertyElement['VALUE'];
-                $aCard['icon'] = CFile::GetPath($iIconValue);
+        foreach ($aElements as $aElement) {
+            if
+            (
+                empty($aElement->getId())
+                || empty($aElement->getName())
+                || empty($aElement->getPreviewText())
+                || empty($aElement->getIconSvg()->getValue())
+            ) {
+                return null;
             }
+
+            $aCard = [];
+            $aCard['id'] = $aElement->getId();
+            $aCard['title'] = $aElement->getName();
+            $aCard['description'] = $aElement->getPreviewText();
+
+            $iIconID = $aElement->getIconSvg()->getValue();
+            $aCard['icon'] = CFile::GetPath($iIconID);
 
             $arResult[] = $aCard;
         }
         return $arResult;
     }
+
+    /**
+     * Проверка на существование кеша.
+     * Если кеш существует - подгружаем его.
+     * Иначе создаём новый.
+     *
+     * @return array
+     */
+    public function checkCache($aInputData)
+    {
+        $oCache = Bitrix\Main\Data\Cache::createInstance();
+
+        if ($oCache->initCache(8600, "cache_key_2")) {
+            return $oCache->getVars();
+        } elseif ($oCache->startDataCache(8600)) {
+//            Сохраняет буферизированный PHP переменные в файле кеша
+            $oCache->endDataCache($aInputData);
+            return $aInputData;
+        } else {
+            return $aInputData;
+        }
+    }
+
     public function executeComponent()
     {
-        $this->arResult = $this->getData();
+        $aInputData = $this->getData();
+        $this->arResult = $this->checkCache($aInputData);
         $this->includeComponentTemplate();
     }
 }
