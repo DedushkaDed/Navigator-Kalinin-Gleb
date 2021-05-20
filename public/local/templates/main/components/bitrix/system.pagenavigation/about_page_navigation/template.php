@@ -17,11 +17,11 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 
 if (empty($arResult)) {
     return null;
-} ?>
-
+}
+?>
 <div class="mt-30">
     <div class="pagination">
-        <? if ($arResult['nStartPage'] == $arResult['NavPageNomer']) : ?>
+        <?if ($arResult['nStartPage'] == $arResult['NavPageNomer']) :?>
             <div class="pagination__button pagination__button--prev pagination__button--disabled">
                 <svg width="13" height="13" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -35,9 +35,9 @@ if (empty($arResult)) {
                 </svg>
                 <span>Назад</span>
             </div>
-        <? else : ?>
+        <?else :?>
             <a class="pagination__button pagination__button--prev"
-           href="<?= $arResult["sUrlPath"] ?>?PAGEN_<?= $arResult["NavNum"] ?>=<?= $arResult["NavPageNomer"] - 1 ?>">
+           href="<?= $arResult["sUrlPath"]?>?PAGEN_<?= $arResult["NavNum"]?>=<?= $arResult["NavPageNomer"] - 1?>">
                 <svg width="13" height="13" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                             d="M0.646446 3.64645C0.451184 3.84171 0.451184 4.15829 0.646446 4.35355L3.82843
@@ -50,24 +50,24 @@ if (empty($arResult)) {
                 </svg>
                 <span>Назад</span>
             </a>
-        <? endif;?>
+        <?endif;?>
         <div class="pagination__label">
-            Страница <?=$arResult['NavFirstRecordShow']?> из <? echo $arResult["NavRecordCount"]?></div>
+            Страница <?=$arResult['NavFirstRecordShow']?> из <?echo $arResult["NavRecordCount"]?></div>
         <div class="pagination__pages">
-            <? while ($arResult['nStartPage'] <= $arResult['nEndPage']) :?>
-                <? if ($arResult['nStartPage'] == $arResult['NavPageNomer']) :?>
+            <?while ($arResult['nStartPage'] <= $arResult['nEndPage']) :?>
+                <?if ($arResult['nStartPage'] == $arResult['NavPageNomer']) :?>
                     <div class="pagination__page pagination__page--active"><?=$arResult['nStartPage']?></div>
-                <? elseif (($arResult['nStartPage']) == 1) :?>
+                <?elseif (($arResult['nStartPage']) == 1) :?>
                     <a class="pagination__page" href="<?=$arResult['sUrlPath']?>"><?=$arResult['nStartPage']?></a>
-                <? else :?>
+                <?else :?>
                     <a class="pagination__page"
-                       href="<?= $arResult["sUrlPath"] ?>?PAGEN_
-                       <?= $arResult["NavNum"] ?>=<?= $arResult["nStartPage"] ?>"><?= $arResult["nStartPage"] ?></a>
-                <? endif; ?>
-                <? $arResult["nStartPage"]++ ?>
-            <? endwhile;?>
+                       href="<?= $arResult["sUrlPath"]?>?PAGEN_
+                       <?= $arResult["NavNum"]?>=<?= $arResult["nStartPage"]?>"><?= $arResult["nStartPage"]?></a>
+                <?endif;?>
+                <?$arResult["nStartPage"]++?>
+            <?endwhile;?>
         </div>
-        <? if ($arResult['nEndPage'] == $arResult['NavPageNomer']) :?>
+        <?if ($arResult['nEndPage'] == $arResult['NavPageNomer']) :?>
         <div class="pagination__button pagination__button--next pagination__button--disabled">
             <span>Вперед</span>
             <svg width="13" height="13" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,9 +81,9 @@ if (empty($arResult)) {
                 </path>
             </svg>
         </div>
-        <? else : ?>
+        <?else :?>
             <a class="pagination__button pagination__button--next "
-           href="<?= $arResult["sUrlPath"] ?>?PAGEN_<?= $arResult["NavNum"] ?>=<?= $arResult["NavPageNomer"] + 1 ?>">
+           href="<?= $arResult["sUrlPath"]?>?PAGEN_<?= $arResult["NavNum"]?>=<?= $arResult["NavPageNomer"] + 1?>">
                 <span>Вперед</span>
                 <svg width="13" height="13" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -96,6 +96,6 @@ if (empty($arResult)) {
                     </path>
                 </svg>
             </a>
-        <? endif;?>
+        <?endif;?>
     </div>
 </div>

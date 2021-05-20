@@ -17,35 +17,35 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 
 if (empty($arResult['mapCards'])) {
     return;
-} ?>
-
+}
+?>
 <div class="detail__item">
     <div class="detail-aside-banners">
-        <? foreach ($arResult['mapCards'] as $aItem) : ?>
+        <?foreach ($arResult['mapCards'] as $aItem) :?>
             <div class="detail-aside-banners__item">
-                <? if (!empty($aItem['link'])) :?>
-                    <a class="banner <?= $aItem['typeBanner'] ?>" href="<?= $aItem['link'] ?>">
+                <?if (!empty($aItem['link'])) :?>
+                    <a class="banner <?= $aItem['typeBanner']?>" href="<?= $aItem['link']?>">
                         <div class="banner__photo-wrapper">
-                            <? if (!empty($aItem['image'])) :?>
-                                <img class="banner__photo" src="<?= $aItem['image'] ?>"/>
-                            <? endif;?>
+                            <?if (!empty($aItem['image'])) :?>
+                                <img class="banner__photo" src="<?= $aItem['image']?>"/>
+                            <?endif;?>
                         </div>
                         <div class="banner__content">
                             <?if (!empty($aItem['title'])) :?>
-                                <h2 class="banner__title"><?= $aItem['title'] ?></h2>
+                                <h2 class="banner__title"><?= $aItem['title']?></h2>
                             <?endif;?>
                             <?if (!empty($aItem['description'])) :?>
-                                <span class="banner__text"><?= $aItem['description'] ?></span>
+                                <span class="banner__text"><?= $aItem['description']?></span>
                             <?endif;?>
-                            <div class="banner__button button button--outlined" href="<?= $aItem['link'] ?>">
+                            <div class="banner__button button button--outlined" href="<?= $aItem['link']?>">
                                 <?if (!empty($aItem['linkLabel'])) :?>
-                                    <span><?= $aItem['linkLabel'] ?>
+                                    <span><?= $aItem['linkLabel']?>
                                 <?endif;?>
                             </div>
                         </div>
                     </a>
-                <? endif;?>
+                <?endif;?>
             </div>
-        <? endforeach; ?>
+        <?endforeach;?>
     </div>
 </div>
