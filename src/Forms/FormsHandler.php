@@ -209,4 +209,62 @@ class FormsHandler
 
         return self::addIblockElement('email_mailing', $aFields, $aProperties);
     }
+
+    /**
+     * Сохраняет данные пользователя в 'Отправить резюме'.
+     *
+     * @param $sName
+     * @param $sPhone
+     * @param $aInputFile
+     *
+     * @return mixed
+     */
+    public static function setResumeInputCaptcha($sName, $sPhone, $aInputFile)
+    {
+        $oParsedPhone = Parser::getInstance()->parse($sPhone);
+
+        if (!isset($sName) || !isset($aInputFile) || $oParsedPhone->isValid() === false) {
+            return null;
+        }
+
+        $aFields = [
+            'name' => $sName,
+        ];
+
+        $aProperties = [
+            'PHONE' => $oParsedPhone->format('RU'),
+            'INPUT_FILE' => $aInputFile,
+        ];
+
+        return self::addIblockElement('resume_from_users', $aFields, $aProperties);
+    }
+
+    /**
+     * Сохраняет данные пользователя в 'Отправить портфолио'.
+     *
+     * @param $sName
+     * @param $sPhone
+     * @param $aInputFile
+     *
+     * @return mixed
+     */
+    public static function setPortfolioInputCaptcha($sName, $sPhone, $aInputFile)
+    {
+        $oParsedPhone = Parser::getInstance()->parse($sPhone);
+
+        if (!isset($sName) || !isset($aInputFile) || $oParsedPhone->isValid() === false) {
+            return null;
+        }
+
+        $aFields = [
+            'name' => $sName,
+        ];
+
+        $aProperties = [
+            'PHONE' => $oParsedPhone->format('RU'),
+            'INPUT_FILE' => $aInputFile,
+        ];
+
+        return self::addIblockElement('portfolio_users', $aFields, $aProperties);
+    }
 }

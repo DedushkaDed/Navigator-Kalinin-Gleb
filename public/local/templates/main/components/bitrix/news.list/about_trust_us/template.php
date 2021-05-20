@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -16,7 +16,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var CBitrixComponent $component */
 ?>
 
-<?php if (empty($arResult['ITEMS'])) {
+<? if (empty($arResult['ITEMS'])) {
     return;
 } ?>
 
@@ -49,7 +49,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                 <ul class="slider-trust-controls__list glide__bullets" data-glide-el="controls[nav]">
                     <? foreach ($arResult['ITEMS'] as $iKey => $aItem) : ?>
                         <li class="glide__bullet" data-glide-dir="=<?=$iKey?>"><?=$iKey?></li>
-                    <?php endforeach;?>
+                    <? endforeach;?>
                 </ul>
                 <div data-glide-el="controls">
                     <div class="slider-trust-controls__arrow glide__arrow glide__arrow--next" data-glide-dir="&gt;">

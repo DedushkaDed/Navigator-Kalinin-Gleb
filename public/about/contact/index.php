@@ -1,12 +1,9 @@
-<?php
-
+<?
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-$iIblockContactPageInfo = IQDEV\Base\Helper::getIblockId('contact_page_info');
-$iIblockContactPhotos = IQDEV\Base\Helper::getIblockId('contact_photos');
 
 $APPLICATION->IncludeComponent(
-"bitrix:menu",
-"navigation_tabs",
+    "bitrix:menu",
+    "navigation_tabs",
     [
         "ALLOW_MULTI_SELECT" => "N",
         "DELAY" => "N",
@@ -18,14 +15,15 @@ $APPLICATION->IncludeComponent(
         "USE_EXT" => "Y",
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
-false
-); ?>
+    false
+);
+?>
 <section class="section section--overflow-hidden mb-medium">
     <div class="container">
         <div class="contact-page">
-            <?php $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "about_contact_page_info",
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "about_contact_page_info",
                 [
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
@@ -46,7 +44,7 @@ false
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => $iIblockContactPageInfo,
+                    "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('contact_page_info'),
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
@@ -79,9 +77,9 @@ false
                     "STRICT_SECTION_CHECK" => "N",
                 ]
             ); ?>
-            <?php $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "about_contact_photos",
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "about_contact_photos",
                 [
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
                     "ADD_SECTIONS_CHAIN" => "N",
@@ -102,7 +100,7 @@ false
                     "DISPLAY_TOP_PAGER" => "N",
                     "FIELD_CODE" => ["PREVIEW_PICTURE"],
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => $iIblockContactPhotos,
+                    "IBLOCK_ID" => IQDEV\Base\Helper::getIblockId('contact_photos'),
                     "IBLOCK_TYPE" => "content",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "Y",
@@ -132,9 +130,10 @@ false
         </div>
     </div>
 </section>
-<?php $APPLICATION->IncludeComponent(
+<?php
+$APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "feedback_form_other",
+    "feedback_form_additional",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",
@@ -154,10 +153,9 @@ false
         "DISPLAY_PREVIEW_TEXT" => "Y",
         "DISPLAY_TOP_PAGER" => "N",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_TYPE" => "-",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
-        "NEWS_COUNT" => "20",
+        "NEWS_COUNT" => "5",
         "PAGER_BASE_LINK_ENABLE" => "N",
         "PAGER_DESC_NUMBERING" => "N",
         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",

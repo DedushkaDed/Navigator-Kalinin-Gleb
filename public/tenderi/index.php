@@ -1,4 +1,4 @@
-<?php
+<?
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 $APPLICATION->IncludeComponent(
@@ -19,7 +19,7 @@ $APPLICATION->IncludeComponent(
 );
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "tenderi_accordion",
+    "tenders_accordion",
     [
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "N",

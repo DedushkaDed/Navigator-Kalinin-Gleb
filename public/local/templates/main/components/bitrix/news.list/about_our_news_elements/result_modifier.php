@@ -1,8 +1,7 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
-} ?>
-
-<?php
+}
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -16,7 +15,6 @@ if (empty($arResult['ITEMS'])) {
 }
 
 $aMapCards = [];
-
 foreach ($arResult['ITEMS'] as $iKey => $aItem) {
     $aCard = [];
     $aCard['title'] = $aItem['NAME'];

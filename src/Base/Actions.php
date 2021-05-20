@@ -198,4 +198,42 @@ class Actions
         }
         $this->setAjaxResponse(['status' => false]);
     }
+
+    /**
+     * Запись данных из формы 'Отправить резюме' в ИБ.
+     *
+     * @return void
+     */
+    public function formResumeAjaxAction()
+    {
+        $sName = $this->oRequest['name'];
+        $sPhone = $this->oRequest['phone'];
+        $aInputFile = $_FILES['file'];
+
+        $iCallbackForm = FormsHandler::setResumeInputCaptcha($sName, $sPhone, $aInputFile);
+
+        if ($iCallbackForm) {
+            $this->setAjaxResponse(['status' => true]);
+        }
+        $this->setAjaxResponse(['status' => false]);
+    }
+
+    /**
+     * Запись данных из формы 'Отправить портфолио' в ИБ.
+     *
+     * @return void
+     */
+    public function formPortfolioAjaxAction()
+    {
+        $sName = $this->oRequest['name'];
+        $sPhone = $this->oRequest['phone'];
+        $aInputFile = $_FILES['file'];
+
+        $iCallbackForm = FormsHandler::setPortfolioInputCaptcha($sName, $sPhone, $aInputFile);
+
+        if ($iCallbackForm) {
+            $this->setAjaxResponse(['status' => true]);
+        }
+        $this->setAjaxResponse(['status' => false]);
+    }
 }

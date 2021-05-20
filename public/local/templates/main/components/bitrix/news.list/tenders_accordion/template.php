@@ -1,4 +1,4 @@
-<?php
+<?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -23,8 +23,8 @@ if (empty($arResult['ITEMS'])) {
 <section class="section mb-large">
     <div class="container">
         <div class="accordion-container js-accordion">
-            <?php foreach ($arResult['ITEMS'] as $aItem) :?>
-                <?php if ($aItem['PROPERTIES']['isActive']) :?>
+            <? foreach ($arResult['ITEMS'] as $aItem) :?>
+                <? if ($aItem['PROPERTIES']['isActive']) :?>
                         <div class="accordion <?=$aItem['PROPERTIES']['isActive']?>">
                             <div class="accordion__header">
                                 <div class="accordion__header-icon">
@@ -174,7 +174,7 @@ if (empty($arResult['ITEMS'])) {
                                 </div>
                             </div>
                         </div>
-                <?php else :?>
+                <? else :?>
                         <div class="accordion <?=$aItem['PROPERTIES']['accordionColor']?>">
                             <div class="accordion__header">
                                 <div class="accordion__header-icon">
@@ -307,8 +307,8 @@ if (empty($arResult['ITEMS'])) {
                                 </div>
                             </div>
                         </div>
-                <?php endif;?>
-            <?php endforeach;?>
+                <? endif;?>
+            <? endforeach;?>
         </div>
     </div>
 </section>

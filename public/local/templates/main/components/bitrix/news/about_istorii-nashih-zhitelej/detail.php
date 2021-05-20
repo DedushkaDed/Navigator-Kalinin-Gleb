@@ -1,4 +1,5 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
@@ -15,8 +16,8 @@
 /** @var CBitrixComponent $component */
 
 $ElementID = $APPLICATION->IncludeComponent(
-"bitrix:news.detail",
-"about_istorii-nashih-zhitelej_element",
+    "bitrix:news.detail",
+    "about_istorii-nashih-zhitelej_element",
     [
         "DISPLAY_DATE" => $arParams["DISPLAY_DATE"],
         "DISPLAY_NAME" => $arParams["DISPLAY_NAME"],

@@ -8,6 +8,7 @@ use Bitrix\Main\Page\Asset;
 \Bitrix\Main\Loader::includeModule('iqdev.options');
 $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
 ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -290,9 +291,9 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
 </header>
 <section class="section mb-medium">
     <div class="container">
-        <?php $APPLICATION->IncludeComponent(
-        "bitrix:breadcrumb",
-        "navigation",
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:breadcrumb",
+            "navigation",
             [
                 "SITE_ID" => "s1",
                 "START_FROM" => "0",
