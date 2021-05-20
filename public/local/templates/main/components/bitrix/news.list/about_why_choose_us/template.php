@@ -32,33 +32,33 @@ if (empty($arResult['ITEMS'])) {
                                 <?endif;?>
                             </div>
                             <?if (!empty($aItem['NAME'])) :?>
-                                <div class="card-list__title"><?= $aItem['NAME'] ?></div>
+                                <div class="card-list__title"><?= $aItem['NAME']?></div>
                             <?endif;?>
                             <div class="card-list__list-container"></div>
                             <?if (!empty($aItem['PREVIEW_TEXT'])) :?>
-                                <div class="card-list__list-item"><?= $aItem['PREVIEW_TEXT'] ?></div>
+                                <div class="card-list__list-item"><?= $aItem['PREVIEW_TEXT']?></div>
                             <?endif;?>
                             <?if (!empty($aItem['DETAIL_TEXT'])) :?>
-                                <div class="card-list__list-item"><?= $aItem['DETAIL_TEXT'] ?></div>
+                                <div class="card-list__list-item"><?= $aItem['DETAIL_TEXT']?></div>
                             <?endif;?>
                             <?if (!empty($aItem['PROPERTIES']['DESCRIPTION_3']['VALUE'])) :?>
                                 <div class="card-list__list-item">
-                                    <?= $aItem['PROPERTIES']['DESCRIPTION_3']['VALUE'] ?>
+                                    <?= $aItem['PROPERTIES']['DESCRIPTION_3']['VALUE']?>
                                 </div>
                             <?endif;?>
                             <?if (!empty($aItem['PROPERTIES']['DESCRIPTION_4']['VALUE'])) :?>
                                 <div class="card-list__list-item">
-                                    <?= $aItem['PROPERTIES']['DESCRIPTION_4']['VALUE'] ?>
+                                    <?= $aItem['PROPERTIES']['DESCRIPTION_4']['VALUE']?>
                                 </div>
                             <?endif;?>
                             <?if (!empty($aItem['PROPERTIES']['DESCRIPTION_5']['VALUE'])) :?>
                                 <div class="card-list__list-item">
-                                    <?= $aItem['PROPERTIES']['DESCRIPTION_5']['VALUE'] ?>
+                                    <?= $aItem['PROPERTIES']['DESCRIPTION_5']['VALUE']?>
                                 </div>
                             <?endif;?>
                         </div>
                     </div>
-                <? endforeach; ?>
+                <?endforeach;?>
             </div>
         </div>
     </div>

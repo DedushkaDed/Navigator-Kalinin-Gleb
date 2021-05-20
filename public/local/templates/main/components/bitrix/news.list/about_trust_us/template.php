@@ -14,21 +14,20 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-?>
 
-<? if (empty($arResult['ITEMS'])) {
+if (empty($arResult['ITEMS'])) {
     return;
-} ?>
-
+}
+?>
 <div class="slider-trust">
     <div class="glide js-slider-trust">
         <div class="glide__track" data-glide-el="track">
             <div class="glide__slides">
-                <? foreach ($arResult['ITEMS'] as $aItem) : ?>
+                <?foreach ($arResult['ITEMS'] as $aItem) :?>
                     <div class="glide__slide">
-                        <img class="img slider-trust__item" src="<?= $aItem['PREVIEW_PICTURE']['SRC'] ?>"/>
+                        <img class="img slider-trust__item" src="<?= $aItem['PREVIEW_PICTURE']['SRC']?>"/>
                     </div>
-                <? endforeach; ?>
+                <?endforeach;?>
             </div>
         </div>
         <div class="slider-trust__arrows">
@@ -47,9 +46,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                     </div>
                 </div>
                 <ul class="slider-trust-controls__list glide__bullets" data-glide-el="controls[nav]">
-                    <? foreach ($arResult['ITEMS'] as $iKey => $aItem) : ?>
+                    <?foreach ($arResult['ITEMS'] as $iKey => $aItem) :?>
                         <li class="glide__bullet" data-glide-dir="=<?=$iKey?>"><?=$iKey?></li>
-                    <? endforeach;?>
+                    <?endforeach;?>
                 </ul>
                 <div data-glide-el="controls">
                     <div class="slider-trust-controls__arrow glide__arrow glide__arrow--next" data-glide-dir="&gt;">

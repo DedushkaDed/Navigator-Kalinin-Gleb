@@ -10,21 +10,21 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 global $APPLICATION;
 
 if (empty($arResult)) {
-    return '';
+    return;
 }
 
-ob_start(); ?>
+ob_start();?>
 
 <div class="breadcrumbs">
- <? $iElementCount = count($arResult);
+ <?$iElementCount = count($arResult);
     foreach ($arResult as $iKey => $aItem) :?>
         <?if (!empty($aItem['LINK']) && $iKey < ($iElementCount - 1)) :?>
             <a class="breadcrumbs__item" href="<?=$aItem['LINK']?>"><?=$aItem['TITLE']?></a>
             <span class="breadcrumbs__divider">&gt;</span>
-        <? else :?>
+        <?else :?>
             <span class="breadcrumbs__item"><?=$aItem['TITLE']?></span>
-        <? endif; ?>
-    <? endforeach?>
+        <?endif;?>
+    <?endforeach?>
 </div>
 
 <?
