@@ -30,6 +30,7 @@ foreach ($arResult['ITEMS'] as $iKey => $aItem) {
     } else {
         $aCard['size'] = 1;
     }
+
     $aMapCards[] = $aCard;
 }
 $arResult['mapCards'] = $aMapCards;
