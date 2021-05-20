@@ -1,4 +1,4 @@
-<?
+<?php
 $sSectionName = "Компания";
 $arDirProperties = [
     "TITLE" => "О нас",
