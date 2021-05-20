@@ -8,7 +8,7 @@ class OkNewsList extends \CBitrixComponent
     /**
      * Получение полей и свойств из ИБ 'permanent_services_content'.
      *
-     * @return array
+     * @return mixed
      */
     public function getData()
     {
@@ -53,7 +53,6 @@ class OkNewsList extends \CBitrixComponent
         }
         return $arResult;
     }
-
     /**
      * Проверка на существование кеша.
      * Если кеш существует - подгружаем его.
@@ -61,7 +60,7 @@ class OkNewsList extends \CBitrixComponent
      *
      * @return array
      */
-    public function checkCache($aInputData)
+    public function checkCache($aInputData): array
     {
         $oCache = Bitrix\Main\Data\Cache::createInstance();
 
@@ -75,7 +74,11 @@ class OkNewsList extends \CBitrixComponent
             return $aInputData;
         }
     }
-
+    /**
+     * Точка входа в компонент
+     *
+     * @return void
+     */
     public function executeComponent()
     {
         $aInputData = $this->getData();

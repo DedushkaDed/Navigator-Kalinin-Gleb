@@ -1,7 +1,15 @@
 <?
-if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
+    die();
+}
 
 class OkPermanentServices extends CBitrixComponent {
+    /**
+     * Получение данных из ИБ 'work_stages'
+     *
+     * @return mixed
+    */
+
     public function getData()
     {
         $aFilter = [
@@ -34,6 +42,11 @@ class OkPermanentServices extends CBitrixComponent {
         }
         return $arResult;
     }
+    /**
+     * Точка входа в компонент
+     *
+     * @return void
+     */
     public function executeComponent()
     {
         $this->arResult = $this->getData();

@@ -3,7 +3,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
-class OkAnswerToQuestions extends \CBitrixComponent
+class OkAnswerToQuestions extends CBitrixComponent
 {
     /**
      * Установка цвета у блока.
@@ -11,7 +11,7 @@ class OkAnswerToQuestions extends \CBitrixComponent
      *
      * @return array
      */
-    public function setBackgroundItem($aItems)
+    public function setBackgroundItem(array $aItems): array
     {
         foreach ($aItems as $iKey => $aItem) {
             if ($iKey % 2 == 0) {
@@ -21,11 +21,10 @@ class OkAnswerToQuestions extends \CBitrixComponent
         }
         return $aItems;
     }
-
     /**
      * Получение свойств из ИБ 'answer_to_questions'
      *
-     * @return array
+     * @return mixed
      */
     public function getData()
     {
@@ -66,8 +65,13 @@ class OkAnswerToQuestions extends \CBitrixComponent
 
         return $this->setBackgroundItem($arResult);
     }
-
-    public function checkCache($aInputData)
+    /**
+     * Проверка наличия тегированного кеша у компонента.
+     * Если кеш отсутствует - создается новый.
+     *
+     * @return array
+     */
+    public function checkCache($aInputData): array
     {
         $oTaggedInstance = \Bitrix\Main\Application::getInstance()->getTaggedCache();
         $oCache = \Bitrix\Main\Data\Cache::createInstance();
@@ -86,7 +90,11 @@ class OkAnswerToQuestions extends \CBitrixComponent
             return $aInputData;
         }
     }
-
+    /**
+     * Точка входа в компонент
+     *
+     * @return void
+     */
     public function executeComponent()
     {
         $aInputData = $this->getData();

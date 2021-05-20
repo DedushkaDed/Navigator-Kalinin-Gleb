@@ -8,7 +8,6 @@ use Bitrix\Main\Page\Asset;
 \Bitrix\Main\Loader::includeModule('iqdev.options');
 $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
 ?>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -22,7 +21,7 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
     <meta name="msapplication-TileColor" content="#ffffff"/>
     <meta name="msapplication-config" content="/assets/icons/browserconfig.xml"/>
     <meta name="theme-color" content="#ffffff"/>
-    <title><? $APPLICATION->ShowTitle(); ?></title>
+    <title><?$APPLICATION->ShowTitle();?></title>
     <?
     Asset::getInstance()->addCss('/assets/css/application.css?v=1');
     Asset::getInstance()->addJs('/assets/js/application.js?v=1');
@@ -35,14 +34,14 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
     ?>
 </head>
 <body class="body js-body">
-<div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
+<div id="panel"><?$APPLICATION->ShowPanel();?></div>
 <header class="header">
     <div class="header__inner">
         <a class="header__logo" href="/">
             <img src="/assets/image/header/logo.png"/>
         </a>
 
-        <? $APPLICATION->IncludeComponent(
+        <?$APPLICATION->IncludeComponent(
             "bitrix:menu",
             "top_menu",
             [
@@ -50,8 +49,6 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
                 "CHILD_MENU_TYPE" => "subtop",
                 "DELAY" => "N",
                 "MAX_LEVEL" => "2",
-                "MENU_CACHE_GET_VARS" => [
-                ],
                 "MENU_CACHE_TIME" => "3600",
                 "MENU_CACHE_TYPE" => "A",
                 "MENU_CACHE_USE_GROUPS" => "N",
@@ -60,10 +57,10 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
                 "COMPONENT_TEMPLATE" => "top_menu",
             ],
             false
-        ); ?>
+        );?>
 
         <a class="header__number js-stats link-blue roistat_phone_navig" href="tel:<?=$aOptions['link']?>">
-            <?= $aOptions['number'] ?>
+            <?= $aOptions['number']?>
         </a>
         <div class="header__button">
             <div class="button button--primary js-modal-trigger" data-modal-id="callback">
@@ -83,7 +80,7 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
         </div>
         <div class="navigation-mobile js-navigation-mobile">
             <a class="navigation-mobile__number js-stats link-blue roistat_phone_navig"
-               href="tel:<?=$aOptions['link']?>"><?= $aOptions['number'] ?>
+               href="tel:<?=$aOptions['link'] ?? ''?>"><?= $aOptions['number'] ?? ''?>
             </a>
             <div class="navigation-mobile__item-wrapper">
                 <div class="navigation-mobile__item js-navigation-trigger">
@@ -291,7 +288,7 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
 </header>
 <section class="section mb-medium">
     <div class="container">
-        <? $APPLICATION->IncludeComponent(
+        <?$APPLICATION->IncludeComponent(
             "bitrix:breadcrumb",
             "navigation",
             [
@@ -299,6 +296,6 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
                 "SITE_ID" => "s1",
                 "START_FROM" => "0",
             ]
-        ); ?>
+        );?>
     </div>
 </section>

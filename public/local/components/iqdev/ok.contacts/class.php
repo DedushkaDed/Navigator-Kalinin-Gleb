@@ -8,7 +8,7 @@ class OkContacts extends CBitrixComponent
     /**
      * Получение полей свойств из ИБ 'ok_contact_slider'
      *
-     * @return array
+     * @return mixed
      */
     public function getData()
     {
@@ -64,7 +64,6 @@ class OkContacts extends CBitrixComponent
         }
         return $arResult;
     }
-
     /**
      * Проверка на существование кеша.
      * Если кеш существует - подгружаем его.
@@ -72,7 +71,8 @@ class OkContacts extends CBitrixComponent
      *
      * @return array
      */
-    public function checkCache($aInputData) {
+    public function checkCache($aInputData): array
+    {
         $oCache = \Bitrix\Main\Data\Cache::createInstance();
 
         if ($oCache->initCache(8600, "cache_key_1")) {
@@ -87,6 +87,11 @@ class OkContacts extends CBitrixComponent
             return $aInputData;
         }
     }
+    /**
+     * Точка входа в компонент
+     *
+     * @return void
+     */
     public function executeComponent(){
         $aInputData = $this->getData();
         $this->arResult = $this->checkCache($aInputData);

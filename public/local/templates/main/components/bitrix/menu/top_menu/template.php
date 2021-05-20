@@ -8,10 +8,10 @@ if (empty($arResult)) {
 }
 ?>
 <div class="navigation">
-    <? foreach ($arResult as $aItem) : ?>
-        <? if (!empty($aItem['subitems'])) :?>
+    <?foreach ($arResult as $aItem) :?>
+        <?if (!empty($aItem['subitems'])) :?>
             <div class="navigation__item">
-                <span class="navigation__page"><?= $aItem["TEXT"] ?></span>
+                <span class="navigation__page"><?= $aItem["TEXT"]?></span>
                 <div class="navigation__arrow">
                     <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -22,16 +22,16 @@ if (empty($arResult)) {
                     </svg>
                 </div>
                 <div class="navigation__dropdown">
-                    <? foreach ($aItem['subitems'] as $aSubItem) :?>
-                        <a class="navigation__subpage" href="<?= $aSubItem['LINK'] ?>">
-                        <?= $aSubItem['TEXT'] ?></a>
-                    <? endforeach; ?>
+                    <?foreach ($aItem['subitems'] as $aSubItem) :?>
+                        <a class="navigation__subpage" href="<?= $aSubItem['LINK']?>">
+                        <?= $aSubItem['TEXT']?></a>
+                    <?endforeach;?>
                 </div>
             </div>
-        <? else :?>
-            <a class="navigation__item" href="<?= $aItem['LINK'] ?>">
-                <span class="navigation__page"><?= $aItem["TEXT"] ?></span>
-            </a>
-        <? endif ?>
-    <? endforeach ?>
+        <?else :?>
+        <a class="navigation__item" href="<?= $aItem["LINK"]?>">
+            <span class="navigation__page"><?= $aItem["TEXT"]?></span>
+        </a>
+        <?endif;?>
+    <?endforeach?>
 </div>

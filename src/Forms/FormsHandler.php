@@ -29,7 +29,7 @@ class FormsHandler
         }
         return [
             'status' => false,
-            'message' => 'Вы уже воспользовались формой отправки'
+            'message' => 'Вы уже воспользовались формой отправки',
         ];
     }
 
@@ -77,7 +77,7 @@ class FormsHandler
             "type" => $_FILES['file']['type'],
             "old_file" => "",
             "del" => "Y",
-            "MODULE_ID" => ""
+            "MODULE_ID" => "",
         ];
 
         $sExtensions = \CFile::GetImageExtensions();
@@ -103,7 +103,7 @@ class FormsHandler
                 'filter' => [
                     '=IBLOCK_ID' => \IQDEV\Base\Helper::getIblockId('tenderi'),
                     '=ID' => $aData['id'],
-                ]
+                ],
             ]);
 
             $sElementName = $elementIterator->fetch()['NAME'];
@@ -114,7 +114,7 @@ class FormsHandler
             'PHONE' => $aData['phone'],
             'PORTFOLIO' => $sFileSrc,
             'TENDER' => $sElementName,
-            'FILE' => $fid
+            'FILE' => $fid,
         ];
 
         self::addIblockElement('TenderPortfolio', $aData, $aFields);
@@ -123,7 +123,7 @@ class FormsHandler
             [
                 "EVENT_NAME" => "SEND_PORTFOLIO",
                 "LID" => "s1",
-                "C_FIELDS" => $aFields
+                "C_FIELDS" => $aFields,
             ]
         );
 
@@ -221,13 +221,26 @@ class FormsHandler
      * @param $sVillageName
      *
      * @return mixed
-     *
      */
-    public static function setFormQuestionInputCaptcha($sName, $sPhone, $sEmail, $iAreaNumber, $sQuestion, $sVillageName)
-    {
+    public static function setFormQuestionInputCaptcha(
+        $sName,
+        $sPhone,
+        $sEmail,
+        $iAreaNumber,
+        $sQuestion,
+        $sVillageName
+    ) {
         $oParsedPhone = Parser::getInstance()->parse($sPhone);
 
-        if(empty($sName) || (!$oParsedPhone->isValid()) || empty($sEmail) || empty($iAreaNumber) || empty($sQuestion) || empty($sVillageName)) {
+        if
+        (
+            empty($sName)
+            || (!$oParsedPhone->isValid())
+            || empty($sEmail)
+            || empty($iAreaNumber)
+            || empty($sQuestion)
+            || empty($sVillageName)
+        ) {
             return null;
         }
 

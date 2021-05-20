@@ -47,11 +47,11 @@ class Actions
 
         if (isset($this->oRequest["ajaxAction"])) {
             $this->sTypeAction = "AjaxAction";
-            $this->sAction     = $this->oRequest["ajaxAction"];
+            $this->sAction = $this->oRequest["ajaxAction"];
         }
         if (isset($this->oRequest["iqDevAction"])) {
             $this->sTypeAction = "Action";
-            $this->sAction     = $this->oRequest["iqDevAction"];
+            $this->sAction = $this->oRequest["iqDevAction"];
         }
         if (isset($this->sAction) && isset($this->sTypeAction)) {
             $sName = $this->sAction . $this->sTypeAction;
@@ -73,7 +73,7 @@ class Actions
             [
                 'method' => $methodName,
                 'response' => 'Такого метода API не существует',
-                'params' => $arguments
+                'params' => $arguments,
             ]
         );
     }
@@ -247,7 +247,14 @@ class Actions
         $sQuestion = $this->oRequest['question'];
         $sVillageName = $this->oRequest['villageName'];
 
-        $iCallBackForm = FormsHandler::setFormQuestionInputCaptcha($sName,$sPhone,$sEmail,$iAreaNumber,$sQuestion,$sVillageName);
+        $iCallBackForm = FormsHandler::setFormQuestionInputCaptcha(
+            $sName,
+            $sPhone,
+            $sEmail,
+            $iAreaNumber,
+            $sQuestion,
+            $sVillageName
+        );
 
         if (!empty($iCallBackForm)) {
             $this->setAjaxResponse(['status' => true]);
