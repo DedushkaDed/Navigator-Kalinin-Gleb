@@ -17,8 +17,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 
 if (empty($arResult['mapCards'])) {
     return;
-} ?>
-
+}
+?>
 <div class="detail__item">
     <div class="detail-aside-banners">
         <? foreach ($arResult['mapCards'] as $aItem) : ?>

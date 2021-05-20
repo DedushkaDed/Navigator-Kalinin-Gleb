@@ -23,17 +23,13 @@ if (empty($arResult['paymentCards'])) {
     <div class="container">
         <div class="separate-paragraph">
             <div class="separate-paragraph__title">
-                <?if (!empty($arResult['paymentCards']['separateParagraphTitle'])) :?>
-                    <h1><?=$arResult['paymentCards']['separateParagraphTitle']?></h1>
-                <?endif;?>
+                <h1><?=$arResult['paymentCards']['separateParagraphTitle'] ?? ''?></h1>
             </div>
             <div class="separate-paragraph__divider"></div>
             <div class="separate-paragraph__text-wrapper">
-                <?if (!empty($arResult['paymentCards']['separateParagraphText'])) :?>
-                    <div class="separate-paragraph__text">
-                        <?=$arResult['paymentCards']['separateParagraphText']?>
-                    </div>
-                <?endif;?>
+                <div class="separate-paragraph__text">
+                    <?=$arResult['paymentCards']['separateParagraphText'] ?? ''?>
+                </div>
             </div>
         </div>
     </div>
@@ -91,142 +87,133 @@ $APPLICATION->IncludeComponent(
 ?>
 <section class="section section--overflow-hidden mt-medium mb-large">
     <div class="container">
-        <?if (!empty($arResult['paymentCards']['sectionHeader'])) :?>
-            <div class="section-header"><?=$arResult['paymentCards']['sectionHeader']?></div>
-        <?endif;?>
+        <div class="section-header"><?=$arResult['paymentCards']['sectionHeader'] ?? ''?></div>
         <div class="grid-unit">
             <div class="grid-unit__inner">
                 <div class="grid-unit__item grid-unit__item--banner grid-unit__item--col2">
                     <div class="grid-card grid-card--xs-border-radius">
-                        <?if (!empty($arResult['paymentCards']['cardLargeText'])) :?>
-                            <div class="grid-card__text"><?=$arResult['paymentCards']['cardLargeText']?></div>
-                        <?endif;?>
+                        <div class="grid-card__text"><?=$arResult['paymentCards']['cardLargeText'] ?? ''?></div>
                         <div class="grid-card__image-wrapper">
-                            <?if (!empty($arResult['paymentCards']['cardLargeImage'])) :?>
-                                <img src="<?=$arResult['paymentCards']['cardLargeImage']?>"/>
-                            <?endif;?>
+                            <img src="<?=$arResult['paymentCards']['cardLargeImage'] ?? ''?>"/>
                         </div>
                     </div>
                 </div>
-                <div class="grid-unit__item">
-                    <div class="card-color card-color--blue">
-                        <?if (!empty($arResult['paymentCards']['firstItemText'])) :?>
+                <?if (!empty($arResult['paymentCards']['firstItem'])) :?>
+                    <div class="grid-unit__item">
+                        <div class="card-color card-color--blue">
                             <div class="card-color__text card-color__text--grow">
-                                <?=$arResult['paymentCards']['firstItemText']?>
+                                <?=$arResult['paymentCards']['firstItem']['text'] ?? ''?>
                             </div>
-                        <?endif;?>
-                        <div class="card-color__subcontent">
-                            <?if (!empty($arResult['paymentCards']['firstItemPercent'])) :?>
+                            <div class="card-color__subcontent">
                                 <div class="circle-percent circle-percent--background-dark-blue">
-                                    <?=$arResult['paymentCards']['firstItemPercent']?></div>
-                                </div>
-                            <?endif;?>
-                    </div>
-                </div>
-                <div class="grid-unit__item">
-                    <div class="card-color card-color--gray">
-                        <?if (!empty($arResult['paymentCards']['secondItemText'])) :?>
-                            <div class="card-color__text card-color__text--grow">
-                                <?=$arResult['paymentCards']['secondItemText']?>
-                            </div>
-                        <?endif;?>
-                    </div>
-                </div>
-                <div class="grid-unit__item">
-                    <div class="card-color card-color--green">
-                        <?if (!empty($arResult['paymentCards']['thirdItemText'])) :?>
-                            <div class="card-color__text card-color__text--grow">
-                                <?=$arResult['paymentCards']['thirdItemText']?>
-                            </div>
-                        <?endif;?>
-                    </div>
-                </div>
-                <div class="grid-unit__item">
-                    <div class="card-color card-color--gray">
-                        <?if (!empty($arResult['paymentCards']['fourthItemText'])) :?>
-                            <div class="card-color__text card-color__text--grow">
-                                <?=$arResult['paymentCards']['fourthItemText']?>
-                            </div>
-                        <?endif;?>
-                    </div>
-                </div>
-                <div class="grid-unit__item grid-unit__item--col2">
-                    <div class="card-color card-color--border card-color--center">
-                        <div class="card-color__grid">
-                            <?if (!empty($arResult['paymentCards']['fifthItemText'])) :?>
-                                <div><?=$arResult['paymentCards']['fifthItemText']?></div>
-                            <?endif;?>
-                            <div class="card-color__button js-modal-trigger" data-modal-id="consultation">
-                                <div class="button button--primary">
-                                    <?if (!empty($arResult['paymentCards']['fifthItemButtonLabel'])) :?>
-                                        <span><?=$arResult['paymentCards']['fifthItemButtonLabel']?></span>
-                                    <?endif;?>
+                                    <?=$arResult['paymentCards']['firstItemPercent'] ?? ''?>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?endif;?>
+                <?if (!empty($arResult['paymentCards']['secondItem'])) :?>
+                    <div class="grid-unit__item">
+                        <div class="card-color card-color--gray">
+                            <div class="card-color__text card-color__text--grow">
+                                <?=$arResult['paymentCards']['secondItem']['text'] ?? ''?>
+                            </div>
+                        </div>
+                    </div>
+                <?endif;?>
+                <?if (!empty($arResult['paymentCards']['thirdItem'])) :?>
+                    <div class="grid-unit__item">
+                        <div class="card-color card-color--green">
+                            <div class="card-color__text card-color__text--grow">
+                                <?=$arResult['paymentCards']['thirdItem']['text'] ?? ''?>
+                            </div>
+                        </div>
+                    </div>
+                <?endif;?>
+                <?if (!empty($arResult['paymentCards']['fourthItem'])) :?>
+                    <div class="grid-unit__item">
+                        <div class="card-color card-color--gray">
+                            <div class="card-color__text card-color__text--grow">
+                                <?=$arResult['paymentCards']['fourthItem']['text'] ?? ''?>
+                            </div>
+                        </div>
+                    </div>
+                <?endif;?>
+                <?if (!empty($arResult['paymentCards']['fifthItem'])) :?>
+                    <div class="grid-unit__item grid-unit__item--col2">
+                        <div class="card-color card-color--border card-color--center">
+                            <div class="card-color__grid">
+                                <div><?=$arResult['paymentCards']['fifthItem']['text'] ?? ''?></div>
+                                <div class="card-color__button js-modal-trigger" data-modal-id="consultation">
+                                    <div class="button button--primary">
+                                        <span><?=$arResult['paymentCards']['fifthItem']['buttonLabel'] ?? ''?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?endif;?>
                 <div class="grid-unit-mobile-slider grid-unit-mobile-slider--offset-top js-grid-unit-mobile-slider">
                     <div class="grid-unit-mobile-slider__track" data-glide-el="track">
                         <div class="grid-unit-mobile-slider__carousel">
-                            <div class="grid-unit__mobile-item">
-                                <div class="card-color card-color--blue">
-                                    <?if (!empty($arResult['paymentCards']['firstItemText'])) :?>
+                            <?if (!empty($arResult['paymentCards']['firstItem'])) :?>
+                                <div class="grid-unit__mobile-item">
+                                    <div class="card-color card-color--blue">
                                         <div class="card-color__text card-color__text--grow">
-                                            <?=$arResult['paymentCards']['firstItemText']?>
+                                            <?=$arResult['paymentCards']['firstItem']['text'] ?? ''?>
                                         </div>
-                                    <?endif;?>
-                                    <div class="card-color__subcontent">
-                                        <?if (!empty($arResult['paymentCards']['firstItemPercent'])) :?>
+                                        <div class="card-color__subcontent">
                                             <div class="circle-percent circle-percent--background-dark-blue">
-                                                <?=$arResult['paymentCards']['firstItemPercent']?></div>
-                                            </div>
-                                        <?endif;?>
-                                </div>
-                            </div>
-                            <div class="grid-unit__mobile-item">
-                                <div class="card-color card-color--gray">
-                                    <?if (!empty($arResult['paymentCards']['secondItemText'])) :?>
-                                        <div class="card-color__text card-color__text--grow">
-                                            <?=$arResult['paymentCards']['secondItemText']?>
-                                        </div>
-                                    <?endif;?>
-                                </div>
-                            </div>
-                            <div class="grid-unit__mobile-item">
-                                <div class="card-color card-color--green">
-                                    <?if (!empty($arResult['paymentCards']['thirdItemText'])) :?>
-                                        <div class="card-color__text card-color__text--grow">
-                                            <?=$arResult['paymentCards']['thirdItemText']?>
-                                        </div>
-                                    <?endif;?>
-                                </div>
-                            </div>
-                            <div class="grid-unit__mobile-item">
-                                <div class="card-color card-color--gray">
-                                    <?if (!empty($arResult['paymentCards']['fourthItemText'])) :?>
-                                        <div class="card-color__text card-color__text--grow">
-                                            <?=$arResult['paymentCards']['fourthItemText']?>
-                                        </div>
-                                    <?endif;?>
-                                </div>
-                            </div>
-                            <div class="grid-unit__mobile-item">
-                                <div class="card-color card-color--border card-color--center">
-                                    <div class="card-color__grid">
-                                        <?if (!empty($arResult['paymentCards']['fifthItemText'])) :?>
-                                            <div><?=$arResult['paymentCards']['fifthItemText']?></div>
-                                        <?endif;?>
-                                        <div class="card-color__button js-modal-trigger" data-modal-id="consultation">
-                                            <div class="button button--primary">
-                                                <?if (!empty($arResult['paymentCards']['fifthItemButtonLabel'])) :?>
-                                                    <span><?=$arResult['paymentCards']['fifthItemButtonLabel']?></span>
-                                                <?endif;?>
+                                                <?=$arResult['paymentCards']['firstItemPercent'] ?? ''?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?endif;?>
+                            <?if (!empty($arResult['paymentCards']['secondItem'])) :?>
+                                <div class="grid-unit__mobile-item">
+                                    <div class="card-color card-color--gray">
+                                        <div class="card-color__text card-color__text--grow">
+                                            <?=$arResult['paymentCards']['secondItem']['text'] ?? ''?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?endif;?>
+                            <?if (!empty($arResult['paymentCards']['thirdItem'])) :?>
+                                <div class="grid-unit__mobile-item">
+                                    <div class="card-color card-color--green">
+                                        <div class="card-color__text card-color__text--grow">
+                                            <?=$arResult['paymentCards']['thirdItem']['text'] ?? ''?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?endif;?>
+                            <?if (!empty($arResult['paymentCards']['fourthItem'])) :?>
+                                <div class="grid-unit__mobile-item">
+                                    <div class="card-color card-color--gray">
+                                        <div class="card-color__text card-color__text--grow">
+                                            <?=$arResult['paymentCards']['fourthItem']['text']?? ''?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?endif;?>
+                            <?if (!empty($arResult['paymentCards']['fifthItem'])) :?>
+                                <div class="grid-unit__mobile-item">
+                                    <div class="card-color card-color--border card-color--center">
+                                        <div class="card-color__grid">
+                                            <div><?=$arResult['paymentCards']['fifthItem']['text'] ?? ''?></div>
+                                            <div class="card-color__button js-modal-trigger"
+                                                 data-modal-id="consultation">
+                                                <div class="button button--primary">
+                                                    <span>
+                                                        <?=$arResult['paymentCards']['fifthItem']['buttonLabel'] ?? ''?>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?endif;?>
                         </div>
                     </div>
                 </div>

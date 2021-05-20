@@ -10,6 +10,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @global CDatabase $DB */
 /** @var CBitrixComponentTemplate $this */
 
+\Bitrix\Main\Loader::includeModule('iqdev');
+$aByuerMainPageOptions = IQDEV\Options\Options::getPageOptions('buyer_main_page');
+
 if (empty($arResult)) {
     return;
 }
@@ -21,10 +24,10 @@ foreach ($arResult['ITEMS'] as $iKey => $aItem) {
 
     $aCard['indexItem'] = $iKey + 1;
     $aCard['title'] = $aItem['NAME'];
-    $aCard['description'] = [$aItem['PREVIEW_TEXT'], $aItem['PROPERTIES']['FORM_TO_DISPLAY']['VALUE_XML_ID'] => $aItem['PROPERTIES']['FORM_TO_DISPLAY']['VALUE']];
+    $aCard['description'] = $aItem['PREVIEW_TEXT'];
     $aCard['icon'] = CFile::GetPath($aItem['PROPERTIES']['ICON_SVG']['VALUE']);
-    $aCard[$aItem['PROPERTIES']['FORM_TO_DISPLAY']['VALUE_XML_ID']] = $aItem['PROPERTIES']['FORM_TO_DISPLAY']['VALUE'];
 
     $aMapCards[] = $aCard;
 }
 $arResult['mapCards'] = $aMapCards;
+$arResult['options'] = $aByuerMainPageOptions;
