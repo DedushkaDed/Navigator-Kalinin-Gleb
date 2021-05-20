@@ -1,6 +1,8 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
+\Bitrix\Main\Loader::includeModule('iqdev');
+
 $APPLICATION->IncludeComponent(
     "bitrix:menu",
     "navigation_tabs",

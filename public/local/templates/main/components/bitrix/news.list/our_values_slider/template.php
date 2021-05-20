@@ -15,25 +15,25 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 
-
 if (empty($arResult['ITEMS'])) {
     return;
-} ?>
+}
+?>
 
 <div class="glide__slides">
-    <? foreach ($arResult['ITEMS'] as $aItem) : ?>
+    <?foreach ($arResult['ITEMS'] as $aItem) :?>
         <div class="glide__slide">
             <div class="slider-simple-text">
-                <? if (!empty($aItem['NAME'])) :?>
-                    <div class="slider-simple-text__title"><?= $aItem['NAME'] ?></div>
+                <?if (!empty($aItem['NAME'])) :?>
+                    <div class="slider-simple-text__title"><?= $aItem['NAME']?></div>
                 <?endif;?>
-                <? if (!empty($aItem['PREVIEW_TEXT'])) :?>
-                    <div class="slider-simple-text__text"><?= $aItem['PREVIEW_TEXT'] ?>
+                <?if (!empty($aItem['PREVIEW_TEXT'])) :?>
+                    <div class="slider-simple-text__text"><?= $aItem['PREVIEW_TEXT']?>
                 <?endif;?>
                 </div>
             </div>
         </div>
-    <?php endforeach; ?>
+    <?endforeach;?>
 </div>
 <div class="slider-simple__arrows">
     <div class="slider-simple-controls">
@@ -50,7 +50,7 @@ if (empty($arResult['ITEMS'])) {
         </div>
 
         <ul class="slider-simple-controls__list" data-glide-el="controls[nav]">
-            <? foreach ($arResult['ITEMS'] as $iKey => $aItem) : ?>
+            <?foreach ($arResult['ITEMS'] as $iKey => $aItem) :?>
                 <li class="glide__bullet" data-glide-dir="=<?=$iKey?>"><?=$iKey?></li>
             <?endforeach;?>
         </ul>

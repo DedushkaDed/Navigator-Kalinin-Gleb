@@ -63,7 +63,7 @@ if (empty($arResult['ITEMS'])) {
             <ul class="slider-controls__list glide__bullets" data-glide-el="controls[nav]">
                 <? foreach ($arResult['ITEMS'] as $iKey => $aItem) : ?>
                     <li class="glide__bullet" data-glide-dir="=<?=$iKey?>"><?=$iKey?></li>
-                <?php endforeach;?>
+                <? endforeach;?>
             </ul>
             <div data-glide-el="controls">
                 <div class="slider-controls__arrow glide__arrow" data-glide-dir="&gt;">
