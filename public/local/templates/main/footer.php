@@ -206,9 +206,9 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('footer');
     </div>
     <div class="container">
         <div class="footer__grid">
-            <?php $APPLICATION->IncludeComponent(
-            "bitrix:menu",
-            "bottom_menu",
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:menu",
+                "bottom_menu",
                 [
                     "ALLOW_MULTI_SELECT" => "N",
                     "CHILD_MENU_TYPE" => "subbottom",
@@ -221,7 +221,7 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('footer');
                     "USE_EXT" => "Y",
                     "COMPONENT_TEMPLATE" => "bottom_menu",
                 ],
-            false
+                false
             ); ?>
             <div class="footer__contacts">
                 <div class="footer__contacts-title">Наши контакты</div>

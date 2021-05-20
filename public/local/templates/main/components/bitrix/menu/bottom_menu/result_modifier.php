@@ -1,8 +1,6 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
-} ?>
-
-<?php
+}
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -16,11 +14,14 @@ if (empty($arResult)) {
 }
 
 $aPrepItems = [];
-foreach ($arResult as $arItem) {
-    if ($arItem['DEPTH_LEVEL'] <= 1) {
-        $aPrepItems[] = $arItem;
+$lastKey = -1;
+foreach ($arResult as $aItem) {
+    if ($aItem['DEPTH_LEVEL'] <= 1) {
+        $aPrepItems[] = $aItem;
+        $lastKey++;
     } else {
-        $aPrepItems[array_key_last($aPrepItems)]['subitems'][] = $arItem;
+        $aPrepItems[$lastKey]['subitems'][] = $aItem;
     }
 }
+
 $arResult = $aPrepItems;

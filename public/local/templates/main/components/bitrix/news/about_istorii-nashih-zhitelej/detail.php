@@ -13,8 +13,6 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-$this->setFrameMode(true);
-
 
 $ElementID = $APPLICATION->IncludeComponent(
 "bitrix:news.detail",
@@ -69,5 +67,5 @@ $ElementID = $APPLICATION->IncludeComponent(
         "ADD_ELEMENT_CHAIN" => (isset($arParams["ADD_ELEMENT_CHAIN"]) ? $arParams["ADD_ELEMENT_CHAIN"] : ''),
         'STRICT_SECTION_CHECK' => (isset($arParams['STRICT_SECTION_CHECK']) ? $arParams['STRICT_SECTION_CHECK'] : ''),
     ],
-$component
+    $component
 );

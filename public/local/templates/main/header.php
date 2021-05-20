@@ -21,7 +21,7 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
     <meta name="msapplication-TileColor" content="#ffffff"/>
     <meta name="msapplication-config" content="/assets/icons/browserconfig.xml"/>
     <meta name="theme-color" content="#ffffff"/>
-    <title><?php $APPLICATION->ShowTitle(); ?></title>
+    <title><? $APPLICATION->ShowTitle(); ?></title>
     <?
     Asset::getInstance()->addCss('/assets/css/application.css?v=1');
     Asset::getInstance()->addJs('/assets/js/application.js?v=1');
@@ -34,21 +34,23 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
     ?>
 </head>
 <body class="body js-body">
-<div id="panel"><?php $APPLICATION->ShowPanel(); ?></div>
+<div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
 <header class="header">
     <div class="header__inner">
         <a class="header__logo" href="/">
             <img src="/assets/image/header/logo.png"/>
         </a>
 
-        <?php $APPLICATION->IncludeComponent(
-        "bitrix:menu",
-        "top_menu",
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:menu",
+            "top_menu",
             [
                 "ALLOW_MULTI_SELECT" => "N",
                 "CHILD_MENU_TYPE" => "subtop",
                 "DELAY" => "N",
                 "MAX_LEVEL" => "2",
+                "MENU_CACHE_GET_VARS" => [
+                ],
                 "MENU_CACHE_TIME" => "3600",
                 "MENU_CACHE_TYPE" => "A",
                 "MENU_CACHE_USE_GROUPS" => "N",
@@ -56,7 +58,7 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
                 "USE_EXT" => "Y",
                 "COMPONENT_TEMPLATE" => "top_menu",
             ],
-        false
+            false
         ); ?>
 
         <a class="header__number js-stats link-blue roistat_phone_navig" href="tel:<?=$aOptions['link']?>">

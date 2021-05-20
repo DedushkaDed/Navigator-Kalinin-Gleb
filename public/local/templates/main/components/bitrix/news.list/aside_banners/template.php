@@ -1,4 +1,5 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
+<?php
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
@@ -16,8 +17,8 @@
 
 if (empty($arResult['mapCards'])) {
     return;
-} ?>
-
+}
+?>
 <div class="detail__item">
     <div class="detail-aside-banners">
         <? foreach ($arResult['mapCards'] as $aItem) : ?>

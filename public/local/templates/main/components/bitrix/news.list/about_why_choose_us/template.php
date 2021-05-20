@@ -17,7 +17,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 
 if (empty($arResult['ITEMS'])) {
     return;
-} ?>
+}
+?>
 <div class="slider glide js-slider">
     <div class="slider__body">
         <div class="glide__track" data-glide-el="track">
