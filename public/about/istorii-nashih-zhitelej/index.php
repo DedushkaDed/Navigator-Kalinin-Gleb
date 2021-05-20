@@ -18,7 +18,7 @@ $APPLICATION->IncludeComponent(
         "COMPONENT_TEMPLATE" => "navigation_tabs",
     ],
     false
- );
+);
 $APPLICATION->IncludeComponent(
     "bitrix:news",
     "about_istorii-nashih-zhitelej",
@@ -29,7 +29,6 @@ $APPLICATION->IncludeComponent(
         "AJAX_OPTION_HISTORY" => "N",
         "AJAX_OPTION_JUMP" => "N",
         "AJAX_OPTION_STYLE" => "Y",
-        "BROWSER_TITLE" => "-",
         "CACHE_FILTER" => "N",
         "CACHE_GROUPS" => "Y",
         "CACHE_TIME" => "36000000",
@@ -40,7 +39,6 @@ $APPLICATION->IncludeComponent(
         "DETAIL_DISPLAY_TOP_PAGER" => "N",
         "DETAIL_FIELD_CODE" => ["NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", "DETAIL_PICTURE"],
         "DETAIL_PAGER_SHOW_ALL" => "Y",
-        "DETAIL_PAGER_TITLE" => "Страница",
         "DETAIL_PROPERTY_CODE" => ["DATE", "TEXT_HISTORY_RESIDENT"],
         "DETAIL_SET_CANONICAL_URL" => "N",
         "DISPLAY_BOTTOM_PAGER" => "Y",
@@ -56,8 +54,6 @@ $APPLICATION->IncludeComponent(
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
         "LIST_FIELD_CODE" => ["CODE", "NAME", "PREVIEW_TEXT", "PREVIEW_PICTURE", "DETAIL_TEXT", "DETAIL_PICTURE"],
         "LIST_PROPERTY_CODE" => ["DATE"],
-        "META_DESCRIPTION" => "-",
-        "META_KEYWORDS" => "-",
         "NEWS_COUNT" => "4",
         "PAGER_BASE_LINK_ENABLE" => "N",
         "PAGER_DESC_NUMBERING" => "N",
@@ -65,7 +61,6 @@ $APPLICATION->IncludeComponent(
         "PAGER_SHOW_ALL" => "N",
         "PAGER_SHOW_ALWAYS" => "Y",
         "PAGER_TEMPLATE" => "about_page_navigation",
-        "PAGER_TITLE" => "Постраничная навигация",
         "SEF_FOLDER" => "/about/istorii-nashih-zhitelej/",
         "SEF_MODE" => "Y",
         "SEF_URL_TEMPLATES" => ["detail" => "#CODE#/"],

@@ -2,6 +2,8 @@
 
 namespace IQDEV\Base;
 
+use IQDEV\Entity\Office;
+
 class Actions
 {
     /**
@@ -131,5 +133,15 @@ class Actions
     public function testSendAjaxAction()
     {
         $this->setAjaxResponse($this->oRequest);
+    }
+    /**
+     * Получение координат офисов yandexMap
+     *
+     * @return void
+     */
+    public function getOfficeCoordsAjaxAction()
+    {
+        $coords = Office::getCordsAll();
+        $this->setAjaxResponse($coords);
     }
 }
