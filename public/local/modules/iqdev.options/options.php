@@ -16,7 +16,7 @@ $context = $app->getContext();
 $request = $context->getRequest();
 ?>
 
-<?
+<?php
 $module_id = "iqdev.options";
 CModule::IncludeModule($module_id);
 IncludeModuleLangFile($_SERVER["DOCUMENT_ROOT"].BX_ROOT."/modules/main/options.php");

@@ -1,4 +1,4 @@
-<?
+<?php
 $arUrlRewrite = [
     [
         'CONDITION' => '#^/about/our-news/([a-zA-Z0-9-]+)/.*#',

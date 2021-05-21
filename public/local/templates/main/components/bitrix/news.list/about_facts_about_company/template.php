@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -14,20 +14,20 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-?>
 
-<? if (empty($arResult['ITEMS'])) {
+if (empty($arResult['ITEMS'])) {
     return;
-} ?>
+}
+?>
 <div class="grid-layout grid-layout--gap-15 grid-layout--col-4">
-    <? foreach ($arResult['mapCards'] as $aItem) : ?>
+    <?foreach ($arResult['mapCards'] as $aItem) :?>
         <div class="grid-layout__item grid-layout__item--md-span-column-2
-         grid-layout__item--lg-span-column-<?= $aItem['size'] ?>">
-            <? if (!empty($aItem['image'])) : ?>
-                <a class="grid-card" href="<?= $aItem['link'] ?>">
-                    <img class="grid-card__image" src="<?= $aItem['image'] ?>"/>
+         grid-layout__item--lg-span-column-<?= $aItem['size']?>">
+            <?if (!empty($aItem['image'])) :?>
+                <a class="grid-card" href="<?= $aItem['link']?>">
+                    <img class="grid-card__image" src="<?= $aItem['image']?>"/>
                     <div class="grid-card__arrow-link">
-                        <div><?= $aItem['title'] ?></div>
+                        <div><?= $aItem['title']?></div>
                         <div class="grid-card__arrow-link-link">
                             <div class="arrow-link arrow-link--right">
                                 <div class="arrow-link__border">
@@ -56,28 +56,27 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                         </div>
                     </div>
                 </a>
-            <? else :
-                ?>
-                <div class="grid-card <?= $aItem['backgroundColor'] ?> <?= $aItem['textColor'] ?>">
-                    <? if (!empty($aItem['linkLabel'])) : ?>
+            <?else :?>
+                <div class="grid-card <?= $aItem['backgroundColor']?> <?= $aItem['textColor']?>">
+                    <?if (!empty($aItem['linkLabel'])) :?>
                         <div class="grid-card__grow">
-                    <? endif; ?>
+                    <?endif;?>
                         <div class="grid-card__content">
-                            <? if (!empty($aItem['title'])) : ?>
-                                <div class="grid-card__title"><?= $aItem['title'] ?></div>
-                            <? endif; ?>
-                            <? if (!empty($aItem['description'])) : ?>
-                                <div class="grid-card__subtitle"><?= $aItem['description'] ?></div>
-                            <? endif; ?>
+                            <?if (!empty($aItem['title'])) :?>
+                                <div class="grid-card__title"><?= $aItem['title']?></div>
+                            <?endif;?>
+                            <?if (!empty($aItem['description'])) :?>
+                                <div class="grid-card__subtitle"><?= $aItem['description']?></div>
+                            <?endif;?>
                         </div>
-                    <? if (!empty($aItem['linkLabel'])) : ?>
+                    <?if (!empty($aItem['linkLabel'])) :?>
                         </div>
-                    <? endif; ?>
-                    <? if (!empty($aItem['link'])) : ?>
-                        <a class="grid-card__button" href="<?= $aItem['link'] ?>"><?= $aItem['linkLabel'] ?></a>
-                    <? endif; ?>
+                    <?endif;?>
+                    <?if (!empty($aItem['link'])) :?>
+                        <a class="grid-card__button" href="<?= $aItem['link']?>"><?= $aItem['linkLabel']?></a>
+                    <?endif;?>
                 </div>
-            <? endif; ?>
+            <?endif;?>
         </div>
-    <? endforeach; ?>
+    <?endforeach;?>
 </div>
