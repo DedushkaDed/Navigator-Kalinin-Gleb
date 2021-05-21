@@ -27,12 +27,8 @@ $aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_form_main');
                     <div class="form-wide">
                         <div class="form-wide__left-line"></div>
                         <div class="form-wide__text form-wide__text--vertical-md">
-                            <? if (!empty($aFeedbackForm['title'])) :?>
-                                <div class="form-wide__title"><?=$aFeedbackForm['title']?></div>
-                            <?php endif;?>
-                            <? if (!empty($aFeedbackForm['description'])) :?>
-                                <div class="form-wide__description"><?=$aFeedbackForm['description']?></div>
-                            <? endif;?>
+                            <div class="form-wide__title"><?=$aFeedbackForm['title'] ?? ''?></div>
+                            <div class="form-wide__description"><?=$aFeedbackForm['description'] ?? ''?></div>
                         </div>
                         <form class="form-wide__form js-form" action="/?ajaxAction=formExcursion"
                               data-name="wide-excursion">
