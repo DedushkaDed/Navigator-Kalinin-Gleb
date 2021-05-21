@@ -247,20 +247,23 @@ class Actions
         $this->setAjaxResponse(['status' => false]);
     }
     /**
-     *
+     * Отображение формы 'Дополнительные услуги'.
      *
      * @return void
      */
-    public function formAdditionalServicesAjaxAction($aData)
+    public function formAdditionalServicesAjaxAction()
     {
+//        $aData = AdditionalServices::getAdditionalServicesAll();
+
+        var_dump($this->oRequest['name']);
+        $iCallBackForm = FormsHandler::setAdditionalServices();
         if (!empty($iCallBackForm)) {
             $this->setAjaxResponse(['status' => true]);
-            var_dump($aData);
         }
         $this->setAjaxResponse(['status' => false]);
     }
     /**
-     * Отображение формы 'Дополнительные услуги'.
+     * Отображение слайдера 'Дополнительные услуги'.
      *
      * @return void
      */
@@ -269,7 +272,6 @@ class Actions
         $aServices = AdditionalServices::getAdditionalServicesAll();
         if (!empty($aServices)) {
             $this->setAjaxResponse($aServices);
-            $this->formAdditionalServicesAjaxAction($aServices);
         }
         $this->setAjaxResponse(['status' => false]);
     }

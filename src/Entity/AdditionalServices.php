@@ -24,7 +24,7 @@ class AdditionalServices
                         ],
                         [
                             'id' => 2,
-                            'name' => 'Услуги экскаватора-погрузчика',
+                            'name' => 'Какой-то рандом',
                             'description' => false,
                             'price' => '2 ₽/час + вызов 2000 ₽',
                             'unit' => 'ч.',
@@ -32,7 +32,7 @@ class AdditionalServices
                         ],
                         [
                             'id' => 3,
-                            'name' => 'Услуги экскаватора-погрузчика',
+                            'name' => 'Какой-то рандом3',
                             'description' => false,
                             'price' => '3 ₽/час + вызов 3000 ₽',
                             'unit' => 'ч.',

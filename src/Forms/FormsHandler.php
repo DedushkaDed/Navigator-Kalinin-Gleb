@@ -316,4 +316,32 @@ class FormsHandler
 
         return self::addIblockElement('portfolio_users', $aFields, $aProperties);
     }
+
+    /**
+     * Сохраняет данные пользователя в 'Отправить портфолио'.
+     *
+     * @param $sName
+     * @param $sPhone
+     * @param $aInputFile
+     *
+     * @return mixed
+     */
+    public static function setAdditionalServices()
+    {
+//        if (!isset($sName)) {
+//            return null;
+//        }
+
+//        $aFields = [
+//            'name' => $sName,
+//        ];
+//
+//        $aProperties = [
+//            'PHONE' => $oParsedPhone->format('RU'),
+//            'INPUT_FILE' => $aInputFile,
+//        ];
+
+//        return self::addIblockElement('portfolio_users', $aFields, $aProperties);
+        return ["random" => 123];
+    }
 }
