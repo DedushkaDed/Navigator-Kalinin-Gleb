@@ -219,21 +219,6 @@ class Actions
     }
 
     /**
-     * Отображение формы 'Дополнительные услуги'.
-     *
-     * @return void
-     */
-    public function getAdditionalServicesAjaxAction()
-    {
-        $aServices = AdditionalServices::getAdditionalServicesAll();
-
-        if (!empty($aServices)) {
-            $this->setAjaxResponse($aServices);
-        }
-        $this->setAjaxResponse(['status' => false]);
-    }
-
-    /**
      * Запись данных из формы 'Задайте вопрос обслуживающей компании!'.
      *
      * @return void
@@ -258,6 +243,33 @@ class Actions
 
         if (!empty($iCallBackForm)) {
             $this->setAjaxResponse(['status' => true]);
+        }
+        $this->setAjaxResponse(['status' => false]);
+    }
+    /**
+     *
+     *
+     * @return void
+     */
+    public function formAdditionalServicesAjaxAction($aData)
+    {
+        if (!empty($iCallBackForm)) {
+            $this->setAjaxResponse(['status' => true]);
+            var_dump($aData);
+        }
+        $this->setAjaxResponse(['status' => false]);
+    }
+    /**
+     * Отображение формы 'Дополнительные услуги'.
+     *
+     * @return void
+     */
+    public function getAdditionalServicesAjaxAction()
+    {
+        $aServices = AdditionalServices::getAdditionalServicesAll();
+        if (!empty($aServices)) {
+            $this->setAjaxResponse($aServices);
+            $this->formAdditionalServicesAjaxAction($aServices);
         }
         $this->setAjaxResponse(['status' => false]);
     }
