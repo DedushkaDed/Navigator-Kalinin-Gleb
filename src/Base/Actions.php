@@ -47,11 +47,11 @@ class Actions
 
         if (isset($this->oRequest["ajaxAction"])) {
             $this->sTypeAction = "AjaxAction";
-            $this->sAction     = $this->oRequest["ajaxAction"];
+            $this->sAction = $this->oRequest["ajaxAction"];
         }
         if (isset($this->oRequest["iqDevAction"])) {
             $this->sTypeAction = "Action";
-            $this->sAction     = $this->oRequest["iqDevAction"];
+            $this->sAction = $this->oRequest["iqDevAction"];
         }
         if (isset($this->sAction) && isset($this->sTypeAction)) {
             $sName = $this->sAction . $this->sTypeAction;
@@ -73,7 +73,7 @@ class Actions
             [
                 'method' => $methodName,
                 'response' => 'Такого метода API не существует',
-                'params' => $arguments
+                'params' => $arguments,
             ]
         );
     }
@@ -219,21 +219,6 @@ class Actions
     }
 
     /**
-     * Отображение формы 'Дополнительные услуги'.
-     *
-     * @return void
-     */
-    public function getAdditionalServicesAjaxAction()
-    {
-        $aServices = AdditionalServices::getAdditionalServicesAll();
-
-        if (!empty($aServices)) {
-            $this->setAjaxResponse($aServices);
-        }
-        $this->setAjaxResponse(['status' => false]);
-    }
-
-    /**
      * Запись данных из формы 'Задайте вопрос обслуживающей компании!'.
      *
      * @return void
@@ -247,10 +232,44 @@ class Actions
         $sQuestion = $this->oRequest['question'];
         $sVillageName = $this->oRequest['villageName'];
 
-        $iCallBackForm = FormsHandler::setFormQuestionInputCaptcha($sName,$sPhone,$sEmail,$iAreaNumber,$sQuestion,$sVillageName);
+        $iCallBackForm = FormsHandler::setFormQuestionInputCaptcha(
+            $sName,
+            $sPhone,
+            $sEmail,
+            $iAreaNumber,
+            $sQuestion,
+            $sVillageName
+        );
 
         if (!empty($iCallBackForm)) {
             $this->setAjaxResponse(['status' => true]);
+        }
+        $this->setAjaxResponse(['status' => false]);
+    }
+    /**
+     * Отображение формы 'Дополнительные услуги'.
+     *
+     * @return void
+     */
+    public function formAdditionalServicesAjaxAction()
+    {
+        $iCallBackForm = FormsHandler::setAdditionalServicesInputCaptcha();
+
+        if (!empty($iCallBackForm)) {
+            $this->setAjaxResponse(['status' => true]);
+        }
+        $this->setAjaxResponse(['status' => false]);
+    }
+    /**
+     * Отображение слайдера 'Дополнительные услуги'.
+     *
+     * @return void
+     */
+    public function getAdditionalServicesAjaxAction()
+    {
+        $aServices = AdditionalServices::getAdditionalServicesAll();
+        if (!empty($aServices)) {
+            $this->setAjaxResponse($aServices);
         }
         $this->setAjaxResponse(['status' => false]);
     }

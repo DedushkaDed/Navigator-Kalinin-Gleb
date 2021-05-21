@@ -1,5 +1,7 @@
-<?
-if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<?php
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
+    die();
+}
 
 if (empty($arResult['options'])) {
     return;
@@ -47,7 +49,8 @@ if (empty($arResult['options'])) {
             </div>
         </div>
         <div class="tabs__contents">
-            <div class="tabs__content js-tabs__content active" data-tab-content="<?=$arResult['options']['dataOffices'][0]['dataTab']?>">
+            <div class="tabs__content js-tabs__content active"
+                 data-tab-content="<?=$arResult['options']['dataOffices'][0]['dataTab']?>">
                 <div class="contacts-table-map__note">График приема посетилелей:
                     <b><?=$arResult['options']['dataOffices'][0]['timeMin']?> с<?=$arResult['options']['dataOffices'][0]['timeMax']?> до<?=$arResult['options']['dataOffices'][0]['dayReception']?></b>
                 </div>
