@@ -253,10 +253,8 @@ class Actions
      */
     public function formAdditionalServicesAjaxAction()
     {
-//        $aData = AdditionalServices::getAdditionalServicesAll();
+        $iCallBackForm = FormsHandler::setAdditionalServicesInputCaptcha();
 
-        var_dump($this->oRequest['name']);
-        $iCallBackForm = FormsHandler::setAdditionalServices();
         if (!empty($iCallBackForm)) {
             $this->setAjaxResponse(['status' => true]);
         }

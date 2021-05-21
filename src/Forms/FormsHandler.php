@@ -320,13 +320,9 @@ class FormsHandler
     /**
      * Сохраняет данные пользователя в 'Отправить портфолио'.
      *
-     * @param $sName
-     * @param $sPhone
-     * @param $aInputFile
-     *
-     * @return mixed
+     * @return array
      */
-    public static function setAdditionalServices()
+    public static function setAdditionalServicesInputCaptcha()
     {
 //        if (!isset($sName)) {
 //            return null;
