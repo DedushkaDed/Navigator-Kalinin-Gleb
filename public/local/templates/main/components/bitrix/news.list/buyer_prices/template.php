@@ -179,7 +179,9 @@ if (empty($arResult['mapCards'])) {
                 </div>
             </div>
             <div class="price-list__enumeration price-list__enumeration--gray">
-                <div class="price-list__enumeration-title"><?=$arResult['mapCards']['options']['priceListTitle'] ?? ''?></div>
+                <div class="price-list__enumeration-title">
+                    <?=$arResult['mapCards']['options']['priceListTitle'] ?? ''?>
+                </div>
                 <?if (!empty($arResult['mapCards']['options']['list'])) :?>
                     <ul class="price-list__list">
                         <?foreach ($arResult['mapCards']['options']['list'] as $aItem) :?>
