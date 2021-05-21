@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -34,7 +34,7 @@ if (empty($arResult['paymentCards'])) {
         </div>
     </div>
 </section>
-<?
+<?php
 $APPLICATION->IncludeComponent(
     "bitrix:news.list",
     "buyer_payment_work_stage",
