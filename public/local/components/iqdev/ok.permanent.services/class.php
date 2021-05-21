@@ -1,6 +1,6 @@
 <?php
 
-namespace IQDEV\Components;
+//namespace IQDEV\Components;
 
 class OkNewsList extends \CBitrixComponent
 {
