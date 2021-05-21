@@ -1,9 +1,7 @@
-<?
+<?php
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
-
-$aBuyerOptions = \IQDEV\Options\Options::getPageOptions('buyer_main_page');
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -23,30 +21,21 @@ if (empty($arResult['mapCards'])) {
 ?>
 <section class="section mt-medium mb-large">
     <div class="container">
-        <?if (!empty($aBuyerOptions['sectionHeader'])) :?>
-            <h1 class="section-header"><?=$aBuyerOptions['sectionHeader']?></h1>
-        <?endif;?>
+        <h1 class="section-header"><?=$arResult['options']['sectionHeader'] ?? ''?></h1>
         <div class="work-stage-container">
             <?foreach ($arResult['mapCards'] as $aItem) :?>
                 <div class="work-stage">
-                    <?if (!empty($aItem['indexItem'])) :?>
-                        <div class="work-stage__index"><?=$aItem['indexItem']?></div>
-                    <?endif;?>
+                    <div class="work-stage__index"><?=$aItem['indexItem'] ?? ''?></div>
                     <div class="work-stage__header">
                         <div class="work-stage__icon">
-                            <?if (!empty($aItem['icon'])) :?>
-                                <img src="<?=$aItem['icon']?>"/>
-                            <?endif;?>
+                            <img src="<?=$aItem['icon'] ?? ''?>"/>
                         </div>
                         <div class="work-stage__line"></div>
                     </div>
                     <div class="work-stage__text">
-                        <?if (!empty($aItem['title'])) :?>
-                            <div class="work-stage__title"><?=$aItem['title']?></div>
-                        <?endif;?>
-                        <div class="work-stage__description">Заполните
-                            <div class="js-modal-trigger" data-modal-id="callback">форму обратной связи.</div>
-                            Специалист нашей компании перезвонит вам.
+                        <div class="work-stage__title"><?=$aItem['title'] ?? ''?></div>
+                        <div class="work-stage__description">
+                            <?=$aItem['description'] ?? ''?>
                         </div>
                     </div>
                 </div>

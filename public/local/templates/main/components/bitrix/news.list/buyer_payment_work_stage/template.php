@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -25,19 +25,15 @@ if (empty($arResult['mapCards'])) {
             <?foreach ($arResult['mapCards'] as $aItem) :?>
                 <div class="work-stage">
                     <div class="work-stage__header">
-                        <div class="work-stage__icon">
-                            <?if (!empty($aItem['icon'])) :?>
+                        <?if (!empty($aItem['icon'])) :?>
+                            <div class="work-stage__icon">
                                 <img src="<?=$aItem['icon']?>"/>
-                            <?endif;?>
-                        </div>
+                            </div>
+                        <?endif;?>
                     </div>
                     <div class="work-stage__text">
-                        <?if (!empty($aItem['title'])) :?>
-                            <div class="work-stage__title"><?=$aItem['title']?></div>
-                        <?endif;?>
-                        <?if (!empty($aItem['description'])) :?>
-                            <div class="work-stage__description"><?=$aItem['description']?></div>
-                        <?endif;?>
+                        <div class="work-stage__title"><?=$aItem['title'] ?? ''?></div>
+                        <div class="work-stage__description"><?=$aItem['description'] ?? ''?></div>
                     </div>
                 </div>
             <?endforeach;?>

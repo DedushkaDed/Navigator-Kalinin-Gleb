@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -24,7 +24,7 @@ foreach ($arResult['ITEMS'] as $iKey => $aItem) {
     if ($iKey == 0) {
         $aCard['activeItem'] = 'accordion--active';
     }
-    if ($iKey % 2 == 0) {
+    if ($iKey % 2 !== 0) {
         $aCard['itemBackgroundColor'] = 'accordion--sand';
     }
 
