@@ -1,4 +1,4 @@
-<?
+<?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 \Bitrix\Main\Loader::includeModule('iqdev');
@@ -102,7 +102,7 @@ $APPLICATION->IncludeComponent(
         "PAGER_SHOW_ALL" => "N",
         "PAGER_SHOW_ALWAYS" => "N",
         "PAGER_TEMPLATE" => ".default",
-        "PROPERTY_CODE" => ["BACKGROUND_COLOR","ICON_SVG","ADDITIONAL_TEXT","BUTTON_TEXT"],
+        "PROPERTY_CODE" => ["BACKGROUND_COLOR", "ICON_SVG", "ADDITIONAL_TEXT", "BUTTON_TEXT"],
         "SET_BROWSER_TITLE" => "N",
         "SET_LAST_MODIFIED" => "N",
         "SET_META_DESCRIPTION" => "N",
