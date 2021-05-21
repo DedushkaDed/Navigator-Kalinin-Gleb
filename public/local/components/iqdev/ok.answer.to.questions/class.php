@@ -1,9 +1,8 @@
-<?
-if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
-    die();
-}
+<?php
 
-class OkAnswerToQuestions extends CBitrixComponent
+namespace IQDEV\Components;
+
+class OkAnswerToQuestions extends \CBitrixComponent
 {
     /**
      * Установка цвета у блока.

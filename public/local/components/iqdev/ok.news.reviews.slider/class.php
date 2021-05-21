@@ -1,7 +1,8 @@
-<?
-if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
-    die();
-}
+<?php
+
+namespace IQDEV\Components;
+
+namespace IQDEV\Components;
 
 class OkNewsReviewsSlider extends \CBitrixComponent {
     /**

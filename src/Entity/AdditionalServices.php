@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace IQDEV\Entity;
 
@@ -9,7 +9,6 @@ class AdditionalServices
      *
      * @return array
      */
-//    Fixme: Выводить инфу через ИБ? Статика.
     public static function getAdditionalServicesAll()
     {
         return
@@ -19,7 +18,7 @@ class AdditionalServices
                         [
                             'id' => 1,
                             'name' => 'Услуги экскаватора-погрузчика',
-                            'description' => '<p>JCB, 3CX, SSM</p><ul><li>планировка участка</li><li>разработка траншей и котлованов</li><li>погрузочно-разгрузочные работы</li><li>монтаж септика</li></ul><p>Расчет: время работы + проезд к месту проведения работ</p>',
+                            'description' => 'Описание услуги эскваватора',
                             'price' => '$priceInHour ₽/час + вызов $priceVizov ₽',
                             'unit' => 'ч.',
                             'cost' => ['fix' => 1001, 'item' => 1000],

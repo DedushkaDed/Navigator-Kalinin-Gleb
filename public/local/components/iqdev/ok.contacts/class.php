@@ -1,9 +1,8 @@
-<?
-if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
-    die();
-}
+<?php
 
-class OkContacts extends CBitrixComponent
+namespace IQDEV\Components;
+
+class OkContacts extends \CBitrixComponent
 {
     /**
      * Получение полей свойств из ИБ 'ok_contact_slider'

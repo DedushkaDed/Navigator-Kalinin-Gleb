@@ -1,9 +1,8 @@
-<?
-if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
-    die();
-}
+<?php
 
-class OkPermanentServices extends CBitrixComponent {
+namespace IQDEV\Components;
+
+class OkPermanentServices extends \CBitrixComponent {
     /**
      * Получение данных из ИБ 'work_stages'
      *
