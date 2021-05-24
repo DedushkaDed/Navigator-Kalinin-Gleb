@@ -1,6 +1,6 @@
 <?
 
-class pricesPlotsStaticText extends \CBitrixComponent {
+class pricesPlotsSlider extends \CBitrixComponent {
 
     /**
      * Выполнение компонента

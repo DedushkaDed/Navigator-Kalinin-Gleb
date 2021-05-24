@@ -11,7 +11,6 @@ $APPLICATION->IncludeComponent(
     'permanent.services',
     []
 );
-//          Ошибка
 $APPLICATION->IncludeComponent(
     'iqdev:ok.permanent.services',
     'cards',
@@ -31,7 +30,6 @@ $APPLICATION->IncludeComponent(
     'slider',
     []
 );
-//                  Ошибка
 $APPLICATION->IncludeComponent(
     'iqdev:ok.work.stages',
     'workstage',

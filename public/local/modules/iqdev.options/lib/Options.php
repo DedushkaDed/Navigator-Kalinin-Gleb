@@ -119,6 +119,27 @@ class Options
                 'На что стоит обратить внимание при выборе коттеджного поселка в Тюмени?'
             ],
         ],
+        'special-offer' => [
+            [
+                'specialOfferText',
+                'Текст в блоке',
+                ['text', 50],
+                'Как показывает опыт нашей компании, с каждым годом возрастает количество людей,
+                    желающих построить собственный дом.
+                    <br>
+                    <br>
+                    Это говорит о том, что все больше людей стремятся жить на природе, дышать свежим воздухом, растить здоровых детей и получать наслаждение от гармоничной и спокойной жизни за городом.
+                    <br>
+                    <br>
+                    Оставьте свои контакты и эксперт по недвижимости бесплатно проконсультирует вас по выгодным вариантам инвестирования капитала.',
+            ],
+            [
+                'specialOfferImage',
+                'Изображение в "Специальное предложение"',
+                ['text', 50],
+                'http://placehold.it/1200x486',
+            ],
+        ],
         'jobs_page' => [
             [
                 'titleText',
@@ -355,8 +376,8 @@ class Options
             ['facebook', 'facebook', ['text', 50], 'https://www.facebook.com/navigator72/'],
         ],
         'captcha' => [
-            ['recaptchaKey', 'Ключ', ['text', 50], '6LfgCLIUAAAAAEkT6vPtrk_f0LuVYv0vRLKPPxCW'],
-            ['recaptchaPrivateKey', 'Приватный ключ', ['text', 50], '6LdBubIUAAAAADf7WbaZuuJGD8JPb5wgK8wXT4Z4'],
+            ['recaptchaKey', 'Ключ', ['text', 50], '6LfD5MYaAAAAAHqjw6hL0jEDF8sGe_wZKMsXXmZx'],
+            ['recaptchaPrivateKey', 'Приватный ключ', ['text', 50], '6LfD5MYaAAAAACzQFUi3yESYcP4ye05r3DRhHPHw'],
         ],
         'mailer' => [
             ['smtpHost', 'Хост', ['text', 50], 'smtp.yandex.ru'],
@@ -408,6 +429,12 @@ class Options
             "TITLE" => 'Выбор участка'
         ],
         ["DIV" => "404_page", "TAB" => 'Страница 404', "ICON" => "perfmon_settings", "TITLE" => 'Страница 404'],
+        [
+            "DIV" => "special-offer",
+            "TAB" => 'Специальное предложение',
+            "ICON" => "perfmon_settings",
+            "TITLE" => 'Специальное предложение',
+        ],
         ["DIV" => "footer", "TAB" => 'Подвал сайта', "ICON" => "perfmon_settings", "TITLE" => 'Подвал сайта'],
         [
             "DIV" => "headerNumber",

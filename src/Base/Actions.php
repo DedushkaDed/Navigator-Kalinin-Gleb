@@ -273,4 +273,33 @@ class Actions
         }
         $this->setAjaxResponse(['status' => false]);
     }
+
+    /**
+     * Модальная форма 'Инвестировать в землю'.
+     *
+     * @return void
+     */
+    public function formInvestmentAjaxAction()
+    {
+//        var_dump($this->oRequest['name']);
+//        $iCallBackForm = FormsHandler::();
+
+//        if (!empty($iCallBackForm)) {
+//            $this-$this->setAjaxResponse(['status' => true]);
+//        }
+//        $this->setAjaxResponse(['status' => false]);
+    }
+
+    /**
+     * Слайдер с участками 'Цены на земельные участки'.
+     *
+     */
+    public function getFiltersAjaxAction()
+    {
+        $randomForm = FormsHandler::getFiltersData();
+        if ($randomForm) {
+            return $randomForm;
+        }
+        return null;
+    }
 }
