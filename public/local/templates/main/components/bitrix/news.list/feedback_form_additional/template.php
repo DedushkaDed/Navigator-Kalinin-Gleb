@@ -25,7 +25,7 @@ $aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_questions');
             <div class="container">
                 <form class="feedback js-form" action="/?ajaxAction=formQuestion" data-name="question">
                     <div class="feedback__wrapper">
-                        <h2 class="feedback__title"><?=$aFeedbackForm['title'] ?? ''?></h2>
+                        <h2 class="feedback__title">Появились вопросы?</h2>
                             <p class="feedback__subtitle"><?=$aFeedbackForm['description'] ?? ''?></p>
                     </div>
                     <div class="feedback__wrapper">

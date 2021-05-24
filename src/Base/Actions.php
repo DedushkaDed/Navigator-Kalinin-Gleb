@@ -159,10 +159,7 @@ class Actions
 
         $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($sName, $sPhone);
 
-        if ($oCallbackForm) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $oCallbackForm]);
     }
 
     /**
@@ -177,10 +174,7 @@ class Actions
 
         $oCallbackForm = FormsHandler::setExcursionInputCaptcha($sName, $sPhone);
 
-        if ($oCallbackForm) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $oCallbackForm]);
     }
 
     /**
@@ -193,10 +187,7 @@ class Actions
         $sEmail = $this->oRequest['email'];
         $oCallbackForm = FormsHandler::setEmailSubscribeInputCaptcha($sEmail);
 
-        if ($oCallbackForm) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $oCallbackForm]);
     }
 
     /**
@@ -212,10 +203,7 @@ class Actions
 
         $iCallbackForm = FormsHandler::setResumeInputCaptcha($sName, $sPhone, $aInputFile);
 
-        if ($iCallbackForm) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $iCallbackForm]);
     }
 
     /**
@@ -231,9 +219,6 @@ class Actions
 
         $iCallbackForm = FormsHandler::setPortfolioInputCaptcha($sName, $sPhone, $aInputFile);
 
-        if ($iCallbackForm) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $iCallbackForm]);
     }
 }

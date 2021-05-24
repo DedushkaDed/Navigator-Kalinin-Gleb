@@ -52,7 +52,7 @@ class FormsHandler
         $aFields = [
             'IBLOCK_ID' => $iblockId,
             'NAME' => $aIblockFields['name'],
-            'CODE' => $aIblockFields['name'],
+            'CODE' => \CUtil::translit($aIblockFields['name'], 'ru').time(),
             'PROPERTY_VALUES' => $aIblockProperties,
         ];
 
@@ -60,11 +60,35 @@ class FormsHandler
     }
 
     /**
+     * Добавляет данные в Highload блок
+     *
+     * @param $sHLBlockCode
+     * @param $aProperties
+     *
+     * @return mixed
+     */
+    public static function addHlBlockElement($sHLBlockCode, $aProperties)
+    {
+        \Bitrix\Main\Loader::includeModule("highloadblock");
+
+        $sHLBlock = \Bitrix\Highloadblock\HighloadBlockTable::getList([
+            'filter' => ['NAME' => $sHLBlockCode]
+        ])->fetch();
+
+        $sHLClassName = (\Bitrix\Highloadblock\HighloadBlockTable::compileEntity($sHLBlock))->getDataClass();
+
+        if (!empty($aProperties)) {
+            return $sHLClassName::add($aProperties);
+        }
+        return null;
+    }
+
+    /**
      * Отправляет портфолио на почту
      *
      * @param $aData
      *
-     * @return mixed
+     * @return array
      */
     public static function sendTenderPortfolioCaptcha($aData)
     {
@@ -197,17 +221,14 @@ class FormsHandler
      */
     public static function setEmailSubscribeInputCaptcha($sEmail)
     {
-        if (!isset($sEmail)) {
+        if (!filter_var($sEmail, FILTER_VALIDATE_EMAIL)) {
             return null;
         }
-
-        $aFields = [
-            'name' => $sEmail,
+        $aProperties = [
+            'UF_EMAIL' => $sEmail,
+            'UF_DATE' => date("d.m.Y"),
         ];
-
-        $aProperties = [];
-
-        return self::addIblockElement('email_mailing', $aFields, $aProperties);
+        return self::addHlBlockElement('email', $aProperties);
     }
 
     /**
