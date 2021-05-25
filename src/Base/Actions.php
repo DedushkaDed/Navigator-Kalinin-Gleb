@@ -298,7 +298,7 @@ class Actions
     {
         $randomForm = FormsHandler::getFiltersData();
         if ($randomForm) {
-            return $randomForm;
+            $this->setAjaxResponse($randomForm);
         }
         return null;
     }
