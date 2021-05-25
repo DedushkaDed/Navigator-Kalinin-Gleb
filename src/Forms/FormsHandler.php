@@ -3,6 +3,7 @@
 namespace IQDEV\Forms;
 
 use Bitrix\Main\PhoneNumber\Parser;
+use IQDEV\Base\HighLoadBlockManager;
 
 class FormsHandler
 {
@@ -224,11 +225,13 @@ class FormsHandler
         if (!filter_var($sEmail, FILTER_VALIDATE_EMAIL)) {
             return null;
         }
-        $aProperties = [
+
+        $class = HighLoadBlockManager::getDataManager('email');
+
+        return $class::add([
             'UF_EMAIL' => $sEmail,
             'UF_DATE' => date("d.m.Y"),
-        ];
-        return self::addHlBlockElement('email', $aProperties);
+        ])->isSuccess();
     }
 
     /**
