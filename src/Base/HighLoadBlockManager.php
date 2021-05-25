@@ -8,6 +8,7 @@ use Bitrix\Highloadblock\HighloadBlockTable;
 
 /**
  * Class HighLoadBlockManager
+
  * @package IQDEV\Base
  *
  * Менеджер для HighLoadBlock
@@ -41,6 +42,8 @@ class HighLoadBlockManager
 
     /**
      * Инициализация HL
+     *
+     * @return void
      * @throws \Bitrix\Main\LoaderException
      */
     protected static function init()
@@ -55,6 +58,8 @@ class HighLoadBlockManager
      * Скомпилирует сущность HL
      *
      * @param $code
+     *
+     * @return void
      * @throws \Bitrix\Main\SystemException
      */
     private static function compile($code)
@@ -72,6 +77,7 @@ class HighLoadBlockManager
      * Вернет HL по коду
      *
      * @param string $code
+     *
      * @return array|null
      */
     private static function getHlBlock($code)

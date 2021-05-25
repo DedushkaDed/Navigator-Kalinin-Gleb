@@ -73,7 +73,7 @@ class Actions
             [
                 'method' => $methodName,
                 'response' => 'Такого метода API не существует',
-                'params' => $arguments,
+                'params' => $arguments
             ]
         );
     }
@@ -160,10 +160,7 @@ class Actions
 
         $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($sName, $sPhone);
 
-        if ($oCallbackForm) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $oCallbackForm]);
     }
 
     /**
@@ -178,10 +175,7 @@ class Actions
 
         $oCallbackForm = FormsHandler::setExcursionInputCaptcha($sName, $sPhone);
 
-        if ($oCallbackForm) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $oCallbackForm]);
     }
 
     /**
@@ -194,10 +188,7 @@ class Actions
         $sEmail = $this->oRequest['email'];
         $oCallbackForm = FormsHandler::setEmailSubscribeInputCaptcha($sEmail);
 
-        if ($oCallbackForm) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $oCallbackForm]);
     }
 
     /**
@@ -209,13 +200,11 @@ class Actions
     {
         $sName = $this->oRequest['name'];
         $sPhone = $this->oRequest['phone'];
-        $oInputFile = $this->oRequest['file'];
-        $iCallbackForm = FormsHandler::setResumeInputCaptcha($sName, $sPhone, $oInputFile);
+        $aInputFile = $_FILES['file'];
 
-        if ($iCallbackForm) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $iCallbackForm = FormsHandler::setResumeInputCaptcha($sName, $sPhone, $aInputFile);
+
+        $this->setAjaxResponse(['status' => (bool) $iCallbackForm]);
     }
 
     /**

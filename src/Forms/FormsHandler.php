@@ -3,6 +3,7 @@
 namespace IQDEV\Forms;
 
 use Bitrix\Main\PhoneNumber\Parser;
+use IQDEV\Base\HighLoadBlockManager;
 
 class FormsHandler
 {
@@ -52,7 +53,7 @@ class FormsHandler
         $aFields = [
             'IBLOCK_ID' => $iblockId,
             'NAME' => $aIblockFields['name'],
-            'CODE' => $aIblockFields['name'],
+            'CODE' => \CUtil::translit($aIblockFields['name'], 'ru').time(),
             'PROPERTY_VALUES' => $aIblockProperties,
         ];
 
@@ -60,11 +61,35 @@ class FormsHandler
     }
 
     /**
+     * Добавляет данные в Highload блок
+     *
+     * @param $sHLBlockCode
+     * @param $aProperties
+     *
+     * @return mixed
+     */
+    public static function addHlBlockElement($sHLBlockCode, $aProperties)
+    {
+        \Bitrix\Main\Loader::includeModule("highloadblock");
+
+        $sHLBlock = \Bitrix\Highloadblock\HighloadBlockTable::getList([
+            'filter' => ['NAME' => $sHLBlockCode]
+        ])->fetch();
+
+        $sHLClassName = (\Bitrix\Highloadblock\HighloadBlockTable::compileEntity($sHLBlock))->getDataClass();
+
+        if (!empty($aProperties)) {
+            return $sHLClassName::add($aProperties);
+        }
+        return null;
+    }
+
+    /**
      * Отправляет портфолио на почту
      *
      * @param $aData
      *
-     * @return mixed
+     * @return array
      */
     public static function sendTenderPortfolioCaptcha($aData)
     {
@@ -197,17 +222,16 @@ class FormsHandler
      */
     public static function setEmailSubscribeInputCaptcha($sEmail)
     {
-        if (!isset($sEmail)) {
+        if (!filter_var($sEmail, FILTER_VALIDATE_EMAIL)) {
             return null;
         }
 
-        $aFields = [
-            'name' => $sEmail,
-        ];
+        $class = HighLoadBlockManager::getDataManager('email');
 
-        $aProperties = [];
-
-        return self::addIblockElement('email_mailing', $aFields, $aProperties);
+        return $class::add([
+            'UF_EMAIL' => $sEmail,
+            'UF_DATE' => date("d.m.Y"),
+        ])->isSuccess();
     }
 
     /**
