@@ -368,33 +368,22 @@ class FormsHandler
     /**
      * Данные из highload блока 'Участки'.
      *
-     * @param $iMinCost
-     * @param $iMaxCost
-     * @param $fMinArea
-     * @param $fMaxArea
-     * @param $sSortType
+     * @param $aInputData
      *
      */
-    public static function getFiltersData($iMinCost, $iMaxCost, $fMinArea, $fMaxArea, $sSortType = null) {
+    public static function getContentData($aInputData) {
         $cPlots = \IQDEV\Base\HighLoadBlockManager::getDataManager('Plots');
 
-        if (empty($iMinCost) || empty($iMaxCost) || empty($fMinArea) || empty($fMaxArea)) {
-            $iMinCost = 381290;
-            $iMaxCost = 1957100;
-            $fMinArea = 5.1900000000000004;
-            $fMaxArea = 16.23;
-        }
+        $iMinCost = $aInputData['minCost'];
+        $iMaxCost = $aInputData['maxCost'];
+        $fMinArea = $aInputData['minArea'];
+        $fMaxArea = $aInputData['maxArea'];
+        $sSortType = $aInputData['sortType'];
 
-//        $sSortType; // key(+-)
-//        [
-//            'key' => '+',
-//            'key1' => '-',
-//        ];
+        $aFilters = self::getFilters($aInputData);
+//        var_dump($aFilters);
 
-
-        $aDataHL = $cPlots::getList(['limit' => 3])->fetchAll();
-
-        $aFilters = [
+        $aFiltersTest = [
             'villageName' => [
                 [
                     'id' => 152,
@@ -495,6 +484,57 @@ class FormsHandler
             ],
         ];
 
+        if (empty($iMinCost) || empty($iMaxCost) || empty($fMinArea) || empty($fMaxArea)) {
+            $iMinCost = 381290;
+            $iMaxCost = 1957100;
+            $fMinArea = 5.1900000000000004;
+            $fMaxArea = 16.23;
+            $sSortType = 'price-';
+        }
+
+        $aSortCards = [
+            'price+' => [
+                'UF_PRICE' => 'ASC',
+            ],
+            'price-' => [
+                'UF_PRICE' => 'DESC',
+            ],
+            'area+' => [
+                'UF_SQUARE' => 'ASC',
+            ],
+            'area-' => [
+                'UF_SQUARE' => 'DESC',
+            ],
+            'priceIn100+' => [
+                'UF_100_PRICE' => 'ASC',
+            ],
+            'priceIn100-' => [
+                'UF_100_PRICE' => 'DESC',
+            ],
+            'sale+' => [
+                'UF_SALE_PRICE' => 'ASC',
+            ],
+            'sale-' => [
+                'UF_SALE_PRICE' => 'DESC',
+            ],
+        ];
+
+        $sSortFilter = null;
+        $sSortLabel = null;
+        if ($aSortCards[$sSortType]) {
+//            Получаем ключ: area, price, ....
+            $sSortLabel = key($aSortCards[$sSortType]);
+//            Фильтр для ORM, 'DESC' ...
+            $sSortFilter = current($aSortCards[$sSortType]);
+        }
+
+        $aDataHL = $cPlots::getList([
+            'limit' => 100,
+            'order' => [$sSortLabel => $sSortFilter],
+
+        ])->fetchAll();
+
+
         $iCount = 0;
         $iTotalCount = 0;
 
@@ -502,8 +542,8 @@ class FormsHandler
         foreach ($aDataHL as $aItemHL) {
             $aCardItem = [];
 
-            $iPriceIn100 = $aItemHL['UF_PRICE'];
-            $iAreaIn100 = $aItemHL['UF_SQUARE'];
+            $iPriceIn100 = $aItemHL['UF_100_PRICE'];
+            $iAreaIn100 = floatval($aItemHL['UF_SQUARE']);
 
             $aIbVillages = \CIBlockElement::GetByID($aItemHL['UF_PROJECT'])->GetNext();
 
@@ -517,10 +557,10 @@ class FormsHandler
             $aCardItem['description'] = 'Стоимость при 100% оплате,';
             $aCardItem['districtName'] = $sVillageName;
             $aCardItem['houseNum'] = $aItemHL['UF_NUMBER'];
-            $aCardItem['id'] = $aItemHL['ID'];
+            $aCardItem['id'] = intval($aItemHL['ID']);
             $aCardItem['price'] = intval($iPriceIn100 * $iAreaIn100);
-            $aCardItem['priceIn100'] = $aItemHL['UF_PRICE'];
-            $aCardItem['priceIn100WithSale'] = $aItemHL['UF_SALE_PRICE'];
+            $aCardItem['priceIn100'] = intval($aItemHL['UF_100_PRICE']);
+            $aCardItem['priceIn100WithSale'] = intval($aItemHL['UF_SALE_PRICE']);
 
             if (
                 $aCardItem['areaIn100'] > $fMinArea
@@ -554,5 +594,54 @@ class FormsHandler
         $aResult['results'] = $aCardItems;
 
         return $aResult;
+    }
+
+    public static function getFilters($aInputData) {
+        $aFilters = [];
+        if (!empty($aInputData['locationQuery']))
+        {
+            $aLocationFilters = [];
+            foreach ($aInputData['locationQuery'] as $aItem) {
+                $aCard = [];
+                $aCard['id'] = $aItem;
+
+                $aLocationFilters[] = $aCard;
+            }
+            $aFilters['locationQuery'] = $aLocationFilters;
+        }
+        if (!empty($aInputData['communicationsQuery']))
+        {
+            $aCommunicationFilters = [];
+            foreach ($aInputData['communicationsQuery'] as $aItem) {
+                $aCard = [];
+                $aCard['id'] = $aItem;
+
+                $aCommunicationFilters[] = $aCard;
+            }
+            $aFilters['communicationsQuery'] = $aCommunicationFilters;
+        }
+        if (!empty($aInputData['infrastructureQuery']))
+        {
+            $aInfrastructureFilters = [];
+            foreach ($aInputData['infrastructureQuery'] as $aItem) {
+                $aCard = [];
+                $aCard['id'] = $aItem;
+
+                $aInfrastructureFilters[] = $aCard;
+            }
+            $aFilters['infrastructureQuery'] = $aInfrastructureFilters;
+        }
+        if (!empty($aInputData['villageNameQuery']))
+        {
+            $aVillageNameFilters = [];
+            foreach ($aInputData['villageNameQuery'] as $aItem) {
+                $aCard = [];
+                $aCard['id'] = $aItem;
+
+                $aVillageNameFilters[] = $aCard;
+            }
+            $aFilters['villageNameQuery'] = $aVillageNameFilters;
+        }
+        return $aFilters;
     }
 }

@@ -285,14 +285,10 @@ class Actions
      */
     public function getFiltersAjaxAction()
     {
-        $iMinCost = $this->oRequest['minCost'];
-        $iMaxCost = $this->oRequest['maxCost'];
-        $fMinArea = $this->oRequest['minArea'];
-        $fMaxArea = $this->oRequest['maxArea'];
-        $sSortType = $this->oRequest['sortType'];
 
-        $aFiltersData = FormsHandler::getFiltersData($iMinCost, $iMaxCost, $fMinArea, $fMaxArea, $sSortType);
+        $aInputData = $this->oRequest;
+        $aFiltersData = FormsHandler::getContentData($aInputData);
 
-        $this->setAjaxResponse(['status' => (bool) $aFiltersData]);
+        $this->setAjaxResponse($aFiltersData);
     }
 }
