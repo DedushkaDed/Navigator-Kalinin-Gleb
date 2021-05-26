@@ -2,6 +2,9 @@
 
 namespace IQDEV\Forms;
 
+use Bitrix\Main\PhoneNumber\Parser;
+use IQDEV\Base\HighLoadBlockManager;
+
 class FormsHandler
 {
     /**
@@ -50,20 +53,20 @@ class FormsHandler
         $aFields = [
             'IBLOCK_ID' => $iblockId,
             'NAME' => $aIblockFields['name'],
+            'CODE' => \CUtil::translit($aIblockFields['name'], 'ru').time(),
             'PROPERTY_VALUES' => $aIblockProperties,
         ];
 
-        $iItemId = $oEl->Add($aFields);
-
-        return $iItemId;
+        return $oEl->Add($aFields);
     }
+
 
     /**
      * Отправляет портфолио на почту
      *
      * @param $aData
      *
-     * @return mixed
+     * @return array
      */
     public static function sendTenderPortfolioCaptcha($aData)
     {
@@ -133,5 +136,136 @@ class FormsHandler
         }
 
         return $arResult;
+    }
+
+    /**
+     * Сохраняет имя и номер телефона пользователя в форме 'Появились вопросы'.
+     *
+     * @param $sName
+     * @param $sPhone
+     *
+     * @return mixed
+     */
+    public static function setFeedbackInputCaptcha($sName, $sPhone)
+    {
+        $oParsedPhone = Parser::getInstance()->parse($sPhone);
+
+        if (!isset($sName) || $oParsedPhone->isValid() === false) {
+            return null;
+        }
+
+        $aFields = [
+            'name' => $sName,
+        ];
+        $aProperties = [
+            'PHONE' => $oParsedPhone->format('RU'),
+        ];
+
+        return self::addIblockElement('questions', $aFields, $aProperties);
+    }
+
+    /**
+     * Сохраняет имя и номер телефона пользователя в форме 'Экскурсия по загородной жизни'.
+     *
+     * @param $sName
+     * @param $sPhone
+     *
+     * @return mixed
+     */
+    public static function setExcursionInputCaptcha($sName, $sPhone)
+    {
+        $oParsedPhone = Parser::getInstance()->parse($sPhone);
+
+        if (!isset($sName) || $oParsedPhone->isValid() === false) {
+            return null;
+        }
+
+        $aFields = [
+            'name' => $sName,
+        ];
+        $aProperties = [
+            'PHONE' => $oParsedPhone->format('RU'),
+        ];
+
+        return self::addIblockElement('excursion_mailing', $aFields, $aProperties);
+    }
+
+    /**
+     * Сохраняет E-mail пользователя, который подписался на рассылку.
+     *
+     * @param $sEmail
+     *
+     * @return mixed
+     */
+    public static function setEmailSubscribeInputCaptcha($sEmail)
+    {
+        if (!filter_var($sEmail, FILTER_VALIDATE_EMAIL)) {
+            return null;
+        }
+
+        $cHlTable = HighLoadBlockManager::getDataManager('email');
+
+        return $cHlTable::add([
+            'UF_EMAIL' => $sEmail,
+            'UF_DATE' => date("d.m.Y"),
+        ])->isSuccess();
+    }
+
+    /**
+     * Сохраняет данные пользователя в 'Отправить резюме'.
+     *
+     * @param $sName
+     * @param $sPhone
+     * @param $aInputFile
+     *
+     * @return mixed
+     */
+    public static function setResumeInputCaptcha($sName, $sPhone, $aInputFile)
+    {
+        $oParsedPhone = Parser::getInstance()->parse($sPhone);
+
+        if (!isset($sName) || !isset($aInputFile) || $oParsedPhone->isValid() === false) {
+            return null;
+        }
+
+        $aFields = [
+            'name' => $sName,
+        ];
+
+        $aProperties = [
+            'PHONE' => $oParsedPhone->format('RU'),
+            'INPUT_FILE' => $aInputFile,
+        ];
+
+        return self::addIblockElement('resume_from_users', $aFields, $aProperties);
+    }
+
+    /**
+     * Сохраняет данные пользователя в 'Отправить портфолио'.
+     *
+     * @param $sName
+     * @param $sPhone
+     * @param $aInputFile
+     *
+     * @return mixed
+     */
+    public static function setPortfolioInputCaptcha($sName, $sPhone, $aInputFile)
+    {
+        $oParsedPhone = Parser::getInstance()->parse($sPhone);
+
+        if (!isset($sName) || !isset($aInputFile) || $oParsedPhone->isValid() === false) {
+            return null;
+        }
+
+        $aFields = [
+            'name' => $sName,
+        ];
+
+        $aProperties = [
+            'PHONE' => $oParsedPhone->format('RU'),
+            'INPUT_FILE' => $aInputFile,
+        ];
+
+        return self::addIblockElement('portfolio_users', $aFields, $aProperties);
     }
 }

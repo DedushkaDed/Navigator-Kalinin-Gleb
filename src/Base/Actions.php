@@ -3,6 +3,7 @@
 namespace IQDEV\Base;
 
 use IQDEV\Entity\Office;
+use IQDEV\Forms\FormsHandler;
 
 class Actions
 {
@@ -134,6 +135,7 @@ class Actions
     {
         $this->setAjaxResponse($this->oRequest);
     }
+
     /**
      * Получение координат офисов yandexMap
      *
@@ -143,5 +145,80 @@ class Actions
     {
         $coords = Office::getCordsAll();
         $this->setAjaxResponse($coords);
+    }
+
+    /**
+     * Запись данных из формы 'Появились вопросы?' в ИБ.
+     *
+     * @return void
+     */
+    public function formQuestionAjaxAction()
+    {
+        $sName = $this->oRequest['name'];
+        $sPhone = $this->oRequest['phone'];
+
+        $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($sName, $sPhone);
+
+        $this->setAjaxResponse(['status' => (bool) $oCallbackForm]);
+    }
+
+    /**
+     * Запись данных из формы 'Экскурсия по загородной жизни' в ИБ.
+     *
+     * @return void
+     */
+    public function formExcursionAjaxAction()
+    {
+        $sName = $this->oRequest['name'];
+        $sPhone = $this->oRequest['phone'];
+
+        $oCallbackForm = FormsHandler::setExcursionInputCaptcha($sName, $sPhone);
+
+        $this->setAjaxResponse(['status' => (bool) $oCallbackForm]);
+    }
+
+    /**
+     * Запись данных из формы 'Подписывайтесь на новости и акции' в ИБ.
+     *
+     * @return void
+     */
+    public function formSubscribeAjaxAction()
+    {
+        $sEmail = $this->oRequest['email'];
+        $oCallbackForm = FormsHandler::setEmailSubscribeInputCaptcha($sEmail);
+
+        $this->setAjaxResponse(['status' => (bool) $oCallbackForm]);
+    }
+
+    /**
+     * Запись данных из формы 'Отправить резюме' в ИБ.
+     *
+     * @return void
+     */
+    public function formResumeAjaxAction()
+    {
+        $sName = $this->oRequest['name'];
+        $sPhone = $this->oRequest['phone'];
+        $aInputFile = $_FILES['file'];
+
+        $iCallbackForm = FormsHandler::setResumeInputCaptcha($sName, $sPhone, $aInputFile);
+
+        $this->setAjaxResponse(['status' => (bool) $iCallbackForm]);
+    }
+
+    /**
+     * Запись данных из формы 'Отправить портфолио' в ИБ.
+     *
+     * @return void
+     */
+    public function formPortfolioAjaxAction()
+    {
+        $sName = $this->oRequest['name'];
+        $sPhone = $this->oRequest['phone'];
+        $aInputFile = $_FILES['file'];
+
+        $iCallbackForm = FormsHandler::setPortfolioInputCaptcha($sName, $sPhone, $aInputFile);
+
+        $this->setAjaxResponse(['status' => (bool) $iCallbackForm]);
     }
 }
