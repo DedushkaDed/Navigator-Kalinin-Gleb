@@ -60,29 +60,6 @@ class FormsHandler
         return $oEl->Add($aFields);
     }
 
-    /**
-     * Добавляет данные в Highload блок
-     *
-     * @param $sHLBlockCode
-     * @param $aProperties
-     *
-     * @return mixed
-     */
-    public static function addHlBlockElement($sHLBlockCode, $aProperties)
-    {
-        \Bitrix\Main\Loader::includeModule("highloadblock");
-
-        $sHLBlock = \Bitrix\Highloadblock\HighloadBlockTable::getList([
-            'filter' => ['NAME' => $sHLBlockCode]
-        ])->fetch();
-
-        $sHLClassName = (\Bitrix\Highloadblock\HighloadBlockTable::compileEntity($sHLBlock))->getDataClass();
-
-        if (!empty($aProperties)) {
-            return $sHLClassName::add($aProperties);
-        }
-        return null;
-    }
 
     /**
      * Отправляет портфолио на почту
