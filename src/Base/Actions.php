@@ -73,7 +73,7 @@ class Actions
             [
                 'method' => $methodName,
                 'response' => 'Такого метода API не существует',
-                'params' => $arguments,
+                'params' => $arguments
             ]
         );
     }
@@ -160,10 +160,7 @@ class Actions
 
         $oCallbackForm = FormsHandler::setFeedbackInputCaptcha($sName, $sPhone);
 
-        if ($oCallbackForm) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $oCallbackForm]);
     }
 
     /**
@@ -178,10 +175,7 @@ class Actions
 
         $oCallbackForm = FormsHandler::setExcursionInputCaptcha($sName, $sPhone);
 
-        if ($oCallbackForm) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $oCallbackForm]);
     }
 
     /**
@@ -194,10 +188,7 @@ class Actions
         $sEmail = $this->oRequest['email'];
         $oCallbackForm = FormsHandler::setEmailSubscribeInputCaptcha($sEmail);
 
-        if ($oCallbackForm) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $oCallbackForm]);
     }
 
     /**
@@ -212,10 +203,7 @@ class Actions
         $oInputFile = $this->oRequest['file'];
         $iCallbackForm = FormsHandler::setResumeInputCaptcha($sName, $sPhone, $oInputFile);
 
-        if ($iCallbackForm) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $iCallbackForm]);
     }
 
     /**
@@ -241,10 +229,7 @@ class Actions
             $sVillageName
         );
 
-        if (!empty($iCallBackForm)) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $iCallBackForm]);
     }
     /**
      * Отображение формы 'Дополнительные услуги'.
@@ -254,11 +239,7 @@ class Actions
     public function formAdditionalServicesAjaxAction()
     {
         $iCallBackForm = FormsHandler::setAdditionalServicesInputCaptcha();
-
-        if (!empty($iCallBackForm)) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->$this->setAjaxResponse(['status' => (bool) $iCallBackForm]);
     }
     /**
      * Отображение слайдера 'Дополнительные услуги'.
@@ -268,9 +249,6 @@ class Actions
     public function getAdditionalServicesAjaxAction()
     {
         $aServices = AdditionalServices::getAdditionalServicesAll();
-        if (!empty($aServices)) {
-            $this->setAjaxResponse($aServices);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $aServices]);
     }
 }

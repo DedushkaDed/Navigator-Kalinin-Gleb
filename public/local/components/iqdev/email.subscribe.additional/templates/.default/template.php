@@ -1,32 +1,17 @@
 <?php
+
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
-
-/** @var array $arParams */
-/** @var array $arResult */
-/** @global CMain $APPLICATION */
-/** @global CUser $USER */
-/** @global CDatabase $DB */
-/** @var CBitrixComponentTemplate $this */
-/** @var string $templateName */
-/** @var string $templateFile */
-/** @var string $templateFolder */
-/** @var string $componentPath */
-/** @var CBitrixComponent $component */
-
-$aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_questions');
-
 ?>
-
 <section class="section mb-large">
     <div class="container-large">
         <div class="feedback__container">
             <div class="container">
                 <form class="feedback js-form" action="/?ajaxAction=formQuestion" data-name="question">
                     <div class="feedback__wrapper">
-                        <h2 class="feedback__title"><?=$aFeedbackForm['title'] ?? ''?></h2>
-                            <p class="feedback__subtitle"><?=$aFeedbackForm['description'] ?? ''?></p>
+                        <h2 class="feedback__title">Появились вопросы?</h2>
+                        <p class="feedback__subtitle">Оставьте свой телефон и мы свяжемся с вами</p>
                     </div>
                     <div class="feedback__wrapper">
                         <div class="feedback__form">
