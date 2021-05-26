@@ -308,6 +308,7 @@ $APPLICATION->IncludeComponent(
         "SET_META_KEYWORDS" => "N",
         "SET_STATUS_404" => "N",
         "SET_TITLE" => "N",
+        "SHOW_404" => "N",
         "SORT_BY1" => "ACTIVE_FROM",
         "SORT_BY2" => "SORT",
         "SORT_ORDER1" => "DESC",

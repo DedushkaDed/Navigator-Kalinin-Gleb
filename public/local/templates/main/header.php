@@ -7,6 +7,7 @@ use Bitrix\Main\Page\Asset;
 
 \Bitrix\Main\Loader::includeModule('iqdev.options');
 $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
+$sCaptchaPublic = \IQDEV\Options\Options::getPageOptions('captcha')['recaptchaKey'];
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -26,7 +27,7 @@ $aOptions = \IQDEV\Options\Options::getPageOptions('headerNumber');
     Asset::getInstance()->addCss('/assets/css/application.css?v=1');
     Asset::getInstance()->addJs('/assets/js/application.js?v=1');
     Asset::getInstance()
-        ->addJs('https://www.google.com/recaptcha/api.js?render=6LfD5MYaAAAAAHqjw6hL0jEDF8sGe_wZKMsXXmZx');
+        ->addJs('https://www.google.com/recaptcha/api.js?render='.$sCaptchaPublic);
     Asset::getInstance()
         ->addJs('https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;amp;apikey=b9f13544-de93-45f5-becd-5d9ba7a80326');
 
