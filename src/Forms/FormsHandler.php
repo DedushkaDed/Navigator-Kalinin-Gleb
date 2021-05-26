@@ -236,7 +236,7 @@ class FormsHandler
         (
             empty($sName)
             || (!$oParsedPhone->isValid())
-            || empty($sEmail)
+            || (filter_var($sEmail, FILTER_VALIDATE_EMAIL))
             || empty($iAreaNumber)
             || empty($sQuestion)
             || empty($sVillageName)

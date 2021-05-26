@@ -31,7 +31,6 @@ $APPLICATION->IncludeComponent(
     'slider',
     []
 );
-//                  Ошибка
 $APPLICATION->IncludeComponent(
     'iqdev:ok.work.stages',
     'workstage',
@@ -60,7 +59,6 @@ $APPLICATION->IncludeComponent(
         'INCLUDE_IBLOCK_INTO_CHAIN' => 'N',
     ]
 );
-//              Ошибка
 $APPLICATION->IncludeComponent(
     'iqdev:ok.contacts',
     'contacts',
