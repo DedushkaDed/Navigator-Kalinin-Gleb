@@ -368,67 +368,79 @@ class FormsHandler
     /**
      * Данные из highload блока 'Участки'.
      *
+     * @param $iMinCost
+     * @param $iMaxCost
+     * @param $fMinArea
+     * @param $fMaxArea
+     * @param $sSortType
+     *
      */
-    public static function getFiltersData() {
+    public static function getFiltersData($iMinCost, $iMaxCost, $fMinArea, $fMaxArea, $sSortType = null) {
         $cPlots = \IQDEV\Base\HighLoadBlockManager::getDataManager('Plots');
 
-        $iCount = 5;
+        if (empty($iMinCost) || empty($iMaxCost) || empty($fMinArea) || empty($fMaxArea)) {
+            $iMinCost = 381290;
+            $iMaxCost = 1957100;
+            $fMinArea = 5.1900000000000004;
+            $fMaxArea = 16.23;
+        }
 
-        $aInitialData = [
-            'minArea' => 5.1900000000000004,
-            'maxArea' => 16.23,
-            'minCost' => 381290,
-            'maxCost' => 1957100,
-            'count' => $iCount,
-            'fullCount' => $iCount,
-        ];
+//        $sSortType; // key(+-)
+//        [
+//            'key' => '+',
+//            'key1' => '-',
+//        ];
+
+
+        $aDataHL = $cPlots::getList(['limit' => 3])->fetchAll();
 
         $aFilters = [
-            'villageName' =>
+            'villageName' => [
                 [
-                    [
-                        'id' => 152,
-                        'name' => 'Альпийская долина',
-                    ],
-                    [
-                        'id' => 164,
-                        'name' => 'Есенино',
-                    ],
-                    [
-                        'id' => 165,
-                        'name' => 'Ёлки',
-                    ],
+                    'id' => 152,
+                    'name' => 'Альпийская долина',
                 ],
-            'remoteness' =>
                 [
-                    [
-                        'id' => 11,
-                        'name' => 'string',
-                    ],
-                    [
-                        'id' => 12,
-                        'name' => 'string',
-                    ],
+                    'id' => 163,
+                    'name' => 'Ушаково',
                 ],
-            'communications' =>
                 [
-                    [
-                        'id' => 'UF_GAS',
-                        'name' => 'Заведен газ',
-                    ],
-                    [
-                        'id' => 'UF_ELECTRICITY',
-                        'name' => 'Заведено электричество',
-                    ],
-                    [
-                        'id' => 'UF_ASPHALT',
-                        'name' => 'Дороги из асфальта',
-                    ],
-                    [
-                        'id' => 'UF_ROAD',
-                        'name' => 'Дороги из щебня',
-                    ],
+                    'id' => 164,
+                    'name' => 'Есенино',
                 ],
+                [
+                    'id' => 165,
+                    'name' => 'Ёлки',
+                ],
+            ],
+            'remoteness' => [
+                [
+                    'id' => 11,
+                    'name' => 'string',
+                ],
+                [
+                    'id' => 12,
+                    'name' => 'string',
+                ],
+            ],
+            'communications' => [
+                [
+                    'id' => 'UF_GAS',
+                    'name' => 'Заведен газ',
+                ],
+                [
+                    'id' => 'UF_ELECTRICITY',
+                    'name' => 'Заведено электричество',
+                ],
+                [
+                    'id' => 'UF_ASPHALT',
+                    'name' => 'Дороги из асфальта',
+                ],
+                [
+                    'id' => 'UF_ROAD',
+                    'name' => 'Дороги из щебня',
+                ],
+            ],
             'infrastructure' => [
                 [
                     'id' => 'UF_WITHOUT_BUILDINGS',
@@ -483,33 +495,64 @@ class FormsHandler
             ],
         ];
 
-    $aDataHL = $cPlots::getList(['limit' => $iCount])->fetchAll();
+        $iCount = 0;
+        $iTotalCount = 0;
 
-    $aCardItems = [];
-    foreach ($aDataHL as $aItemHL) {
-        $aCard = [];
+        $aCardItems = [];
+        foreach ($aDataHL as $aItemHL) {
+            $aCardItem = [];
 
-        $iPriceIn100 = $aItemHL['UF_PRICE'];
-        $iAreaIn100 = $aItemHL['UF_SQUARE'];
+            $iPriceIn100 = $aItemHL['UF_PRICE'];
+            $iAreaIn100 = $aItemHL['UF_SQUARE'];
 
-        $aCard['area'] = intval($iAreaIn100 * 100);
-        $aCard['areaIn100'] = $aItemHL['UF_SQUARE'];
-        $aCard['desr'] = 'Стоимость при 100% оплате,';
-        $aCard['districtName'] = $aItemHL['UF_PROJECT'];
-        $aCard['houseNum'] = $aItemHL['UF_NUMBER'];
-        $aCard['id'] = $aItemHL['ID'];
-        $aCard['price'] = intval($iPriceIn100 * $iAreaIn100);
-        $aCard['priceIn100'] = $aItemHL['UF_PRICE'];
-        $aCard['priceIn100WithSale'] = $aItemHL['UF_SALE_PRICE'];
+            $aIbVillages = \CIBlockElement::GetByID($aItemHL['UF_PROJECT'])->GetNext();
 
-        $aCardItems[] = $aCard;
-    }
+            $sVillageName = [];
+            if ($aIbVillages) {
+                $sVillageName = $aIbVillages['NAME'];
+            }
 
-    $aResult = [];
-    $aResult = $aInitialData;
-    $aResult['filters'] = $aFilters;
-    $aResult['results'] = $aCardItems;
+            $aCardItem['area'] = intval($iAreaIn100 * 100);
+            $aCardItem['areaIn100'] = floatval($aItemHL['UF_SQUARE']);
+            $aCardItem['description'] = 'Стоимость при 100% оплате,';
+            $aCardItem['districtName'] = $sVillageName;
+            $aCardItem['houseNum'] = $aItemHL['UF_NUMBER'];
+            $aCardItem['id'] = $aItemHL['ID'];
+            $aCardItem['price'] = intval($iPriceIn100 * $iAreaIn100);
+            $aCardItem['priceIn100'] = $aItemHL['UF_PRICE'];
+            $aCardItem['priceIn100WithSale'] = $aItemHL['UF_SALE_PRICE'];
 
-    return $aResult;
+            if (
+                $aCardItem['areaIn100'] > $fMinArea
+                && $aCardItem['areaIn100'] < $fMaxArea
+                && $aCardItem['price'] > $iMinCost
+                && $aCardItem['price'] < $iMaxCost
+            ) {
+//                Запись подходящих элементов
+                $aCardItems[] = $aCardItem;
+                $iCount ++;
+            }
+//            Запись всех элементов
+            $iTotalCount++;
+        }
+
+        $aInitialData = [
+            'minArea' => intval($fMinArea),
+            'maxArea' => intval($fMaxArea),
+            'minCost' => intval($iMinCost),
+            'maxCost' => intval($iMaxCost),
+            'count' => $iCount,
+            'fullCount' => $iTotalCount,
+        ];
+
+        $aResult = [];
+//    Начальные значения
+        $aResult = $aInitialData;
+//    Фильтры
+        $aResult['filters'] = $aFilters;
+//    Результат
+        $aResult['results'] = $aCardItems;
+
+        return $aResult;
     }
 }
