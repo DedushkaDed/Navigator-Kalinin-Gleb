@@ -9,7 +9,6 @@
 /*.log
 /*.csv
 /composer.phar
-/src/Migrations/*
 
 
 docker/node

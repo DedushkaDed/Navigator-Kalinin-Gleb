@@ -7,6 +7,7 @@ if (empty($arResult)) {
     return;
 }
 ?>
+
 <div class="navigation">
     <?foreach ($arResult as $aItem) :?>
         <?if (!empty($aItem['subitems'])) :?>
