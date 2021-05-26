@@ -281,65 +281,12 @@ $APPLICATION->IncludeComponent(
         ); ?>
     </div>
 </section>
-<section class="section mb-large">
-    <div class="container-large">
-        <div>
-            <div class="form-wide-wrapper form-wide-wrapper--wood">
-                <div class="container">
-                    <div class="form-wide">
-                        <div class="form-wide__left-line"></div>
-                        <div class="form-wide__text form-wide__text--vertical-md">
-                            <div class="form-wide__title">Экскурсия по загородной жизни</div>
-                            <div class="form-wide__description">
-                                Приглашаем вас на обзорную экскурсию по загородной жизни в один из
-                                наших поселков. Заполните форму ниже, и мы вам перезвоним.
-                            </div>
-                        </div>
-                        <form class="form-wide__form js-form" action="/?ajaxAction=formExcursion"
-                              data-name="wide-excursion">
-                            <div class="form-wide__form-item form-wide__form-item--field">
-                                <div class="input js-input">
-                                    <input class="input__field" type="text" name="name" placeholder="Имя"
-                                           data-validate="required,name"/>
-                                    <div class="input__error"></div>
-                                </div>
-                            </div>
-                            <div class="form-wide__form-item form-wide__form-item--field">
-                                <div class="input js-input">
-                                    <input class="input__field" type="text" name="phone" placeholder="Телефон"
-                                           data-validate="required,phone" data-masking="phone"
-                                    />
-                                    <div class="input__error"></div>
-                                </div>
-                            </div>
-                            <div class="form-wide__form-item form-wide__form-item--policy">
-                                <div class="checkbox js-checkbox">
-                                    <label class="checkbox__label">
-                                        <input class="checkbox__field" type="checkbox" data-validate="required"/>
-                                        <div class="checkbox__custom checkbox__custom--border"></div>
-                                        <div class="checkbox__text">Подтверждаю согласие с
-                                            <a class="checkbox__link" href="#" target="_blank">
-                                                политикой обработки персональных данных</a>
-                                        </div>
-                                    </label>
-                                    <div class="checkbox__error"></div>
-                                </div>
-                            </div>
-                            <div class="form-wide__form-item form-wide__form-item--submit">
-                                <button class="button button--primary" type="submit">
-                                    <span>Записаться</span>
-                                </button>
-                            </div>
-                            <div class="form-wide__form-item form-wide__form-item--response">
-                                <div class="form-wide__response"></div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<?php
+$APPLICATION->IncludeComponent(
+    "iqdev:email.subscribe.main",
+    ".default",
+);
+?>
 <section class="section section--overflow-hidden pb-large">
     <div class="container">
         <div class="section-header">А что у нас нового?</div>
