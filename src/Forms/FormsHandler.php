@@ -202,9 +202,9 @@ class FormsHandler
             return null;
         }
 
-        $cHLManager = HighLoadBlockManager::getDataManager('email');
+        $cHlTable = HighLoadBlockManager::getDataManager('email');
 
-        return $cHLManager::add([
+        return $cHlTable::add([
             'UF_EMAIL' => $sEmail,
             'UF_DATE' => date("d.m.Y"),
         ])->isSuccess();
