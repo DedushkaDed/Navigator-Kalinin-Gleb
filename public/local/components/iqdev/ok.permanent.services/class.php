@@ -1,8 +1,9 @@
 <?php
 
-//namespace IQDEV\Components;
+namespace IQDEV\Components;
 
-class OkNewsList extends \CBitrixComponent
+
+class OkPermanentServices extends \CBitrixComponent
 {
     /**
      * Получение полей и свойств из ИБ 'permanent_services_content'.
@@ -16,12 +17,13 @@ class OkNewsList extends \CBitrixComponent
 
         $iBlock = \Bitrix\Iblock\Iblock::wakeUp($iBlockID);
 
+
         $aElements = $iBlock->getEntityDataClass()::getList([
             'select' => [
                 'ID',
                 'NAME',
                 'PREVIEW_TEXT',
-                'ICON_SVG',
+                'ICON_SVG.FILE',
             ],
         ])->fetchCollection();
 
@@ -29,50 +31,56 @@ class OkNewsList extends \CBitrixComponent
             return null;
         }
 
-        foreach ($aElements as $aElement) {
-            if
-            (
-                empty($aElement->getId())
-                || empty($aElement->getName())
-                || empty($aElement->getPreviewText())
-                || empty($aElement->getIconSvg()->getValue())
-            ) {
-                return null;
-            }
+        $arResult = [];
 
+        foreach ($aElements as $aElement) {
             $aCard = [];
+
             $aCard['id'] = $aElement->getId();
             $aCard['title'] = $aElement->getName();
             $aCard['description'] = $aElement->getPreviewText();
 
-            $iIconID = $aElement->getIconSvg()->getValue();
-            $aCard['icon'] = CFile::GetPath($iIconID);
+            $iIconID = $aElement->getIconSvg()->getFile()->getId();
+            $aCard['icon'] = \CFile::GetPath($iIconID);
 
             $arResult[] = $aCard;
+            var_dump(time());
         }
         return $arResult;
     }
+
     /**
      * Проверка на существование кеша.
-     * Если кеш существует - подгружаем его.
-     * Иначе создаём новый.
+     *
+     * @param $aInputData
      *
      * @return array
      */
     public function checkCache($aInputData): array
     {
-        $oCache = Bitrix\Main\Data\Cache::createInstance();
+        $oCache = \Bitrix\Main\Data\Cache::createInstance();
 
-        if ($oCache->initCache(8600, "cache_key_2")) {
-            return $oCache->getVars();
-        } elseif ($oCache->startDataCache(8600)) {
-//            Сохраняет буферизированный PHP переменные в файле кеша
-            $oCache->endDataCache($aInputData);
-            return $aInputData;
-        } else {
-            return $aInputData;
+//        if ($oCache->initCache(8600, "cache_key_2")) {
+//            return $oCache->getVars();
+//        } elseif ($oCache->startDataCache(8600)) {
+//            // Сохраняет буферизированный PHP переменные в файле кеша
+//            $oCache->endDataCache($aInputData);
+//            return $aInputData;
+//        } else {
+//            return $aInputData;
+//        }
+
+        if ($oCache->initCache(8600, "uniq_chache_key")) {
+            $aResult = $oCache->getVars();
         }
+        elseif ($oCache->startDataCache()) {
+            // записываем в кеш
+            $oCache->endDataCache($aInputData);
+        }
+        return $aResult;
+
     }
+
     /**
      * Точка входа в компонент
      *
@@ -80,8 +88,10 @@ class OkNewsList extends \CBitrixComponent
      */
     public function executeComponent()
     {
-        $aInputData = $this->getData();
-        $this->arResult = $this->checkCache($aInputData);
+        $aExecuteData = $this->getData();
+        $aExecuteData = $this->checkCache($aExecuteData);
+
+        $this->arResult = $aExecuteData;
         $this->includeComponentTemplate();
     }
 }

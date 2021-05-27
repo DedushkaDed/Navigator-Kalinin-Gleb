@@ -6,6 +6,7 @@ class OkAnswerToQuestions extends \CBitrixComponent
 {
     /**
      * Установка цвета у блока.
+     *
      * @param $aItems array
      *
      * @return array
@@ -42,9 +43,7 @@ class OkAnswerToQuestions extends \CBitrixComponent
         ])->fetchCollection();
 
         foreach ($aElements as $aElement) {
-            if
-            (
-                empty($aElement->getId())
+            if (empty($aElement->getId())
                 || empty($aElement->getName())
                 || empty($aElement->getPreviewText())
                 || empty($aElement->getDetailText())
@@ -66,7 +65,8 @@ class OkAnswerToQuestions extends \CBitrixComponent
     }
     /**
      * Проверка наличия тегированного кеша у компонента.
-     * Если кеш отсутствует - создается новый.
+     *
+     * @param $aInputData
      *
      * @return array
      */
@@ -78,11 +78,11 @@ class OkAnswerToQuestions extends \CBitrixComponent
         if ($oCache->initCache(8600, 'tagged_cache_key_1', 'taggedCache')) {
             return $oCache->getVars();
         } elseif ($oCache->startDataCache(8600)) {
-//            Начало тегированного кеша
+            // Начало тегированного кеша
             $oTaggedInstance->registerTag('iblock_id_' . $this->arParams['IBLOCK_ID']);
-//            Финализируем тегирование кеша
+            // Финализируем тегирование кеша
             $oTaggedInstance->endTagCache();
-//             Сохраняет буферизированный PHP переменные файле кеша
+            // Сохраняет буферизированный PHP переменные файле кеша
             $oCache->endDataCache($aInputData);
             return $aInputData;
         } else {

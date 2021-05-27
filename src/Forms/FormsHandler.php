@@ -53,7 +53,7 @@ class FormsHandler
         $aFields = [
             'IBLOCK_ID' => $iblockId,
             'NAME' => $aIblockFields['name'],
-            'CODE' => \CUtil::translit($aIblockFields['name'], 'ru').time(),
+            'CODE' => \CUtil::translit($aIblockFields['name'], 'ru') . time(),
             'PROPERTY_VALUES' => $aIblockProperties,
         ];
 
@@ -73,7 +73,7 @@ class FormsHandler
         \Bitrix\Main\Loader::includeModule("highloadblock");
 
         $sHLBlock = \Bitrix\Highloadblock\HighloadBlockTable::getList([
-            'filter' => ['NAME' => $sHLBlockCode]
+            'filter' => ['NAME' => $sHLBlockCode],
         ])->fetch();
 
         $sHLClassName = (\Bitrix\Highloadblock\HighloadBlockTable::compileEntity($sHLBlock))->getDataClass();
@@ -256,9 +256,7 @@ class FormsHandler
     ) {
         $oParsedPhone = Parser::getInstance()->parse($sPhone);
 
-        if
-        (
-            empty($sName)
+        if (empty($sName)
             || (!$oParsedPhone->isValid())
             || (filter_var($sEmail, FILTER_VALIDATE_EMAIL))
             || empty($iAreaNumber)
@@ -344,24 +342,10 @@ class FormsHandler
     /**
      * Сохраняет данные пользователя в 'Отправить портфолио'.
      *
-     * @return array
+     * @return bool
      */
     public static function setAdditionalServicesInputCaptcha()
     {
-//        if (!isset($sName)) {
-//            return null;
-//        }
-
-//        $aFields = [
-//            'name' => $sName,
-//        ];
-//
-//        $aProperties = [
-//            'PHONE' => $oParsedPhone->format('RU'),
-//            'INPUT_FILE' => $aInputFile,
-//        ];
-
-//        return self::addIblockElement('portfolio_users', $aFields, $aProperties);
-        return ["random" => 123];
+        return true;
     }
 }

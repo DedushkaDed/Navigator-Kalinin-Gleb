@@ -52,12 +52,17 @@ if (empty($arResult['options'])) {
             <div class="tabs__content js-tabs__content active"
                  data-tab-content="<?=$arResult['options']['dataOffices'][0]['dataTab']?>">
                 <div class="contacts-table-map__note">График приема посетилелей:
-                    <b><?=$arResult['options']['dataOffices'][0]['timeMin']?> с<?=$arResult['options']['dataOffices'][0]['timeMax']?> до<?=$arResult['options']['dataOffices'][0]['dayReception']?></b>
+                    <b><?=$arResult['options']['dataOffices'][0]['timeMin']?> с
+                        <?=$arResult['options']['dataOffices'][0]['timeMax']?>
+                        до<?=$arResult['options']['dataOffices'][0]['dayReception']?></b>
                 </div>
             </div>
-            <div class="tabs__content js-tabs__content" data-tab-content="<?=$arResult['options']['dataOffices'][1]['dataTab']?>">
+            <div class="tabs__content js-tabs__content"
+                 data-tab-content="<?=$arResult['options']['dataOffices'][1]['dataTab']?>">
                 <div class="contacts-table-map__note">График приема посетилелей:
-                    <b><?=$arResult['options']['dataOffices'][1]['timeMin']?> с<?=$arResult['options']['dataOffices'][1]['timeMax']?> до<?=$arResult['options']['dataOffices'][1]['dayReception']?></b>
+                    <b><?=$arResult['options']['dataOffices'][1]['timeMin']?>
+                        с<?=$arResult['options']['dataOffices'][1]['timeMax']?>
+                        до<?=$arResult['options']['dataOffices'][1]['dayReception']?></b>
                 </div>
             </div>
         </div>

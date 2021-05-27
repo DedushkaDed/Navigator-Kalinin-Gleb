@@ -2,7 +2,8 @@
 
 namespace IQDEV\Components;
 
-class OkCallBackForms extends \CBitrixComponent {
+class OkCallBackForms extends \CBitrixComponent
+{
     /**
      * Точка входа в компонент
      *

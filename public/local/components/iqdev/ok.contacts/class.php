@@ -1,6 +1,6 @@
 <?php
 
-//namespace IQDEV\Components;
+namespace IQDEV\Components;
 
 class OkContacts extends \CBitrixComponent
 {
@@ -30,11 +30,11 @@ class OkContacts extends \CBitrixComponent
             ],
         ])->fetchCollection();
 
+        $arResult = [];
+
         foreach ($aElements as $aElement) {
-//            Если какого-либо свойства нет -> Компонент не отображается
-            if
-            (
-                empty($aElement->getId())
+            // Если какого-либо свойства нет -> Компонент не отображается
+            if (empty($aElement->getId())
                 || empty($aElement->getName())
                 || empty($aElement->getPhoneFirst()->getValue())
                 || empty($aElement->getPhoneSecond()->getValue())
@@ -63,10 +63,13 @@ class OkContacts extends \CBitrixComponent
         }
         return $arResult;
     }
+
     /**
      * Проверка на существование кеша.
      * Если кеш существует - подгружаем его.
      * Иначе создаём новый.
+     *
+     * @param $aInputData
      *
      * @return array
      */
@@ -76,22 +79,22 @@ class OkContacts extends \CBitrixComponent
 
         if ($oCache->initCache(8600, "cache_key_1")) {
             return $oCache->getVars();
-        }
-        elseif ($oCache->startDataCache(8600)) {
-//            Сохраняет буферизированный PHP переменные в файле кеша
+        } elseif ($oCache->startDataCache(8600)) {
+            // Сохраняет буферизированный PHP переменные в файле кеша
             $oCache->endDataCache($aInputData);
             return $aInputData;
-        }
-        else {
+        } else {
             return $aInputData;
         }
     }
+
     /**
      * Точка входа в компонент
      *
      * @return void
      */
-    public function executeComponent(){
+    public function executeComponent()
+    {
         $aInputData = $this->getData();
         $this->arResult = $this->checkCache($aInputData);
         $this->includeComponentTemplate();

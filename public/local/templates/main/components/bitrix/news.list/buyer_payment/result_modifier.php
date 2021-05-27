@@ -10,7 +10,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @global CDatabase $DB */
 /** @var CBitrixComponentTemplate $this */
 
-\Bitrix\Main\Loader::includeModule('iqdev');
+
 $iIblockPayment = IQDEV\Base\Helper::getIblockId('payment_workstage');
 $aByuerRassrochkaOptions = IQDEV\Options\Options::getPageOptions('buyer_rassrochka');
 

@@ -10,7 +10,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @global CDatabase $DB */
 /** @var CBitrixComponentTemplate $this */
 
-\Bitrix\Main\Loader::includeModule('iqdev');
+
 $aBuyerPricesOptions = \IQDEV\Options\Options::getPageOptions('buyer_prices');
 
 if (empty($arResult)) {

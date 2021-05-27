@@ -2,13 +2,15 @@
 
 namespace IQDEV\Components;
 
-class OkAdditionalServices extends \CBitrixComponent {
+class OkAdditionalServices extends \CBitrixComponent
+{
     /**
      * Точка входа в компонент
      *
      * @return void
      */
-    public function executeComponent() {
+    public function executeComponent()
+    {
         $this->includeComponentTemplate();
     }
 }

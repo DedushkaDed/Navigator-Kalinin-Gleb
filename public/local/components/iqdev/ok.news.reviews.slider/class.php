@@ -2,9 +2,8 @@
 
 namespace IQDEV\Components;
 
-namespace IQDEV\Components;
-
-class OkNewsReviewsSlider extends \CBitrixComponent {
+class OkNewsReviewsSlider extends \CBitrixComponent
+{
     /**
      * Точка входа в компонент
      *

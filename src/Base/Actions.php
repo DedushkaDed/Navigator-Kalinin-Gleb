@@ -239,7 +239,7 @@ class Actions
     public function formAdditionalServicesAjaxAction()
     {
         $iCallBackForm = FormsHandler::setAdditionalServicesInputCaptcha();
-        $this->$this->setAjaxResponse(['status' => (bool) $iCallBackForm]);
+        $this->setAjaxResponse(['status' => (bool) $iCallBackForm]);
     }
     /**
      * Отображение слайдера 'Дополнительные услуги'.
@@ -249,6 +249,6 @@ class Actions
     public function getAdditionalServicesAjaxAction()
     {
         $aServices = AdditionalServices::getAdditionalServicesAll();
-        $this->setAjaxResponse(['status' => (bool) $aServices]);
+        $this->setAjaxResponse($aServices);
     }
 }

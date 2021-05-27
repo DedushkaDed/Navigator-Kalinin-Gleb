@@ -2,7 +2,8 @@
 
 namespace IQDEV\Components;
 
-class OkStaticText extends \CBitrixComponent {
+class OkStaticText extends \CBitrixComponent
+{
     /**
      * Получение данных из модуля IQDEV\Options\Options
      *
@@ -10,9 +11,10 @@ class OkStaticText extends \CBitrixComponent {
      */
     public function getOptions(): array
     {
-        $arResult['options'] =\IQDEV\Options\Options::getPageOptions('ok_page');
+        $arResult['options'] = \IQDEV\Options\Options::getPageOptions('ok_page');
         return $arResult;
     }
+
     /**
      * Точка входа в компонент
      *

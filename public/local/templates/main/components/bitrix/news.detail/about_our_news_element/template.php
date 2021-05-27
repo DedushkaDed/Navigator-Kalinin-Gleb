@@ -3,7 +3,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
-\Bitrix\Main\Loader::includeModule('iqdev');
+
 $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
 
 /** @var array $arParams */

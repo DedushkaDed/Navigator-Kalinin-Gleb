@@ -10,7 +10,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @global CDatabase $DB */
 /** @var CBitrixComponentTemplate $this */
 
-\Bitrix\Main\Loader::includeModule('iqdev');
+
 $iIblockMortgageWorkStage = IQDEV\Base\Helper::getIblockId('mortgage_work_stage');
 $iIblockMortgageSlider = IQDEV\Base\Helper::getIblockId('mortgage_slider');
 $aByuerIpotekaOptions = IQDEV\Options\Options::getPageOptions('buyer_ipoteka');
