@@ -16,9 +16,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var CBitrixComponent $component */
 
 $aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_form_main');
-
 ?>
-
 <section class="section mb-large">
     <div class="container-large">
         <div>

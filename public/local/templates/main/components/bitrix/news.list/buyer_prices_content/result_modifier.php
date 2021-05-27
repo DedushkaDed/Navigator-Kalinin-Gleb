@@ -10,8 +10,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @global CDatabase $DB */
 /** @var CBitrixComponentTemplate $this */
 
-\Bitrix\Main\Loader::includeModule('iqdev');
-
 if (empty($arResult)) {
     return;
 }
