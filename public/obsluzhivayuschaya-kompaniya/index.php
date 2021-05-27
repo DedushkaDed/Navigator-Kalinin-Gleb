@@ -1,9 +1,5 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECATED);
-global $APPLICATION;
 
 $APPLICATION->IncludeComponent(
     'iqdev:ok.static.text',
@@ -62,14 +58,13 @@ $APPLICATION->IncludeComponent(
         'INCLUDE_IBLOCK_INTO_CHAIN' => 'N',
     ]
 );
-//$APPLICATION->IncludeComponent(
-//    'iqdev:ok.contacts',
-//    'contacts',
-//    [
-//        'IBLOCK_ID' => IQDEV\Base\Helper::getIblockId('ok_contact_slider'),
-//        'IBLOCK_TYPE' => 'content',
-//        'INCLUDE_IBLOCK_INTO_CHAIN' => 'N',
-//    ]
-//);
-
+$APPLICATION->IncludeComponent(
+    'iqdev:ok.contacts',
+    'contacts',
+    [
+        'IBLOCK_ID' => IQDEV\Base\Helper::getIblockId('ok_contact_slider'),
+        'IBLOCK_TYPE' => 'content',
+        'INCLUDE_IBLOCK_INTO_CHAIN' => 'N',
+    ]
+);
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');

@@ -213,21 +213,9 @@ class Actions
      */
     public function formQuestionServiceAjaxAction()
     {
-        $sName = $this->oRequest['name'];
-        $sPhone = $this->oRequest['phone'];
-        $sEmail = $this->oRequest['email'];
-        $iAreaNumber = $this->oRequest['areaNumber'];
-        $sQuestion = $this->oRequest['question'];
-        $sVillageName = $this->oRequest['villageName'];
+        $aInputData = $this->oRequest;
 
-        $iCallBackForm = FormsHandler::setFormQuestionInputCaptcha(
-            $sName,
-            $sPhone,
-            $sEmail,
-            $iAreaNumber,
-            $sQuestion,
-            $sVillageName
-        );
+        $iCallBackForm = FormsHandler::setFormQuestionInputCaptcha($aInputData);
 
         $this->setAjaxResponse(['status' => (bool) $iCallBackForm]);
     }

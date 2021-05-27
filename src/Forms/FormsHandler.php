@@ -30,7 +30,7 @@ class FormsHandler
         }
         return [
             'status' => false,
-            'message' => 'Вы уже воспользовались формой отправки',
+            'message' => 'Вы уже воспользовались формой отправки'
         ];
     }
 
@@ -53,36 +53,13 @@ class FormsHandler
         $aFields = [
             'IBLOCK_ID' => $iblockId,
             'NAME' => $aIblockFields['name'],
-            'CODE' => \CUtil::translit($aIblockFields['name'], 'ru') . time(),
+            'CODE' => \CUtil::translit($aIblockFields['name'], 'ru').time(),
             'PROPERTY_VALUES' => $aIblockProperties,
         ];
 
         return $oEl->Add($aFields);
     }
 
-    /**
-     * Добавляет данные в Highload блок
-     *
-     * @param $sHLBlockCode
-     * @param $aProperties
-     *
-     * @return mixed
-     */
-    public static function addHlBlockElement($sHLBlockCode, $aProperties)
-    {
-        \Bitrix\Main\Loader::includeModule("highloadblock");
-
-        $sHLBlock = \Bitrix\Highloadblock\HighloadBlockTable::getList([
-            'filter' => ['NAME' => $sHLBlockCode],
-        ])->fetch();
-
-        $sHLClassName = (\Bitrix\Highloadblock\HighloadBlockTable::compileEntity($sHLBlock))->getDataClass();
-
-        if (!empty($aProperties)) {
-            return $sHLClassName::add($aProperties);
-        }
-        return null;
-    }
 
     /**
      * Отправляет портфолио на почту
@@ -102,7 +79,7 @@ class FormsHandler
             "type" => $_FILES['file']['type'],
             "old_file" => "",
             "del" => "Y",
-            "MODULE_ID" => "",
+            "MODULE_ID" => ""
         ];
 
         $sExtensions = \CFile::GetImageExtensions();
@@ -128,7 +105,7 @@ class FormsHandler
                 'filter' => [
                     '=IBLOCK_ID' => \IQDEV\Base\Helper::getIblockId('tenderi'),
                     '=ID' => $aData['id'],
-                ],
+                ]
             ]);
 
             $sElementName = $elementIterator->fetch()['NAME'];
@@ -139,7 +116,7 @@ class FormsHandler
             'PHONE' => $aData['phone'],
             'PORTFOLIO' => $sFileSrc,
             'TENDER' => $sElementName,
-            'FILE' => $fid,
+            'FILE' => $fid
         ];
 
         self::addIblockElement('TenderPortfolio', $aData, $aFields);
@@ -148,7 +125,7 @@ class FormsHandler
             [
                 "EVENT_NAME" => "SEND_PORTFOLIO",
                 "LID" => "s1",
-                "C_FIELDS" => $aFields,
+                "C_FIELDS" => $aFields
             ]
         );
 
@@ -237,28 +214,24 @@ class FormsHandler
     /**
      * Запись данных из формы 'Задайте вопрос обслуживающей компании!' в ИБ.
      *
-     * @param $sName
-     * @param $sPhone
-     * @param $sEmail
-     * @param $iAreaNumber
-     * @param $sQuestion
-     * @param $sVillageName
+     * @param $aInputData
      *
      * @return mixed
      */
-    public static function setFormQuestionInputCaptcha(
-        $sName,
-        $sPhone,
-        $sEmail,
-        $iAreaNumber,
-        $sQuestion,
-        $sVillageName
-    ) {
+    public static function setFormQuestionInputCaptcha($aInputData)
+    {
+        $sName = $aInputData['name'];
+        $sPhone = $aInputData['phone'];
+        $sEmail = $aInputData['email'];
+        $iAreaNumber = $aInputData['areaNumber'];
+        $sQuestion = $aInputData['question'];
+        $sVillageName = $aInputData['villageName'];
+
         $oParsedPhone = Parser::getInstance()->parse($sPhone);
 
         if (empty($sName)
             || (!$oParsedPhone->isValid())
-            || (filter_var($sEmail, FILTER_VALIDATE_EMAIL))
+            || (!filter_var($sEmail, FILTER_VALIDATE_EMAIL))
             || empty($iAreaNumber)
             || empty($sQuestion)
             || empty($sVillageName)
@@ -344,7 +317,7 @@ class FormsHandler
      *
      * @return bool
      */
-    public static function setAdditionalServicesInputCaptcha()
+    public static function setAdditionalServicesInputCaptcha(): bool
     {
         return true;
     }

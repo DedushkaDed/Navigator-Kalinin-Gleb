@@ -17,7 +17,7 @@ class OkWorkStages extends \CBitrixComponent
             'ACTIVE_DATE' => 'Y',
         ];
         $aSelect = ['ID', 'NAME', 'PREVIEW_TEXT'];
-        $aItems = CIBlockElement::GetList([], $aFilter, $aSelect);
+        $aItems = \CIBlockElement::GetList([], $aFilter, $aSelect);
 
         if (empty($aItems)) {
             return null;
@@ -30,11 +30,13 @@ class OkWorkStages extends \CBitrixComponent
             $aCard['title'] = $aElement['NAME'];
             $aCard['description'] = $aElement['PREVIEW_TEXT'];
 
-            $aItemProperty = CIBlockElement::GetProperty($this->arParams['IBLOCK_ID'], $aCard['id']);
+            $aItemProperty = \CIBlockElement::GetProperty($this->arParams['IBLOCK_ID'], $aCard['id']);
 
-            if ($aPropertyElement = $aItemProperty->GetNext()) {
+            $aPropertyElement = $aItemProperty->GetNext();
+
+            if ($aPropertyElement) {
                 $iIconValue = $aPropertyElement['VALUE'];
-                $aCard['icon'] = CFile::GetPath($iIconValue);
+                $aCard['icon'] = \CFile::GetPath($iIconValue);
             }
 
             $arResult[] = $aCard;

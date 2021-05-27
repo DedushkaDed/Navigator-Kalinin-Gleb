@@ -2,7 +2,6 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
-
 $aSocialMediaOptions = \IQDEV\Options\Options::getPageOptions('social');
 
 /** @var array $arParams */

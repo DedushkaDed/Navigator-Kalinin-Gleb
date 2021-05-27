@@ -2,7 +2,6 @@
 
 namespace IQDEV\Components;
 
-
 class OkPermanentServices extends \CBitrixComponent
 {
     /**
@@ -12,11 +11,8 @@ class OkPermanentServices extends \CBitrixComponent
      */
     public function getData()
     {
-        \Bitrix\Main\Loader::includeModule('iblock');
         $iBlockID = $this->arParams['IBLOCK_ID'];
-
         $iBlock = \Bitrix\Iblock\Iblock::wakeUp($iBlockID);
-
 
         $aElements = $iBlock->getEntityDataClass()::getList([
             'select' => [
@@ -44,7 +40,6 @@ class OkPermanentServices extends \CBitrixComponent
             $aCard['icon'] = \CFile::GetPath($iIconID);
 
             $arResult[] = $aCard;
-            var_dump(time());
         }
         return $arResult;
     }
@@ -60,25 +55,12 @@ class OkPermanentServices extends \CBitrixComponent
     {
         $oCache = \Bitrix\Main\Data\Cache::createInstance();
 
-//        if ($oCache->initCache(8600, "cache_key_2")) {
-//            return $oCache->getVars();
-//        } elseif ($oCache->startDataCache(8600)) {
-//            // Сохраняет буферизированный PHP переменные в файле кеша
-//            $oCache->endDataCache($aInputData);
-//            return $aInputData;
-//        } else {
-//            return $aInputData;
-//        }
-
-        if ($oCache->initCache(8600, "uniq_chache_key")) {
-            $aResult = $oCache->getVars();
+        if ($oCache->initCache(7200, 'random-key')) {
+            $aInputData = $oCache->getVars(); // достаем переменные из кеша
+        } elseif ($oCache->startDataCache()) {
+            $oCache->endDataCache($aInputData); // записываем в кеш
         }
-        elseif ($oCache->startDataCache()) {
-            // записываем в кеш
-            $oCache->endDataCache($aInputData);
-        }
-        return $aResult;
-
+        return $aInputData;
     }
 
     /**

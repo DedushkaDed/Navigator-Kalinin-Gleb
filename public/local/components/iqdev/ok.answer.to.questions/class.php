@@ -24,13 +24,12 @@ class OkAnswerToQuestions extends \CBitrixComponent
     /**
      * Получение свойств из ИБ 'answer_to_questions'
      *
-     * @return mixed
+     * @return array
      */
     public function getData()
     {
-        \Bitrix\Main\Loader::includeModule('iblock');
+        $arResult = [];
         $iBlockID = $this->arParams['IBLOCK_ID'];
-
         $iBlock = \Bitrix\Iblock\Iblock::wakeUp($iBlockID);
 
         $aElements = $iBlock->getEntityDataClass()::getList([
@@ -43,15 +42,8 @@ class OkAnswerToQuestions extends \CBitrixComponent
         ])->fetchCollection();
 
         foreach ($aElements as $aElement) {
-            if (empty($aElement->getId())
-                || empty($aElement->getName())
-                || empty($aElement->getPreviewText())
-                || empty($aElement->getDetailText())
-            ) {
-                return null;
-            }
-
             $aCard = [];
+
             $aCard['id'] = $aElement->getId();
             $aCard['title'] = $aElement->getName();
             $aCard['description'] = $aElement->getPreviewText();
@@ -60,7 +52,6 @@ class OkAnswerToQuestions extends \CBitrixComponent
 
             $arResult[] = $aCard;
         }
-
         return $this->setBackgroundItem($arResult);
     }
     /**
@@ -75,19 +66,14 @@ class OkAnswerToQuestions extends \CBitrixComponent
         $oTaggedInstance = \Bitrix\Main\Application::getInstance()->getTaggedCache();
         $oCache = \Bitrix\Main\Data\Cache::createInstance();
 
-        if ($oCache->initCache(8600, 'tagged_cache_key_1', 'taggedCache')) {
-            return $oCache->getVars();
-        } elseif ($oCache->startDataCache(8600)) {
-            // Начало тегированного кеша
-            $oTaggedInstance->registerTag('iblock_id_' . $this->arParams['IBLOCK_ID']);
-            // Финализируем тегирование кеша
-            $oTaggedInstance->endTagCache();
-            // Сохраняет буферизированный PHP переменные файле кеша
-            $oCache->endDataCache($aInputData);
-            return $aInputData;
-        } else {
-            return $aInputData;
+        if ($oCache->initCache(8600, 'answerToQuestions', 'taggedCache')) {
+            $aInputData = $oCache->getVars();
+        } elseif ($oCache->startDataCache()) {
+            $oTaggedInstance->registerTag('answerToQuestionsTag'); // Начало тегированного кеша
+            $oTaggedInstance->endTagCache(); // Финализируем тегированный кеш
+            $oCache->endDataCache($aInputData); // записываем в кеш
         }
+        return $aInputData;
     }
     /**
      * Точка входа в компонент
@@ -97,7 +83,9 @@ class OkAnswerToQuestions extends \CBitrixComponent
     public function executeComponent()
     {
         $aInputData = $this->getData();
-        $this->arResult = $this->checkCache($aInputData);
+        $aInputData = $this->checkCache($aInputData);
+
+        $this->arResult = $aInputData;
         $this->includeComponentTemplate();
     }
 }

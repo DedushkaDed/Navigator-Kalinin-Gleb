@@ -19,7 +19,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
                             <li class="glide__slide">
                                 <div class="contacts-person contacts-person--slider">
                                     <?if (!empty($aItem['image'])) :?>
-                                        <div class="contacts-person__photo" style="background-image:url(<?=$aItem['image']?>);"></div>
+                                        <div class="contacts-person__photo"
+                                             style="background-image:url(<?=$aItem['image']?>);">
+                                        </div>
                                     <?endif;?>
                                     <div class="contacts-person__content">
                                         <div class="contacts-person__name"><?=$aItem['name'] ?? ''?></div>

@@ -10,7 +10,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @global CDatabase $DB */
 /** @var CBitrixComponentTemplate $this */
 
-
 $aByuerMainPageOptions = IQDEV\Options\Options::getPageOptions('buyer_main_page');
 
 if (empty($arResult)) {

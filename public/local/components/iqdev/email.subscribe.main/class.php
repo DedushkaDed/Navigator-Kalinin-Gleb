@@ -11,7 +11,6 @@ class EmailSubscribeMain extends \CBitrixComponent
      */
     public function getModuleOptions(): array
     {
-        
         return \IQDEV\Options\Options::getPageOptions('feedback_form_main');
     }
 

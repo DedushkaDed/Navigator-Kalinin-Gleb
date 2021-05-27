@@ -11,7 +11,6 @@ class OkContacts extends \CBitrixComponent
      */
     public function getData()
     {
-        \Bitrix\Main\Loader::includeModule('iblock');
         $iBlockID = $this->arParams['IBLOCK_ID'];
 
         $iBlock = \Bitrix\Iblock\Iblock::wakeUp($iBlockID);
@@ -26,27 +25,13 @@ class OkContacts extends \CBitrixComponent
                 'MAIL_FIRST',
                 'MAIL_SECOND',
                 'PERSON_POSITION',
-                'IMAGE',
+                'IMAGE.FILE',
             ],
         ])->fetchCollection();
 
         $arResult = [];
 
         foreach ($aElements as $aElement) {
-            // Если какого-либо свойства нет -> Компонент не отображается
-            if (empty($aElement->getId())
-                || empty($aElement->getName())
-                || empty($aElement->getPhoneFirst()->getValue())
-                || empty($aElement->getPhoneSecond()->getValue())
-                || empty($aElement->getPhoneThird()->getValue())
-                || empty($aElement->getMailFirst()->getValue())
-                || empty($aElement->getMailSecond()->getValue())
-                || empty($aElement->getPersonPosition()->getValue())
-                || empty($aElement->getImage()->getValue())
-            ) {
-                return null;
-            }
-
             $aCard = [];
             $aCard['id'] = $aElement->getId();
             $aCard['name'] = $aElement->getName();
@@ -56,8 +41,9 @@ class OkContacts extends \CBitrixComponent
             $aCard['emails'][] = $aElement->getMailFirst()->getValue();
             $aCard['emails'][] = $aElement->getMailSecond()->getValue();
             $aCard['personPosition'] = $aElement->getPersonPosition()->getValue();
-            $iImageID = $aElement->getImage()->getValue();
-            $aCard['image'] = CFile::GetPath($iImageID);
+
+            $iImageID = $aElement->getImage()->getFile()->getId();
+            $aCard['image'] = \CFile::GetPath($iImageID);
 
             $arResult[] = $aCard;
         }
@@ -77,15 +63,12 @@ class OkContacts extends \CBitrixComponent
     {
         $oCache = \Bitrix\Main\Data\Cache::createInstance();
 
-        if ($oCache->initCache(8600, "cache_key_1")) {
-            return $oCache->getVars();
-        } elseif ($oCache->startDataCache(8600)) {
-            // Сохраняет буферизированный PHP переменные в файле кеша
-            $oCache->endDataCache($aInputData);
-            return $aInputData;
-        } else {
-            return $aInputData;
+        if ($oCache->initCache(7200, 'okContactsTag')) {
+            $aInputData = $oCache->getVars(); // достаем переменные из кеша
+        } elseif ($oCache->startDataCache()) {
+            $oCache->endDataCache($aInputData); // записываем в кеш
         }
+        return $aInputData;
     }
 
     /**
@@ -95,8 +78,10 @@ class OkContacts extends \CBitrixComponent
      */
     public function executeComponent()
     {
-        $aInputData = $this->getData();
-        $this->arResult = $this->checkCache($aInputData);
+        $aExecuteData = $this->getData();
+        $aExecuteData = $this->checkCache($aExecuteData);
+
+        $this->arResult = $aExecuteData;
         $this->includeComponentTemplate();
     }
 }
