@@ -189,7 +189,6 @@ class FormsHandler
 
         return self::addIblockElement('excursion_mailing', $aFields, $aProperties);
     }
-
     /**
      * Сохраняет E-mail пользователя, который подписался на рассылку.
      *
