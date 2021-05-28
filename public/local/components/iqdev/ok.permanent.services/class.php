@@ -30,17 +30,8 @@ class OkNewsList extends \CBitrixComponent
         }
 
         foreach ($aElements as $aElement) {
-            if
-            (
-                empty($aElement->getId())
-                || empty($aElement->getName())
-                || empty($aElement->getPreviewText())
-                || empty($aElement->getIconSvg()->getValue())
-            ) {
-                return null;
-            }
-
             $aCard = [];
+
             $aCard['id'] = $aElement->getId();
             $aCard['title'] = $aElement->getName();
             $aCard['description'] = $aElement->getPreviewText();

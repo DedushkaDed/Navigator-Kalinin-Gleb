@@ -4,6 +4,7 @@ namespace IQDEV\Forms;
 
 use Bitrix\Main\PhoneNumber\Parser;
 use IQDEV\Base\HighLoadBlockManager;
+use IQDEV\Entity\Plots;
 
 class FormsHandler
 {
@@ -53,7 +54,7 @@ class FormsHandler
         $aFields = [
             'IBLOCK_ID' => $iblockId,
             'NAME' => $aIblockFields['name'],
-            'CODE' => \CUtil::translit($aIblockFields['name'], 'ru').time(),
+            'CODE' => \CUtil::translit($aIblockFields['name'], 'ru') . time(),
             'PROPERTY_VALUES' => $aIblockProperties,
         ];
 
@@ -73,7 +74,7 @@ class FormsHandler
         \Bitrix\Main\Loader::includeModule("highloadblock");
 
         $sHLBlock = \Bitrix\Highloadblock\HighloadBlockTable::getList([
-            'filter' => ['NAME' => $sHLBlockCode]
+            'filter' => ['NAME' => $sHLBlockCode],
         ])->fetch();
 
         $sHLClassName = (\Bitrix\Highloadblock\HighloadBlockTable::compileEntity($sHLBlock))->getDataClass();
@@ -348,20 +349,20 @@ class FormsHandler
      */
     public static function setAdditionalServicesInputCaptcha()
     {
-//        if (!isset($sName)) {
-//            return null;
-//        }
+        //        if (!isset($sName)) {
+        //            return null;
+        //        }
 
-//        $aFields = [
-//            'name' => $sName,
-//        ];
-//
-//        $aProperties = [
-//            'PHONE' => $oParsedPhone->format('RU'),
-//            'INPUT_FILE' => $aInputFile,
-//        ];
+        //        $aFields = [
+        //            'name' => $sName,
+        //        ];
+        //
+        //        $aProperties = [
+        //            'PHONE' => $oParsedPhone->format('RU'),
+        //            'INPUT_FILE' => $aInputFile,
+        //        ];
 
-//        return self::addIblockElement('portfolio_users', $aFields, $aProperties);
+        //        return self::addIblockElement('portfolio_users', $aFields, $aProperties);
         return ["random" => 123];
     }
 
@@ -371,118 +372,16 @@ class FormsHandler
      * @param $aInputData
      *
      */
-    public static function getContentData($aInputData) {
+    public static function getContentData($aInputData)
+    {
         $cPlots = \IQDEV\Base\HighLoadBlockManager::getDataManager('Plots');
 
-        $iMinCost = $aInputData['minCost'];
-        $iMaxCost = $aInputData['maxCost'];
-        $fMinArea = $aInputData['minArea'];
-        $fMaxArea = $aInputData['maxArea'];
+        $iMinCost = intval($aInputData['minCost']);
+        $iMaxCost = intval($aInputData['maxCost']);
+        $fMinArea = intval($aInputData['minArea']);
+        $fMaxArea = intval($aInputData['maxArea']);
         $sSortType = $aInputData['sortType'];
-
-        $aFilters = self::getFilters($aInputData);
-//        var_dump($aFilters);
-
-        $aFiltersTest = [
-            'villageName' => [
-                [
-                    'id' => 152,
-                    'name' => 'Альпийская долина',
-                ],
-                [
-                    'id' => 163,
-                    'name' => 'Ушаково',
-                ],
-                [
-                    'id' => 164,
-                    'name' => 'Есенино',
-                ],
-                [
-                    'id' => 165,
-                    'name' => 'Ёлки',
-                ],
-            ],
-            'remoteness' => [
-                [
-                    'id' => 11,
-                    'name' => 'string',
-                ],
-                [
-                    'id' => 12,
-                    'name' => 'string',
-                ],
-            ],
-            'communications' => [
-                [
-                    'id' => 'UF_GAS',
-                    'name' => 'Заведен газ',
-                ],
-                [
-                    'id' => 'UF_ELECTRICITY',
-                    'name' => 'Заведено электричество',
-                ],
-                [
-                    'id' => 'UF_ASPHALT',
-                    'name' => 'Дороги из асфальта',
-                ],
-                [
-                    'id' => 'UF_ROAD',
-                    'name' => 'Дороги из щебня',
-                ],
-            ],
-            'infrastructure' => [
-                [
-                    'id' => 'UF_WITHOUT_BUILDINGS',
-                    'name' => 'Участок без построек',
-                ],
-                [
-                    'id' => 'UF_BATH_HOUSE',
-                    'name' => 'Участок с баней-домом',
-                ],
-                [
-                    'id' => 'UF_HOUSE',
-                    'name' => 'Участок с домом',
-                ],
-            ],
-            'location' => [
-                [
-                    'id' => 'UF_FOREST',
-                    'name' => 'Рядом с лесом',
-                ],
-                [
-                    'id' => 'UF_APPERANCE',
-                    'name' => 'Участок с хорошим видом',
-                ],
-                [
-                    'id' => 'UF_RIVER',
-                    'name' => 'Рядом с рекой',
-                ],
-                [
-                    'id' => 'UF_HILL',
-                    'name' => 'Участок на холме',
-                ],
-                [
-                    'id' => 'UF_EDGE',
-                    'name' => 'Участок с краю',
-                ],
-                [
-                    'id' => 'UF_CORNER',
-                    'name' => 'Участок на углу',
-                ],
-                [
-                    'id' => 'UF_DEADLOCK',
-                    'name' => 'Участок на тупиковой улице',
-                ],
-                [
-                    'id' => 'UF_PARK',
-                    'name' => 'Рядом с парком',
-                ],
-                [
-                    'id' => 'UF_CENTRAL_STREET',
-                    'name' => 'Участок на центральной улице',
-                ],
-            ],
-        ];
+        $iPageNumber = intval($aInputData['page']);
 
         if (empty($iMinCost) || empty($iMaxCost) || empty($fMinArea) || empty($fMaxArea)) {
             $iMinCost = 381290;
@@ -490,6 +389,7 @@ class FormsHandler
             $fMinArea = 5.1900000000000004;
             $fMaxArea = 16.23;
             $sSortType = 'price-';
+            $iPageNumber = 1;
         }
 
         $aSortCards = [
@@ -522,22 +422,20 @@ class FormsHandler
         $sSortFilter = null;
         $sSortLabel = null;
         if ($aSortCards[$sSortType]) {
-//            Получаем ключ: area, price, ....
+            //            Получаем ключ: area, price, ....
             $sSortLabel = key($aSortCards[$sSortType]);
-//            Фильтр для ORM, 'DESC' ...
+            //            Получаем значение массива: 'DESC', 'ASC'
             $sSortFilter = current($aSortCards[$sSortType]);
         }
 
         $aDataHL = $cPlots::getList([
-            'limit' => 100,
+            //            'filter' => [],
+            'limit' => $iPageNumber * 20,
             'order' => [$sSortLabel => $sSortFilter],
-
+            'offset' => $iPageNumber * 20,
         ])->fetchAll();
 
-
         $iCount = 0;
-        $iTotalCount = 0;
-
         $aCardItems = [];
         foreach ($aDataHL as $aItemHL) {
             $aCardItem = [];
@@ -562,86 +460,35 @@ class FormsHandler
             $aCardItem['priceIn100'] = intval($aItemHL['UF_100_PRICE']);
             $aCardItem['priceIn100WithSale'] = intval($aItemHL['UF_SALE_PRICE']);
 
-            if (
-                $aCardItem['areaIn100'] > $fMinArea
+            if ($aCardItem['areaIn100'] > $fMinArea
                 && $aCardItem['areaIn100'] < $fMaxArea
                 && $aCardItem['price'] > $iMinCost
                 && $aCardItem['price'] < $iMaxCost
             ) {
-//                Запись подходящих элементов
+                //                Запись подходящих элементов
                 $aCardItems[] = $aCardItem;
-                $iCount ++;
+                $iCount++;
             }
-//            Запись всех элементов
-            $iTotalCount++;
         }
 
-        $aInitialData = [
-            'minArea' => intval($fMinArea),
-            'maxArea' => intval($fMaxArea),
-            'minCost' => intval($iMinCost),
-            'maxCost' => intval($iMaxCost),
-            'count' => $iCount,
-            'fullCount' => $iTotalCount,
-        ];
 
         $aResult = [];
-//    Начальные значения
+        //    Начальные значения
+        $aInitialData = [
+            'minArea' => $fMinArea,
+            'maxArea' => $fMaxArea,
+            'minCost' => $iMinCost,
+            'maxCost' => $iMaxCost,
+            'count' => $iCount,
+            'fullCount' => $iCount,
+        ];
         $aResult = $aInitialData;
-//    Фильтры
+        //    Фильтры
+        $aFilters = Plots::getFilters($aInputData);
         $aResult['filters'] = $aFilters;
-//    Результат
+        //    Результат
         $aResult['results'] = $aCardItems;
 
         return $aResult;
-    }
-
-    public static function getFilters($aInputData) {
-        $aFilters = [];
-        if (!empty($aInputData['locationQuery']))
-        {
-            $aLocationFilters = [];
-            foreach ($aInputData['locationQuery'] as $aItem) {
-                $aCard = [];
-                $aCard['id'] = $aItem;
-
-                $aLocationFilters[] = $aCard;
-            }
-            $aFilters['locationQuery'] = $aLocationFilters;
-        }
-        if (!empty($aInputData['communicationsQuery']))
-        {
-            $aCommunicationFilters = [];
-            foreach ($aInputData['communicationsQuery'] as $aItem) {
-                $aCard = [];
-                $aCard['id'] = $aItem;
-
-                $aCommunicationFilters[] = $aCard;
-            }
-            $aFilters['communicationsQuery'] = $aCommunicationFilters;
-        }
-        if (!empty($aInputData['infrastructureQuery']))
-        {
-            $aInfrastructureFilters = [];
-            foreach ($aInputData['infrastructureQuery'] as $aItem) {
-                $aCard = [];
-                $aCard['id'] = $aItem;
-
-                $aInfrastructureFilters[] = $aCard;
-            }
-            $aFilters['infrastructureQuery'] = $aInfrastructureFilters;
-        }
-        if (!empty($aInputData['villageNameQuery']))
-        {
-            $aVillageNameFilters = [];
-            foreach ($aInputData['villageNameQuery'] as $aItem) {
-                $aCard = [];
-                $aCard['id'] = $aItem;
-
-                $aVillageNameFilters[] = $aCard;
-            }
-            $aFilters['villageNameQuery'] = $aVillageNameFilters;
-        }
-        return $aFilters;
     }
 }
