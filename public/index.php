@@ -12,13 +12,5 @@ $APPLICATION->SetPageProperty('title',
 
 $APPLICATION->SetTitle('Земельные участки в Тюмени');
 
-$APPLICATION->IncludeComponent(
-    "iqdev:mp.sale.plots",
-    ".default",
-    [
-        'IBLOCK_ID' => IQDEV\Base\Helper::getIblockId('sale_of_land_plots_main'),
-        'IBLOCK_TYPE' => 'content',
-        'INCLUDE_IBLOCK_INTO_CHAIN' => 'N'
-    ],
-);
+
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
