@@ -30,4 +30,5 @@ ob_start();?>
 <?php
 $sResultBuffer = ob_get_contents();
 ob_end_clean();
+var_dump($sResultBuffer);
 return $sResultBuffer;

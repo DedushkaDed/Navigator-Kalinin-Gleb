@@ -4,7 +4,6 @@ class pricesPlotsAccordion extends \CBitrixComponent {
 
     public function getData()
     {
-        Bitrix\Main\Loader::includeModule('iqdev');
         $iBlockID = $this->arParams['IBLOCK_ID'];
 
         $iBlock = \Bitrix\Iblock\Iblock::wakeUp($iBlockID);
