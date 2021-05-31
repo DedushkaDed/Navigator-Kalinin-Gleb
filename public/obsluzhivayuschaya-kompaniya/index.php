@@ -30,15 +30,15 @@ $APPLICATION->IncludeComponent(
     'slider',
     []
 );
-//$APPLICATION->IncludeComponent(
-//    'iqdev:ok.work.stages',
-//    'workstage',
-//    [
-//        'IBLOCK_ID' => IQDEV\Base\Helper::getIblockId('work_stages'),
-//        'IBLOCK_TYPE' => 'content',
-//        'INCLUDE_IBLOCK_INTO_CHAIN' => 'N',
-//    ]
-//);
+$APPLICATION->IncludeComponent(
+    'iqdev:ok.work.stages',
+    'workstage',
+    [
+        'IBLOCK_ID' => IQDEV\Base\Helper::getIblockId('work_stages'),
+        'IBLOCK_TYPE' => 'content',
+        'INCLUDE_IBLOCK_INTO_CHAIN' => 'N',
+    ]
+);
 $APPLICATION->IncludeComponent(
     'iqdev:ok.callback.forms',
     'ask.question',

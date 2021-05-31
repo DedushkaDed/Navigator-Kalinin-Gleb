@@ -64,6 +64,26 @@ class OkPermanentServices extends \CBitrixComponent
     }
 
     /**
+     * Установка цвета элемента.
+     *
+     * @param $aInputData
+     *
+     * @return array
+     */
+    public function setBackgroundColor($aInputData): array
+    {
+        foreach ($aInputData as $iKey => $aItem) {
+            if ($iKey % 2 == 0) {
+                $aItem['backgorundColor'] = 'cards-color__card--green';
+            } else {
+                $aItem['backgorundColor'] = 'cards-color__card--blue';
+            }
+            $aInputData[$iKey] = $aItem;
+        }
+        return $aInputData;
+    }
+
+    /**
      * Точка входа в компонент
      *
      * @return void
@@ -71,6 +91,7 @@ class OkPermanentServices extends \CBitrixComponent
     public function executeComponent()
     {
         $aExecuteData = $this->getData();
+        $aExecuteData = $this->setBackgroundColor($aExecuteData);
         $aExecuteData = $this->checkCache($aExecuteData);
 
         $this->arResult = $aExecuteData;
