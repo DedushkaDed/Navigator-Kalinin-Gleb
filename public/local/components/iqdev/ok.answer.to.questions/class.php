@@ -24,9 +24,9 @@ class OkAnswerToQuestions extends \CBitrixComponent
     /**
      * Получение свойств из ИБ 'answer_to_questions'
      *
-     * @return array
+     * @return array|null
      */
-    public function getData()
+    public function getData(): ?array
     {
         $arResult = [];
         $iBlockID = $this->arParams['IBLOCK_ID'];
@@ -40,6 +40,10 @@ class OkAnswerToQuestions extends \CBitrixComponent
                 'DETAIL_TEXT',
             ],
         ])->fetchCollection();
+
+        if (empty($aElements)) {
+            return null;
+        }
 
         foreach ($aElements as $aElement) {
             $aCard = [];
@@ -58,10 +62,14 @@ class OkAnswerToQuestions extends \CBitrixComponent
      *
      * @param $aInputData
      *
-     * @return array
+     * @return array|null
      */
-    public function checkCache($aInputData): array
+    public function checkCache($aInputData): ?array
     {
+        if (empty($aInputData)) {
+            return null;
+        }
+
         $oTaggedInstance = \Bitrix\Main\Application::getInstance()->getTaggedCache();
         $oCache = \Bitrix\Main\Data\Cache::createInstance();
 

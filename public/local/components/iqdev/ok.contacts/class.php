@@ -29,8 +29,11 @@ class OkContacts extends \CBitrixComponent
             ],
         ])->fetchCollection();
 
-        $arResult = [];
+        if (empty($aElements)) {
+            return null;
+        }
 
+        $arResult = [];
         foreach ($aElements as $aElement) {
             $aCard = [];
             $aCard['id'] = $aElement->getId();
@@ -57,10 +60,14 @@ class OkContacts extends \CBitrixComponent
      *
      * @param $aInputData
      *
-     * @return array
+     * @return array|null
      */
-    public function checkCache($aInputData): array
+    public function checkCache($aInputData): ?array
     {
+        if (empty($aInputData)) {
+            return null;
+        }
+
         $oCache = \Bitrix\Main\Data\Cache::createInstance();
 
         if ($oCache->initCache(7200, 'okContactsTag')) {

@@ -49,10 +49,14 @@ class OkPermanentServices extends \CBitrixComponent
      *
      * @param $aInputData
      *
-     * @return array
+     * @return array|null
      */
-    public function checkCache($aInputData): array
+    public function checkCache($aInputData): ?array
     {
+        if (empty($aInputData)) {
+            return null;
+        }
+
         $oCache = \Bitrix\Main\Data\Cache::createInstance();
 
         if ($oCache->initCache(7200, 'random-key')) {
@@ -68,10 +72,13 @@ class OkPermanentServices extends \CBitrixComponent
      *
      * @param $aInputData
      *
-     * @return array
+     * @return array|null
      */
-    public function setBackgroundColor($aInputData): array
+    public function setBackgroundColor($aInputData): ?array
     {
+        if (empty($aInputData)) {
+            return null;
+        }
         foreach ($aInputData as $iKey => $aItem) {
             if ($iKey % 2 == 0) {
                 $aItem['backgorundColor'] = 'cards-color__card--green';
