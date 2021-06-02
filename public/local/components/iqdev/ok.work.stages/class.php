@@ -1,14 +1,14 @@
 <?php
 
-//namespace IQDEV\Components;
+namespace IQDEV\Components;
 
-class OkPermanentServices extends \CBitrixComponent {
+class OkWorkStages extends \CBitrixComponent
+{
     /**
      * Получение данных из ИБ 'work_stages'
      *
      * @return mixed
-    */
-
+     */
     public function getData()
     {
         $aFilter = [
@@ -16,31 +16,34 @@ class OkPermanentServices extends \CBitrixComponent {
             'ACTIVE' => 'Y',
             'ACTIVE_DATE' => 'Y',
         ];
-        $aSelect = ['ID','NAME','PREVIEW_TEXT'];
-        $aItems = CIBlockElement::GetList([], $aFilter, $aSelect);
+        $aSelect = ['ID', 'NAME', 'PREVIEW_TEXT'];
+        $aItems = \CIBlockElement::GetList([], $aFilter, $aSelect);
 
         if (empty($aItems)) {
             return null;
         }
 
         $arResult = [];
-        while ($aElement = $aItems->GetNext())
-        {
+        while ($aElement = $aItems->GetNext()) {
             $aCard = [];
             $aCard['id'] = $aElement['ID'];
             $aCard['title'] = $aElement['NAME'];
             $aCard['description'] = $aElement['PREVIEW_TEXT'];
 
-            $aItemProperty = CIBlockElement::GetProperty($this->arParams['IBLOCK_ID'],$aCard['id']);
-            if ($aPropertyElement = $aItemProperty->GetNext()) {
+            $aItemProperty = \CIBlockElement::GetProperty($this->arParams['IBLOCK_ID'], $aCard['id']);
+
+            $aPropertyElement = $aItemProperty->GetNext();
+
+            if ($aPropertyElement) {
                 $iIconValue = $aPropertyElement['VALUE'];
-                $aCard['icon'] = CFile::GetPath($iIconValue);
+                $aCard['icon'] = \CFile::GetPath($iIconValue);
             }
 
             $arResult[] = $aCard;
         }
         return $arResult;
     }
+
     /**
      * Точка входа в компонент
      *

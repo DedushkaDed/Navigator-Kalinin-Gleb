@@ -2,10 +2,11 @@
 
 namespace IQDEV\Components;
 
-class OkAdditionalServices extends \CBitrixComponent
+class EmailSubscribeAdditional extends \CBitrixComponent
 {
+
     /**
-     * Точка входа в компонент
+     * Выполнение компонента
      *
      * @return void
      */

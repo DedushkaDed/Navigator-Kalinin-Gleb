@@ -1,21 +1,8 @@
 <?php
+
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
-
-/** @var array $arParams */
-/** @var array $arResult */
-/** @global CMain $APPLICATION */
-/** @global CUser $USER */
-/** @global CDatabase $DB */
-/** @var CBitrixComponentTemplate $this */
-/** @var string $templateName */
-/** @var string $templateFile */
-/** @var string $templateFolder */
-/** @var string $componentPath */
-/** @var CBitrixComponent $component */
-
-$aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_form_main');
 ?>
 <section class="section mb-large">
     <div class="container-large">
@@ -25,12 +12,8 @@ $aFeedbackForm = \IQDEV\Options\Options::getPageOptions('feedback_form_main');
                     <div class="form-wide">
                         <div class="form-wide__left-line"></div>
                         <div class="form-wide__text form-wide__text--vertical-md">
-                            <? if (!empty($aFeedbackForm['title'])) :?>
-                                <div class="form-wide__title"><?=$aFeedbackForm['title']?></div>
-                            <?php endif;?>
-                            <? if (!empty($aFeedbackForm['description'])) :?>
-                                <div class="form-wide__description"><?=$aFeedbackForm['description']?></div>
-                            <? endif;?>
+                            <div class="form-wide__title"><?=$arParams['title'] ?? ''?></div>
+                            <div class="form-wide__description"><?=$arParams['description'] ?? ''?></div>
                         </div>
                         <form class="form-wide__form js-form" action="/?ajaxAction=formExcursion"
                               data-name="wide-excursion">

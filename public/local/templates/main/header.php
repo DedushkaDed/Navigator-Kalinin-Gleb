@@ -293,7 +293,6 @@ $sCaptchaPublic = \IQDEV\Options\Options::getPageOptions('captcha')['recaptchaKe
             "bitrix:breadcrumb",
             "navigation",
             [
-                "PATH" => "",
                 "SITE_ID" => "s1",
                 "START_FROM" => "0",
             ]

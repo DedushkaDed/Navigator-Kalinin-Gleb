@@ -31,7 +31,7 @@ class FormsHandler
         }
         return [
             'status' => false,
-            'message' => 'Вы уже воспользовались формой отправки',
+            'message' => 'Вы уже воспользовались формой отправки'
         ];
     }
 
@@ -103,7 +103,7 @@ class FormsHandler
             "type" => $_FILES['file']['type'],
             "old_file" => "",
             "del" => "Y",
-            "MODULE_ID" => "",
+            "MODULE_ID" => ""
         ];
 
         $sExtensions = \CFile::GetImageExtensions();
@@ -129,7 +129,7 @@ class FormsHandler
                 'filter' => [
                     '=IBLOCK_ID' => \IQDEV\Base\Helper::getIblockId('tenderi'),
                     '=ID' => $aData['id'],
-                ],
+                ]
             ]);
 
             $sElementName = $elementIterator->fetch()['NAME'];
@@ -140,7 +140,7 @@ class FormsHandler
             'PHONE' => $aData['phone'],
             'PORTFOLIO' => $sFileSrc,
             'TENDER' => $sElementName,
-            'FILE' => $fid,
+            'FILE' => $fid
         ];
 
         self::addIblockElement('TenderPortfolio', $aData, $aFields);
@@ -149,7 +149,7 @@ class FormsHandler
             [
                 "EVENT_NAME" => "SEND_PORTFOLIO",
                 "LID" => "s1",
-                "C_FIELDS" => $aFields,
+                "C_FIELDS" => $aFields
             ]
         );
 
@@ -213,7 +213,6 @@ class FormsHandler
 
         return self::addIblockElement('excursion_mailing', $aFields, $aProperties);
     }
-
     /**
      * Сохраняет E-mail пользователя, который подписался на рассылку.
      *
@@ -227,9 +226,9 @@ class FormsHandler
             return null;
         }
 
-        $class = HighLoadBlockManager::getDataManager('email');
+        $cHlTable = HighLoadBlockManager::getDataManager('email');
 
-        return $class::add([
+        return $cHlTable::add([
             'UF_EMAIL' => $sEmail,
             'UF_DATE' => date("d.m.Y"),
         ])->isSuccess();
@@ -238,30 +237,24 @@ class FormsHandler
     /**
      * Запись данных из формы 'Задайте вопрос обслуживающей компании!' в ИБ.
      *
-     * @param $sName
-     * @param $sPhone
-     * @param $sEmail
-     * @param $iAreaNumber
-     * @param $sQuestion
-     * @param $sVillageName
+     * @param $aInputData
      *
      * @return mixed
      */
-    public static function setFormQuestionInputCaptcha(
-        $sName,
-        $sPhone,
-        $sEmail,
-        $iAreaNumber,
-        $sQuestion,
-        $sVillageName
-    ) {
+    public static function setFormQuestionInputCaptcha($aInputData)
+    {
+        $sName = $aInputData['name'];
+        $sPhone = $aInputData['phone'];
+        $sEmail = $aInputData['email'];
+        $iAreaNumber = $aInputData['areaNumber'];
+        $sQuestion = $aInputData['question'];
+        $sVillageName = $aInputData['villageName'];
+
         $oParsedPhone = Parser::getInstance()->parse($sPhone);
 
-        if
-        (
-            empty($sName)
+        if (empty($sName)
             || (!$oParsedPhone->isValid())
-            || empty($sEmail)
+            || (!filter_var($sEmail, FILTER_VALIDATE_EMAIL))
             || empty($iAreaNumber)
             || empty($sQuestion)
             || empty($sVillageName)
@@ -345,25 +338,11 @@ class FormsHandler
     /**
      * Сохраняет данные пользователя в 'Отправить портфолио'.
      *
-     * @return array
+     * @return bool
      */
-    public static function setAdditionalServicesInputCaptcha()
+    public static function setAdditionalServicesInputCaptcha(): bool
     {
-        //        if (!isset($sName)) {
-        //            return null;
-        //        }
-
-        //        $aFields = [
-        //            'name' => $sName,
-        //        ];
-        //
-        //        $aProperties = [
-        //            'PHONE' => $oParsedPhone->format('RU'),
-        //            'INPUT_FILE' => $aInputFile,
-        //        ];
-
-        //        return self::addIblockElement('portfolio_users', $aFields, $aProperties);
-        return ["random" => 123];
+        return true;
     }
 
     /**

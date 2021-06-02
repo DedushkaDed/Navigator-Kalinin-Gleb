@@ -6,6 +6,7 @@ class OkAnswerToQuestions extends \CBitrixComponent
 {
     /**
      * Установка цвета у блока.
+     *
      * @param $aItems array
      *
      * @return array
@@ -23,13 +24,12 @@ class OkAnswerToQuestions extends \CBitrixComponent
     /**
      * Получение свойств из ИБ 'answer_to_questions'
      *
-     * @return mixed
+     * @return array|null
      */
-    public function getData()
+    public function getData(): ?array
     {
-        \Bitrix\Main\Loader::includeModule('iblock');
+        $arResult = [];
         $iBlockID = $this->arParams['IBLOCK_ID'];
-
         $iBlock = \Bitrix\Iblock\Iblock::wakeUp($iBlockID);
 
         $aElements = $iBlock->getEntityDataClass()::getList([
@@ -41,53 +41,46 @@ class OkAnswerToQuestions extends \CBitrixComponent
             ],
         ])->fetchCollection();
 
-        foreach ($aElements as $aElement) {
-            if
-            (
-                empty($aElement->getId())
-                || empty($aElement->getName())
-                || empty($aElement->getPreviewText())
-                || empty($aElement->getDetailText())
-            ) {
-                return null;
-            }
+        if (empty($aElements)) {
+            return null;
+        }
 
+        foreach ($aElements as $aElement) {
             $aCard = [];
+
             $aCard['id'] = $aElement->getId();
             $aCard['title'] = $aElement->getName();
             $aCard['description'] = $aElement->getPreviewText();
             $aCard['detailText'] = $aElement->getDetailText();
-            $aCard['backgorundColor'] = '';
 
             $arResult[] = $aCard;
         }
-
         return $this->setBackgroundItem($arResult);
     }
     /**
      * Проверка наличия тегированного кеша у компонента.
-     * Если кеш отсутствует - создается новый.
      *
-     * @return array
+     * @param $aInputData
+     *
+     * @return array|null
      */
-    public function checkCache($aInputData): array
+    public function checkCache($aInputData): ?array
     {
+        if (empty($aInputData)) {
+            return null;
+        }
+
         $oTaggedInstance = \Bitrix\Main\Application::getInstance()->getTaggedCache();
         $oCache = \Bitrix\Main\Data\Cache::createInstance();
 
-        if ($oCache->initCache(8600, 'tagged_cache_key_1', 'taggedCache')) {
-            return $oCache->getVars();
-        } elseif ($oCache->startDataCache(8600)) {
-//            Начало тегированного кеша
-            $oTaggedInstance->registerTag('iblock_id_' . $this->arParams['IBLOCK_ID']);
-//            Финализируем тегирование кеша
-            $oTaggedInstance->endTagCache();
-//             Сохраняет буферизированный PHP переменные файле кеша
-            $oCache->endDataCache($aInputData);
-            return $aInputData;
-        } else {
-            return $aInputData;
+        if ($oCache->initCache(8600, 'answerToQuestions', 'taggedCache')) {
+            $aInputData = $oCache->getVars();
+        } elseif ($oCache->startDataCache()) {
+            $oTaggedInstance->registerTag('answerToQuestionsTag'); // Начало тегированного кеша
+            $oTaggedInstance->endTagCache(); // Финализируем тегированный кеш
+            $oCache->endDataCache($aInputData); // записываем в кеш
         }
+        return $aInputData;
     }
     /**
      * Точка входа в компонент
@@ -97,7 +90,9 @@ class OkAnswerToQuestions extends \CBitrixComponent
     public function executeComponent()
     {
         $aInputData = $this->getData();
-        $this->arResult = $this->checkCache($aInputData);
+        $aInputData = $this->checkCache($aInputData);
+
+        $this->arResult = $aInputData;
         $this->includeComponentTemplate();
     }
 }

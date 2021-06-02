@@ -214,26 +214,11 @@ class Actions
      */
     public function formQuestionServiceAjaxAction()
     {
-        $sName = $this->oRequest['name'];
-        $sPhone = $this->oRequest['phone'];
-        $sEmail = $this->oRequest['email'];
-        $iAreaNumber = $this->oRequest['areaNumber'];
-        $sQuestion = $this->oRequest['question'];
-        $sVillageName = $this->oRequest['villageName'];
+        $aInputData = $this->oRequest;
 
-        $iCallBackForm = FormsHandler::setFormQuestionInputCaptcha(
-            $sName,
-            $sPhone,
-            $sEmail,
-            $iAreaNumber,
-            $sQuestion,
-            $sVillageName
-        );
+        $iCallBackForm = FormsHandler::setFormQuestionInputCaptcha($aInputData);
 
-        if (!empty($iCallBackForm)) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $iCallBackForm]);
     }
     /**
      * Отображение формы 'Дополнительные услуги'.
@@ -243,11 +228,7 @@ class Actions
     public function formAdditionalServicesAjaxAction()
     {
         $iCallBackForm = FormsHandler::setAdditionalServicesInputCaptcha();
-
-        if (!empty($iCallBackForm)) {
-            $this->setAjaxResponse(['status' => true]);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse(['status' => (bool) $iCallBackForm]);
     }
     /**
      * Отображение слайдера 'Дополнительные услуги'.
@@ -257,10 +238,7 @@ class Actions
     public function getAdditionalServicesAjaxAction()
     {
         $aServices = AdditionalServices::getAdditionalServicesAll();
-        if (!empty($aServices)) {
-            $this->setAjaxResponse($aServices);
-        }
-        $this->setAjaxResponse(['status' => false]);
+        $this->setAjaxResponse($aServices);
     }
 
     /**
@@ -290,5 +268,404 @@ class Actions
         $aFiltersData = FormsHandler::getContentData($aInputData);
 
         $this->setAjaxResponse($aFiltersData);
+    }
+    /**
+     *
+     *
+     */
+    public function getMapDataAjaxAction()
+    {
+
+        $aRandom = [
+            'areas' => [
+                [
+                    'coords' => [
+                        [
+                            -134.64890934036,
+                            118.31418186182,
+                        ],
+                        [
+                            -135.9643030162,
+                            116.78691338126,
+                        ],
+                        [
+                            -137.66813497091,
+                            119.26762189363,
+                        ],
+                        [
+                            -136.30860099494,
+                            120.83903067426,
+                        ],
+                    ],
+                    'data' => [
+                        'num' => '383',
+                        'stus' => 'Акция',
+                        'stus_id' => '5',
+                        'area' => '14.21',
+                        'cost' => '1 313 000',
+                        'cost_for_100' => '89000',
+                        'full_cost' => '1300000',
+                        'full_cost_for_100' => '80000',
+                        'poselok' => 'Луговое',
+                        'kadastr' => '72=>17=>1105002=>2765',
+                        'housenum' => '25',
+                        'com' => [
+                            'gas',
+                            'elec',
+                            'roads',
+                            'lights',
+                            'security',
+                        ],
+                    ],
+                    'color' => 'orange',
+                    'itemID' => '1025',
+                ],
+                [
+                    'coords' => [
+                        [
+                            -134.64890934036,
+                            118.31418186182,
+                        ],
+                        [
+                            -135.9643030162,
+                            116.78691338126,
+                        ],
+                        [
+                            -137.66813497091,
+                            119.26762189363,
+                        ],
+                        [
+                            -136.30860099494,
+                            120.83903067426,
+                        ],
+                    ],
+                    'data' => [
+                        'num' => '383',
+                        'stus' => 'Акция',
+                        'stus_id' => '5',
+                        'area' => '14.21',
+                        'cost' => '1 313 000',
+                        'cost_for_100' => '89000',
+                        'full_cost' => '1300000',
+                        'full_cost_for_100' => '80000',
+                        'poselok' => 'Луговое',
+                        'kadastr' => '72=>17=>1105002=>2765',
+                        'housenum' => '25',
+                        'com' => [
+                            'gas',
+                            'elec',
+                            'roads',
+                            'lights',
+                            'security',
+                        ],
+                    ],
+                    'color' => 'orange',
+                    'itemID' => '1025',
+                ],
+                [
+                    'coords' => [
+                        [
+                            -134.64890934036,
+                            118.31418186182,
+                        ],
+                        [
+                            -135.9643030162,
+                            116.78691338126,
+                        ],
+                        [
+                            -137.66813497091,
+                            119.26762189363,
+                        ],
+                        [
+                            -136.30860099494,
+                            120.83903067426,
+                        ],
+                    ],
+                    'data' => [
+                        'num' => '383',
+                        'stus' => 'Акция',
+                        'stus_id' => '5',
+                        'area' => '14.21',
+                        'cost' => '13 313 000',
+                        'cost_for_100' => '89000',
+                        'full_cost' => '1300000',
+                        'full_cost_for_100' => '80000',
+                        'poselok' => 'Луговое',
+                        'kadastr' => '72=>17=>1105002=>2765',
+                        'housenum' => '25',
+                        'com' => [
+                            'gas',
+                            'elec',
+                            'roads',
+                            'lights',
+                            'security',
+                        ],
+                    ],
+                    'color' => 'orange',
+                    'itemID' => '1025',
+                ],
+                [
+                    'coords' => [
+                        [
+                            -134.64890934036,
+                            118.31418186182,
+                        ],
+                        [
+                            -135.9643030162,
+                            116.78691338126,
+                        ],
+                        [
+                            -137.66813497091,
+                            119.26762189363,
+                        ],
+                        [
+                            -136.30860099494,
+                            120.83903067426,
+                        ],
+                    ],
+                    'data' => [
+                        'num' => '383',
+                        'stus' => 'Акция',
+                        'stus_id' => '5',
+                        'area' => '124.21',
+                        'cost' => '21 313 000',
+                        'cost_for_100' => '89000',
+                        'full_cost' => '1300000',
+                        'full_cost_for_100' => '80000',
+                        'poselok' => 'Луговое',
+                        'kadastr' => '72=>17=>1105002=>2765',
+                        'housenum' => '25',
+                        'com' => [
+                            'gas',
+                            'elec',
+                            'roads',
+                            'lights',
+                            'security',
+                        ],
+                    ],
+                    'color' => 'orange',
+                    'itemID' => '1025',
+                ],
+                [
+                    'coords' => [
+                        [
+                            -134.64890934036,
+                            118.31418186182,
+                        ],
+                        [
+                            -135.9643030162,
+                            116.78691338126,
+                        ],
+                        [
+                            -137.66813497091,
+                            119.26762189363,
+                        ],
+                        [
+                            -136.30860099494,
+                            120.83903067426,
+                        ],
+                    ],
+                    'data' => [
+                        'num' => '383',
+                        'stus' => 'Акция',
+                        'stus_id' => '5',
+                        'area' => '14.21',
+                        'cost' => '1 2313 000',
+                        'cost_for_100' => '89000',
+                        'full_cost' => '1300000',
+                        'full_cost_for_100' => '80000',
+                        'poselok' => 'Луговое',
+                        'kadastr' => '72=>17=>1105002=>2765',
+                        'housenum' => '25',
+                        'com' => [
+                            'gas',
+                            'elec',
+                            'roads',
+                            'lights',
+                            'security',
+                        ],
+                    ],
+                    'color' => 'orange',
+                    'itemID' => '1025',
+                ],
+                [
+                    'coords' => [
+                        [
+                            -134.64890934036,
+                            118.31418186182,
+                        ],
+                        [
+                            -135.9643030162,
+                            116.78691338126,
+                        ],
+                        [
+                            -137.66813497091,
+                            119.26762189363,
+                        ],
+                        [
+                            -136.30860099494,
+                            120.83903067426,
+                        ],
+                    ],
+                    'data' => [
+                        'num' => '383',
+                        'stus' => 'Акция',
+                        'stus_id' => '5',
+                        'area' => '141.21',
+                        'cost' => '1 1313 000',
+                        'cost_for_100' => '89000',
+                        'full_cost' => '1300000',
+                        'full_cost_for_100' => '80000',
+                        'poselok' => 'Луговое',
+                        'kadastr' => '72=>17=>1105002=>2765',
+                        'housenum' => '25',
+                        'com' => [
+                            'gas',
+                            'elec',
+                            'roads',
+                            'lights',
+                            'security',
+                        ],
+                    ],
+                    'color' => 'orange',
+                    'itemID' => '1025',
+                ],
+                [
+                    'coords' => [
+                        [
+                            -134.31344033112,
+                            114.23557766024,
+                        ],
+                        [
+                            -131.71796431002,
+                            117.25480329076,
+                        ],
+                        [
+                            -130.28806005912,
+                            115.14063457527,
+                        ],
+                        [
+                            -132.94733976647,
+                            112.06935372243,
+                        ],
+                    ],
+                    'data' => [
+                        'num' => '383',
+                        'stus' => 'Свободен',
+                        'stus_id' => '12',
+                        'area' => '11.21',
+                        'cost' => '1 900 000',
+                        'cost_for_100' => '89000',
+                        'full_cost' => '1300000',
+                        'full_cost_for_100' => '80000',
+                        'poselok' => 'Луговое',
+                        'kadastr' => '72=>17=>1105002=>2765',
+                        'housenum' => '25',
+                        'com' => [
+                            'gas',
+                            'elec',
+                            'roads',
+                            'lights',
+                            'security',
+                        ],
+                    ],
+                    'color' => '#228b22',
+                    'itemID' => '1075',
+                ],
+            ],
+            'markers' => [
+                [
+                    'name' => 'Лыжная база',
+                    'coords' => [
+                        -27.1875,
+                        44.84375,
+                    ],
+                ],
+            ],
+            'sectrors' => [
+                [
+                    'type' => 'Feature',
+                    'geometry' => [
+                        'type' => 'Polygon',
+                        'coordinates' => [
+                            [
+                                [
+                                    145.09375,
+                                    -64.125,
+                                ],
+                                [
+                                    150,
+                                    -66.78125,
+                                ],
+                                [
+                                    152.1964293718338,
+                                    -64.97321557998657,
+                                ],
+                                [
+                                    161.1458330154419,
+                                    -69.9375,
+                                ],
+                                [
+                                    185.65625,
+                                    -48.65625,
+                                ],
+                                [
+                                    209.03125,
+                                    -27.625,
+                                ],
+                                [
+                                    214.21875,
+                                    -26.6875,
+                                ],
+                                [
+                                    202.34375,
+                                    -13.3125,
+                                ],
+                                [
+                                    177.40625,
+                                    -26.5625,
+                                ],
+                                [
+                                    184.96875,
+                                    -30.6875,
+                                ],
+                            ],
+                            [
+                                [
+                                    122.03125,
+                                    -83,
+                                ],
+                                [
+                                    134.65625,
+                                    -72.6875,
+                                ],
+                                [
+                                    148.78125,
+                                    -80.6875,
+                                ],
+                                [
+                                    136.03125,
+                                    -91.375,
+                                ],
+                            ],
+                        ],
+                    ],
+                    'properties' => [
+                        'name' => 'квартал Полевой',
+                        'color' => '#bf7b1e',
+                        'index_c' => 1,
+                    ],
+                ],
+            ],
+            'tileUrl' => 'https=>//navigator-tmn.ru/uploads/villages/4_vill/[z]/[x]_[y].jpg',
+            'zoom' => [
+                'min' => 2,
+                'max' => 5,
+                'defaultfullscreen' => 3,
+                'defaultWindow' => 2,
+            ],
+        ];
+
+        $this->setAjaxResponse($aRandom);
     }
 }

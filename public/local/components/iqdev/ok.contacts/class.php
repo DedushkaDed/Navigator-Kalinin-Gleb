@@ -1,6 +1,6 @@
 <?php
 
-//namespace IQDEV\Components;
+namespace IQDEV\Components;
 
 class OkContacts extends \CBitrixComponent
 {
@@ -11,7 +11,6 @@ class OkContacts extends \CBitrixComponent
      */
     public function getData()
     {
-        \Bitrix\Main\Loader::includeModule('iblock');
         $iBlockID = $this->arParams['IBLOCK_ID'];
 
         $iBlock = \Bitrix\Iblock\Iblock::wakeUp($iBlockID);
@@ -26,27 +25,16 @@ class OkContacts extends \CBitrixComponent
                 'MAIL_FIRST',
                 'MAIL_SECOND',
                 'PERSON_POSITION',
-                'IMAGE',
+                'IMAGE.FILE',
             ],
         ])->fetchCollection();
 
-        foreach ($aElements as $aElement) {
-//            Если какого-либо свойства нет -> Компонент не отображается
-            if
-            (
-                empty($aElement->getId())
-                || empty($aElement->getName())
-                || empty($aElement->getPhoneFirst()->getValue())
-                || empty($aElement->getPhoneSecond()->getValue())
-                || empty($aElement->getPhoneThird()->getValue())
-                || empty($aElement->getMailFirst()->getValue())
-                || empty($aElement->getMailSecond()->getValue())
-                || empty($aElement->getPersonPosition()->getValue())
-                || empty($aElement->getImage()->getValue())
-            ) {
-                return null;
-            }
+        if (empty($aElements)) {
+            return null;
+        }
 
+        $arResult = [];
+        foreach ($aElements as $aElement) {
             $aCard = [];
             $aCard['id'] = $aElement->getId();
             $aCard['name'] = $aElement->getName();
@@ -56,44 +44,51 @@ class OkContacts extends \CBitrixComponent
             $aCard['emails'][] = $aElement->getMailFirst()->getValue();
             $aCard['emails'][] = $aElement->getMailSecond()->getValue();
             $aCard['personPosition'] = $aElement->getPersonPosition()->getValue();
-            $iImageID = $aElement->getImage()->getValue();
-            $aCard['image'] = CFile::GetPath($iImageID);
+
+            $iImageID = $aElement->getImage()->getFile()->getId();
+            $aCard['image'] = \CFile::GetPath($iImageID);
 
             $arResult[] = $aCard;
         }
         return $arResult;
     }
+
     /**
      * Проверка на существование кеша.
      * Если кеш существует - подгружаем его.
      * Иначе создаём новый.
      *
-     * @return array
+     * @param $aInputData
+     *
+     * @return array|null
      */
-    public function checkCache($aInputData): array
+    public function checkCache($aInputData): ?array
     {
+        if (empty($aInputData)) {
+            return null;
+        }
+
         $oCache = \Bitrix\Main\Data\Cache::createInstance();
 
-        if ($oCache->initCache(8600, "cache_key_1")) {
-            return $oCache->getVars();
+        if ($oCache->initCache(7200, 'okContactsTag')) {
+            $aInputData = $oCache->getVars(); // достаем переменные из кеша
+        } elseif ($oCache->startDataCache()) {
+            $oCache->endDataCache($aInputData); // записываем в кеш
         }
-        elseif ($oCache->startDataCache(8600)) {
-//            Сохраняет буферизированный PHP переменные в файле кеша
-            $oCache->endDataCache($aInputData);
-            return $aInputData;
-        }
-        else {
-            return $aInputData;
-        }
+        return $aInputData;
     }
+
     /**
      * Точка входа в компонент
      *
      * @return void
      */
-    public function executeComponent(){
-        $aInputData = $this->getData();
-        $this->arResult = $this->checkCache($aInputData);
+    public function executeComponent()
+    {
+        $aExecuteData = $this->getData();
+        $aExecuteData = $this->checkCache($aExecuteData);
+
+        $this->arResult = $aExecuteData;
         $this->includeComponentTemplate();
     }
 }

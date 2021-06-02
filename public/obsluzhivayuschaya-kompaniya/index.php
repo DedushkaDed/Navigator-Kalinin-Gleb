@@ -67,5 +67,4 @@ $APPLICATION->IncludeComponent(
         'INCLUDE_IBLOCK_INTO_CHAIN' => 'N',
     ]
 );
-
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/footer.php');
