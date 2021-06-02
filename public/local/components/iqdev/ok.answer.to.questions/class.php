@@ -48,7 +48,6 @@ class OkAnswerToQuestions extends \CBitrixComponent
             $aCard['title'] = $aElement->getName();
             $aCard['description'] = $aElement->getPreviewText();
             $aCard['detailText'] = $aElement->getDetailText();
-            $aCard['backgorundColor'] = '';
 
             $arResult[] = $aCard;
         }
