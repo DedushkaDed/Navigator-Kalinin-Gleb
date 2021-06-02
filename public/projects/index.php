@@ -2,12 +2,12 @@
 require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/header.php');
 
 $APPLICATION->IncludeComponent(
-    'iqdev:projects.news',
+    'iqdev:projects',
     '.default',
     [
-        "SEF_FOLDER" => "/projects/",
-        "SEF_MODE" => "Y",
-        "SEF_URL_TEMPLATES" => ["detail" => "#ELEMENT_ID#/"],
+        'IBLOCK_ID' => IQDEV\Base\Helper::getIblockId('plats_project'),
+        'IBLOCK_TYPE' => 'content',
+        'INCLUDE_IBLOCK_INTO_CHAIN' => 'N',
     ]
 );
 ?>

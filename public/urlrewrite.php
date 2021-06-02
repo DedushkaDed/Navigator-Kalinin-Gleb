@@ -21,4 +21,11 @@ $arUrlRewrite = [
         'PATH' => '/blog/index.php',
         'SORT' => 100,
     ],
+    [
+        'CONDITION' => '#^/projects/([a-zA-Z0-9-]+)/.*#',
+        'RULE' => 'CODE=$1',
+        'ID' => 'bitrix:news',
+        'PATH' => '/projects/index.php',
+        'SORT' => 100,
+    ],
 ];

@@ -2,7 +2,7 @@
 
 class pricesPlotsAccordion extends \CBitrixComponent {
 
-    public function getData()
+    public function getData(): ?array
     {
         $iBlockID = $this->arParams['IBLOCK_ID'];
 
@@ -20,6 +20,7 @@ class pricesPlotsAccordion extends \CBitrixComponent {
             return null;
         }
 
+        $arResult = [];
         foreach ($aElements as $aElement) {
             if (empty($aElement->getId()) || empty($aElement->getName()) || empty($aElement->getPreviewText())) {
                 return null;
@@ -37,7 +38,12 @@ class pricesPlotsAccordion extends \CBitrixComponent {
         }
         return $arResult;
     }
-    public function setData($aData)
+    /**
+     * Установка цвета блока
+     *
+     * @return array
+     */
+    public function setBackgroundColor($aData): array
     {
         foreach ($aData as $iKey => $aItem)
         {
@@ -47,23 +53,30 @@ class pricesPlotsAccordion extends \CBitrixComponent {
             if ($iKey % 2 == 0) {
                 $aItem['backgroundColor'] = 'accordion--sand';
             }
-            $arResult[] = $aItem;
+            $aData[$iKey] = $aItem;
         }
-        return $arResult;
+        return $aData;
     }
+
+    /**
+     * Получение данных из модуля 'iqdev.options'
+     *
+     * @return array
+     */
     public function getOptions(): array
     {
         return \IQDEV\Options\Options::getPageOptions('ceni-na-zemelnie-uchastki');
     }
+
     /**
-     * Выполнение компонента
+     * Входная точка компонента
      *
      * @return void
     */
     public function executeComponent()
     {
         $aData = $this->getData();
-        $aData = $this->setData($aData);
+        $aData = $this->setBackgroundColor($aData);
 
         $this->arResult = $aData;
 
